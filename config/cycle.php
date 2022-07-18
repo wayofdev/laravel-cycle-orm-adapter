@@ -16,8 +16,10 @@ return [
         app_path(),
     ],
 
-    'databases' => [
+    'database' => [
         'default' => 'default',
+
+        'aliases' => [],
 
         'databases' => [
             'default' => [

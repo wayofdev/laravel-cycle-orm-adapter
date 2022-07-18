@@ -16,7 +16,7 @@ final class Config implements Repository
 {
     private const REQUIRED_FIELDS = [
         'directories',
-        'databases',
+        'database',
         'schema',
         'migrations',
         'relations',
@@ -34,7 +34,7 @@ final class Config implements Repository
 
         return new self(
             $config['directories'],
-            $config['databases'],
+            $config['database'],
             $config['schema'],
             $config['migrations'],
             $config['relations']

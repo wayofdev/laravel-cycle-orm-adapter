@@ -19,7 +19,7 @@ final class ConfigTest extends TestCase
                         '/foo/bar',
                         '/boo/bar/baz',
                     ],
-                    'databases' => [],
+                    'database' => [],
                     'schema' => [
                         'sync' => false,
                         'cache' => [
