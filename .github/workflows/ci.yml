@@ -56,7 +56,7 @@ jobs:
         run: make test
 
       - name: Run static analysis using phpstan
-        run: make stan
+        run: make stan-ci
         env:
           PHPSTAN_OUTPUT_FORMAT: github
 
