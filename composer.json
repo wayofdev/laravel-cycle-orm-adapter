@@ -1,25 +1,31 @@
 {
-    "name": "wayofdev/laravel-package-tpl",
+    "name": "wayofdev/laravel-cycle-orm-adapter",
     "description": "PHP package template with GitHub Actions",
     "type": "library",
     "license": "MIT",
     "homepage": "https://wayof.dev",
     "support": {
-        "issues": "https://github.com/wayofdev/laravel-package-tpl/issues",
-        "source": "https://github.com/wayofdev/laravel-package-tpl"
+        "issues": "https://github.com/wayofdev/laravel-cycle-orm-adapter/issues",
+        "source": "https://github.com/wayofdev/laravel-cycle-orm-adapter"
     },
     "authors": [
         {
-            "name": "lotyp",
+            "name": "Andrij Orlenko",
             "email": "the@wayof.dev"
         }
     ],
     "require": {
         "php": "^8.1",
+        "ext-pdo": "*",
+        "cycle/annotated": "^3.2",
+        "cycle/migrations": "^3.0",
+        "cycle/orm": "^2.2",
         "illuminate/contracts": "^9.20"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.28",
+        "fakerphp/faker": "^1.19",
+        "jetbrains/phpstorm-attributes": "^1.0",
         "nunomaduro/collision": "^6.2",
         "nunomaduro/larastan": "^2.1",
         "orchestra/testbench": "^7.6",
@@ -37,13 +43,13 @@
     },
     "autoload": {
         "psr-4": {
-            "WayOfDev\\Laravel\\Package\\": "src/",
-            "WayOfDev\\Laravel\\Package\\Database\\Factories\\": "database/factories"
+            "WayOfDev\\Cycle\\": "src/",
+            "WayOfDev\\Cycle\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "WayOfDev\\Laravel\\Package\\Tests\\": "tests/"
+            "WayOfDev\\Cycle\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -52,7 +58,10 @@
         "test": "php vendor/bin/pest",
         "test-cc": "php vendor/bin/pest --coverage",
         "stan": "php vendor/bin/phpstan analyse",
-        "stan-ci": "php vendor/bin/phpstan analyse --error-format=github"
+        "stan-ci": "php vendor/bin/phpstan analyse --error-format=github",
+        "post-autoload-dump": [
+            "@php vendor/bin/testbench package:discover --ansi"
+        ]
     },
     "config": {
         "sort-packages": true,
@@ -65,10 +74,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "WayOfDev\\Laravel\\Package\\PackageServiceProvider"
+                "WayOfDev\\Cycle\\Bridge\\Laravel\\Providers\\PackageServiceProvider"
             ],
             "aliases": {
-                "Package": "WayOfDev\\Laravel\\Package\\Facades\\Package"
+                "Package": "Cycle"
             }
         },
         "composer-normalize": {

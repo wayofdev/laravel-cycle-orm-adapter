@@ -18,7 +18,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
-          package-name: laravel-package-tpl
+          package-name: laravel-cycle-orm-adapter
           default-branch: master
           changelog-types: |
             [

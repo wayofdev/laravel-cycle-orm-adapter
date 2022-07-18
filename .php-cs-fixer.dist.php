@@ -9,6 +9,7 @@ require_once 'vendor/autoload.php';
 
 $config = ConfigBuilder::createFromRuleSet(new DefaultSet(['static_lambda' => false]))
     ->inDir(__DIR__ . '/src')
+    ->inDir(__DIR__ . '/config')
     ->inDir(__DIR__ . '/tests')
     ->addFiles([__FILE__])
     ->getConfig()

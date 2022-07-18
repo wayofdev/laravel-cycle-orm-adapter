@@ -29,7 +29,7 @@ else
 	WHITE := ""
 	RST := ""
 endif
-MAKE_LOGFILE = /tmp/wayofdev-laravel-package-tpl.log
+MAKE_LOGFILE = /tmp/wayofdev-laravel-cycle-orm-adapter.log
 MAKE_CMD_COLOR := $(BLUE)
 
 # https://phpstan.org/user-guide/output-format
@@ -43,7 +43,7 @@ help:
 	@echo
 	@echo '    📑 Logs are stored in      $(MAKE_LOGFILE)'
 	@echo
-	@echo '    📦 Package                 laravel-package-tpl (github.com/wayofdev/laravel-package-tpl)'
+	@echo '    📦 Package                 laravel-cycle-orm-adapter (github.com/wayofdev/laravel-cycle-orm-adapter)'
 	@echo '    🤠 Author                  Andrij Orlenko (github.com/lotyp)'
 	@echo '    🏢 ${YELLOW}Org                     wayofdev (github.com/wayofdev)${RST}'
 .PHONY: help
