@@ -33,7 +33,7 @@ MAKE_LOGFILE = /tmp/wayofdev-laravel-cycle-orm-adapter.log
 MAKE_CMD_COLOR := $(BLUE)
 
 # https://phpstan.org/user-guide/output-format
-export PHPSTAN_OUTPUT_FORMAT ?= table
+export PHPSTAN_OUTPUT_FORMAT ?= github
 
 help:
 	@echo 'Management commands for package:'
