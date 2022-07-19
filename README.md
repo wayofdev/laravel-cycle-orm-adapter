@@ -25,7 +25,7 @@
 
 # Laravel Cycle ORM Adapter
 
-Package fully integrates [Cycle ORM](https://cycle-orm.dev) into Laravel and Lumen frameworks.
+Package fully integrates [Cycle ORM](https://cycle-orm.dev) into [Laravel](https://laravel.com) framework.
 
 If you **like/use** this package, please consider **starring** it. Thanks!
 

@@ -14,7 +14,7 @@ use Illuminate\Support\ServiceProvider;
 use Spiral\Tokenizer\Tokenizer;
 use WayOfDev\Cycle\Config;
 use WayOfDev\Cycle\Contracts\Config\Repository as ConfigRepository;
-use WayOfDev\Cycle\Contracts\EntityManager;
+use WayOfDev\Cycle\Contracts\EntityManager as EntityManagerContract;
 use WayOfDev\Cycle\Contracts\SchemaManager as SchemaManagerContract;
 use WayOfDev\Cycle\Entity\Manager;
 
@@ -87,7 +87,7 @@ final class CycleServiceProvider extends ServiceProvider
 
     private function registerEntityManager(): void
     {
-        $this->app->singleton(EntityManager::class, static function (Container $app): EntityManager {
+        $this->app->singleton(EntityManagerContract::class, static function (Container $app): EntityManagerContract {
             return $app[Manager::class];
         });
     }
