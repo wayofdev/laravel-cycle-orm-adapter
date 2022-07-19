@@ -8,6 +8,7 @@ use Cycle\Database\Config\DatabaseConfig;
 use Cycle\Database\DatabaseManager;
 use Cycle\Database\DatabaseProviderInterface;
 use Cycle\ORM\SchemaInterface;
+use Illuminate\Contracts\Config\Repository as IlluminateConfig;
 use Illuminate\Support\ServiceProvider;
 use WayOfDev\Cycle\Config;
 use WayOfDev\Cycle\Contracts\Config\Repository as ConfigRepository;
@@ -51,19 +52,21 @@ final class CycleServiceProvider extends ServiceProvider
 
     private function registerAdapterConfig(): void
     {
-        $this->app->singleton(ConfigRepository::class, static function (): ConfigRepository {
-            return Config::fromArray(
-                config('cycle')
-            );
+        $this->app->singleton(ConfigRepository::class, static function ($app): ConfigRepository {
+            /** @var IlluminateConfig $config */
+            $config = $app[IlluminateConfig::class];
+
+            return Config::fromArray($config->get('cycle'));
         });
     }
 
     private function registerDatabaseConfig(): void
     {
-        $this->app->singleton(DatabaseConfig::class, static function (): DatabaseConfig {
-            return new DatabaseConfig(
-                config('cycle.database')
-            );
+        $this->app->singleton(DatabaseConfig::class, static function ($app): DatabaseConfig {
+            /** @var IlluminateConfig $config */
+            $config = $app[IlluminateConfig::class];
+
+            return new DatabaseConfig($config->get('cycle.database'));
         });
     }
 
@@ -91,6 +94,4 @@ final class CycleServiceProvider extends ServiceProvider
             return $app[SchemaManagerContract::class]->create();
         });
     }
-
-
 }
