@@ -92,4 +92,8 @@ return [
         'directory' => database_path('migrations'),
         'table' => env('DB_MIGRATIONS_TABLE', 'migrations'),
     ],
+
+    'relations' => [
+        // ...
+    ],
 ];

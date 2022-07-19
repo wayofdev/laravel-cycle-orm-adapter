@@ -53,7 +53,14 @@ jobs:
         run: make cs-diff
 
       - name: Execute phpunit and pest tests
-        run: make test
+        run: make test-cc
+        env:
+          XDEBUG_MODE: coverage
+
+      - name: Send code coverage report to codecov.io
+        env:
+          CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"
+        run: "bash <(curl -s https://codecov.io/bash)"
 
       - name: Run static analysis using phpstan
         run: make stan-ci

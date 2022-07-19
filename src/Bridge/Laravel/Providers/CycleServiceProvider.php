@@ -9,7 +9,9 @@ use Cycle\Database\DatabaseManager;
 use Cycle\Database\DatabaseProviderInterface;
 use Cycle\ORM\SchemaInterface;
 use Illuminate\Contracts\Config\Repository as IlluminateConfig;
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\ServiceProvider;
+use Spiral\Tokenizer\Tokenizer;
 use WayOfDev\Cycle\Config;
 use WayOfDev\Cycle\Contracts\Config\Repository as ConfigRepository;
 use WayOfDev\Cycle\Contracts\EntityManager;
@@ -41,6 +43,8 @@ final class CycleServiceProvider extends ServiceProvider
         $this->registerDatabaseManager();
         $this->registerEntityManager();
         $this->registerDatabaseSchema();
+        $this->registerOrm();
+        $this->registerTokenizer();
     }
 
     private function registerConsoleCommands(): void
@@ -52,7 +56,7 @@ final class CycleServiceProvider extends ServiceProvider
 
     private function registerAdapterConfig(): void
     {
-        $this->app->singleton(ConfigRepository::class, static function ($app): ConfigRepository {
+        $this->app->singleton(ConfigRepository::class, static function (Container $app): ConfigRepository {
             /** @var IlluminateConfig $config */
             $config = $app[IlluminateConfig::class];
 
@@ -62,7 +66,7 @@ final class CycleServiceProvider extends ServiceProvider
 
     private function registerDatabaseConfig(): void
     {
-        $this->app->singleton(DatabaseConfig::class, static function ($app): DatabaseConfig {
+        $this->app->singleton(DatabaseConfig::class, static function (Container $app): DatabaseConfig {
             /** @var IlluminateConfig $config */
             $config = $app[IlluminateConfig::class];
 
@@ -72,7 +76,7 @@ final class CycleServiceProvider extends ServiceProvider
 
     private function registerDatabaseManager(): void
     {
-        $this->app->singleton(DatabaseProviderInterface::class, function ($app): DatabaseProviderInterface {
+        $this->app->singleton(DatabaseProviderInterface::class, static function (Container $app): DatabaseProviderInterface {
             return new DatabaseManager(
                 $app[DatabaseConfig::class]
             );
@@ -83,15 +87,30 @@ final class CycleServiceProvider extends ServiceProvider
 
     private function registerEntityManager(): void
     {
-        $this->app->singleton(EntityManager::class, function ($app): EntityManager {
+        $this->app->singleton(EntityManager::class, static function (Container $app): EntityManager {
             return $app[Manager::class];
         });
     }
 
     private function registerDatabaseSchema(): void
     {
-        $this->app->singleton(SchemaInterface::class, function ($app): SchemaInterface {
+        $this->app->singleton(SchemaInterface::class, static function (Container $app): SchemaInterface {
             return $app[SchemaManagerContract::class]->create();
+        });
+    }
+
+    private function registerOrm(): void
+    {
+        // @todo implement...
+    }
+
+    private function registerTokenizer(): void
+    {
+        $this->app->singleton(Tokenizer::class, static function (Container $app): Tokenizer {
+            /** @var IlluminateConfig $config */
+            $config = $app[IlluminateConfig::class];
+
+            return new Tokenizer($config->get('cycle'));
         });
     }
 }
