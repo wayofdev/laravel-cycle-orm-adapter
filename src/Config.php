@@ -15,7 +15,7 @@ use function implode;
 final class Config implements Repository
 {
     private const REQUIRED_FIELDS = [
-        'directories',
+        'tokenizer',
         'database',
         'schema',
         'migrations',
@@ -33,7 +33,7 @@ final class Config implements Repository
         }
 
         return new self(
-            $config['directories'],
+            $config['tokenizer'],
             $config['database'],
             $config['schema'],
             $config['migrations'],
@@ -41,9 +41,9 @@ final class Config implements Repository
         );
     }
 
-    public function directories(): array
+    public function tokenizer(): array
     {
-        return $this->directories;
+        return $this->tokenizer;
     }
 
     public function databases(): array
@@ -72,7 +72,7 @@ final class Config implements Repository
     }
 
     private function __construct(
-        private readonly array $directories,
+        private readonly array $tokenizer,
         private readonly array $databases,
         private readonly array $schema,
         private readonly array $migrations,

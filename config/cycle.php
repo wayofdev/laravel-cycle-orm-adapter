@@ -12,13 +12,22 @@ return [
      * paths array to it. If you don't, Cycle will scan your whole app/ folder for files,
      * which will have a huge impact on performance!
      */
-    'directories' => [
-        app_path(),
+    'tokenizer' => [
+        'directories' => [
+            app_path(),
+        ],
+
+        // ...
+        'exclude' => [],
+
+        // ...
+        'scopes' => [],
     ],
 
     'database' => [
         'default' => 'default',
 
+        // ...
         'aliases' => [],
 
         'databases' => [
@@ -83,9 +92,16 @@ return [
             'enabled' => (bool) env('DB_SCHEMA_CACHE', true),
             'storage' => env('DB_SCHEMA_CACHE_DRIVER', 'file'),
         ],
+
         'defaults' => [
             // ...
         ],
+
+        'collections' => [
+            // ...
+        ],
+
+        'generators' => null,
     ],
 
     'migrations' => [
@@ -93,6 +109,9 @@ return [
         'table' => env('DB_MIGRATIONS_TABLE', 'migrations'),
     ],
 
+    /*
+     * Custom relation types for entities
+     */
     'relations' => [
         // ...
     ],

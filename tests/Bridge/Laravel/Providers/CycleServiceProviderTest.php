@@ -7,6 +7,8 @@ namespace WayOfDev\Cycle\Tests\Bridge\Laravel\Providers;
 use Cycle\Database\Config\DatabaseConfig;
 use Cycle\Database\DatabaseManager;
 use Cycle\Database\DatabaseProviderInterface;
+use Spiral\Tokenizer\ClassesInterface;
+use Spiral\Tokenizer\ClassLocator;
 use Spiral\Tokenizer\Tokenizer;
 use WayOfDev\Cycle\Contracts\Config\Repository as ConfigRepository;
 use WayOfDev\Cycle\Contracts\EntityManager;
@@ -22,7 +24,7 @@ class CycleServiceProviderTest extends TestCase
         $config = $this->app->make(ConfigRepository::class);
 
         self::assertInstanceOf(ConfigRepository::class, $config);
-        self::assertEquals(app_path(), $config->directories()[0]);
+        self::assertEquals(app_path(), $config->tokenizer()['directories'][0]);
     }
 
     /**
@@ -48,26 +50,17 @@ class CycleServiceProviderTest extends TestCase
         self::assertInstanceOf(DatabaseManager::class, $manager);
     }
 
-    /**
-     * @test
-     */
     public function it_gets_entity_manager_instance_from_container(): void
     {
         $manager = $this->app->make(EntityManager::class);
         self::assertInstanceOf(EntityManager::class, $manager);
     }
 
-    /**
-     * @test
-     */
     public function it_gets_database_schema_from_container(): void
     {
         // ...
     }
 
-    /**
-     * @test
-     */
     public function it_gets_orm_from_container(): void
     {
         // ...
@@ -80,5 +73,14 @@ class CycleServiceProviderTest extends TestCase
     {
         $tokenizer = $this->app->make(Tokenizer::class);
         self::assertInstanceOf(Tokenizer::class, $tokenizer);
+    }
+
+    public function it_gets_class_locator_instance_from_container(): void
+    {
+        $classLocator = $this->app->make(ClassesInterface::class);
+        self::assertInstanceOf(ClassesInterface::class, $classLocator);
+
+        $classLocator = $this->app->make(ClassLocator::class);
+        self::assertInstanceOf(ClassesInterface::class, $classLocator);
     }
 }

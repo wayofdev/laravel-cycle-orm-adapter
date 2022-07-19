@@ -6,7 +6,7 @@ namespace WayOfDev\Cycle\Contracts\Config;
 
 interface Repository
 {
-    public function directories(): array;
+    public function tokenizer(): array;
 
     public function databases(): array;
 

@@ -15,9 +15,11 @@ final class ConfigTest extends TestCase
         return [
             'success' => [
                 [
-                    'directories' => [
-                        '/foo/bar',
-                        '/boo/bar/baz',
+                    'tokenizer' => [
+                        'directories' => [
+                            '/foo/bar',
+                            '/boo/bar/baz',
+                        ],
                     ],
                     'database' => [],
                     'schema' => [
@@ -54,7 +56,7 @@ final class ConfigTest extends TestCase
         } else {
             $configToTest = Config::fromArray($config);
 
-            self::assertEquals($config['directories'], $configToTest->directories());
+            self::assertEquals($config['tokenizer'], $configToTest->tokenizer());
             self::assertEquals($config['migrations']['directory'], $configToTest->migrationsDirectory());
             self::assertEquals($config['migrations']['table'], $configToTest->migrationsTable());
         }

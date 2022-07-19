@@ -11,6 +11,9 @@ use Cycle\ORM\SchemaInterface;
 use Illuminate\Contracts\Config\Repository as IlluminateConfig;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\ServiceProvider;
+use Spiral\Tokenizer\ClassesInterface;
+use Spiral\Tokenizer\ClassLocator;
+use Spiral\Tokenizer\Config\TokenizerConfig;
 use Spiral\Tokenizer\Tokenizer;
 use WayOfDev\Cycle\Config;
 use WayOfDev\Cycle\Contracts\Config\Repository as ConfigRepository;
@@ -45,6 +48,7 @@ final class CycleServiceProvider extends ServiceProvider
         $this->registerDatabaseSchema();
         $this->registerOrm();
         $this->registerTokenizer();
+        $this->registerClassLocator();
     }
 
     private function registerConsoleCommands(): void
@@ -106,11 +110,24 @@ final class CycleServiceProvider extends ServiceProvider
 
     private function registerTokenizer(): void
     {
-        $this->app->singleton(Tokenizer::class, static function (Container $app): Tokenizer {
+        $this->app->singleton(TokenizerConfig::class, static function (Container $app): TokenizerConfig {
             /** @var IlluminateConfig $config */
             $config = $app[IlluminateConfig::class];
 
-            return new Tokenizer($config->get('cycle'));
+            return new TokenizerConfig($config->get('cycle.tokenizer'));
         });
+
+        $this->app->singleton(Tokenizer::class, static function (Container $app): Tokenizer {
+            return new Tokenizer($app[TokenizerConfig::class]);
+        });
+    }
+
+    private function registerClassLocator(): void
+    {
+        $this->app->singleton(ClassLocator::class, static function (Container $app): ClassesInterface {
+            return $app[Tokenizer::class];
+        });
+
+        $this->app->bind(ClassesInterface::class, ClassLocator::class);
     }
 }
