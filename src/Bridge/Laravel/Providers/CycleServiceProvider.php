@@ -7,10 +7,12 @@ namespace WayOfDev\Cycle\Bridge\Laravel\Providers;
 use Cycle\Database\Config\DatabaseConfig;
 use Cycle\Database\DatabaseManager;
 use Cycle\Database\DatabaseProviderInterface;
+use Cycle\ORM\SchemaInterface;
 use Illuminate\Support\ServiceProvider;
 use WayOfDev\Cycle\Config;
 use WayOfDev\Cycle\Contracts\Config\Repository as ConfigRepository;
 use WayOfDev\Cycle\Contracts\EntityManager;
+use WayOfDev\Cycle\Contracts\SchemaManager as SchemaManagerContract;
 use WayOfDev\Cycle\Entity\Manager;
 
 final class CycleServiceProvider extends ServiceProvider
@@ -37,6 +39,7 @@ final class CycleServiceProvider extends ServiceProvider
         $this->registerDatabaseConfig();
         $this->registerDatabaseManager();
         $this->registerEntityManager();
+        $this->registerDatabaseSchema();
     }
 
     private function registerConsoleCommands(): void
@@ -81,4 +84,13 @@ final class CycleServiceProvider extends ServiceProvider
             return $app[Manager::class];
         });
     }
+
+    private function registerDatabaseSchema(): void
+    {
+        $this->app->singleton(SchemaInterface::class, function ($app): SchemaInterface {
+            return $app[SchemaManagerContract::class]->create();
+        });
+    }
+
+
 }

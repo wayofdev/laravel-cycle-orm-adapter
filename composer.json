@@ -20,6 +20,7 @@
         "cycle/annotated": "^3.2",
         "cycle/migrations": "^3.0",
         "cycle/orm": "^2.2",
+        "cycle/schema-renderer": "^1.1",
         "illuminate/contracts": "^9.20"
     },
     "require-dev": {

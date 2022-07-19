@@ -79,6 +79,17 @@ return [
     ],
 
     'schema' => [
-        // ...
+        'cache' => [
+            'enabled' => (bool) env('DB_SCHEMA_CACHE', true),
+            'storage' => env('DB_SCHEMA_CACHE_DRIVER', 'file'),
+        ],
+        'defaults' => [
+            // ...
+        ],
+    ],
+
+    'migrations' => [
+        'directory' => database_path('migrations'),
+        'table' => env('DB_MIGRATIONS_TABLE', 'migrations'),
     ],
 ];
