@@ -31,7 +31,7 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, fileinfo
           ini-values: error_reporting=E_ALL
           tools: composer:v2
-          coverage: none
+          coverage: xdebug
 
       - name: Setup problem matchers
         run: |
