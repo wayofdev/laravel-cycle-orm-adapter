@@ -7,6 +7,10 @@ namespace WayOfDev\Cycle\Bridge\Laravel\Providers;
 use Cycle\Database\Config\DatabaseConfig;
 use Cycle\Database\DatabaseManager;
 use Cycle\Database\DatabaseProviderInterface;
+use Cycle\Migrations\Config\MigrationConfig;
+use Cycle\Migrations\FileRepository;
+use Cycle\Migrations\Migrator;
+use Cycle\Migrations\RepositoryInterface;
 use Cycle\ORM\SchemaInterface;
 use Illuminate\Contracts\Config\Repository as IlluminateConfig;
 use Illuminate\Contracts\Container\Container;
@@ -23,6 +27,11 @@ use WayOfDev\Cycle\Entity\Manager;
 
 final class CycleServiceProvider extends ServiceProvider
 {
+    private const CFG_KEY = 'cycle';
+    private const CFG_KEY_DATABASE = 'cycle.database';
+    private const CFG_KEY_TOKENIZER = 'cycle.tokenizer';
+    private const CFG_KEY_MIGRATIONS = 'cycle.migrations';
+
     public function boot(): void
     {
         if ($this->app->runningInConsole()) {
@@ -38,7 +47,7 @@ final class CycleServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(
             __DIR__ . '/../../../../config/cycle.php',
-            'cycle'
+            self::CFG_KEY
         );
 
         $this->registerAdapterConfig();
@@ -47,6 +56,7 @@ final class CycleServiceProvider extends ServiceProvider
         $this->registerEntityManager();
         $this->registerDatabaseSchema();
         $this->registerOrm();
+        $this->registerMigrator();
         $this->registerTokenizer();
         $this->registerClassLocator();
     }
@@ -64,7 +74,7 @@ final class CycleServiceProvider extends ServiceProvider
             /** @var IlluminateConfig $config */
             $config = $app[IlluminateConfig::class];
 
-            return Config::fromArray($config->get('cycle'));
+            return Config::fromArray($config->get(self::CFG_KEY));
         });
     }
 
@@ -74,7 +84,7 @@ final class CycleServiceProvider extends ServiceProvider
             /** @var IlluminateConfig $config */
             $config = $app[IlluminateConfig::class];
 
-            return new DatabaseConfig($config->get('cycle.database'));
+            return new DatabaseConfig($config->get(self::CFG_KEY_DATABASE));
         });
     }
 
@@ -108,13 +118,37 @@ final class CycleServiceProvider extends ServiceProvider
         // @todo implement...
     }
 
+    private function registerMigrator(): void
+    {
+        $this->app->singleton(MigrationConfig::class, static function (Container $app): MigrationConfig {
+            /** @var IlluminateConfig $config */
+            $config = $app[IlluminateConfig::class];
+
+            return new MigrationConfig($config->get(self::CFG_KEY_MIGRATIONS));
+        });
+
+        $this->app->singleton(RepositoryInterface::class, static function (Container $app): RepositoryInterface {
+            $config = $app[MigrationConfig::class];
+
+            return new FileRepository($config);
+        });
+
+        $this->app->singleton(Migrator::class, static function (Container $app): Migrator {
+            return new Migrator(
+                $app[MigrationConfig::class],
+                $app[DatabaseProviderInterface::class],
+                $app[RepositoryInterface::class]
+            );
+        });
+    }
+
     private function registerTokenizer(): void
     {
         $this->app->singleton(TokenizerConfig::class, static function (Container $app): TokenizerConfig {
             /** @var IlluminateConfig $config */
             $config = $app[IlluminateConfig::class];
 
-            return new TokenizerConfig($config->get('cycle.tokenizer'));
+            return new TokenizerConfig($config->get(self::CFG_KEY_TOKENIZER));
         });
 
         $this->app->singleton(Tokenizer::class, static function (Container $app): Tokenizer {

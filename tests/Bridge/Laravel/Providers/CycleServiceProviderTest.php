@@ -7,6 +7,7 @@ namespace WayOfDev\Cycle\Tests\Bridge\Laravel\Providers;
 use Cycle\Database\Config\DatabaseConfig;
 use Cycle\Database\DatabaseManager;
 use Cycle\Database\DatabaseProviderInterface;
+use Cycle\Migrations\Migrator;
 use Spiral\Tokenizer\ClassesInterface;
 use Spiral\Tokenizer\ClassLocator;
 use Spiral\Tokenizer\Tokenizer;
@@ -50,20 +51,38 @@ class CycleServiceProviderTest extends TestCase
         self::assertInstanceOf(DatabaseManager::class, $manager);
     }
 
+    /**
+     * @test
+     */
     public function it_gets_entity_manager_instance_from_container(): void
     {
         $manager = $this->app->make(EntityManager::class);
         self::assertInstanceOf(EntityManager::class, $manager);
     }
 
+    /**
+     * @test
+     */
     public function it_gets_database_schema_from_container(): void
     {
         // ...
     }
 
+    /**
+     * @test
+     */
     public function it_gets_orm_from_container(): void
     {
         // ...
+    }
+
+    /**
+     * @test
+     */
+    public function it_gets_migrator_instance_from_container(): void
+    {
+        $migrator = $this->app->make(Migrator::class);
+        self::assertInstanceOf(Migrator::class, $migrator);
     }
 
     /**

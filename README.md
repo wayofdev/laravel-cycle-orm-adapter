@@ -27,6 +27,9 @@
 
 Package fully integrates [Cycle ORM](https://cycle-orm.dev) into [Laravel](https://laravel.com) framework.
 
+* [Laravel Octane](https://laravel.com/docs/9.x/octane) ready!
+* [Laravel Telescope](https://laravel.com/docs/9.x/telescope) compatible
+
 If you **like/use** this package, please consider **starring** it. Thanks!
 
 <br>
@@ -43,4 +46,50 @@ $ composer req wayofdev/laravel-cycle-orm-adapter
 
 <br>
 
-! work-in-progress !
+## 🧪 Running Tests
+
+### → PHPUnit tests
+
+To run tests, run the following command:
+
+```bash
+$ make test
+```
+
+### → Static Analysis
+
+Code quality using PHPStan:
+
+```bash
+$ make stan
+```
+
+### → Coding Standards Fixing
+
+Fix code using The PHP Coding Standards Fixer (PHP CS Fixer) to follow our standards:
+
+```bash
+$ make cs-fix
+```
+
+<br>
+
+## 🤝 License
+
+[![Licence](https://img.shields.io/github/license/wayofdev/laravel-cycle-orm-adapter?style=for-the-badge&color=blue)](./LICENSE)
+
+<br>
+
+## 🙆🏼‍♂️ Author Information
+
+Created in **2022** by [lotyp / wayofdev](https://github.com/wayofdev)
+
+<br>
+
+## 🧱 Resources and Credits
+
+* Inspired by [butschster's](https://github.com/butschster/LaravelCycleORM) package
+
+* The official [spiral/cycle-bridge](https://github.com/spiral/cycle-bridge) for Spiral Framework
+
+<br>

@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
+use Cycle\Annotated;
 use Cycle\Database\Config;
+use Cycle\ORM\Collection\IlluminateCollectionFactory;
+use Cycle\Schema;
 
 return [
     /*
@@ -89,24 +92,58 @@ return [
 
     'schema' => [
         'cache' => [
+            /*
+             * enabled => true (Default) - Schema will be stored in a cache after compilation.
+             * It won't be changed after entity modification. Use `php app.php cycle` to update schema.
+             *
+             * enabled => false - Schema won't be stored in a cache after compilation.
+             * It will be automatically changed after entity modification. (Development mode)
+             */
             'enabled' => (bool) env('DB_SCHEMA_CACHE', true),
+
             'storage' => env('DB_SCHEMA_CACHE_DRIVER', 'file'),
         ],
 
+        /*
+         * The CycleORM provides the ability to manage default settings for
+         * every schema with not defined segments
+         */
         'defaults' => [
             // ...
         ],
 
         'collections' => [
-            // ...
+            'default' => 'array',
+            'factories' => [
+                'illuminate' => new IlluminateCollectionFactory(),
+            ],
         ],
 
-        'generators' => null,
+        'generators' => [
+            Annotated\Embeddings::class,                 // register embeddable entities
+            Annotated\Entities::class,                   // register annotated entities
+            Annotated\TableInheritance::class,           // register STI/JTI
+            Annotated\MergeColumns::class,
+
+            Schema\Generator\ResetTables::class,         // re-declared table schemas (remove columns)
+            Schema\Generator\GenerateRelations::class,   // generate entity relations
+            Schema\Generator\GenerateModifiers::class,   // generate changes from schema modifiers
+            Schema\Generator\ValidateEntities::class,    // make sure all entity schemas are correct
+            Schema\Generator\RenderTables::class,        // declare table schemas
+            Schema\Generator\RenderRelations::class,     // declare relation keys and indexes
+            Schema\Generator\RenderModifiers::class,     // render all schema modifiers
+            Annotated\MergeIndexes::class,               // add @Table column declarations
+
+            Schema\Generator\GenerateTypecast::class,    // typecast non string columns
+        ],
     ],
 
     'migrations' => [
         'directory' => database_path('migrations'),
+
         'table' => env('DB_MIGRATIONS_TABLE', 'migrations'),
+
+        'safe' => env('APP_ENV') !== 'production',
     ],
 
     /*
