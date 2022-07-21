@@ -31,6 +31,6 @@ final class RegisterClassLocator
             return $app[Tokenizer::class];
         });
 
-        $app->bind(ClassesInterface::class, ClassLocator::class);
+        $app->alias(ClassesInterface::class, ClassLocator::class);
     }
 }

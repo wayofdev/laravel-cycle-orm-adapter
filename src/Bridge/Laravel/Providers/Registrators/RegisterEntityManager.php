@@ -12,6 +12,7 @@ final class RegisterEntityManager
 {
     public function __invoke(Container $app): void
     {
+        // @todo should be singleton or ont ?!
         $app->singleton(EntityManagerContract::class, static function (Container $app): EntityManagerContract {
             return $app[Manager::class];
         });
