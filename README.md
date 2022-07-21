@@ -36,7 +36,7 @@ If you **like/use** this package, please consider **starring** it. Thanks!
 
 ## 💿 Installation
 
-### → Using composer
+### → Using Composer
 
 Require as dependency:
 
@@ -46,9 +46,41 @@ $ composer req wayofdev/laravel-cycle-orm-adapter
 
 <br>
 
+## 💻 Usage
+
+### → Console Commands
+
+#### Migrations:
+
+| Command            | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| `migrate`          | Perform one or all outstanding migrations.<br />`--one` Execute only one (first) migration. |
+| `migrate:replay`   | Replay (down, up) one or multiple migrations.<br />`--all` Replay all migrations. |
+| `migrate:rollback` | Rollback one (default) or multiple migrations.<br />`--all` Rollback all executed migrations. |
+| `migrate:init`     | Init migrations component (create migrations table).         |
+| `migrate:status`   | Get list of all available migrations and their statuses.     |
+
+#### Database:
+
+| Command            | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| `db:list [db]`     | Get list of available databases, their tables and records count.<br/>`db` database name. |
+| `db:table <table>` | Describe table schema of specific database.<br/>`table` Table name (required).<br/>`--database` Source database. |
+
+#### ORM and Schema:
+
+| Command         | Description                                                  |
+| --------------- | ------------------------------------------------------------ |
+| `cycle`         | Update (init) cycle schema from database and annotated classes. |
+| `cycle:migrate` | Generate ORM schema migrations. `--run` Automatically run generated migration. |
+| `cycle:render`  | Render available CycleORM schemas. `--no-color` Display output without colors. |
+| `cycle:sync`    | Sync Cycle ORM schema with database without intermediate migration (risk operation). |
+
+<br>
+
 ## 🧪 Running Tests
 
-### → PHPUnit tests
+### → PHPUnit Tests
 
 To run tests, run the following command:
 
