@@ -19,14 +19,19 @@ final class Manager implements EntityManager
 
     public function persist(object $entity, bool $cascade = true): EntityManager
     {
-        // TODO: Implement persist() method.
+        // ...
     }
 
     public function delete(object $entity, bool $cascade = true): EntityManager
     {
-        // TODO: Implement delete() method.
+        // ...
     }
 
+    /**
+     * @template TEntity of object
+     *
+     * @return RepositoryInterface<TEntity>
+     */
     private function getRepository(object $entity): RepositoryInterface
     {
         return $this->orm->getRepository($entity);

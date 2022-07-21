@@ -113,7 +113,7 @@ return [
         ],
 
         'collections' => [
-            'default' => 'array',
+            'default' => 'illuminate',
             'factories' => [
                 'array' => Collection\ArrayCollectionFactory::class,
                 'illuminate' => Collection\IlluminateCollectionFactory::class,

@@ -22,11 +22,12 @@
         "cycle/orm": "^2.2",
         "cycle/schema-renderer": "^1.1",
         "illuminate/contracts": "^9.20",
+        "laminas/laminas-hydrator": "^4.5",
         "spiral/tokenizer": "^2.13"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.28",
-        "fakerphp/faker": "^1.19",
+        "fakerphp/faker": "^1.20",
         "jetbrains/phpstorm-attributes": "^1.0",
         "nunomaduro/collision": "^6.2",
         "nunomaduro/larastan": "^2.1",
@@ -44,6 +45,9 @@
         "wayofdev/cs-fixer-config": "^1.0"
     },
     "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
         "psr-4": {
             "WayOfDev\\Cycle\\": "src/",
             "WayOfDev\\Cycle\\Database\\Factories\\": "database/factories"

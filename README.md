@@ -19,6 +19,7 @@
 <a href="https://packagist.org/packages/wayofdev/laravel-cycle-orm-adapter"><img src="https://img.shields.io/packagist/l/wayofdev/laravel-cycle-orm-adapter?style=flat-square&color=blue" alt="Software License"/></a>
 <a href="https://packagist.org/packages/wayofdev/laravel-cycle-orm-adapter"><img alt="Commits since latest release" src="https://img.shields.io/github/commits-since/wayofdev/laravel-cycle-orm-adapter/latest?style=flat-square"></a>
 <a href="https://app.codecov.io/gh/wayofdev/laravel-cycle-orm-adapter"><img alt="Codecov" src="https://img.shields.io/codecov/c/github/wayofdev/laravel-cycle-orm-adapter?style=flat-square"></a>
+<a href="https://scrutinizer-ci.com/g/wayofdev/laravel-cycle-orm-adapter"><img alt="Scrutinizer code quality (GitHub)" src="https://img.shields.io/scrutinizer/quality/g/wayofdev/laravel-cycle-orm-adapter?style=flat-square"></a>
 </div>
 
 <br>

@@ -16,11 +16,11 @@ final class FileRepository implements RepositoryInterface
 {
     public function getMigrations(): array
     {
-        // TODO: Implement getMigrations() method.
+        return [];
     }
 
     public function registerMigration(string $name, string $class, string $body = null): string
     {
-        // TODO: Implement registerMigration() method.
+        return '';
     }
 }
