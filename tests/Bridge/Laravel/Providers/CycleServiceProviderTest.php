@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace WayOfDev\Cycle\Tests\Bridge\Laravel\Providers;
 
 use Cycle\Database\Config\DatabaseConfig;
+use Cycle\Database\DatabaseInterface;
 use Cycle\Database\DatabaseManager;
 use Cycle\Database\DatabaseProviderInterface;
 use Cycle\Migrations\Config\MigrationConfig;
@@ -45,11 +46,17 @@ class CycleServiceProviderTest extends TestCase
      */
     public function it_gets_database_manager_instance_from_container(): void
     {
-        $manager = $this->app->make(DatabaseProviderInterface::class);
-        self::assertInstanceOf(DatabaseProviderInterface::class, $manager);
+        $manager1 = $this->app->make(DatabaseProviderInterface::class);
+        self::assertInstanceOf(DatabaseProviderInterface::class, $manager1);
 
-        $manager = $this->app->make(DatabaseManager::class);
-        self::assertInstanceOf(DatabaseManager::class, $manager);
+        $manager2 = $this->app->make(DatabaseManager::class);
+        self::assertInstanceOf(DatabaseManager::class, $manager2);
+
+        $database = $this->app->make(DatabaseInterface::class);
+        self::assertInstanceOf(DatabaseInterface::class, $database);
+
+        self::assertEquals($manager1, $manager2);
+        self::assertEquals($manager2->database(), $database);
     }
 
     /**

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace WayOfDev\Cycle\Bridge\Laravel\Providers\Registrators;
 
 use Cycle\Database\Config\DatabaseConfig;
+use Cycle\Database\DatabaseInterface;
 use Cycle\Database\DatabaseManager;
 use Cycle\Database\DatabaseProviderInterface;
 use Illuminate\Contracts\Config\Repository as IlluminateConfig;
@@ -26,6 +27,10 @@ final class RegisterDatabaseManager
             return new DatabaseManager(
                 config: $app[DatabaseConfig::class]
             );
+        });
+
+        $app->bind(DatabaseInterface::class, static function (Container $app): DatabaseInterface {
+            return $app[DatabaseProviderInterface::class]->database();
         });
 
         $app->alias(DatabaseProviderInterface::class, DatabaseManager::class);
