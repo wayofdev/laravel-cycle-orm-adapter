@@ -7,6 +7,7 @@ namespace WayOfDev\Cycle\Tests\Bridge\Laravel\Providers;
 use Cycle\Database\Config\DatabaseConfig;
 use Cycle\Database\DatabaseManager;
 use Cycle\Database\DatabaseProviderInterface;
+use Cycle\Migrations\Config\MigrationConfig;
 use Cycle\Migrations\Migrator;
 use Spiral\Tokenizer\ClassesInterface;
 use Spiral\Tokenizer\ClassLocator;
@@ -81,6 +82,11 @@ class CycleServiceProviderTest extends TestCase
      */
     public function it_gets_migrator_instance_from_container(): void
     {
+        /** @var MigrationConfig $config */
+        $config = $this->app->make(MigrationConfig::class);
+
+        self::assertEquals(config('cycle.migrations'), $config->toArray());
+
         $migrator = $this->app->make(Migrator::class);
         self::assertInstanceOf(Migrator::class, $migrator);
     }

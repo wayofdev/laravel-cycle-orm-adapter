@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Cycle\Annotated;
 use Cycle\Database\Config;
-use Cycle\ORM\Collection\IlluminateCollectionFactory;
+use Cycle\ORM\Collection;
 use Cycle\Schema;
 
 return [
@@ -115,15 +115,20 @@ return [
         'collections' => [
             'default' => 'array',
             'factories' => [
-                'illuminate' => new IlluminateCollectionFactory(),
+                'array' => Collection\ArrayCollectionFactory::class,
+                'illuminate' => Collection\IlluminateCollectionFactory::class,
             ],
         ],
 
+        /*
+         * https://cycle-orm.dev/docs/intro-install/2.x/en
+         * See section - Schema Generation
+         */
         'generators' => [
             Annotated\Embeddings::class,                 // register embeddable entities
             Annotated\Entities::class,                   // register annotated entities
             Annotated\TableInheritance::class,           // register STI/JTI
-            Annotated\MergeColumns::class,
+            Annotated\MergeColumns::class,               // add @Table column declarations
 
             Schema\Generator\ResetTables::class,         // re-declared table schemas (remove columns)
             Schema\Generator\GenerateRelations::class,   // generate entity relations
