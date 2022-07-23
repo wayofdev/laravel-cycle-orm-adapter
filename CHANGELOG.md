@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.1.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v1.0.0...v1.1.0) (2022-07-23)
+
+
+### Features
+
+* adapting illuminate testing factories to workg with cycle ([631f9ec](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/631f9ecd715f1a12d412a3f5c52cb58074375bd5))
+* added tokenizer and class locator ([1cd629a](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/1cd629a7dd7b716e9ed467eb6e665773f438a598))
+* adding migrator ([52543d9](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/52543d9b168a44d8e4eddcb0f705b6cfcd77c882))
+* binding database interface ([6dcbbee](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/6dcbbeef3803635efc9e83e835c4f405070864b8))
+
+
+### Bug Fixes
+
+* should return alias, not new binding ([8af30a8](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/8af30a8e223238720438169c25b7f985de88b71d))
+
+
+### Documentation
+
+* adding cycle, laravel, wayofdev logos ([de8db71](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/de8db71356ffdc620a2020ad9ee573c24440c0cc))
+* console commands draft ([af5cd46](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/af5cd465ffbd0afbb22c9f7da518b8955d52d02a))
+
 ## 1.0.0 (2022-07-19)
 
 
