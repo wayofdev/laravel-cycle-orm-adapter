@@ -25,9 +25,11 @@
 
 <br>
 
+<br>
+
 <div align="center">
-<img width="400" src="assets/on-white-bg.png#gh-light-mode-only">
-<img width="400" src="assets/on-black-bg.png#gh-dark-mode-only">
+<img width="320" src="assets/on-white-bg.png#gh-light-mode-only">
+<img width="320" src="assets/on-black-bg.png#gh-dark-mode-only">
 </div>
 
 <br>
