@@ -21,4 +21,8 @@ class Repository extends CycleRepository
 
         parent::__construct($select);
     }
+
+    public function persist($entity): void
+    {
+    }
 }

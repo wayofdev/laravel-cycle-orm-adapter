@@ -14,7 +14,6 @@ use Illuminate\Contracts\Config\Repository as IlluminateConfig;
 use Illuminate\Contracts\Container\Container;
 use WayOfDev\Cycle\Bridge\Laravel\Providers\Registrator;
 use WayOfDev\Cycle\Collection\CollectionConfig;
-use WayOfDev\Cycle\Contracts\SchemaManager as SchemaManagerContract;
 
 final class RegisterORM
 {
@@ -25,10 +24,6 @@ final class RegisterORM
             $config = $app[IlluminateConfig::class];
 
             return new CollectionConfig($config->get(Registrator::CFG_KEY_COLLECTIONS));
-        });
-
-        $app->singleton(SchemaInterface::class, static function (Container $app): SchemaInterface {
-            return $app[SchemaManagerContract::class]->create();
         });
 
         $app->singleton(FactoryInterface::class, static function (Container $app): FactoryInterface {

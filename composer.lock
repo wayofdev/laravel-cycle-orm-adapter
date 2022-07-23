@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a2df2f7cc0c06407a59e5420a3b5f910",
+    "content-hash": "c179133956c2c5f0cfdb4e8033f1139a",
     "packages": [
         {
             "name": "brick/math",
@@ -1119,16 +1119,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v9.20.0",
+            "version": "v9.21.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "c99868f1c9bf2f5d250993121838db905591864f"
+                "reference": "a1944cd0d160a2cc423ef5a451d002711c5f014f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/c99868f1c9bf2f5d250993121838db905591864f",
-                "reference": "c99868f1c9bf2f5d250993121838db905591864f",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/a1944cd0d160a2cc423ef5a451d002711c5f014f",
+                "reference": "a1944cd0d160a2cc423ef5a451d002711c5f014f",
                 "shasum": ""
             },
             "require": {
@@ -1143,6 +1143,7 @@
                 "league/flysystem": "^3.0.16",
                 "monolog/monolog": "^2.0",
                 "nesbot/carbon": "^2.53.1",
+                "nunomaduro/termwind": "^1.13",
                 "php": "^8.0.2",
                 "psr/container": "^1.1.1|^2.0.1",
                 "psr/log": "^1.0|^2.0|^3.0",
@@ -1294,7 +1295,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-07-13T13:26:22+00:00"
+            "time": "2022-07-21T19:38:16+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -2041,6 +2042,92 @@
                 "source": "https://github.com/nette/utils/tree/v3.2.7"
             },
             "time": "2022-01-24T11:29:14+00:00"
+        },
+        {
+            "name": "nunomaduro/termwind",
+            "version": "v1.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nunomaduro/termwind.git",
+                "reference": "132a24bd3e8c559e7f14fa14ba1b83772a0f97f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nunomaduro/termwind/zipball/132a24bd3e8c559e7f14fa14ba1b83772a0f97f8",
+                "reference": "132a24bd3e8c559e7f14fa14ba1b83772a0f97f8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": "^8.0",
+                "symfony/console": "^5.3.0|^6.0.0"
+            },
+            "require-dev": {
+                "ergebnis/phpstan-rules": "^1.0.",
+                "illuminate/console": "^8.0|^9.0",
+                "illuminate/support": "^8.0|^9.0",
+                "laravel/pint": "^0.2.0",
+                "pestphp/pest": "^1.21.0",
+                "pestphp/pest-plugin-mock": "^1.0",
+                "phpstan/phpstan": "^1.4.6",
+                "phpstan/phpstan-strict-rules": "^1.1.0",
+                "symfony/var-dumper": "^5.2.7|^6.0.0",
+                "thecodingmachine/phpstan-strict-rules": "^1.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Termwind\\Laravel\\TermwindServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Functions.php"
+                ],
+                "psr-4": {
+                    "Termwind\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nuno Maduro",
+                    "email": "enunomaduro@gmail.com"
+                }
+            ],
+            "description": "Its like Tailwind CSS, but for the console.",
+            "keywords": [
+                "cli",
+                "console",
+                "css",
+                "package",
+                "php",
+                "style"
+            ],
+            "support": {
+                "issues": "https://github.com/nunomaduro/termwind/issues",
+                "source": "https://github.com/nunomaduro/termwind/tree/v1.13.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/paypalme/enunomaduro",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/nunomaduro",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/xiCO2k",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-07-01T15:06:55+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -10182,65 +10269,6 @@
                 }
             ],
             "time": "2021-11-09T10:57:15+00:00"
-        },
-        {
-            "name": "spatie/laravel-package-tools",
-            "version": "1.12.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-package-tools.git",
-                "reference": "09f80fa240d44fafb1c70657c74ee44ffa929357"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/09f80fa240d44fafb1c70657c74ee44ffa929357",
-                "reference": "09f80fa240d44fafb1c70657c74ee44ffa929357",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "^7.0|^8.0|^9.0",
-                "php": "^7.4|^8.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.4",
-                "orchestra/testbench": "^5.0|^6.23|^7.0",
-                "phpunit/phpunit": "^9.4",
-                "spatie/test-time": "^1.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\LaravelPackageTools\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Tools for creating Laravel packages",
-            "homepage": "https://github.com/spatie/laravel-package-tools",
-            "keywords": [
-                "laravel-package-tools",
-                "spatie"
-            ],
-            "support": {
-                "issues": "https://github.com/spatie/laravel-package-tools/issues",
-                "source": "https://github.com/spatie/laravel-package-tools/tree/1.12.1"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/spatie",
-                    "type": "github"
-                }
-            ],
-            "time": "2022-06-28T14:29:26+00:00"
         },
         {
             "name": "spatie/laravel-ray",
