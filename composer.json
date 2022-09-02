@@ -25,7 +25,7 @@
         "cycle/schema-renderer": "^1.1",
         "illuminate/contracts": "^9.20",
         "laminas/laminas-hydrator": "^4.5",
-        "spiral/tokenizer": "^2.13",
+        "spiral/tokenizer": "^2.14",
         "symfony/console": "^6.1"
     },
     "require-dev": {
