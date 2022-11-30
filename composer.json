@@ -26,7 +26,7 @@
         "illuminate/contracts": "^9.20",
         "laminas/laminas-hydrator": "^4.5",
         "spiral/tokenizer": "^2.13",
-        "symfony/console": "^6.1"
+        "symfony/console": "^6.2"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.28",
