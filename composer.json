@@ -33,7 +33,7 @@
         "fakerphp/faker": "^1.20",
         "jetbrains/phpstorm-attributes": "^1.0",
         "laravel/framework": "^9.21",
-        "nunomaduro/collision": "^6.2",
+        "nunomaduro/collision": "^6.4",
         "nunomaduro/larastan": "^2.1",
         "orchestra/testbench": "^7.6",
         "pestphp/pest": "^1.21",
