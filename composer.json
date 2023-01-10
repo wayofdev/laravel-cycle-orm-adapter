@@ -34,7 +34,7 @@
         "jetbrains/phpstorm-attributes": "^1.0",
         "laravel/framework": "^9.21",
         "nunomaduro/collision": "^6.2",
-        "nunomaduro/larastan": "^2.1",
+        "nunomaduro/larastan": "^2.3",
         "orchestra/testbench": "^7.6",
         "pestphp/pest": "^1.21",
         "pestphp/pest-plugin-laravel": "^1.2",
