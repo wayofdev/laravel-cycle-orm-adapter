@@ -1,0 +1,70 @@
+---
+
+on:  # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+name: 🔍 Continuous integration
+
+jobs:
+  integration:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: ["ubuntu-22.04"]
+        php: ["8.1", "8.2"]
+    steps:
+      - name: 📦 Check out the codebase
+        uses: actions/checkout@v3
+
+      - name: 🛠️ Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, fileinfo
+          ini-values: error_reporting=E_ALL
+          tools: composer:v2
+          coverage: none
+
+      - name: ♻️ Load cached dependencies
+        id: cached-composer-dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: vendor-${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+
+      - name: ⚙️ Install dependencies
+        if: steps.cached-composer-dependencies.outputs.cache-hit != 'true'
+        run: composer install
+
+      - name: 🚨 Run coding standards task
+        run: make cs-diff
+        env:
+          PHP_CS_FIXER_IGNORE_ENV: true
+
+      - name: 🧪 Execute phpunit tests
+        uses: php-actions/phpunit@v3
+        env:
+          XDEBUG_MODE: coverage
+        with:
+          bootstrap: vendor/autoload.php
+          configuration: phpunit.xml.dist
+          php_extensions: xdebug
+          args: tests --coverage-clover ./coverage.xml
+
+      - name: 📝 Run static analysis using phpstan
+        run: make stan
+
+      - name: 📤 Upload coverage report to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage.xml
+          verbose: true
+
+...
