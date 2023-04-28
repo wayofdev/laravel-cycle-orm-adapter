@@ -24,7 +24,7 @@
         "cycle/schema-builder": "^2.1",
         "cycle/schema-renderer": "^1.1",
         "illuminate/contracts": "^9.20",
-        "laminas/laminas-hydrator": "^4.5",
+        "laminas/laminas-hydrator": "^4.13",
         "spiral/tokenizer": "^2.13",
         "symfony/console": "^6.1"
     },
