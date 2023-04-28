@@ -19,7 +19,7 @@
         "ext-pdo": "*",
         "cycle/annotated": "^3.2",
         "cycle/database": "^2.2",
-        "cycle/migrations": "^3.0",
+        "cycle/migrations": "^3.1",
         "cycle/orm": "^2.2",
         "cycle/schema-builder": "^2.1",
         "cycle/schema-renderer": "^1.1",
