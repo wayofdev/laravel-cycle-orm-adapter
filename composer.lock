@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c179133956c2c5f0cfdb4e8033f1139a",
+    "content-hash": "824e67e584dbdae8a137b8cbdad4060d",
     "packages": [
         {
             "name": "brick/math",
@@ -112,16 +112,16 @@
         },
         {
             "name": "cycle/database",
-            "version": "2.2.1",
+            "version": "2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cycle/database.git",
-                "reference": "bd48dec079d7666dd125e1299be031b123685684"
+                "reference": "6ef38a473495128ba6bba211e4da8cbe4220776d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cycle/database/zipball/bd48dec079d7666dd125e1299be031b123685684",
-                "reference": "bd48dec079d7666dd125e1299be031b123685684",
+                "url": "https://api.github.com/repos/cycle/database/zipball/6ef38a473495128ba6bba211e4da8cbe4220776d",
+                "reference": "6ef38a473495128ba6bba211e4da8cbe4220776d",
                 "shasum": ""
             },
             "require": {
@@ -158,9 +158,15 @@
             "description": "DBAL, schema introspection, migration and pagination",
             "support": {
                 "issues": "https://github.com/cycle/database/issues",
-                "source": "https://github.com/cycle/database/tree/2.2.1"
+                "source": "https://github.com/cycle/database/tree/2.4.1"
             },
-            "time": "2022-07-02T07:49:22+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/roadrunner-server",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-03-07T20:16:21+00:00"
         },
         {
             "name": "cycle/migrations",
@@ -2689,16 +2695,16 @@
         },
         {
             "name": "spiral/core",
-            "version": "2.13.1",
+            "version": "2.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spiral/core.git",
-                "reference": "0987729c98a3e764d916d065237e0e491824fb07"
+                "reference": "bbc0a4a1d3c4f14d8d7354d94a05577e60129416"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spiral/core/zipball/0987729c98a3e764d916d065237e0e491824fb07",
-                "reference": "0987729c98a3e764d916d065237e0e491824fb07",
+                "url": "https://api.github.com/repos/spiral/core/zipball/bbc0a4a1d3c4f14d8d7354d94a05577e60129416",
+                "reference": "bbc0a4a1d3c4f14d8d7354d94a05577e60129416",
                 "shasum": ""
             },
             "require": {
@@ -2712,7 +2718,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.14.x-dev"
+                    "dev-master": "2.15.x-dev"
                 }
             },
             "autoload": {
@@ -2736,7 +2742,7 @@
                 "issues": "https://github.com/spiral/framework/issues",
                 "source": "https://github.com/spiral/core"
             },
-            "time": "2022-05-16T19:46:42+00:00"
+            "time": "2022-09-01T21:11:51+00:00"
         },
         {
             "name": "spiral/files",
@@ -2842,29 +2848,30 @@
         },
         {
             "name": "spiral/pagination",
-            "version": "2.13.1",
+            "version": "3.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spiral/pagination.git",
-                "reference": "d968f4415ec2fedbfb017ed1f54ce1dc17c015b8"
+                "reference": "753d2604cda3363414c1a703bafb709d57a52918"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spiral/pagination/zipball/d968f4415ec2fedbfb017ed1f54ce1dc17c015b8",
-                "reference": "d968f4415ec2fedbfb017ed1f54ce1dc17c015b8",
+                "url": "https://api.github.com/repos/spiral/pagination/zipball/753d2604cda3363414c1a703bafb709d57a52918",
+                "reference": "753d2604cda3363414c1a703bafb709d57a52918",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4"
+                "php": ">=8.1"
             },
             "require-dev": {
                 "mockery/mockery": "^1.5",
-                "phpunit/phpunit": "^8.5|^9.5"
+                "phpunit/phpunit": "^9.5.20",
+                "vimeo/psalm": "^5.9"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.14.x-dev"
+                    "dev-master": "3.8.x-dev"
                 }
             },
             "autoload": {
@@ -2880,6 +2887,18 @@
                 {
                     "name": "Anton Titov (wolfy-j)",
                     "email": "wolfy-j@spiralscout.com"
+                },
+                {
+                    "name": "Pavel Butchnev (butschster)",
+                    "email": "pavel.buchnev@spiralscout.com"
+                },
+                {
+                    "name": "Aleksei Gagarin (roxblnfk)",
+                    "email": "alexey.gagarin@spiralscout.com"
+                },
+                {
+                    "name": "Maksim Smakouz (msmakouz)",
+                    "email": "maksim.smakouz@spiralscout.com"
                 }
             ],
             "description": "Common pagination interfaces",
@@ -2888,7 +2907,7 @@
                 "issues": "https://github.com/spiral/framework/issues",
                 "source": "https://github.com/spiral/pagination"
             },
-            "time": "2022-05-16T19:47:11+00:00"
+            "time": "2023-04-20T16:06:33+00:00"
         },
         {
             "name": "spiral/reactor",
