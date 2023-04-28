@@ -70,9 +70,9 @@ final class Config implements Repository
         return Arr::get($this->schema, 'defaults', []);
     }
 
-    public function schemaCache(): array
+    public function schemaCache(): bool
     {
-        return Arr::get($this->schema, 'cache', []);
+        return (bool) Arr::get($this->schema, 'cache', true);
     }
 
     public function manuallyDefinedSchema(): array

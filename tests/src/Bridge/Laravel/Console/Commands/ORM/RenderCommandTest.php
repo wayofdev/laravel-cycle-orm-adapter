@@ -24,9 +24,9 @@ class RenderCommandTest extends TestCase
         ]);
     }
 
-//    /**
-//     * @test
-//     */
+    /**
+     * @todo
+     */
     public function it_runs_handle_with_redefined_schema(): void
     {
         $this->app['config']->set('cycle.schema.defaults', [
@@ -40,10 +40,6 @@ class RenderCommandTest extends TestCase
         ]);
 
         Artisan::call('cycle:orm:render', ['--no-color' => true]);
-        $output = Artisan::output();
-        // dd($output);
-
-        // dd($this->app['config']->get('cycle.schema'));
 
         $this->assertConsoleCommandOutputContainsStrings('cycle:orm:render', ['--no-color' => true], [
             'Mapper: custom_mapper',

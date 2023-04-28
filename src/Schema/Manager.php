@@ -8,7 +8,6 @@ use Cycle\ORM\Schema;
 use WayOfDev\Cycle\Contracts\CacheManager;
 use WayOfDev\Cycle\Contracts\Config\Repository as Config;
 use WayOfDev\Cycle\Contracts\GeneratorLoader;
-use WayOfDev\Cycle\Contracts\SchemaCompiler;
 use WayOfDev\Cycle\Contracts\SchemaManager;
 
 use function count;

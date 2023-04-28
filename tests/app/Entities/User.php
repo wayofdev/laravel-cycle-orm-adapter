@@ -46,7 +46,7 @@ class User
 
     public function __construct(
         #[Column(type: 'string')]
-        private readonly string $name
+        private string $name
     ) {
         $this->friendsAsDoctrineCollection = new Collection();
         $this->roles = new Collection();

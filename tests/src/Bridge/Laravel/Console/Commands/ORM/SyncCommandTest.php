@@ -37,7 +37,7 @@ class SyncCommandTest extends TestCase
      */
     public function it_runs_handle_in_debug_mode(): void
     {
-        $this->assertConsoleCommandOutputContainsStrings('cycle:orm:sync', ['-vvv'], [
+        $this->assertConsoleCommandOutputContainsStrings('cycle:orm:sync', ['--verbose' => 3], [
             'default.users',
             'create table',
             'add column',

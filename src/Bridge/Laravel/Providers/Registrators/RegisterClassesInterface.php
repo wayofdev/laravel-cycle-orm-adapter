@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace WayOfDev\Cycle\Bridge\Laravel\Providers\Registrators;
 
+use Illuminate\Container\Container;
 use Illuminate\Contracts\Config\Repository as IlluminateConfig;
-use Illuminate\Contracts\Container\Container;
 use Spiral\Tokenizer\ClassesInterface;
-use Spiral\Tokenizer\ClassLocator;
 use Spiral\Tokenizer\Config\TokenizerConfig;
 use Spiral\Tokenizer\InvocationLocator;
 use Spiral\Tokenizer\InvocationsInterface;
@@ -16,7 +15,7 @@ use Spiral\Tokenizer\ScopedClassLocator;
 use Spiral\Tokenizer\Tokenizer;
 use WayOfDev\Cycle\Bridge\Laravel\Providers\Registrator;
 
-final class RegisterClassLocator
+final class RegisterClassesInterface
 {
     public function __invoke(Container $app): void
     {
@@ -31,16 +30,16 @@ final class RegisterClassLocator
             return new Tokenizer($app[TokenizerConfig::class]);
         });
 
-        $app->singleton(ClassesInterface::class, static function (Container $app): ClassesInterface {
-            return $app[Tokenizer::class]->classLocator();
+        $app->singleton(ScopedClassesInterface::class, static function ($app): ScopedClassesInterface {
+            return new ScopedClassLocator($app[TokenizerConfig::class]);
         });
 
-        $app->singleton(InvocationsInterface::class, static function (Container $app): InvocationsInterface {
-            return $app[Tokenizer::class]->invocationLocator();
+        $app->singleton(ClassesInterface::class, static function ($app): ClassesInterface {
+            return (new Tokenizer($app[TokenizerConfig::class]))->classLocator();
         });
 
-        $app->alias(ScopedClassesInterface::class, ScopedClassLocator::class);
-        $app->alias(ClassesInterface::class, ClassLocator::class);
-        $app->alias(InvocationsInterface::class, InvocationLocator::class);
+        $app->singleton(InvocationsInterface::class, static function ($app): InvocationLocator {
+            return new InvocationLocator($app[TokenizerConfig::class]);
+        });
     }
 }

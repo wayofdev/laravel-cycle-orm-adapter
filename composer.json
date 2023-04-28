@@ -21,10 +21,11 @@
         "cycle/database": "^2.4",
         "cycle/migrations": "^4.0",
         "cycle/orm": "^2.3",
-        "laravel/framework": "*",
-        "symfony/console": "^6.2",
         "cycle/schema-migrations-generator": "^2.1",
-        "cycle/schema-renderer": "^1.2"
+        "cycle/schema-renderer": "^1.2",
+        "laravel/framework": "*",
+        "spiral/attributes": "^3.1",
+        "symfony/console": "^6.2"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.30",

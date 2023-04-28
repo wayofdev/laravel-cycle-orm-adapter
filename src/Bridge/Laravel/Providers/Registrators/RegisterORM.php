@@ -5,12 +5,15 @@ declare(strict_types=1);
 namespace WayOfDev\Cycle\Bridge\Laravel\Providers\Registrators;
 
 use Cycle\Database\DatabaseProviderInterface;
+use Cycle\ORM\Config\RelationConfig;
+use Cycle\ORM\EntityManager;
+use Cycle\ORM\EntityManagerInterface;
 use Cycle\ORM\Factory;
 use Cycle\ORM\FactoryInterface;
 use Cycle\ORM\ORM;
 use Cycle\ORM\ORMInterface;
 use Cycle\ORM\SchemaInterface;
-use Illuminate\Contracts\Container\Container;
+use Illuminate\Container\Container;
 use WayOfDev\Cycle\Contracts\Config\Repository as Config;
 
 final class RegisterORM
@@ -18,11 +21,18 @@ final class RegisterORM
     public function __invoke(Container $app): void
     {
         $app->singleton(FactoryInterface::class, static function (Container $app): FactoryInterface {
-            $collectionFactoryClass = $app->make($app[Config::class]->defaultCollectionFactory());
+            $config = $app->make(Config::class);
+
+            $collectionFactoryClass = $config->defaultCollectionFactory();
+
+            $relationConfig = new RelationConfig(
+                RelationConfig::getDefault()->toArray() + $config->customRelations()
+            );
 
             return new Factory(
                 dbal: $app[DatabaseProviderInterface::class],
-                defaultCollectionFactory: $collectionFactoryClass
+                config: $relationConfig,
+                defaultCollectionFactory: new $collectionFactoryClass()
             );
         });
 
@@ -31,6 +41,10 @@ final class RegisterORM
                 factory: $app[FactoryInterface::class],
                 schema: $app[SchemaInterface::class]
             );
+        });
+
+        $app->singleton(EntityManagerInterface::class, function (Container $app): EntityManagerInterface {
+            return new EntityManager($app[ORMInterface::class]);
         });
     }
 }

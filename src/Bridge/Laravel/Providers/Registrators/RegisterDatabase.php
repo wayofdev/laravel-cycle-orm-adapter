@@ -8,11 +8,11 @@ use Cycle\Database\Config\DatabaseConfig;
 use Cycle\Database\DatabaseInterface;
 use Cycle\Database\DatabaseManager;
 use Cycle\Database\DatabaseProviderInterface;
+use Illuminate\Container\Container;
 use Illuminate\Contracts\Config\Repository as IlluminateConfig;
-use Illuminate\Contracts\Container\Container;
 use WayOfDev\Cycle\Bridge\Laravel\Providers\Registrator;
 
-final class RegisterDatabaseManager
+final class RegisterDatabase
 {
     public function __invoke(Container $app): void
     {

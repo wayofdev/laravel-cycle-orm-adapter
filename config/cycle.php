@@ -167,38 +167,38 @@ return [
          * null (default) - Will be used schema generators defined in bootloaders
          */
         'generators' => [
-            GeneratorLoader::GROUP_INDEX => [
-                // Register embeddable entities
-                Annotated\Embeddings::class,
-                // Register annotated entities
-                Annotated\Entities::class,
-                // Register STI/JTI
-                Annotated\TableInheritance::class,
-                // Add @Table column declarations
-                Annotated\MergeColumns::class,
-            ],
-            GeneratorLoader::GROUP_RENDER => [
-                // Re-declared table schemas (remove columns)
-                Schema\Generator\ResetTables::class,
-                // Generate entity relations
-                Schema\Generator\GenerateRelations::class,
-                // Generate changes from schema modifiers
-                Schema\Generator\GenerateModifiers::class,
-                // Make sure all entity schemas are correct
-                Schema\Generator\ValidateEntities::class,
-                // Declare table schemas
-                Schema\Generator\RenderTables::class,
-                // Declare relation keys and indexes
-                Schema\Generator\RenderRelations::class,
-                // Render all schema modifiers
-                Schema\Generator\RenderModifiers::class,
-                // Add @Table column declarations
-                Annotated\MergeIndexes::class,
-            ],
-            GeneratorLoader::GROUP_POSTPROCESS => [
-                // Typecast non string columns
-                Schema\Generator\GenerateTypecast::class,
-            ],
+//            GeneratorLoader::GROUP_INDEX => [
+//                // Register embeddable entities
+//                Annotated\Embeddings::class,
+//                // Register annotated entities
+//                Annotated\Entities::class,
+//                // Register STI/JTI
+//                Annotated\TableInheritance::class,
+//                // Add @Table column declarations
+//                Annotated\MergeColumns::class,
+//            ],
+//            GeneratorLoader::GROUP_RENDER => [
+//                // Re-declared table schemas (remove columns)
+//                Schema\Generator\ResetTables::class,
+//                // Generate entity relations
+//                Schema\Generator\GenerateRelations::class,
+//                // Generate changes from schema modifiers
+//                Schema\Generator\GenerateModifiers::class,
+//                // Make sure all entity schemas are correct
+//                Schema\Generator\ValidateEntities::class,
+//                // Declare table schemas
+//                Schema\Generator\RenderTables::class,
+//                // Declare relation keys and indexes
+//                Schema\Generator\RenderRelations::class,
+//                // Render all schema modifiers
+//                Schema\Generator\RenderModifiers::class,
+//                // Add @Table column declarations
+//                Annotated\MergeIndexes::class,
+//            ],
+//            GeneratorLoader::GROUP_POSTPROCESS => [
+//                // Typecast non string columns
+//                Schema\Generator\GenerateTypecast::class,
+//            ],
         ],
     ],
 

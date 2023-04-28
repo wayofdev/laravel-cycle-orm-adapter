@@ -32,7 +32,7 @@ final class Manager implements CacheManager
     /**
      * @throws InvalidArgumentException
      */
-    public function set(array $schema): bool
+    public function set(string|array $schema): bool
     {
         return $this->cacheStore()->set(self::SCHEMA_CACHE_KEY, $schema);
     }

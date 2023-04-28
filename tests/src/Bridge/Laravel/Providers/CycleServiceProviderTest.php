@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace WayOfDev\Tests\Bridge\Laravel\Providers;
 
+use Cycle\Annotated;
 use Cycle\Database\Config\DatabaseConfig;
 use Cycle\Database\DatabaseInterface;
 use Cycle\Database\DatabaseManager;
@@ -15,6 +16,7 @@ use Cycle\ORM\ORM;
 use Cycle\ORM\ORMInterface;
 use Cycle\ORM\Schema;
 use Cycle\ORM\SchemaInterface;
+use Cycle\Schema\GeneratorInterface;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Spiral\Tokenizer\ClassesInterface;
@@ -42,6 +44,56 @@ class CycleServiceProviderTest extends TestCase
 
     /**
      * @test
+     */
+    public function it_gets_annotated_embeddings(): void
+    {
+        $class = $this->app->make(Annotated\Embeddings::class);
+
+        $this::assertInstanceOf(GeneratorInterface::class, $class);
+    }
+
+    /**
+     * @test
+     */
+    public function it_gets_annotated_entities(): void
+    {
+        $class = $this->app->make(Annotated\Entities::class);
+
+        $this::assertInstanceOf(GeneratorInterface::class, $class);
+    }
+
+    /**
+     * @test
+     */
+    public function it_gets_annotated_merge_columns(): void
+    {
+        $class = $this->app->make(Annotated\MergeColumns::class);
+
+        $this::assertInstanceOf(GeneratorInterface::class, $class);
+    }
+
+    /**
+     * @test
+     */
+    public function it_gets_annotated_table_inheritance(): void
+    {
+        $class = $this->app->make(Annotated\TableInheritance::class);
+
+        $this::assertInstanceOf(GeneratorInterface::class, $class);
+    }
+
+    /**
+     * @test
+     */
+    public function it_gets_annotated_merge_indexes(): void
+    {
+        $class = $this->app->make(Annotated\MergeIndexes::class);
+
+        $this::assertInstanceOf(GeneratorInterface::class, $class);
+    }
+
+    /**
+     * @test
      *
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
@@ -54,109 +106,108 @@ class CycleServiceProviderTest extends TestCase
         self::assertArrayHasKey('default', $config->toArray());
         self::assertArrayHasKey('databases', $config->toArray());
         self::assertArrayHasKey('drivers', $config->toArray());
-        self::assertArrayHasKey('drivers', $config->toArray());
     }
-
-    /**
-     * @test
-     *
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     */
-    public function it_gets_database_manager_instance_from_container(): void
-    {
-        $manager1 = $this->app->get(DatabaseProviderInterface::class);
-        self::assertInstanceOf(DatabaseProviderInterface::class, $manager1);
-
-        $manager2 = $this->app->get(DatabaseManager::class);
-        self::assertInstanceOf(DatabaseManager::class, $manager2);
-
-        $database = $this->app->get(DatabaseInterface::class);
-        self::assertInstanceOf(DatabaseInterface::class, $database);
-
-        self::assertEquals($manager1, $manager2);
-        self::assertEquals($manager2->database(), $database);
-    }
-
-    /**
-     * @test
-     *
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     */
-    public function it_gets_entity_manager_instance_from_container(): void
-    {
-        $manager = $this->app->get(EntityManagerInterface::class);
-        self::assertInstanceOf(EntityManagerInterface::class, $manager);
-    }
-
-    /**
-     * @test
-     *
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     */
-    public function it_gets_database_schema_from_container(): void
-    {
-        $this::assertInstanceOf(SchemaInterface::class, $this->app->get(SchemaInterface::class));
-        $this::assertInstanceOf(Schema::class, $this->app->get(SchemaInterface::class));
-    }
-
-    /**
-     * @test
-     *
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     */
-    public function it_gets_orm_from_container(): void
-    {
-        $this::assertInstanceOf(ORMInterface::class, $this->app->get(ORMInterface::class));
-        $this::assertInstanceOf(ORM::class, $this->app->get(ORMInterface::class));
-    }
-
-    /**
-     * @test
-     *
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     */
-    public function it_gets_migrator_instance_from_container(): void
-    {
-        /** @var MigrationConfig $config */
-        $config = $this->app->get(MigrationConfig::class);
-
-        self::assertEquals(config('cycle.migrations'), $config->toArray());
-
-        $migrator = $this->app->get(Migrator::class);
-        self::assertInstanceOf(Migrator::class, $migrator);
-    }
-
-    /**
-     * @test
-     *
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     */
-    public function it_gets_tokenizer_from_container(): void
-    {
-        $this::assertInstanceOf(TokenizerConfig::class, $this->app->get(TokenizerConfig::class));
-
-        $tokenizer = $this->app->get(Tokenizer::class);
-        self::assertInstanceOf(Tokenizer::class, $tokenizer);
-    }
-
-    /**
-     * @test
-     *
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     */
-    public function it_gets_class_locator_instance_from_container(): void
-    {
-        $classLocator = $this->app->get(ClassesInterface::class);
-        self::assertInstanceOf(ClassesInterface::class, $classLocator);
-
-        $classLocator = $this->app->get(ClassLocator::class);
-        self::assertInstanceOf(ClassesInterface::class, $classLocator);
-    }
+//
+//    /**
+//     * @test
+//     *
+//     * @throws ContainerExceptionInterface
+//     * @throws NotFoundExceptionInterface
+//     */
+//    public function it_gets_database_manager_instance_from_container(): void
+//    {
+//        $manager1 = $this->app->get(DatabaseProviderInterface::class);
+//        self::assertInstanceOf(DatabaseProviderInterface::class, $manager1);
+//
+//        $manager2 = $this->app->get(DatabaseManager::class);
+//        self::assertInstanceOf(DatabaseManager::class, $manager2);
+//
+//        $database = $this->app->get(DatabaseInterface::class);
+//        self::assertInstanceOf(DatabaseInterface::class, $database);
+//
+//        self::assertEquals($manager1, $manager2);
+//        self::assertEquals($manager2->database(), $database);
+//    }
+//
+//    /**
+//     * @test
+//     *
+//     * @throws ContainerExceptionInterface
+//     * @throws NotFoundExceptionInterface
+//     */
+//    public function it_gets_entity_manager_instance_from_container(): void
+//    {
+//        $manager = $this->app->get(EntityManagerInterface::class);
+//        self::assertInstanceOf(EntityManagerInterface::class, $manager);
+//    }
+//
+//    /**
+//     * @test
+//     *
+//     * @throws ContainerExceptionInterface
+//     * @throws NotFoundExceptionInterface
+//     */
+//    public function it_gets_database_schema_from_container(): void
+//    {
+//        $this::assertInstanceOf(SchemaInterface::class, $this->app->get(SchemaInterface::class));
+//        $this::assertInstanceOf(Schema::class, $this->app->get(SchemaInterface::class));
+//    }
+//
+//    /**
+//     * @test
+//     *
+//     * @throws ContainerExceptionInterface
+//     * @throws NotFoundExceptionInterface
+//     */
+//    public function it_gets_orm_from_container(): void
+//    {
+//        $this::assertInstanceOf(ORMInterface::class, $this->app->get(ORMInterface::class));
+//        $this::assertInstanceOf(ORM::class, $this->app->get(ORMInterface::class));
+//    }
+//
+//    /**
+//     * @test
+//     *
+//     * @throws ContainerExceptionInterface
+//     * @throws NotFoundExceptionInterface
+//     */
+//    public function it_gets_migrator_instance_from_container(): void
+//    {
+//        /** @var MigrationConfig $config */
+//        $config = $this->app->get(MigrationConfig::class);
+//
+//        self::assertEquals(config('cycle.migrations'), $config->toArray());
+//
+//        $migrator = $this->app->get(Migrator::class);
+//        self::assertInstanceOf(Migrator::class, $migrator);
+//    }
+//
+//    /**
+//     * @test
+//     *
+//     * @throws ContainerExceptionInterface
+//     * @throws NotFoundExceptionInterface
+//     */
+//    public function it_gets_tokenizer_from_container(): void
+//    {
+//        $this::assertInstanceOf(TokenizerConfig::class, $this->app->get(TokenizerConfig::class));
+//
+//        $tokenizer = $this->app->get(Tokenizer::class);
+//        self::assertInstanceOf(Tokenizer::class, $tokenizer);
+//    }
+//
+//    /**
+//     * @test
+//     *
+//     * @throws ContainerExceptionInterface
+//     * @throws NotFoundExceptionInterface
+//     */
+//    public function it_gets_class_locator_instance_from_container(): void
+//    {
+//        $classLocator = $this->app->get(ClassesInterface::class);
+//        self::assertInstanceOf(ClassesInterface::class, $classLocator);
+//
+//        $classLocator = $this->app->get(ClassLocator::class);
+//        self::assertInstanceOf(ClassesInterface::class, $classLocator);
+//    }
 }

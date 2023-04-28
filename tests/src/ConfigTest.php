@@ -44,10 +44,7 @@ final class ConfigTest extends TestCase
                         ],
                     ],
                     'schema' => [
-                        'cache' => [
-                            'storage' => 'file',
-                            'enabled' => true,
-                        ],
+                        'cache' => true,
                         'defaults' => [
                             SchemaInterface::MAPPER => null,
                             SchemaInterface::REPOSITORY => null,

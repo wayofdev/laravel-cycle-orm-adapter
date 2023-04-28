@@ -26,8 +26,7 @@ class MigrateCommandTest extends TestCase
 
         $this::assertCount(1, $database->getTables());
 
-        // @todo Add Entities and uncomment this code
-        // Artisan::call('cycle:migrate', ['--force' => true]);
-        // $this::assertCount(4, $database->getTables());
+        Artisan::call('cycle:migrate', ['--force' => true]);
+        $this::assertCount(3, $database->getTables());
     }
 }

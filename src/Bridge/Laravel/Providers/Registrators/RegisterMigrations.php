@@ -9,11 +9,11 @@ use Cycle\Migrations\Config\MigrationConfig;
 use Cycle\Migrations\FileRepository;
 use Cycle\Migrations\Migrator;
 use Cycle\Migrations\RepositoryInterface;
+use Illuminate\Container\Container;
 use Illuminate\Contracts\Config\Repository as IlluminateConfig;
-use Illuminate\Contracts\Container\Container;
 use WayOfDev\Cycle\Bridge\Laravel\Providers\Registrator;
 
-final class RegisterMigrator
+final class RegisterMigrations
 {
     public function __invoke(Container $app): void
     {

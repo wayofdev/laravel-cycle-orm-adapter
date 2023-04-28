@@ -6,13 +6,19 @@ namespace WayOfDev\Cycle\Bridge\Laravel\Console\Commands\ORM;
 
 use Cycle\Migrations\State;
 use Cycle\Schema\Generator\Migrations\GenerateMigrations;
+use Cycle\Schema\Registry;
+use Illuminate\Container\Container;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Symfony\Component\Console\Command\Command;
 use WayOfDev\Cycle\Bridge\Laravel\Console\Commands\Migrations\AbstractCommand;
 use WayOfDev\Cycle\Bridge\Laravel\Console\Commands\Migrations\MigrateCommand as DatabaseMigrateCommand;
 use WayOfDev\Cycle\Bridge\Laravel\Console\Commands\ORM\Generators\ShowChanges;
-use WayOfDev\Cycle\Contracts\GeneratorLoader;
-use WayOfDev\Cycle\Contracts\SchemaCompiler;
-use WayOfDev\Cycle\Schema\Generators\GeneratorsFactory;
+use WayOfDev\Cycle\Bridge\Laravel\Providers\Registrators\RegisterSchema;
+use WayOfDev\Cycle\Contracts\CacheManager as CacheManagerContract;
+use WayOfDev\Cycle\Contracts\Config\Repository as Config;
+use WayOfDev\Cycle\Schema\Compiler;
+
+use function array_merge;
 
 /**
  * See original spiral framework commands.
@@ -26,8 +32,17 @@ final class MigrateCommand extends AbstractCommand
 
     protected $description = 'Generate ORM schema migrations.';
 
-    public function handle(GeneratorsFactory $generatorsFactory, SchemaCompiler $schemaCompiler, GenerateMigrations $generateMigrations): int
-    {
+    /**
+     * @throws BindingResolutionException
+     */
+    public function handle(
+        Container $app,
+        RegisterSchema $bootloader,
+        Registry $registry,
+        Config $config,
+        GenerateMigrations $migrations,
+        CacheManagerContract $cache
+    ): int {
         if (! $this->migrator->isConfigured()) {
             $this->migrator->configure();
         }
@@ -40,19 +55,17 @@ final class MigrateCommand extends AbstractCommand
             }
         }
 
-        $diff = new ShowChanges($this->output);
+        $schemaCompiler = Compiler::compile(
+            $registry,
+            array_merge($bootloader->getGenerators($app, $config), [
+                $diff = new ShowChanges($this->output),
+            ])
+        );
 
-        $generators = $generatorsFactory
-            ->add(GeneratorLoader::GROUP_POSTPROCESS, $diff);
-
-        $schemaCompiler->compile($generators->get());
+        $schemaCompiler->toMemory($cache);
 
         if ($diff->hasChanges()) {
-            $generators = $generatorsFactory
-                ->without()
-                ->add(GeneratorLoader::GROUP_POSTPROCESS, $generateMigrations);
-
-            $schemaCompiler->compile($generators->get());
+            (new \Cycle\Schema\Compiler())->compile($registry, [$migrations]);
 
             if ($this->option('run')) {
                 $this->call(DatabaseMigrateCommand::class, ['--force' => true]);

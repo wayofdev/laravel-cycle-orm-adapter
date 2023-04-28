@@ -31,12 +31,12 @@ final class CycleServiceProvider extends ServiceProvider
 
         $registrators = [
             Registrators\RegisterAdapterConfig::class,
-            Registrators\RegisterDatabaseManager::class,
-            Registrators\RegisterClassLocator::class,
+            Registrators\RegisterClassesInterface::class,
+            Registrators\RegisterAnnotated::class,
             Registrators\RegisterORM::class,
-            Registrators\RegisterEntityManager::class,
-            Registrators\RegisterMigrator::class,
-            Registrators\RegisterSchemaManager::class,
+            Registrators\RegisterDatabase::class,
+            Registrators\RegisterMigrations::class,
+            Registrators\RegisterSchema::class,
         ];
 
         foreach ($registrators as $registrator) {

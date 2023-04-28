@@ -4,9 +4,14 @@ declare(strict_types=1);
 
 namespace WayOfDev\Cycle\Bridge\Laravel\Console\Commands\ORM;
 
+use Cycle\Schema\Registry;
 use Illuminate\Console\Command;
-use WayOfDev\Cycle\Contracts\GeneratorLoader;
-use WayOfDev\Cycle\Contracts\SchemaCompiler;
+use Illuminate\Container\Container;
+use Illuminate\Contracts\Container\BindingResolutionException;
+use WayOfDev\Cycle\Bridge\Laravel\Providers\Registrators\RegisterSchema;
+use WayOfDev\Cycle\Contracts\CacheManager as CacheManagerContract;
+use WayOfDev\Cycle\Contracts\Config\Repository as Config;
+use WayOfDev\Cycle\Schema\Compiler;
 
 /**
  * See original spiral framework commands.
@@ -19,11 +24,22 @@ final class UpdateCommand extends Command
 
     protected $description = 'Update (init) cycle schema from database and annotated classes';
 
-    public function handle(SchemaCompiler $schemaCompiler, GeneratorLoader $generators): int
-    {
+    /**
+     * @throws BindingResolutionException
+     */
+    public function handle(
+        Container $app,
+        RegisterSchema $bootloader,
+        Registry $registry,
+        Config $config,
+        CacheManagerContract $cache
+    ): int {
         $this->info('Updating ORM schema...');
 
-        $schemaCompiler->compile($generators->get());
+        Compiler::compile(
+            $registry,
+            $bootloader->getGenerators($app, $config)
+        )->toMemory($cache);
 
         $this->info('Done');
 

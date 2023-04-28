@@ -16,7 +16,7 @@ interface Repository
 
     public function schemaDefaults(): ?array;
 
-    public function schemaCache(): array;
+    public function schemaCache(); // : array;
 
     public function manuallyDefinedSchema(): array;
 

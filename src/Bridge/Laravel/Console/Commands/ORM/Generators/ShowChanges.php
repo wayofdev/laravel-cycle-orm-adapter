@@ -36,7 +36,7 @@ final class ShowChanges implements GeneratorInterface
             if ($registry->hasTable($e)) {
                 $table = $registry->getTableSchema($e);
 
-                dump($table->getComparator());
+                // dump($table->getComparator());
 
                 if ($table->getComparator()->hasChanges()) {
                     $key = $registry->getDatabase($e) . ':' . $registry->getTable($e);
