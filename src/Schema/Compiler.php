@@ -4,22 +4,51 @@ declare(strict_types=1);
 
 namespace WayOfDev\Cycle\Schema;
 
+use Cycle\ORM\Schema;
+use Cycle\ORM\SchemaInterface;
 use Cycle\Schema\Compiler as CycleSchemaCompiler;
 use Cycle\Schema\Registry;
+use WayOfDev\Cycle\Contracts\CacheManager;
 use WayOfDev\Cycle\Contracts\GeneratorLoader;
-use WayOfDev\Cycle\Contracts\SchemaCompiler;
 
-final class Compiler implements SchemaCompiler
+use function is_array;
+
+final class Compiler
 {
-    private CycleSchemaCompiler $compiler;
+    private const EMPTY_SCHEMA = ':empty:';
 
-    public function __construct(private readonly Registry $registry)
+    public static function compile(Registry $registry, GeneratorLoader $queue): self
     {
-        $this->compiler = new CycleSchemaCompiler();
+        return new self((new CycleSchemaCompiler())->compile($registry, $queue->get()));
     }
 
-    public function compile(GeneratorLoader $queue): array
+    public static function fromMemory(CacheManager $cache): self
     {
-        return $this->compiler->compile($this->registry, $queue->get());
+        return new self($cache->get());
+    }
+
+    public function __construct(
+        private readonly mixed $schema
+    ) {
+    }
+
+    public function isEmpty(): bool
+    {
+        return null === $this->schema || [] === $this->schema || self::EMPTY_SCHEMA === $this->schema;
+    }
+
+    public function toSchema(): SchemaInterface
+    {
+        return new Schema($this->isWriteableSchema() ? $this->schema : []);
+    }
+
+    public function toMemory(CacheManager $cache): void
+    {
+        $cache->set($this->isEmpty() ? self::EMPTY_SCHEMA : $this->schema);
+    }
+
+    private function isWriteableSchema(): bool
+    {
+        return is_array($this->schema);
     }
 }

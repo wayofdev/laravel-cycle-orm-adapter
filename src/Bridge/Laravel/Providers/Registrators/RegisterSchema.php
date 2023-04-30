@@ -10,11 +10,9 @@ use Illuminate\Container\Container;
 use Illuminate\Contracts\Cache\Factory as CacheFactory;
 use WayOfDev\Cycle\Contracts\CacheManager as CacheManagerContract;
 use WayOfDev\Cycle\Contracts\GeneratorLoader;
-use WayOfDev\Cycle\Contracts\SchemaCompiler;
 use WayOfDev\Cycle\Schema\Cache\Manager as CacheManager;
 use WayOfDev\Cycle\Schema\Compiler;
 use WayOfDev\Cycle\Schema\Config\SchemaConfig;
-use WayOfDev\Cycle\Schema\Factory;
 use WayOfDev\Cycle\Schema\Generators\GeneratorQueue;
 
 /**
@@ -38,18 +36,27 @@ final class RegisterSchema
             );
         });
 
-        $app->bind(SchemaCompiler::class, static function (Container $app): SchemaCompiler {
-            /** @var Registry $registry */
-            $registry = $app->make(Registry::class);
+        $app->bind(SchemaInterface::class, static function (Container $app): SchemaInterface {
+            /** @var SchemaConfig $config */
+            $config = $app->get(SchemaConfig::class);
 
-            return new Compiler($registry);
-        });
+            /** @var CacheManagerContract $cache */
+            $cache = $app->get(CacheManagerContract::class);
 
-        $app->singleton(SchemaInterface::class, static function (Container $app): SchemaInterface {
-            /** @var Factory $factory */
-            $factory = $app->make(Factory::class);
+            $schemaCompiler = Compiler::fromMemory(
+                cache: $cache
+            );
 
-            return $factory->create();
+            if ($schemaCompiler->isEmpty() || ! $config->cacheSchema()) {
+                $schemaCompiler = Compiler::compile(
+                    registry: $app->get(Registry::class),
+                    queue: $app->get(GeneratorLoader::class),
+                );
+
+                $schemaCompiler->toMemory($cache);
+            }
+
+            return $schemaCompiler->toSchema();
         });
     }
 }

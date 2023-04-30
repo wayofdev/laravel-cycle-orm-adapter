@@ -6,11 +6,8 @@ namespace WayOfDev\Cycle\Bridge\Laravel\Console\Commands\ORM;
 
 use Cycle\Schema\Registry;
 use Illuminate\Console\Command;
-use Illuminate\Container\Container;
-use Illuminate\Contracts\Container\BindingResolutionException;
-use WayOfDev\Cycle\Bridge\Laravel\Providers\Registrators\RegisterSchema;
 use WayOfDev\Cycle\Contracts\CacheManager as CacheManagerContract;
-use WayOfDev\Cycle\Contracts\Config\Repository as Config;
+use WayOfDev\Cycle\Contracts\GeneratorLoader;
 use WayOfDev\Cycle\Schema\Compiler;
 
 /**
@@ -24,22 +21,14 @@ final class UpdateCommand extends Command
 
     protected $description = 'Update (init) cycle schema from database and annotated classes';
 
-    /**
-     * @throws BindingResolutionException
-     */
     public function handle(
-        Container $app,
-        RegisterSchema $bootloader,
+        GeneratorLoader $generators,
         Registry $registry,
-        Config $config,
         CacheManagerContract $cache
     ): int {
         $this->info('Updating ORM schema...');
 
-        Compiler::compile(
-            $registry,
-            $bootloader->getGenerators($app, $config)
-        )->toMemory($cache);
+        Compiler::compile($registry, $generators)->toMemory($cache);
 
         $this->info('Done');
 

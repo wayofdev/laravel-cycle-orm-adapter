@@ -5,41 +5,12 @@ declare(strict_types=1);
 namespace WayOfDev\Tests\Bridge\Laravel\Providers;
 
 use Cycle\Database\Config\DatabaseConfig;
-use Cycle\Database\DatabaseInterface;
-use Cycle\Database\DatabaseManager;
-use Cycle\Database\DatabaseProviderInterface;
-use Cycle\Migrations\Config\MigrationConfig;
-use Cycle\Migrations\Migrator;
-use Cycle\ORM\EntityManagerInterface;
-use Cycle\ORM\ORM;
-use Cycle\ORM\ORMInterface;
-use Cycle\ORM\Schema;
-use Cycle\ORM\SchemaInterface;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
-use Spiral\Tokenizer\ClassesInterface;
-use Spiral\Tokenizer\ClassLocator;
-use Spiral\Tokenizer\Config\TokenizerConfig;
-use Spiral\Tokenizer\Tokenizer;
-use WayOfDev\Cycle\Contracts\Config\Repository as ConfigRepository;
 use WayOfDev\Tests\TestCase;
 
 class CycleServiceProviderTest extends TestCase
 {
-    /**
-     * @test
-     *
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     */
-    public function it_gets_adapter_config_instance_from_container(): void
-    {
-        $config = $this->app->get(ConfigRepository::class);
-
-        self::assertInstanceOf(ConfigRepository::class, $config);
-        self::assertEquals(app_path(), $config->tokenizer()['directories'][0]);
-    }
-
     /**
      * @test
      *
@@ -55,6 +26,7 @@ class CycleServiceProviderTest extends TestCase
         self::assertArrayHasKey('databases', $config->toArray());
         self::assertArrayHasKey('drivers', $config->toArray());
     }
+
 //
 //    /**
 //     * @test

@@ -40,4 +40,9 @@ class SchemaConfig extends InjectableConfig
 
         return $factories[$default];
     }
+
+    public function cacheSchema(): bool
+    {
+        return $this->config['cache']['enabled'];
+    }
 }
