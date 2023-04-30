@@ -48,6 +48,7 @@ class TestCase extends OrchestraTestCase
                     config('cycle.tokenizer.directories'),
                     [__DIR__ . '/../app/Entities']
                 ),
+                'cycle.migrations.directory' => __DIR__ . '/../app/database/migrations/cycle',
             ]);
         }
     }
@@ -92,7 +93,7 @@ class TestCase extends OrchestraTestCase
 
     protected function cleanupMigrations(): void
     {
-        $files = File::glob(database_path('migrations/*.php'));
+        $files = File::glob(database_path('migrations/cycle/*.php'));
         foreach ($files as $file) {
             File::delete($file);
         }

@@ -25,6 +25,6 @@ class InitCommandTest extends TestCase
 
         $this::assertSame(0, $status);
         $this::assertCount(1, $database->getTables());
-        $this::assertSame('migrations', $database->getTables()[0]->getName());
+        $this::assertSame('cycle_migrations', $database->getTables()[0]->getName());
     }
 }

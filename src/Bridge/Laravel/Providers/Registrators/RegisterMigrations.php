@@ -10,22 +10,16 @@ use Cycle\Migrations\FileRepository;
 use Cycle\Migrations\Migrator;
 use Cycle\Migrations\RepositoryInterface;
 use Illuminate\Container\Container;
-use Illuminate\Contracts\Config\Repository as IlluminateConfig;
-use WayOfDev\Cycle\Bridge\Laravel\Providers\Registrator;
 
+/**
+ * @see https://github.com/spiral/cycle-bridge/blob/2.0/src/Bootloader/MigrationsBootloader.php
+ */
 final class RegisterMigrations
 {
     public function __invoke(Container $app): void
     {
-        $app->singleton(MigrationConfig::class, static function (Container $app): MigrationConfig {
-            /** @var IlluminateConfig $config */
-            $config = $app[IlluminateConfig::class];
-
-            return new MigrationConfig($config->get(Registrator::CFG_KEY_MIGRATIONS));
-        });
-
         $app->singleton(RepositoryInterface::class, static function (Container $app): RepositoryInterface {
-            $config = $app[MigrationConfig::class];
+            $config = $app->get(MigrationConfig::class);
 
             return new FileRepository(
                 config: $config
@@ -34,9 +28,9 @@ final class RegisterMigrations
 
         $app->singleton(Migrator::class, static function (Container $app): Migrator {
             return new Migrator(
-                config: $app[MigrationConfig::class],
-                dbal: $app[DatabaseProviderInterface::class],
-                repository: $app[RepositoryInterface::class]
+                config: $app->get(MigrationConfig::class),
+                dbal: $app->get(DatabaseProviderInterface::class),
+                repository: $app->get(RepositoryInterface::class)
             );
         });
     }

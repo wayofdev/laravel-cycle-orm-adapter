@@ -10,6 +10,9 @@ use Spiral\Attributes\Factory;
 use Spiral\Attributes\ReaderInterface;
 use Spiral\Tokenizer\ClassesInterface;
 
+/**
+ * @see https://github.com/spiral/cycle-bridge/blob/2.0/src/Bootloader/AnnotatedBootloader.php
+ */
 final class RegisterAnnotated
 {
     public function __invoke(Container $app): void
@@ -20,33 +23,33 @@ final class RegisterAnnotated
 
         $app->bind(Annotated\Embeddings::class, function ($app) {
             return new Annotated\Embeddings(
-                $app[ClassesInterface::class],
-                $app[ReaderInterface::class]
+                $app->get(ClassesInterface::class),
+                $app->get(ReaderInterface::class)
             );
         });
 
         $app->bind(Annotated\Entities::class, function ($app) {
             return new Annotated\Entities(
-                $app[ClassesInterface::class],
-                $app[ReaderInterface::class]
+                $app->get(ClassesInterface::class),
+                $app->get(ReaderInterface::class)
             );
         });
 
         $app->bind(Annotated\MergeColumns::class, function ($app) {
             return new Annotated\MergeColumns(
-                $app[ReaderInterface::class]
+                $app->get(ReaderInterface::class)
             );
         });
 
         $app->bind(Annotated\TableInheritance::class, function ($app) {
             return new Annotated\TableInheritance(
-                $app[ReaderInterface::class]
+                $app->get(ReaderInterface::class)
             );
         });
 
         $app->bind(Annotated\MergeIndexes::class, function ($app) {
             return new Annotated\MergeIndexes(
-                $app[ReaderInterface::class]
+                $app->get(ReaderInterface::class)
             );
         });
     }

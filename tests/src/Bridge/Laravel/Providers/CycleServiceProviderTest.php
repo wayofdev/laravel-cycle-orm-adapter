@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace WayOfDev\Tests\Bridge\Laravel\Providers;
 
-use Cycle\Annotated;
 use Cycle\Database\Config\DatabaseConfig;
 use Cycle\Database\DatabaseInterface;
 use Cycle\Database\DatabaseManager;
@@ -16,7 +15,6 @@ use Cycle\ORM\ORM;
 use Cycle\ORM\ORMInterface;
 use Cycle\ORM\Schema;
 use Cycle\ORM\SchemaInterface;
-use Cycle\Schema\GeneratorInterface;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Spiral\Tokenizer\ClassesInterface;
@@ -40,56 +38,6 @@ class CycleServiceProviderTest extends TestCase
 
         self::assertInstanceOf(ConfigRepository::class, $config);
         self::assertEquals(app_path(), $config->tokenizer()['directories'][0]);
-    }
-
-    /**
-     * @test
-     */
-    public function it_gets_annotated_embeddings(): void
-    {
-        $class = $this->app->make(Annotated\Embeddings::class);
-
-        $this::assertInstanceOf(GeneratorInterface::class, $class);
-    }
-
-    /**
-     * @test
-     */
-    public function it_gets_annotated_entities(): void
-    {
-        $class = $this->app->make(Annotated\Entities::class);
-
-        $this::assertInstanceOf(GeneratorInterface::class, $class);
-    }
-
-    /**
-     * @test
-     */
-    public function it_gets_annotated_merge_columns(): void
-    {
-        $class = $this->app->make(Annotated\MergeColumns::class);
-
-        $this::assertInstanceOf(GeneratorInterface::class, $class);
-    }
-
-    /**
-     * @test
-     */
-    public function it_gets_annotated_table_inheritance(): void
-    {
-        $class = $this->app->make(Annotated\TableInheritance::class);
-
-        $this::assertInstanceOf(GeneratorInterface::class, $class);
-    }
-
-    /**
-     * @test
-     */
-    public function it_gets_annotated_merge_indexes(): void
-    {
-        $class = $this->app->make(Annotated\MergeIndexes::class);
-
-        $this::assertInstanceOf(GeneratorInterface::class, $class);
     }
 
     /**

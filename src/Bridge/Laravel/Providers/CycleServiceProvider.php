@@ -30,7 +30,7 @@ final class CycleServiceProvider extends ServiceProvider
         );
 
         $registrators = [
-            Registrators\RegisterAdapterConfig::class,
+            Registrators\RegisterConfigs::class,
             Registrators\RegisterClassesInterface::class,
             Registrators\RegisterAnnotated::class,
             Registrators\RegisterORM::class,

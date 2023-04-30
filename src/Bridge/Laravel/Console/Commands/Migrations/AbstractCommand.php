@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace WayOfDev\Cycle\Bridge\Laravel\Console\Commands\Migrations;
 
+use Cycle\Migrations\Config\MigrationConfig;
 use Cycle\Migrations\Migrator;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
@@ -17,7 +18,7 @@ abstract class AbstractCommand extends Command
 
     private const DEFAULT_CONFIRMATION = 'Confirmation is required to run migrations!';
 
-    public function __construct(protected Migrator $migrator)
+    public function __construct(protected Migrator $migrator, protected MigrationConfig $config)
     {
         parent::__construct();
     }
@@ -39,7 +40,7 @@ abstract class AbstractCommand extends Command
     {
         $confirmationQuestion = $confirmationQuestion ?? self::DEFAULT_CONFIRMATION;
 
-        if ($this->option('force')) {
+        if ($this->option('force') || $this->config->isSafe()) {
             return true;
         }
 

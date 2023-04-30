@@ -13,9 +13,8 @@ use Symfony\Component\Console\Command\Command;
 use WayOfDev\Cycle\Bridge\Laravel\Console\Commands\Migrations\AbstractCommand;
 use WayOfDev\Cycle\Bridge\Laravel\Console\Commands\Migrations\MigrateCommand as DatabaseMigrateCommand;
 use WayOfDev\Cycle\Bridge\Laravel\Console\Commands\ORM\Generators\ShowChanges;
-use WayOfDev\Cycle\Bridge\Laravel\Providers\Registrators\RegisterSchema;
 use WayOfDev\Cycle\Contracts\CacheManager as CacheManagerContract;
-use WayOfDev\Cycle\Contracts\Config\Repository as Config;
+use WayOfDev\Cycle\Contracts\GeneratorLoader;
 use WayOfDev\Cycle\Schema\Compiler;
 
 use function array_merge;
@@ -37,9 +36,8 @@ final class MigrateCommand extends AbstractCommand
      */
     public function handle(
         Container $app,
-        RegisterSchema $bootloader,
+        GeneratorLoader $generators,
         Registry $registry,
-        Config $config,
         GenerateMigrations $migrations,
         CacheManagerContract $cache
     ): int {
@@ -57,7 +55,7 @@ final class MigrateCommand extends AbstractCommand
 
         $schemaCompiler = Compiler::compile(
             $registry,
-            array_merge($bootloader->getGenerators($app, $config), [
+            array_merge($generators->get(), [
                 $diff = new ShowChanges($this->output),
             ])
         );
