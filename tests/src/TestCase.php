@@ -93,7 +93,6 @@ class TestCase extends OrchestraTestCase
 
     protected function cleanupMigrations(): void
     {
-        // $path = database_path('migrations/cycle/*.php');
         $path = __DIR__ . '/../app/database/migrations/cycle/*.php';
 
         $files = File::glob($path);

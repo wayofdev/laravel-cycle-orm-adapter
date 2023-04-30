@@ -53,6 +53,9 @@ final class MigrateCommand extends AbstractCommand
         $schemaCompiler->toMemory($cache);
 
         if ($diff->hasChanges()) {
+            // Creates migration files in database/migrations directory.
+            (new CycleSchemaCompiler())->compile($registry, [$migrations]);
+
             if ($this->option('run')) {
                 $this->call(DatabaseMigrateCommand::class, ['--force' => true]);
             }
