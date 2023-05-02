@@ -25,7 +25,8 @@ jobs:
       - name: 🛠️ Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php }}
+          php-version: 8.1
+          # php-version: ${{ matrix.php }}
           extensions: mbstring, zip, fileinfo, pdo, sqlite, sqlite3, pdo_sqlite, pdo_mysql, mysql
           ini-values: error_reporting=E_ALL
           tools: composer:v2, pecl
