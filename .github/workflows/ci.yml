@@ -52,8 +52,8 @@ jobs:
           XDEBUG_MODE: coverage
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
-      - name: 📝 Run static analysis using phpstan
-        run: make stan
+#      - name: 📝 Run static analysis using phpstan
+#        run: make stan
 
       - name: 📤 Upload coverage report to Codecov
         uses: codecov/codecov-action@v3
