@@ -95,7 +95,7 @@ return [
 
             'pgsql' => new Config\PostgresDriverConfig(
                 connection: new Config\Postgres\TcpConnectionConfig(
-                    database: env('DB_NAME', 'wod'),
+                    database: env('DB_DATABASE', 'wod'),
                     host: env('DB_HOST', '127.0.0.1'),
                     port: (int) env('DB_PORT', 5432),
                     user: env('DB_USERNAME', 'wod'),
@@ -124,7 +124,7 @@ return [
 
             'sqlserver' => new Config\SQLServerDriverConfig(
                 connection: new Config\SQLServer\TcpConnectionConfig(
-                    database: env('DB_NAME', 'wod'),
+                    database: env('DB_DATABASE', 'wod'),
                     host: env('DB_HOST', '127.0.0.1'),
                     port: (int) env('DB_PORT', 1433),
                     user: env('DB_USERNAME', 'wod'),
