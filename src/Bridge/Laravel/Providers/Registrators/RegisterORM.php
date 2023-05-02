@@ -14,37 +14,39 @@ use Cycle\ORM\ORM;
 use Cycle\ORM\ORMInterface;
 use Cycle\ORM\SchemaInterface;
 use Illuminate\Container\Container;
-use WayOfDev\Cycle\Contracts\Config\Repository as Config;
+use WayOfDev\Cycle\Schema\Config\SchemaConfig;
 
+/**
+ * @see https://github.com/spiral/cycle-bridge/blob/2.0/src/Bootloader/CycleOrmBootloader.php
+ */
 final class RegisterORM
 {
     public function __invoke(Container $app): void
     {
         $app->singleton(FactoryInterface::class, static function (Container $app): FactoryInterface {
-            $config = $app->make(Config::class);
-
-            $collectionFactoryClass = $config->defaultCollectionFactory();
-
-            $relationConfig = new RelationConfig(
-                RelationConfig::getDefault()->toArray() + $config->customRelations()
-            );
+            /** @var SchemaConfig $config */
+            $config = $app->get(SchemaConfig::class);
+            $factoryFQCN = $config->defaultCollectionFQCN();
+            $factory = $app->make($factoryFQCN);
 
             return new Factory(
-                dbal: $app[DatabaseProviderInterface::class],
-                config: $relationConfig,
-                defaultCollectionFactory: new $collectionFactoryClass()
+                dbal: $app->get(DatabaseProviderInterface::class),
+                config: $app->get(RelationConfig::class),
+                defaultCollectionFactory: $factory
             );
         });
 
         $app->singleton(ORMInterface::class, function (Container $app): ORMInterface {
             return new ORM(
-                factory: $app[FactoryInterface::class],
-                schema: $app[SchemaInterface::class]
+                factory: $app->get(FactoryInterface::class),
+                schema: $app->get(SchemaInterface::class)
             );
         });
 
         $app->singleton(EntityManagerInterface::class, function (Container $app): EntityManagerInterface {
-            return new EntityManager($app[ORMInterface::class]);
+            return new EntityManager(
+                $app->get(ORMInterface::class)
+            );
         });
     }
 }

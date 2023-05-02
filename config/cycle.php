@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Cycle\Annotated;
 use Cycle\Database\Config;
+use Cycle\Database\Driver;
 use Cycle\ORM\Collection;
 use Cycle\ORM\SchemaInterface;
 use Cycle\Schema;
@@ -70,7 +71,7 @@ return [
          */
         'databases' => [
             'default' => [
-                'driver' => 'sqlite',
+                'driver' => env('DB_CONNECTION', 'sqlite'),
             ],
         ],
 
@@ -94,13 +95,14 @@ return [
 
             'pgsql' => new Config\PostgresDriverConfig(
                 connection: new Config\Postgres\TcpConnectionConfig(
-                    database: env('DB_NAME', 'wod'),
+                    database: env('DB_DATABASE', 'wod'),
                     host: env('DB_HOST', '127.0.0.1'),
                     port: (int) env('DB_PORT', 5432),
-                    user: env('DB_USER', 'wod'),
-                    password: env('DB_PASSWORD')
+                    user: env('DB_USERNAME', 'wod'),
+                    password: env('DB_PASSWORD', '')
                 ),
                 schema: Config\PostgresDriverConfig::DEFAULT_SCHEMA,
+                driver: Driver\Postgres\PostgresDriver::class,
                 reconnect: true,
                 timezone: 'UTC',
                 queryCache: true
@@ -108,23 +110,29 @@ return [
 
             'mysql' => new Config\MySQLDriverConfig(
                 connection: new Config\MySQL\TcpConnectionConfig(
-                    database: env('DB_NAME', 'wod'),
+                    database: env('DB_DATABASE', 'wod'),
                     host: env('DB_HOST', '127.0.0.1'),
                     port: (int) env('DB_PORT', 3306),
-                    user: env('DB_USER', 'wod'),
-                    password: env('DB_PASSWORD')
+                    user: env('DB_USERNAME', 'wod'),
+                    password: env('DB_PASSWORD', '')
                 ),
+                driver: Driver\MySQL\MySQLDriver::class,
+                reconnect: true,
+                timezone: 'UTC',
                 queryCache: true,
             ),
 
             'sqlserver' => new Config\SQLServerDriverConfig(
                 connection: new Config\SQLServer\TcpConnectionConfig(
-                    database: env('DB_NAME', 'wod'),
+                    database: env('DB_DATABASE', 'wod'),
                     host: env('DB_HOST', '127.0.0.1'),
                     port: (int) env('DB_PORT', 1433),
-                    user: env('DB_USER', 'wod'),
-                    password: env('DB_PASSWORD')
+                    user: env('DB_USERNAME', 'wod'),
+                    password: env('DB_PASSWORD', '')
                 ),
+                driver: Driver\SQLServer\SQLServerDriver::class,
+                reconnect: true,
+                timezone: 'UTC',
                 queryCache: true,
             ),
         ],
@@ -138,7 +146,10 @@ return [
          * false - Schema won't be stored in a cache after compilation.
          * It will be automatically changed after entity modification. (Development mode)
          */
-        'cache' => env('CYCLE_SCHEMA_CACHE', true),
+        'cache' => [
+            'enabled' => env('CYCLE_SCHEMA_CACHE', true),
+            'store' => env('CACHE_DRIVER', 'file'),
+        ],
 
         /*
          * The CycleORM provides the ability to manage default settings for
@@ -167,45 +178,45 @@ return [
          * null (default) - Will be used schema generators defined in bootloaders
          */
         'generators' => [
-//            GeneratorLoader::GROUP_INDEX => [
-//                // Register embeddable entities
-//                Annotated\Embeddings::class,
-//                // Register annotated entities
-//                Annotated\Entities::class,
-//                // Register STI/JTI
-//                Annotated\TableInheritance::class,
-//                // Add @Table column declarations
-//                Annotated\MergeColumns::class,
-//            ],
-//            GeneratorLoader::GROUP_RENDER => [
-//                // Re-declared table schemas (remove columns)
-//                Schema\Generator\ResetTables::class,
-//                // Generate entity relations
-//                Schema\Generator\GenerateRelations::class,
-//                // Generate changes from schema modifiers
-//                Schema\Generator\GenerateModifiers::class,
-//                // Make sure all entity schemas are correct
-//                Schema\Generator\ValidateEntities::class,
-//                // Declare table schemas
-//                Schema\Generator\RenderTables::class,
-//                // Declare relation keys and indexes
-//                Schema\Generator\RenderRelations::class,
-//                // Render all schema modifiers
-//                Schema\Generator\RenderModifiers::class,
-//                // Add @Table column declarations
-//                Annotated\MergeIndexes::class,
-//            ],
-//            GeneratorLoader::GROUP_POSTPROCESS => [
-//                // Typecast non string columns
-//                Schema\Generator\GenerateTypecast::class,
-//            ],
+            GeneratorLoader::GROUP_INDEX => [
+                // Register embeddable entities
+                Annotated\Embeddings::class,
+                // Register annotated entities
+                Annotated\Entities::class,
+                // Register STI/JTI
+                Annotated\TableInheritance::class,
+                // Add @Table column declarations
+                Annotated\MergeColumns::class,
+            ],
+            GeneratorLoader::GROUP_RENDER => [
+                // Re-declared table schemas (remove columns)
+                Schema\Generator\ResetTables::class,
+                // Generate entity relations
+                Schema\Generator\GenerateRelations::class,
+                // Generate changes from schema modifiers
+                Schema\Generator\GenerateModifiers::class,
+                // Make sure all entity schemas are correct
+                Schema\Generator\ValidateEntities::class,
+                // Declare table schemas
+                Schema\Generator\RenderTables::class,
+                // Declare relation keys and indexes
+                Schema\Generator\RenderRelations::class,
+                // Render all schema modifiers
+                Schema\Generator\RenderModifiers::class,
+                // Add @Table column declarations
+                Annotated\MergeIndexes::class,
+            ],
+            GeneratorLoader::GROUP_POSTPROCESS => [
+                // Typecast non string columns
+                Schema\Generator\GenerateTypecast::class,
+            ],
         ],
     ],
 
     'migrations' => [
-        'directory' => database_path('migrations'),
+        'directory' => database_path('migrations/cycle'),
 
-        'table' => env('DB_MIGRATIONS_TABLE', 'migrations'),
+        'table' => env('DB_MIGRATIONS_TABLE', 'cycle_migrations'),
 
         'safe' => env('APP_ENV') !== 'production',
     ],

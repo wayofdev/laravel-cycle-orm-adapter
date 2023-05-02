@@ -6,22 +6,23 @@ namespace WayOfDev\Cycle\Schema;
 
 use Cycle\ORM\Schema;
 use Cycle\ORM\SchemaInterface;
-use Cycle\Schema\Compiler as CycleCompiler;
+use Cycle\Schema\Compiler as CycleSchemaCompiler;
 use Cycle\Schema\Registry;
-use WayOfDev\Cycle\Contracts\CacheManager as CacheManagerContract;
+use WayOfDev\Cycle\Contracts\CacheManager;
+use WayOfDev\Cycle\Contracts\GeneratorLoader;
 
 use function is_array;
 
-class Compiler
+final class Compiler
 {
     private const EMPTY_SCHEMA = ':empty:';
 
-    public static function compile(Registry $registry, array $generators, array $defaults = []): self
+    public static function compile(Registry $registry, GeneratorLoader $queue): self
     {
-        return new self((new CycleCompiler())->compile($registry, $generators, $defaults));
+        return new self((new CycleSchemaCompiler())->compile($registry, $queue->get()));
     }
 
-    public static function fromMemory(CacheManagerContract $cache): self
+    public static function fromMemory(CacheManager $cache): self
     {
         return new self($cache->get());
     }
@@ -41,7 +42,7 @@ class Compiler
         return new Schema($this->isWriteableSchema() ? $this->schema : []);
     }
 
-    public function toMemory(CacheManagerContract $cache): void
+    public function toMemory(CacheManager $cache): void
     {
         $cache->set($this->isEmpty() ? self::EMPTY_SCHEMA : $this->schema);
     }

@@ -23,7 +23,9 @@
         "cycle/orm": "^2.3",
         "cycle/schema-migrations-generator": "^2.1",
         "cycle/schema-renderer": "^1.2",
-        "laravel/framework": "*",
+        "illuminate/console": "^10.9",
+        "illuminate/contracts": "^10.9",
+        "illuminate/support": "^10.9",
         "spiral/attributes": "^3.1",
         "symfony/console": "^6.2"
     },
@@ -51,8 +53,8 @@
             "src/helpers.php"
         ],
         "psr-4": {
-            "WayOfDev\\Cycle\\": "src",
-            "WayOfDev\\Cycle\\Database\\Factories\\": "database/factories"
+            "WayOfDev\\Cycle\\": "src/",
+            "WayOfDev\\Cycle\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
@@ -66,7 +68,7 @@
         "cs-diff": "php vendor/bin/php-cs-fixer fix --dry-run -v --diff",
         "test": "php vendor/bin/pest",
         "test-cc": "php vendor/bin/pest --coverage",
-        "stan": "php vendor/bin/phpstan analyse",
+        "stan": "php vendor/bin/phpstan analyse --memory-limit=256M",
         "stan-ci": "php vendor/bin/phpstan analyse --error-format=github",
         "post-autoload-dump": [
             "@php vendor/bin/testbench package:discover --ansi"
@@ -93,5 +95,7 @@
             "indent-size": 4,
             "indent-style": "space"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

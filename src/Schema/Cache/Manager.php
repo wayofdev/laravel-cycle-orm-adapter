@@ -8,7 +8,7 @@ use Illuminate\Contracts\Cache\Factory as CacheFactory;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Psr\SimpleCache\InvalidArgumentException;
 use WayOfDev\Cycle\Contracts\CacheManager;
-use WayOfDev\Cycle\Contracts\Config\Repository as Config;
+use WayOfDev\Cycle\Schema\Config\SchemaConfig;
 use WayOfDev\Cycle\Support\Arr;
 
 final class Manager implements CacheManager
@@ -16,7 +16,7 @@ final class Manager implements CacheManager
     private const SCHEMA_CACHE_KEY = 'cycle.orm.schema';
 
     public function __construct(
-        private readonly Config $config,
+        private readonly SchemaConfig $config,
         private readonly CacheFactory $cacheFactory
     ) {
     }
@@ -24,7 +24,7 @@ final class Manager implements CacheManager
     /**
      * @throws InvalidArgumentException
      */
-    public function get(): ?array
+    public function get(): mixed
     {
         return $this->cacheStore()->get(self::SCHEMA_CACHE_KEY);
     }
@@ -55,8 +55,11 @@ final class Manager implements CacheManager
 
     private function cacheStore(): CacheRepository
     {
-        return $this->cacheFactory->store(
-            Arr::get($this->config->schema(), 'cache.storage')
+        $store = Arr::get(
+            $this->config->toArray(),
+            'cache.store',
         );
+
+        return $this->cacheFactory->store($store);
     }
 }

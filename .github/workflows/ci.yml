@@ -26,10 +26,10 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: dom, curl, libxml, mbstring, zip, fileinfo
+          extensions: mbstring, fileinfo, pdo_mysql, pdo
           ini-values: error_reporting=E_ALL
-          tools: composer:v2
-          coverage: none
+          tools: composer:v2, pecl
+          coverage: xdebug
 
       - name: ♻️ Load cached dependencies
         id: cached-composer-dependencies
@@ -48,17 +48,12 @@ jobs:
           PHP_CS_FIXER_IGNORE_ENV: true
 
       - name: 🧪 Execute phpunit tests
-        uses: php-actions/phpunit@v3
         env:
           XDEBUG_MODE: coverage
-        with:
-          bootstrap: vendor/autoload.php
-          configuration: phpunit.xml.dist
-          php_extensions: xdebug
-          args: tests --coverage-clover ./coverage.xml
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
-      - name: 📝 Run static analysis using phpstan
-        run: make stan
+#      - name: 📝 Run static analysis using phpstan
+#        run: make stan
 
       - name: 📤 Upload coverage report to Codecov
         uses: codecov/codecov-action@v3

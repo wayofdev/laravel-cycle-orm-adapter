@@ -7,15 +7,10 @@ namespace WayOfDev\Cycle\Bridge\Laravel\Console\Commands\ORM;
 use Cycle\Schema\Generator\SyncTables;
 use Cycle\Schema\Registry;
 use Illuminate\Console\Command;
-use Illuminate\Container\Container;
-use Illuminate\Contracts\Container\BindingResolutionException;
 use WayOfDev\Cycle\Bridge\Laravel\Console\Commands\ORM\Generators\ShowChanges;
-use WayOfDev\Cycle\Bridge\Laravel\Providers\Registrators\RegisterSchema;
 use WayOfDev\Cycle\Contracts\CacheManager as CacheManagerContract;
-use WayOfDev\Cycle\Contracts\Config\Repository as Config;
+use WayOfDev\Cycle\Contracts\GeneratorLoader;
 use WayOfDev\Cycle\Schema\Compiler;
-
-use function array_merge;
 
 /**
  * See original spiral framework commands.
@@ -28,25 +23,17 @@ final class SyncCommand extends Command
 
     protected $description = 'Sync Cycle ORM schema with database without intermediate migration (risk operation).';
 
-    /**
-     * @throws BindingResolutionException
-     */
     public function handle(
-        Container $app,
-        RegisterSchema $bootloader,
+        GeneratorLoader $generators,
         Registry $registry,
-        Config $config,
         CacheManagerContract $cache
     ): int {
         $diff = new ShowChanges($this->output);
+        $queue = $generators
+            ->add(GeneratorLoader::GROUP_RENDER, $diff)
+            ->add(GeneratorLoader::GROUP_POSTPROCESS, new SyncTables());
 
-        $schemaCompiler = Compiler::compile(
-            $registry,
-            array_merge(
-                $bootloader->getGenerators($app, $config),
-                [$diff, new SyncTables()]
-            )
-        );
+        $schemaCompiler = Compiler::compile($registry, $queue);
         $schemaCompiler->toMemory($cache);
 
         if ($diff->hasChanges()) {

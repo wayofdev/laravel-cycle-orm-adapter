@@ -6,7 +6,7 @@ namespace WayOfDev\Cycle\Contracts;
 
 interface CacheManager
 {
-    public function get(): ?array;
+    public function get(): mixed;
 
     public function set(string|array $schema): bool;
 

@@ -5,41 +5,47 @@ declare(strict_types=1);
 namespace WayOfDev\Cycle\Bridge\Laravel\Providers\Registrators;
 
 use Illuminate\Container\Container;
-use Illuminate\Contracts\Config\Repository as IlluminateConfig;
 use Spiral\Tokenizer\ClassesInterface;
+use Spiral\Tokenizer\ClassLocator;
 use Spiral\Tokenizer\Config\TokenizerConfig;
 use Spiral\Tokenizer\InvocationLocator;
 use Spiral\Tokenizer\InvocationsInterface;
 use Spiral\Tokenizer\ScopedClassesInterface;
 use Spiral\Tokenizer\ScopedClassLocator;
 use Spiral\Tokenizer\Tokenizer;
-use WayOfDev\Cycle\Bridge\Laravel\Providers\Registrator;
 
+/**
+ * @see https://github.com/spiral/tokenizer/blob/master/src/Bootloader/TokenizerBootloader.php
+ */
 final class RegisterClassesInterface
 {
     public function __invoke(Container $app): void
     {
-        $app->singleton(TokenizerConfig::class, static function (Container $app): TokenizerConfig {
-            /** @var IlluminateConfig $config */
-            $config = $app[IlluminateConfig::class];
-
-            return new TokenizerConfig($config->get(Registrator::CFG_KEY_TOKENIZER));
-        });
-
         $app->singleton(Tokenizer::class, static function (Container $app): Tokenizer {
             return new Tokenizer($app[TokenizerConfig::class]);
         });
 
-        $app->singleton(ScopedClassesInterface::class, static function ($app): ScopedClassesInterface {
-            return new ScopedClassLocator($app[TokenizerConfig::class]);
+        $app->bind(ScopedClassesInterface::class, static function ($app): ScopedClassesInterface {
+            /** @var Tokenizer $tokenizer */
+            $tokenizer = $app->get(Tokenizer::class);
+
+            return new ScopedClassLocator($tokenizer);
         });
 
-        $app->singleton(ClassesInterface::class, static function ($app): ClassesInterface {
-            return (new Tokenizer($app[TokenizerConfig::class]))->classLocator();
+        $app->bind(ClassesInterface::class, static function ($app): ClassesInterface {
+            /** @var Tokenizer $tokenizer */
+            $tokenizer = $app->get(Tokenizer::class);
+
+            return $tokenizer->classLocator();
         });
 
-        $app->singleton(InvocationsInterface::class, static function ($app): InvocationLocator {
-            return new InvocationLocator($app[TokenizerConfig::class]);
+        $app->bind(InvocationsInterface::class, static function ($app): InvocationLocator {
+            /** @var Tokenizer $tokenizer */
+            $tokenizer = $app->get(Tokenizer::class);
+
+            return $tokenizer->invocationLocator();
         });
+
+        $app->alias(ClassesInterface::class, ClassLocator::class);
     }
 }
