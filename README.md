@@ -135,4 +135,5 @@ Created in **2022** by [lotyp / wayofdev](https://github.com/wayofdev)
 
 * Alternative implementation of Cycle ORM for Laravel — [wakebit/laravel-cycle](https://github.com/wakebit/laravel-cycle)
 
+
 <br>
