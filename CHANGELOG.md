@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.3](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.1.2...v2.1.3) (2023-05-03)
+
+
+### Miscellaneous
+
+* **deps:** lock file maintenance ([dd2b5ab](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/dd2b5abca1b35835650c756eb3eb6254f34b7171))
+* **deps:** update dependency pestphp/pest to v2.6.0 ([de6d43c](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/de6d43c454ea3fa76cc3a45038a61f6bd1286a83))
+
 ## [2.1.2](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.1.1...v2.1.2) (2023-05-03)
 
 
