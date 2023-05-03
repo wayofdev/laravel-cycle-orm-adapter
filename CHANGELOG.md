@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.0.0...v2.0.1) (2023-05-03)
+
+
+### Miscellaneous
+
+* release 2.0.1 ([b6292e5](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/b6292e576f31d661001449ef8876468be743d145))
+
 ## [2.0.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v1.0.0...v2.0.0) (2023-05-03)
 
 
