@@ -37,7 +37,7 @@ final class Arr
         return true;
     }
 
-    public static function get(array $array, int|string $key, $default = null): mixed
+    public static function get(array $array, int|string $key, mixed $default = null): mixed
     {
         $key = (string) $key;
 

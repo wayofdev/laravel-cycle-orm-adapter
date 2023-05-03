@@ -70,11 +70,11 @@ final class TableCommand extends Command
         $this->line($message);
         $this->describeColumns($schema);
 
-        if (! empty($indexes = $schema->getIndexes())) {
+        if ([] !== ($indexes = $schema->getIndexes())) {
             $this->describeIndexes($database, $indexes, $tableName);
         }
 
-        if (! empty($foreignKeys = $schema->getForeignKeys())) {
+        if ([] !== ($foreignKeys = $schema->getForeignKeys())) {
             $this->describeForeignKeys($database, $foreignKeys, $tableName);
         }
 
@@ -198,7 +198,7 @@ final class TableCommand extends Command
         $foreignTable->render();
     }
 
-    private function describeDefaultValue(AbstractColumn $column, DriverInterface $driver): float|DateTimeInterface|bool|int|string|FragmentInterface|null
+    private function describeDefaultValue(AbstractColumn $column, DriverInterface $driver): mixed
     {
         /** @var FragmentInterface|DateTimeInterface|scalar|null $defaultValue */
         $defaultValue = $column->getDefaultValue();
@@ -222,7 +222,7 @@ final class TableCommand extends Command
 
         $abstractType = $column->getAbstractType();
 
-        if ($column->getSize()) {
+        if ($column->getSize() > 0) {
             $type .= " ({$column->getSize()})";
         }
 
@@ -237,7 +237,7 @@ final class TableCommand extends Command
     {
         $abstractType = $column->getAbstractType();
 
-        if (in_array($abstractType, ['primary', 'bigPrimary'])) {
+        if (in_array($abstractType, ['primary', 'bigPrimary'], true)) {
             $abstractType = "<fg=magenta>{$abstractType}</fg=magenta>";
         }
 

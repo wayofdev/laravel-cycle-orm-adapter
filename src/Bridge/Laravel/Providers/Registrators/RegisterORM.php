@@ -13,7 +13,7 @@ use Cycle\ORM\FactoryInterface;
 use Cycle\ORM\ORM;
 use Cycle\ORM\ORMInterface;
 use Cycle\ORM\SchemaInterface;
-use Illuminate\Container\Container;
+use Illuminate\Contracts\Foundation\Application;
 use WayOfDev\Cycle\Schema\Config\SchemaConfig;
 
 /**
@@ -21,9 +21,9 @@ use WayOfDev\Cycle\Schema\Config\SchemaConfig;
  */
 final class RegisterORM
 {
-    public function __invoke(Container $app): void
+    public function __invoke(Application $app): void
     {
-        $app->singleton(FactoryInterface::class, static function (Container $app): FactoryInterface {
+        $app->singleton(FactoryInterface::class, static function (Application $app): FactoryInterface {
             /** @var SchemaConfig $config */
             $config = $app->get(SchemaConfig::class);
             $factoryFQCN = $config->defaultCollectionFQCN();
@@ -36,14 +36,14 @@ final class RegisterORM
             );
         });
 
-        $app->singleton(ORMInterface::class, function (Container $app): ORMInterface {
+        $app->singleton(ORMInterface::class, function (Application $app): ORMInterface {
             return new ORM(
                 factory: $app->get(FactoryInterface::class),
                 schema: $app->get(SchemaInterface::class)
             );
         });
 
-        $app->singleton(EntityManagerInterface::class, function (Container $app): EntityManagerInterface {
+        $app->singleton(EntityManagerInterface::class, function (Application $app): EntityManagerInterface {
             return new EntityManager(
                 $app->get(ORMInterface::class)
             );

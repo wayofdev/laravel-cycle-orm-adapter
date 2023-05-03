@@ -9,6 +9,7 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Container\Container;
 use WayOfDev\Cycle\Contracts\GeneratorLoader;
 use WayOfDev\Cycle\Schema\Config\SchemaConfig;
+use Closure;
 
 use function is_a;
 use function is_string;
@@ -18,10 +19,13 @@ final class GeneratorQueue implements GeneratorLoader
     /** @var array<array<GeneratorInterface|class-string<GeneratorInterface>>> */
     private array $generators;
 
+    private Container $app;
+
     public function __construct(
-        private readonly Container $app,
+        Closure $closure,
         private readonly SchemaConfig $config
     ) {
+        $this->app = $closure();
         $this->generators = $this->config->generators();
     }
 

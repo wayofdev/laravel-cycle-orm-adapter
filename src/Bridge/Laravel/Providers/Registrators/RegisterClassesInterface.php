@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace WayOfDev\Cycle\Bridge\Laravel\Providers\Registrators;
 
-use Illuminate\Container\Container;
+use Illuminate\Contracts\Foundation\Application;
 use Spiral\Tokenizer\ClassesInterface;
 use Spiral\Tokenizer\ClassLocator;
 use Spiral\Tokenizer\Config\TokenizerConfig;
@@ -19,9 +19,9 @@ use Spiral\Tokenizer\Tokenizer;
  */
 final class RegisterClassesInterface
 {
-    public function __invoke(Container $app): void
+    public function __invoke(Application $app): void
     {
-        $app->singleton(Tokenizer::class, static function (Container $app): Tokenizer {
+        $app->singleton(Tokenizer::class, static function (Application $app): Tokenizer {
             return new Tokenizer($app[TokenizerConfig::class]);
         });
 

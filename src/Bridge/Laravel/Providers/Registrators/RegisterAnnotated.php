@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace WayOfDev\Cycle\Bridge\Laravel\Providers\Registrators;
 
 use Cycle\Annotated;
-use Illuminate\Container\Container;
+use Illuminate\Contracts\Foundation\Application;
 use Spiral\Attributes\Factory;
 use Spiral\Attributes\ReaderInterface;
 use Spiral\Tokenizer\ClassesInterface;
@@ -15,7 +15,7 @@ use Spiral\Tokenizer\ClassesInterface;
  */
 final class RegisterAnnotated
 {
-    public function __invoke(Container $app): void
+    public function __invoke(Application $app): void
     {
         $app->bind(ReaderInterface::class, function () {
             return (new Factory())->create();
