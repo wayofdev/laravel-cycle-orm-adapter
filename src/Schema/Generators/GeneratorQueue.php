@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace WayOfDev\Cycle\Schema\Generators;
 
+use Closure;
 use Cycle\Schema\GeneratorInterface;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Container\Container;
 use WayOfDev\Cycle\Contracts\GeneratorLoader;
 use WayOfDev\Cycle\Schema\Config\SchemaConfig;
-use Closure;
 
 use function is_a;
 use function is_string;

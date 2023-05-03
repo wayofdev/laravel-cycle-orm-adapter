@@ -6,15 +6,15 @@ namespace WayOfDev\Cycle\Bridge\Laravel\Providers\Registrators;
 
 use Cycle\ORM\SchemaInterface;
 use Cycle\Schema\Registry;
-use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Container\Container;
 use Illuminate\Contracts\Cache\Factory as CacheFactory;
+use Illuminate\Contracts\Foundation\Application;
 use WayOfDev\Cycle\Contracts\CacheManager as CacheManagerContract;
 use WayOfDev\Cycle\Contracts\GeneratorLoader;
 use WayOfDev\Cycle\Schema\Cache\Manager as CacheManager;
 use WayOfDev\Cycle\Schema\Compiler;
 use WayOfDev\Cycle\Schema\Config\SchemaConfig;
 use WayOfDev\Cycle\Schema\Generators\GeneratorQueue;
-use Illuminate\Container\Container;
 
 /**
  * @see https://github.com/spiral/cycle-bridge/blob/2.0/src/Bootloader/SchemaBootloader.php
