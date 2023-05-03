@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.4](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.1.3...v2.1.4) (2023-05-03)
+
+
+### Miscellaneous
+
+* **deps:** update peter-evans/enable-pull-request-automerge action to v3 ([83088a8](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/83088a8df268ef76a771be4e6f3b4be12842974c))
+
 ## [2.1.3](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.1.2...v2.1.3) (2023-05-03)
 
 
