@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.0.1...v2.1.0) (2023-05-03)
+
+
+### Features
+
+* add renovate support ([ad8ea9f](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/ad8ea9f01efb39437db462c40edc75666aa3f272))
+
 ## [2.0.1](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.0.0...v2.0.1) (2023-05-03)
 
 
