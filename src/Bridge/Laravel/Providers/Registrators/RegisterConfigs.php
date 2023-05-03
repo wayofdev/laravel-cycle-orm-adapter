@@ -8,14 +8,14 @@ use Cycle\Database\Config\DatabaseConfig;
 use Cycle\Migrations\Config\MigrationConfig;
 use Cycle\ORM\Config\RelationConfig;
 use Illuminate\Contracts\Config\Repository as IlluminateConfig;
-use Illuminate\Contracts\Container\Container;
+use Illuminate\Contracts\Foundation\Application;
 use Spiral\Tokenizer\Config\TokenizerConfig;
 use WayOfDev\Cycle\Bridge\Laravel\Providers\Registrator;
 use WayOfDev\Cycle\Schema\Config\SchemaConfig;
 
 final class RegisterConfigs
 {
-    public function __invoke(Container $app): void
+    public function __invoke(Application $app): void
     {
         $this->registerDatabaseConfig($app);
         $this->registerMigrationConfig($app);
@@ -24,9 +24,9 @@ final class RegisterConfigs
         $this->registerRelationConfig($app);
     }
 
-    private function registerDatabaseConfig(Container $app): void
+    private function registerDatabaseConfig(Application $app): void
     {
-        $app->singleton(DatabaseConfig::class, static function (Container $app): DatabaseConfig {
+        $app->singleton(DatabaseConfig::class, static function (Application $app): DatabaseConfig {
             /** @var IlluminateConfig $config */
             $config = $app->get(IlluminateConfig::class);
 
@@ -36,9 +36,9 @@ final class RegisterConfigs
         });
     }
 
-    private function registerMigrationConfig(Container $app): void
+    private function registerMigrationConfig(Application $app): void
     {
-        $app->singleton(MigrationConfig::class, static function (Container $app): MigrationConfig {
+        $app->singleton(MigrationConfig::class, static function (Application $app): MigrationConfig {
             /** @var IlluminateConfig $config */
             $config = $app->get(IlluminateConfig::class);
 
@@ -46,9 +46,9 @@ final class RegisterConfigs
         });
     }
 
-    private function registerTokenizerConfig(Container $app): void
+    private function registerTokenizerConfig(Application $app): void
     {
-        $app->singleton(TokenizerConfig::class, static function (Container $app): TokenizerConfig {
+        $app->singleton(TokenizerConfig::class, static function (Application $app): TokenizerConfig {
             /** @var IlluminateConfig $config */
             $config = $app->get(IlluminateConfig::class);
 
@@ -56,9 +56,9 @@ final class RegisterConfigs
         });
     }
 
-    private function registerSchemaConfig(Container $app): void
+    private function registerSchemaConfig(Application $app): void
     {
-        $app->singleton(SchemaConfig::class, static function (Container $app): SchemaConfig {
+        $app->singleton(SchemaConfig::class, static function (Application $app): SchemaConfig {
             /** @var IlluminateConfig $config */
             $config = $app->get(IlluminateConfig::class);
 
@@ -66,9 +66,9 @@ final class RegisterConfigs
         });
     }
 
-    private function registerRelationConfig(Container $app): void
+    private function registerRelationConfig(Application $app): void
     {
-        $app->singleton(RelationConfig::class, static function (Container $app): RelationConfig {
+        $app->singleton(RelationConfig::class, static function (Application $app): RelationConfig {
             /** @var IlluminateConfig $config */
             $config = $app->get(IlluminateConfig::class);
             $relations = RelationConfig::getDefault()->toArray() + $config->get(Registrator::CFG_KEY_RELATIONS);

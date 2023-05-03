@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace WayOfDev\Cycle\Schema\Generators;
 
+use Closure;
 use Cycle\Schema\GeneratorInterface;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Container\Container;
@@ -18,10 +19,13 @@ final class GeneratorQueue implements GeneratorLoader
     /** @var array<array<GeneratorInterface|class-string<GeneratorInterface>>> */
     private array $generators;
 
+    private Container $app;
+
     public function __construct(
-        private readonly Container $app,
+        Closure $closure,
         private readonly SchemaConfig $config
     ) {
+        $this->app = $closure();
         $this->generators = $this->config->generators();
     }
 

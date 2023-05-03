@@ -56,7 +56,7 @@ final class ShowChanges implements GeneratorInterface
         }
 
         foreach ($this->changes as $change) {
-            $this->output->writeLn(sprintf('• <fg=cyan>%s.%s</fg=cyan>', $change['database'], $change['table']));
+            $this->output->writeln(sprintf('• <fg=cyan>%s.%s</fg=cyan>', $change['database'], $change['table']));
             $this->describeChanges($change['schema']);
         }
 

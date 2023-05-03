@@ -8,6 +8,7 @@ use Cycle\ORM\SchemaInterface;
 use Cycle\Schema\Registry;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Cache\Factory as CacheFactory;
+use Illuminate\Contracts\Foundation\Application;
 use WayOfDev\Cycle\Contracts\CacheManager as CacheManagerContract;
 use WayOfDev\Cycle\Contracts\GeneratorLoader;
 use WayOfDev\Cycle\Schema\Cache\Manager as CacheManager;
@@ -20,23 +21,23 @@ use WayOfDev\Cycle\Schema\Generators\GeneratorQueue;
  */
 final class RegisterSchema
 {
-    public function __invoke(Container $app): void
+    public function __invoke(Application $app): void
     {
-        $app->singleton(CacheManagerContract::class, static function (Container $app): CacheManagerContract {
+        $app->singleton(CacheManagerContract::class, static function (Application $app): CacheManagerContract {
             return new CacheManager(
                 config: $app->get(SchemaConfig::class),
                 cacheFactory: $app->get(CacheFactory::class)
             );
         });
 
-        $app->singleton(GeneratorLoader::class, static function (Container $app): GeneratorLoader {
+        $app->singleton(GeneratorLoader::class, static function (Application $app): GeneratorLoader {
             return new GeneratorQueue(
-                app: $app,
+                closure: fn () => Container::getInstance(),
                 config: $app->get(SchemaConfig::class),
             );
         });
 
-        $app->bind(SchemaInterface::class, static function (Container $app): SchemaInterface {
+        $app->bind(SchemaInterface::class, static function (Application $app): SchemaInterface {
             /** @var SchemaConfig $config */
             $config = $app->get(SchemaConfig::class);
 

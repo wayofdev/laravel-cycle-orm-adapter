@@ -125,6 +125,8 @@ final class ListCommand extends Command
             $header = ['', '', '', '', ''];
         }
 
-        $header[1] && $grid->addRow(array_merge($header, ['no tables', 'no records']));
+        if (isset($header[1])) {
+            $grid->addRow(array_merge($header, ['no tables', 'no records']));
+        }
     }
 }
