@@ -7592,22 +7592,22 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v8.5.1",
+            "version": "v8.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "636bb5079170f1b49ca754e648712a2b32fa7aef"
+                "reference": "d9198ee04f5fa8a14c47ccc5c01599477e9053e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/636bb5079170f1b49ca754e648712a2b32fa7aef",
-                "reference": "636bb5079170f1b49ca754e648712a2b32fa7aef",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/d9198ee04f5fa8a14c47ccc5c01599477e9053e9",
+                "reference": "d9198ee04f5fa8a14c47ccc5c01599477e9053e9",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": "^2.2",
                 "fakerphp/faker": "^1.21",
-                "laravel/framework": ">=10.8.0 <10.10.0",
+                "laravel/framework": ">=10.8.0 <10.11.0",
                 "mockery/mockery": "^1.5.1",
                 "orchestra/testbench-core": ">=8.5.0 <8.6.0",
                 "php": "^8.1",
@@ -7641,22 +7641,22 @@
             ],
             "support": {
                 "issues": "https://github.com/orchestral/testbench/issues",
-                "source": "https://github.com/orchestral/testbench/tree/v8.5.1"
+                "source": "https://github.com/orchestral/testbench/tree/v8.5.2"
             },
-            "time": "2023-04-24T05:40:14+00:00"
+            "time": "2023-05-09T13:12:17+00:00"
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v8.5.0",
+            "version": "v8.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "4d0ed25a83179d8e59487198f619b57b64d4410f"
+                "reference": "64f87d55a1ad51849558a351e345fd0de4cc7d65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/4d0ed25a83179d8e59487198f619b57b64d4410f",
-                "reference": "4d0ed25a83179d8e59487198f619b57b64d4410f",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/64f87d55a1ad51849558a351e345fd0de4cc7d65",
+                "reference": "64f87d55a1ad51849558a351e345fd0de4cc7d65",
                 "shasum": ""
             },
             "require": {
@@ -7665,7 +7665,7 @@
             },
             "require-dev": {
                 "fakerphp/faker": "^1.21",
-                "laravel/framework": "^10.8",
+                "laravel/framework": "^10.10",
                 "laravel/pint": "^1.6",
                 "mockery/mockery": "^1.5.1",
                 "orchestra/canvas": "^8.1",
@@ -7679,7 +7679,7 @@
             "suggest": {
                 "brianium/paratest": "Allow using parallel tresting (^6.4 || ^7.1.4).",
                 "fakerphp/faker": "Allow using Faker for testing (^1.21).",
-                "laravel/framework": "Required for testing (^10.8).",
+                "laravel/framework": "Required for testing (^10.10).",
                 "mockery/mockery": "Allow using Mockery for testing (^1.5.1).",
                 "nunomaduro/collision": "Allow using Laravel style tests output and parallel testing (^6.4 || ^7.4).",
                 "orchestra/testbench-browser-kit": "Allow using legacy Laravel BrowserKit for testing (^8.0).",
@@ -7692,11 +7692,6 @@
                 "testbench"
             ],
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "9.0-dev"
-                }
-            },
             "autoload": {
                 "files": [
                     "src/helpers.php"
@@ -7730,7 +7725,7 @@
                 "issues": "https://github.com/orchestral/testbench/issues",
                 "source": "https://github.com/orchestral/testbench-core"
             },
-            "time": "2023-04-18T14:07:29+00:00"
+            "time": "2023-05-09T14:55:44+00:00"
         },
         {
             "name": "pestphp/pest",
