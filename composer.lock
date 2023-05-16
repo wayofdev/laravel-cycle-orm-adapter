@@ -63,30 +63,30 @@
         },
         {
             "name": "cycle/annotated",
-            "version": "v3.2.1",
+            "version": "v3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cycle/annotated.git",
-                "reference": "0e0afb452fdedb0817d28201a1cd493f7ec8b3eb"
+                "reference": "d4d4c944f81e809688e77e5564acc198c8f11544"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cycle/annotated/zipball/0e0afb452fdedb0817d28201a1cd493f7ec8b3eb",
-                "reference": "0e0afb452fdedb0817d28201a1cd493f7ec8b3eb",
+                "url": "https://api.github.com/repos/cycle/annotated/zipball/d4d4c944f81e809688e77e5564acc198c8f11544",
+                "reference": "d4d4c944f81e809688e77e5564acc198c8f11544",
                 "shasum": ""
             },
             "require": {
                 "cycle/orm": "^2.2.0",
-                "cycle/schema-builder": "^2.3",
-                "doctrine/annotations": "^1.13 || ^2.0",
+                "cycle/schema-builder": "^2.4",
+                "doctrine/annotations": "^1.14.3 || ^2.0.1",
                 "doctrine/inflector": "^2.0",
                 "php": ">=8.0",
                 "spiral/attributes": "^2.8|^3.0",
                 "spiral/tokenizer": "^2.8|^3.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^9.5",
-                "vimeo/psalm": "^4.18"
+                "phpunit/phpunit": "^9.6",
+                "vimeo/psalm": "^4.30"
             },
             "type": "library",
             "autoload": {
@@ -101,9 +101,9 @@
             "description": "Cycle ORM Annotated Entities generator",
             "support": {
                 "issues": "https://github.com/cycle/annotated/issues",
-                "source": "https://github.com/cycle/annotated/tree/v3.2.1"
+                "source": "https://github.com/cycle/annotated/tree/v3.3.0"
             },
-            "time": "2023-02-01T17:01:38+00:00"
+            "time": "2023-05-16T07:50:25+00:00"
         },
         {
             "name": "cycle/database",
