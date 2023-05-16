@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.12](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.1.11...v2.1.12) (2023-05-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency cycle/schema-migrations-generator to v2.1.1 ([17b0617](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/17b0617f3cbeff500b80281712fec77b0c2f91cd))
+
 ## [2.1.11](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.1.10...v2.1.11) (2023-05-15)
 
 
