@@ -170,20 +170,20 @@
         },
         {
             "name": "cycle/migrations",
-            "version": "v4.0.1",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cycle/migrations.git",
-                "reference": "943f42c7a0cbb311b0a3c027d5e944c74d0ac7de"
+                "reference": "177b1912220515c5a6dae7057bc0ad6ae826134f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cycle/migrations/zipball/943f42c7a0cbb311b0a3c027d5e944c74d0ac7de",
-                "reference": "943f42c7a0cbb311b0a3c027d5e944c74d0ac7de",
+                "url": "https://api.github.com/repos/cycle/migrations/zipball/177b1912220515c5a6dae7057bc0ad6ae826134f",
+                "reference": "177b1912220515c5a6dae7057bc0ad6ae826134f",
                 "shasum": ""
             },
             "require": {
-                "cycle/database": "^2.3",
+                "cycle/database": "^2.5",
                 "php": ">=8.1",
                 "spiral/core": "^3.0",
                 "spiral/files": "^3.0",
@@ -208,9 +208,9 @@
             "description": "Database migrations, migration scaffolding",
             "support": {
                 "issues": "https://github.com/cycle/migrations/issues",
-                "source": "https://github.com/cycle/migrations/tree/v4.0.1"
+                "source": "https://github.com/cycle/migrations/tree/v4.1.0"
             },
-            "time": "2023-01-03T14:02:11+00:00"
+            "time": "2023-05-16T08:01:38+00:00"
         },
         {
             "name": "cycle/orm",
