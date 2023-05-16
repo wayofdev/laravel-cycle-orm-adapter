@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.13](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.1.12...v2.1.13) (2023-05-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency cycle/annotated to v3.3.0 ([3ec8400](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/3ec84009502730263c13a3b814eef0fd28a8e5e1))
+
 ## [2.1.12](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.1.11...v2.1.12) (2023-05-16)
 
 
