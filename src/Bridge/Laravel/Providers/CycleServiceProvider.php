@@ -16,7 +16,7 @@ final class CycleServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../../../../config/cycle.php' => config_path('cycle.php'),
-            ]);
+            ], 'config');
 
             $this->registerConsoleCommands();
         }
