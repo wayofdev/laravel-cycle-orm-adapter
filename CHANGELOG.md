@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.2.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.1.16...v2.2.0) (2023-05-17)
+
+
+### Features
+
+* move workflows ([a055cd9](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/a055cd9453e3c2ab8105f1beb444604e59fe1fc7))
+
+
+### Bug Fixes
+
+* stan ([e7def88](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/e7def88be2f1046b1245743246582f828cf6e23a))
+
 ## [2.1.16](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.1.15...v2.1.16) (2023-05-16)
 
 
