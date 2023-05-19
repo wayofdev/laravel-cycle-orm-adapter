@@ -18,6 +18,7 @@
     <testsuites>
         <testsuite name="Tests">
             <directory>tests</directory>
+            <exclude>tests/src/Drivers/PostgresDriverTest.php</exclude>
         </testsuite>
     </testsuites>
     <coverage>

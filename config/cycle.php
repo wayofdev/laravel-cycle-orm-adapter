@@ -9,6 +9,7 @@ use Cycle\ORM\Collection;
 use Cycle\ORM\SchemaInterface;
 use Cycle\Schema;
 use WayOfDev\Cycle\Contracts\GeneratorLoader;
+use WayOfDev\Cycle\Drivers;
 
 return [
     /*
@@ -97,12 +98,12 @@ return [
                 connection: new Config\Postgres\TcpConnectionConfig(
                     database: env('DB_DATABASE', 'wod'),
                     host: env('DB_HOST', '127.0.0.1'),
-                    port: (int) env('DB_PORT', 5432),
+                    port: env('DB_PORT', 5432),
                     user: env('DB_USERNAME', 'wod'),
                     password: env('DB_PASSWORD', '')
                 ),
                 schema: Config\PostgresDriverConfig::DEFAULT_SCHEMA,
-                driver: Driver\Postgres\PostgresDriver::class,
+                driver: Drivers\Postgres\PostgresDriver::class,
                 reconnect: true,
                 timezone: 'UTC',
                 queryCache: true
@@ -112,7 +113,7 @@ return [
                 connection: new Config\MySQL\TcpConnectionConfig(
                     database: env('DB_DATABASE', 'wod'),
                     host: env('DB_HOST', '127.0.0.1'),
-                    port: (int) env('DB_PORT', 3306),
+                    port: env('DB_PORT', 3306),
                     user: env('DB_USERNAME', 'wod'),
                     password: env('DB_PASSWORD', '')
                 ),
@@ -126,7 +127,7 @@ return [
                 connection: new Config\SQLServer\TcpConnectionConfig(
                     database: env('DB_DATABASE', 'wod'),
                     host: env('DB_HOST', '127.0.0.1'),
-                    port: (int) env('DB_PORT', 1433),
+                    port: env('DB_PORT', 1433),
                     user: env('DB_USERNAME', 'wod'),
                     password: env('DB_PASSWORD', '')
                 ),
