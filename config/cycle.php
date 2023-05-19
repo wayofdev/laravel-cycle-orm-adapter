@@ -97,7 +97,7 @@ return [
                 connection: new Config\Postgres\TcpConnectionConfig(
                     database: env('DB_DATABASE', 'wod'),
                     host: env('DB_HOST', '127.0.0.1'),
-                    port: (int) env('DB_PORT', 5432),
+                    port: env('DB_PORT', 5432),
                     user: env('DB_USERNAME', 'wod'),
                     password: env('DB_PASSWORD', '')
                 ),
@@ -112,7 +112,7 @@ return [
                 connection: new Config\MySQL\TcpConnectionConfig(
                     database: env('DB_DATABASE', 'wod'),
                     host: env('DB_HOST', '127.0.0.1'),
-                    port: (int) env('DB_PORT', 3306),
+                    port: env('DB_PORT', 3306),
                     user: env('DB_USERNAME', 'wod'),
                     password: env('DB_PASSWORD', '')
                 ),
@@ -126,7 +126,7 @@ return [
                 connection: new Config\SQLServer\TcpConnectionConfig(
                     database: env('DB_DATABASE', 'wod'),
                     host: env('DB_HOST', '127.0.0.1'),
-                    port: (int) env('DB_PORT', 1433),
+                    port: env('DB_PORT', 1433),
                     user: env('DB_USERNAME', 'wod'),
                     password: env('DB_PASSWORD', '')
                 ),
