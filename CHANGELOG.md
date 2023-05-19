@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.2](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.2.1...v2.2.2) (2023-05-19)
+
+
+### Miscellaneous
+
+* remove commented lines ([a34e8f9](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/a34e8f9e18790cc91d549e07c2d0b016c09ded06))
+
 ## [2.2.1](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.2.0...v2.2.1) (2023-05-19)
 
 
