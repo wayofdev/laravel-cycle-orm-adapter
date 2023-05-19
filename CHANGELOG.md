@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.2.0...v2.2.1) (2023-05-19)
+
+
+### Bug Fixes
+
+* remove int cast ([b84a5ec](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/b84a5ec25829e14438b94c2836b996c873d2a812))
+
 ## [2.2.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.1.16...v2.2.0) (2023-05-17)
 
 
