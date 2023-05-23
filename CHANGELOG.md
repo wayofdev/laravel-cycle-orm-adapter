@@ -1,5 +1,33 @@
 # Changelog
 
+## [2.2.4](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.2.3...v2.2.4) (2023-05-23)
+
+
+### Miscellaneous
+
+* **deps:** update dependency phpstan/phpstan-phpunit to v1.3.12 ([48a75ea](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/48a75eafb9882e8ced1f4c8e43ffb81c2c1b9fa8))
+
+## [2.2.3](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.2.2...v2.2.3) (2023-05-22)
+
+
+### Miscellaneous
+
+* **deps:** lock file maintenance ([a1ac10b](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/a1ac10bca62bfde5e04f227d21653a39ee58c9fb))
+
+## [2.2.2](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.2.1...v2.2.2) (2023-05-19)
+
+
+### Miscellaneous
+
+* remove commented lines ([a34e8f9](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/a34e8f9e18790cc91d549e07c2d0b016c09ded06))
+
+## [2.2.1](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.2.0...v2.2.1) (2023-05-19)
+
+
+### Bug Fixes
+
+* remove int cast ([b84a5ec](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/b84a5ec25829e14438b94c2836b996c873d2a812))
+
 ## [2.2.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.1.16...v2.2.0) (2023-05-17)
 
 
