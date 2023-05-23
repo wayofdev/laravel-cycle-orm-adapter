@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.4](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.2.3...v2.2.4) (2023-05-23)
+
+
+### Miscellaneous
+
+* **deps:** update dependency phpstan/phpstan-phpunit to v1.3.12 ([48a75ea](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/48a75eafb9882e8ced1f4c8e43ffb81c2c1b9fa8))
+
 ## [2.2.3](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.2.2...v2.2.3) (2023-05-22)
 
 
