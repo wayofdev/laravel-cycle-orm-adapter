@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace WayOfDev\Tests\Bridge\Laravel\Console\Commands\ORM;
 
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use WayOfDev\Tests\TestCase;
 
@@ -26,7 +25,7 @@ class MigrateCommandTest extends TestCase
     {
         parent::setUp();
 
-        Artisan::call('cycle:migrate:init', ['-vvv' => true]);
+        $this->artisanCall('cycle:migrate:init', ['-vvv' => true]);
 
         File::delete(__DIR__ . '/../../../../../../app/Entities/Tag.php');
     }
@@ -45,9 +44,9 @@ class MigrateCommandTest extends TestCase
      */
     public function it_runs_migrate_with_no_changes(): void
     {
-        Artisan::call('cycle:orm:migrate');
-        Artisan::call('cycle:migrate', ['--force' => true]);
-        Artisan::call('cycle:orm:migrate');
+        $this->artisanCall('cycle:orm:migrate');
+        $this->artisanCall('cycle:migrate', ['--force' => true]);
+        $this->artisanCall('cycle:orm:migrate');
 
         $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', [], 'No database changes');
     }

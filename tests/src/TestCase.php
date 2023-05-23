@@ -4,22 +4,32 @@ declare(strict_types=1);
 
 namespace WayOfDev\Tests;
 
+use Cycle\Database\DatabaseProviderInterface;
+use Cycle\Database\Driver\HandlerInterface;
+use Cycle\Database\Table;
 use Faker\Factory as FakerFactory;
 use Faker\Generator;
+use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Spatie\LaravelRay\RayServiceProvider;
 use WayOfDev\Cycle\Bridge\Laravel\Providers\CycleServiceProvider;
+use WayOfDev\Cycle\Testing\Concerns\InteractsWithDatabase;
 
 use function array_key_exists;
 use function array_merge;
 use function json_encode;
 use function sprintf;
 
+/**
+ * @see https://cycle-orm.dev/docs/advanced-testing/2.x/en
+ */
 class TestCase extends OrchestraTestCase
 {
+    use InteractsWithDatabase;
+
     final protected static function faker(string $locale = 'en_US'): Generator
     {
         /** @var array<string, Generator> $fakers */
@@ -37,6 +47,7 @@ class TestCase extends OrchestraTestCase
         parent::setUp();
 
         $this->cleanupMigrations();
+        $this->refreshDatabase();
 
         Factory::guessFactoryNamesUsing(
             static fn (string $modelName) => 'WayOfDev\\Laravel\\Cycle\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
@@ -56,17 +67,44 @@ class TestCase extends OrchestraTestCase
     protected function tearDown(): void
     {
         $this->cleanupMigrations();
+        $this->refreshDatabase();
 
         parent::tearDown();
+    }
+
+    public function artisanCall(string $command, array $parameters = [])
+    {
+        return $this->app[Kernel::class]->call($command, $parameters);
+    }
+
+    protected function refreshDatabase(): void
+    {
+        $database = app(DatabaseProviderInterface::class)->database('default');
+
+        /** @var Table $table */
+        foreach ($database->getTables() as $table) {
+            $schema = $table->getSchema();
+            foreach ($schema->getForeignKeys() as $foreign) {
+                $schema->dropForeignKey($foreign->getColumns());
+            }
+
+            $schema->save(HandlerInterface::DROP_FOREIGN_KEYS);
+        }
+
+        /** @var Table $table */
+        foreach ($database->getTables() as $table) {
+            $schema = $table->getSchema();
+            $schema->declareDropped();
+            $schema->save();
+        }
     }
 
     protected function assertConsoleCommandOutputContainsStrings(
         string $command,
         array $args = [],
-        array|string $strings = [],
-        ?int $verbosityLevel = null
+        array|string $strings = []
     ): void {
-        Artisan::call($command, $args);
+        $this->artisanCall($command, $args);
         $output = Artisan::output();
 
         foreach ((array) $strings as $string) {

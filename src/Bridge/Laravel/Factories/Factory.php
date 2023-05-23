@@ -4,17 +4,21 @@ declare(strict_types=1);
 
 namespace WayOfDev\Cycle\Bridge\Laravel\Factories;
 
+use Cycle\ORM\ORMInterface;
 use Illuminate\Database\Eloquent\Factories\Factory as EloquentFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Enumerable;
+use Laminas\Hydrator\ReflectionHydrator;
+use ReflectionClass;
+use ReflectionException;
 
-use function array_map;
 use function method_exists;
-use function range;
 
 abstract class Factory extends EloquentFactory
 {
+    /**
+     * Get the appropriate model factory for the given model name.
+     */
     public static function factoryForEntity(string $modelName): EloquentFactory
     {
         /** @var EloquentFactory $factory */
@@ -38,9 +42,9 @@ abstract class Factory extends EloquentFactory
     /**
      * Create a collection of models and persist them to the database.
      *
-     * @param mixed $attributes
+     * @throws ReflectionException
      */
-    public function create($attributes = [], ?Model $parent = null)
+    public function create($attributes = [], Model $parent = null)
     {
         if ([] !== $attributes) {
             return $this->state($attributes)->create([], $parent);
@@ -48,14 +52,14 @@ abstract class Factory extends EloquentFactory
 
         $results = $this->make($attributes, $parent);
 
-        if ($results instanceof Model) {
-            $this->store(collect([$results]));
-
-            $this->callAfterCreating(collect([$results]), $parent);
-        } else {
+        if ($results instanceof Collection) {
             $this->store($results);
 
             $this->callAfterCreating($results, $parent);
+        } else {
+            $this->store(collect([$results]));
+
+            $this->callAfterCreating(collect([$results]), $parent);
         }
 
         return $results;
@@ -76,9 +80,9 @@ abstract class Factory extends EloquentFactory
     /**
      * Create a collection of models.
      *
-     * @param mixed $attributes
+     * @throws ReflectionException
      */
-    public function make($attributes = [], ?Model $parent = null)
+    public function make($attributes = [], Model $parent = null)
     {
         if ([] !== $attributes) {
             return $this->state($attributes)->make([], $parent);
@@ -91,12 +95,14 @@ abstract class Factory extends EloquentFactory
         }
 
         if (1 > $this->count) {
-            return $this->newModel()->newCollection();
+            $entityClass = $this->modelName();
+
+            return Collection::make([new $entityClass()]);
         }
 
-        $instances = $this->newModel()->newCollection(array_map(function () use ($parent) {
+        $instances = Collection::times($this->count, function () use ($parent): object {
             return $this->makeInstance($parent);
-        }, range(1, $this->count)));
+        });
 
         $this->callAfterMaking($instances);
 
@@ -108,34 +114,28 @@ abstract class Factory extends EloquentFactory
      */
     protected function store(Collection $results): void
     {
-        $results->each(function ($model): void {
-            if (! isset($this->connection)) {
-                $model->setConnection($model->newQueryWithoutScopes()->getConnection()->getName());
-            }
+        $results->each(function ($entity): void {
+            /** @var ORMInterface $orm */
+            $orm = app(ORMInterface::class);
 
-            $model->save();
-
-            foreach ($model->getRelations() as $name => $items) {
-                if ($items instanceof Enumerable && $items->isEmpty()) {
-                    $model->unsetRelation($name);
-                }
-            }
-
-            $this->createChildren($model);
+            $repository = $orm->getRepository($this->modelName());
+            $repository->persist($entity);
         });
     }
 
     /**
      * Make an instance of the model with the given attributes.
+     *
+     * @throws ReflectionException
      */
     protected function makeInstance(?Model $parent)
     {
-        return Model::unguarded(function () use ($parent) {
-            return tap($this->newModel($this->getExpandedAttributes($parent)), function ($instance): void {
-                if (isset($this->connection)) {
-                    $instance->setConnection($this->connection);
-                }
-            });
-        });
+        $hydrator = new ReflectionHydrator();
+        $object = (new ReflectionClass($this->modelName()))->newInstanceWithoutConstructor();
+
+        return $hydrator->hydrate(
+            $this->getRawAttributes($parent),
+            $object
+        );
     }
 }

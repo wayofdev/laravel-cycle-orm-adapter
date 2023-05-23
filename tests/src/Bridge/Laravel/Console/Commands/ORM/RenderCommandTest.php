@@ -6,7 +6,6 @@ namespace WayOfDev\Tests\Bridge\Laravel\Console\Commands\ORM;
 
 use Cycle\ORM\Parser\Typecast;
 use Cycle\ORM\SchemaInterface;
-use Illuminate\Support\Facades\Artisan;
 use WayOfDev\Tests\TestCase;
 
 class RenderCommandTest extends TestCase
@@ -39,7 +38,7 @@ class RenderCommandTest extends TestCase
             ],
         ]);
 
-        Artisan::call('cycle:orm:render', ['--no-color' => true]);
+        $this->artisanCall('cycle:orm:render', ['--no-color' => true]);
 
         $this->assertConsoleCommandOutputContainsStrings('cycle:orm:render', ['--no-color' => true], [
             'Mapper: custom_mapper',

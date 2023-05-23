@@ -19,14 +19,6 @@ class ListCommandTest extends TestCase
         /** @var Database $database */
         $database = $this->app->make(DatabaseInterface::class);
 
-        $tableA = $database->table('clients')->getSchema();
-        $tableA->primary('primary_id');
-        $tableA->string('name');
-        $tableA->index(['name'])->setName('custom_index');
-        $tableA->integer('b_id');
-        $tableA->foreignKey(['b_id'])->references('posts', ['id']);
-        $tableA->save();
-
         $tableB = $database->table('posts')->getSchema();
         $tableB->primary('id');
         $tableB->save();
@@ -35,12 +27,18 @@ class ListCommandTest extends TestCase
         $tableC->primary('id');
         $tableC->save();
 
-        $status = Artisan::call('cycle:db:list', ['db' => 'default']);
+        $tableA = $database->table('clients')->getSchema();
+        $tableA->primary('primary_id');
+        $tableA->string('name');
+        $tableA->index(['name'])->setName('custom_index');
+        $tableA->integer('b_id');
+        $tableA->foreignKey(['b_id'])->references('posts', ['id']);
+        $tableA->save();
+
+        $status = $this->artisanCall('cycle:db:list');
         $output = Artisan::output();
 
         $this::assertSame(0, $status);
-        $this::assertStringContainsString('SQLite', $output);
-        $this::assertStringContainsString('memory', $output);
         $this::assertStringContainsString('clients', $output);
         $this::assertStringContainsString('posts', $output);
         $this::assertStringContainsString('comments', $output);

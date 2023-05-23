@@ -33,7 +33,7 @@ class TableCommandTest extends TestCase
         $tableB->index(['some_int'])->setName('custom_index');
         $tableB->save();
 
-        $status = Artisan::call('cycle:db:table', ['--database' => 'default', 'table' => 'sample']);
+        $status = $this->artisanCall('cycle:db:table', ['--database' => 'default', 'table' => 'sample']);
         $output = Artisan::output();
 
         $this::assertSame(0, $status);
