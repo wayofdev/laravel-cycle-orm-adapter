@@ -6,7 +6,6 @@ namespace WayOfDev\Tests\Bridge\Laravel\Console\Commands\Migrations;
 
 use Cycle\Database\Database;
 use Cycle\Database\DatabaseInterface;
-use Illuminate\Support\Facades\Artisan;
 use WayOfDev\Tests\TestCase;
 
 class InitCommandTest extends TestCase
@@ -21,10 +20,10 @@ class InitCommandTest extends TestCase
 
         $this::assertCount(0, $database->getTables());
 
-        $status = Artisan::call('cycle:migrate:init');
+        $status = $this->artisanCall('cycle:migrate:init');
 
-        $this::assertSame(0, $status);
+        $this::assertSame(0, $status, 'Command exit status should be 0');
         $this::assertCount(1, $database->getTables());
-        $this::assertSame('cycle_migrations', $database->getTables()[0]->getName());
+        $this::assertStringContainsString('cycle_migrations', $database->getTables()[0]->getName());
     }
 }

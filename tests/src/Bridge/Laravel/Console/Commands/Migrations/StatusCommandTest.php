@@ -22,23 +22,23 @@ class StatusCommandTest extends TestCase
 
         $this::assertConsoleCommandOutputContainsStrings('cycle:migrate:status', [], 'No migrations');
 
-        Artisan::call('cycle:migrate:init');
+        $this->artisanCall('cycle:migrate:init');
 
-        Artisan::call('cycle:migrate:status');
+        $this->artisanCall('cycle:migrate:status');
         $output = Artisan::output();
         $this::assertStringContainsString('No migrations', $output);
 
-        Artisan::call('cycle:orm:migrate');
+        $this->artisanCall('cycle:orm:migrate');
         $this::assertCount(1, $database->getTables());
 
-        Artisan::call('cycle:migrate:status');
+        $this->artisanCall('cycle:migrate:status');
         $output = Artisan::output();
         $this::assertStringContainsString('not executed yet', $output);
 
-        Artisan::call('cycle:migrate', ['--force' => true]);
+        $this->artisanCall('cycle:migrate', ['--force' => true]);
         $this::assertCount(3, $database->getTables());
 
-        Artisan::call('cycle:migrate:status');
+        $this->artisanCall('cycle:migrate:status');
         $output2 = Artisan::output();
         $this::assertNotSame($output, $output2);
     }

@@ -42,18 +42,26 @@ jobs:
         if: steps.cached-composer-dependencies.outputs.cache-hit != 'true'
         run: composer install
 
+      - name: 🛠️ Prepare environment
+        run: |
+          mkdir -p ./.build/php-cs-fixer
+          mkdir -p ./.build/phpstan
+          mkdir -p ./.build/phpunit
+
       - name: 🚨 Run coding standards task
-        run: make cs-diff
+        run: composer cs:diff
         env:
           PHP_CS_FIXER_IGNORE_ENV: true
 
       - name: 🧪 Execute phpunit tests
         env:
           XDEBUG_MODE: coverage
-        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ":memory:"
+        run: vendor/bin/pest --coverage-clover=coverage.xml
 
       - name: 📝 Run static analysis using phpstan
-        run: make stan
+        run: composer stan:ci
 
       - name: 📤 Upload coverage report to Codecov
         uses: codecov/codecov-action@v3

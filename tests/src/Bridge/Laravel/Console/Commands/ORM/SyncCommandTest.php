@@ -19,7 +19,7 @@ class SyncCommandTest extends TestCase
      */
     public function it_runs_handle(): void
     {
-        Artisan::call('cycle:orm:sync');
+        $this->artisanCall('cycle:orm:sync');
         $output = Artisan::output();
 
         $this::assertStringContainsString('default.users', $output);

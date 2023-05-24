@@ -30,25 +30,34 @@ class User
     public ?User $friend = null;
 
     #[HasMany(target: User::class, outerKey: 'userId', nullable: true)]
-    public iterable $friends = [];
+    public null|iterable $friends = [];
 
     #[HasMany(target: User::class, outerKey: 'userId', nullable: true, collection: 'array')]
-    public array $friendsAsArray = [];
-
-    #[HasMany(target: User::class, outerKey: 'userId', nullable: true, collection: 'doctrine')]
-    public Collection $friendsAsDoctrineCollection;
+    public ?array $friendsAsArray = [];
 
     #[HasMany(target: Role::class)]
-    public Collection $roles;
+    public ?Collection $roles;
 
     #[HasMany(target: User::class, outerKey: 'userId', nullable: true, collection: 'illuminate')]
-    public Collection $friendsAsIlluminateCollection;
+    public ?Collection $friendsAsIlluminateCollection;
 
-    public function __construct(
-        #[Column(type: 'string')]
-        private string $name
-    ) {
-        $this->friendsAsDoctrineCollection = new Collection();
+    #[Column(type: 'string', nullable: true)]
+    public string $name;
+
+    public static function resolveFactoryName(): string
+    {
+        return UserFactory::class;
+    }
+
+    protected static function newFactory(): UserFactory
+    {
+        return UserFactory::new();
+    }
+
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+
         $this->roles = new Collection();
         $this->friendsAsIlluminateCollection = new Collection();
     }
@@ -57,6 +66,11 @@ class User
     {
         $this->friendsAsArray[] = $user;
         $user->friend = $this;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     public function getName(): string

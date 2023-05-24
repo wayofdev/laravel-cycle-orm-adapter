@@ -42,7 +42,9 @@ final class RegisterConfigs
             /** @var IlluminateConfig $config */
             $config = $app->get(IlluminateConfig::class);
 
-            return new MigrationConfig($config->get(Registrator::CFG_KEY_MIGRATIONS));
+            return new MigrationConfig(
+                config: $config->get(Registrator::CFG_KEY_MIGRATIONS)
+            );
         });
     }
 
@@ -52,7 +54,9 @@ final class RegisterConfigs
             /** @var IlluminateConfig $config */
             $config = $app->get(IlluminateConfig::class);
 
-            return new TokenizerConfig($config->get(Registrator::CFG_KEY_TOKENIZER));
+            return new TokenizerConfig(
+                config: $config->get(Registrator::CFG_KEY_TOKENIZER)
+            );
         });
     }
 
@@ -62,7 +66,9 @@ final class RegisterConfigs
             /** @var IlluminateConfig $config */
             $config = $app->get(IlluminateConfig::class);
 
-            return new SchemaConfig($config->get(Registrator::CFG_KEY_SCHEMA));
+            return new SchemaConfig(
+                config: $config->get(Registrator::CFG_KEY_SCHEMA)
+            );
         });
     }
 
@@ -73,7 +79,9 @@ final class RegisterConfigs
             $config = $app->get(IlluminateConfig::class);
             $relations = RelationConfig::getDefault()->toArray() + $config->get(Registrator::CFG_KEY_RELATIONS);
 
-            return new RelationConfig($relations);
+            return new RelationConfig(
+                config: $relations
+            );
         });
     }
 }
