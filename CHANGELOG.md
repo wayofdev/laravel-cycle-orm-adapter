@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.6](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.2.5...v2.2.6) (2023-05-24)
+
+
+### Bug Fixes
+
+* phpstan errors ([810c15d](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/810c15dd91475f6d384ac78793e695a45fa971f4))
+
 ## [2.2.5](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.2.4...v2.2.5) (2023-05-24)
 
 
