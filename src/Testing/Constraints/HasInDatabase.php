@@ -6,12 +6,11 @@ namespace WayOfDev\Cycle\Testing\Constraints;
 
 use Cycle\Database\DatabaseInterface;
 use Cycle\Database\DatabaseProviderInterface;
+use Cycle\Database\Query\SelectQuery;
 use JsonException;
 use PHPUnit\Framework\Constraint\Constraint;
 use Throwable;
 
-use function array_key_first;
-use function array_keys;
 use function json_encode;
 use function sprintf;
 
@@ -30,11 +29,9 @@ class HasInDatabase extends Constraint
         $this->database = $database->database();
     }
 
-    /**
-     * @param string $table
-     */
-    public function matches($table): bool
+    public function matches(mixed $table): bool
     {
+        /** @var SelectQuery $tableInterface */
         $tableInterface = $this->database->table($table);
 
         try {
@@ -52,10 +49,9 @@ class HasInDatabase extends Constraint
     public function failureDescription(mixed $table): string
     {
         return sprintf(
-            "a row in the table [%s] matches the attributes %s.\n\n%s",
+            'a row in the table [%s] matches the attributes %s.',
             $table,
-            $this->toString(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
-            $this->getAdditionalInfo($table)
+            $this->toString(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
         );
     }
 
@@ -65,35 +61,5 @@ class HasInDatabase extends Constraint
     public function toString(int $options = 0): string
     {
         return json_encode($this->data, JSON_THROW_ON_ERROR | $options);
-    }
-
-    protected function getAdditionalInfo(string $table): string
-    {
-        $query = $this->database->table($table);
-
-        $similarResults = $query->where(
-            array_key_first($this->data),
-            $this->data[array_key_first($this->data)]
-        )->select(array_keys($this->data))->limit($this->show)->get();
-
-        if ($similarResults->isNotEmpty()) {
-            $description = 'Found similar results: ' . json_encode($similarResults, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-        } else {
-            $query = $this->database->table($table);
-
-            $results = $query->select(array_keys($this->data))->limit($this->show)->get();
-
-            if ($results->isEmpty()) {
-                return 'The table is empty';
-            }
-
-            $description = 'Found: ' . json_encode($results, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-        }
-
-        if ($query->count() > $this->show) {
-            $description .= sprintf(' and %s others', $query->count() - $this->show);
-        }
-
-        return $description;
     }
 }

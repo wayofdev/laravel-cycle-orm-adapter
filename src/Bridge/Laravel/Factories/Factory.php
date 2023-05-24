@@ -119,6 +119,7 @@ abstract class Factory extends EloquentFactory
             $orm = app(ORMInterface::class);
 
             $repository = $orm->getRepository($this->modelName());
+            // @phpstan-ignore-next-line
             $repository->persist($entity);
         });
     }

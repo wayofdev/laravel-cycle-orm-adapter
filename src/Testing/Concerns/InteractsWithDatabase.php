@@ -6,16 +6,12 @@ namespace WayOfDev\Cycle\Testing\Concerns;
 
 use Cycle\Database\DatabaseProviderInterface;
 use Exception;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot as ReverseConstraint;
 use WayOfDev\Cycle\Testing\Constraints\CountInDatabase;
 use WayOfDev\Cycle\Testing\Constraints\HasInDatabase;
 use WayOfDev\Cycle\Testing\Constraints\NotSoftDeletedInDatabase;
 use WayOfDev\Cycle\Testing\Constraints\SoftDeletedInDatabase;
-
-use function in_array;
 
 /**
  * @method void assertThat($value, Constraint $constraint, string $message = '')
@@ -131,15 +127,6 @@ trait InteractsWithDatabase
         );
 
         return $this;
-    }
-
-    /**
-     * @param string|object $model
-     */
-    protected function isSoftDeletableModel($model): bool
-    {
-        return $model instanceof Model
-            && in_array(SoftDeletes::class, class_uses_recursive($model));
     }
 
     /**

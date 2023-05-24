@@ -42,6 +42,12 @@ jobs:
         if: steps.cached-composer-dependencies.outputs.cache-hit != 'true'
         run: composer install
 
+      - name: 🛠️ Prepare environment
+        run: |
+          mkdir -p ./.build/php-cs-fixer
+          mkdir -p ./.build/phpstan
+          mkdir -p ./.build/phpunit
+
       - name: 🚨 Run coding standards task
         run: composer cs:diff
         env:

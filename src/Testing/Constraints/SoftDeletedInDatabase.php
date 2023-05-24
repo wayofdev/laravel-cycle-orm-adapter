@@ -6,6 +6,7 @@ namespace WayOfDev\Cycle\Testing\Constraints;
 
 use Cycle\Database\DatabaseInterface;
 use Cycle\Database\DatabaseProviderInterface;
+use Cycle\Database\Query\SelectQuery;
 use PHPUnit\Framework\Constraint\Constraint;
 
 use function json_encode;
@@ -30,9 +31,12 @@ class SoftDeletedInDatabase extends Constraint
 
     public function matches($table): bool
     {
-        return $this->database->table($table)
+        /** @var SelectQuery $query */
+        $query = $this->database->table($table);
+
+        return $query
             ->where($this->data)
-            ->whereNotNull($this->deletedAtColumn)
+            ->where($this->deletedAtColumn, 'IS NOT', null)
             ->count() > 0;
     }
 
@@ -53,11 +57,12 @@ class SoftDeletedInDatabase extends Constraint
 
     protected function getAdditionalInfo($table): string
     {
+        /** @var SelectQuery $query */
         $query = $this->database->table($table);
 
-        $results = $query->limit($this->show)->get();
+        $results = $query->limit($this->show)->fetchAll();
 
-        if ($results->isEmpty()) {
+        if ([] === $results) {
             return 'The table is empty';
         }
 
