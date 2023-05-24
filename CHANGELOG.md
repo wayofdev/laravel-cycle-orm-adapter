@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.7](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.2.6...v2.2.7) (2023-05-24)
+
+
+### Miscellaneous
+
+* **deps:** update dependency phpstan/extension-installer to v1.3.1 ([40925bd](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/40925bdb5f051da6cdada981463f8200749326ed))
+
 ## [2.2.6](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.2.5...v2.2.6) (2023-05-24)
 
 
