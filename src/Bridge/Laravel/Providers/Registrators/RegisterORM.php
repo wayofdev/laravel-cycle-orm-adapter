@@ -14,6 +14,7 @@ use Cycle\ORM\ORM;
 use Cycle\ORM\ORMInterface;
 use Cycle\ORM\SchemaInterface;
 use Illuminate\Contracts\Foundation\Application;
+use WayOfDev\Cycle\Bridge\Laravel\Factories\SpiralFactory;
 use WayOfDev\Cycle\Schema\Config\SchemaConfig;
 
 /**
@@ -32,6 +33,7 @@ final class RegisterORM
             return new Factory(
                 dbal: $app->get(DatabaseProviderInterface::class),
                 config: $app->get(RelationConfig::class),
+                factory: $app->get(SpiralFactory::class),
                 defaultCollectionFactory: $factory
             );
         });

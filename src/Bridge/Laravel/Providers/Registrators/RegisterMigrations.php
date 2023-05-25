@@ -22,7 +22,7 @@ final class RegisterMigrations
             $config = $app->get(MigrationConfig::class);
 
             return new FileRepository(
-                config: $config
+                config: $config,
             );
         });
 
