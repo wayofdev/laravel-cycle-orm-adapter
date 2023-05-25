@@ -20,7 +20,6 @@ class Repository extends CycleRepository
      * Create repository linked to one specific selector.
      *
      * @param Select<TEntity> $select
-     * @param EntityManagerInterface $entityManager
      */
     public function __construct(
         // @phpstan-ignore-next-line
