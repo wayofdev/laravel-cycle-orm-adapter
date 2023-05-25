@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.2.8...v3.0.0) (2023-05-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* bind laravel container into ORM
+
+### Features
+
+* bind laravel container into ORM ([4210068](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/4210068d53df63aa822cf6b45a8aa75df5bad7b8))
+
 ## [2.2.8](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.2.7...v2.2.8) (2023-05-24)
 
 
