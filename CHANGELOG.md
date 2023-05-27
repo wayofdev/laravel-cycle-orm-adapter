@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.0.0...v3.0.1) (2023-05-27)
+
+
+### Bug Fixes
+
+* single format for all packages ([02e1806](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/02e1806ef560c68cc88ab643fdb968625bcf02a9))
+
 ## [3.0.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v2.2.8...v3.0.0) (2023-05-25)
 
 
