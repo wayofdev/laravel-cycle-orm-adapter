@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.2](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.0.1...v3.0.2) (2023-05-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency symfony/console to v6.2.11 ([59abffa](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/59abffad86f43f888e4a5ec841323a706738f860))
+
 ## [3.0.1](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.0.0...v3.0.1) (2023-05-27)
 
 
