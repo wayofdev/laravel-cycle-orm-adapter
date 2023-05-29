@@ -27,21 +27,21 @@ class CountInDatabase extends Constraint
         $this->database = $database->database();
     }
 
-    public function matches(mixed $table): bool
+    public function matches(mixed $other): bool
     {
         /** @var Table $tableInterface */
-        $tableInterface = $this->database->table($table);
+        $tableInterface = $this->database->table($other);
 
         $this->actualCount = $tableInterface->count();
 
         return $this->actualCount === $this->expectedCount;
     }
 
-    public function failureDescription(mixed $table): string
+    public function failureDescription(mixed $other): string
     {
         return sprintf(
             "table [%s] matches expected entries count of %s. Entries found: %s.\n",
-            $table,
+            $other,
             $this->expectedCount,
             $this->actualCount
         );

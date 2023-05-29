@@ -29,10 +29,10 @@ class HasInDatabase extends Constraint
         $this->database = $database->database();
     }
 
-    public function matches(mixed $table): bool
+    public function matches(mixed $other): bool
     {
         /** @var SelectQuery $tableInterface */
-        $tableInterface = $this->database->table($table);
+        $tableInterface = $this->database->table($other);
 
         try {
             $count = $tableInterface->where($this->data)->count();
@@ -46,11 +46,11 @@ class HasInDatabase extends Constraint
     /**
      * @throws JsonException
      */
-    public function failureDescription(mixed $table): string
+    public function failureDescription(mixed $other): string
     {
         return sprintf(
             'a row in the table [%s] matches the attributes %s.',
-            $table,
+            $other,
             $this->toString(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
         );
     }

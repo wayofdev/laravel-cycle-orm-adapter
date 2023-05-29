@@ -44,16 +44,6 @@ class User
     #[Column(type: 'string', nullable: true)]
     public string $name;
 
-    public static function resolveFactoryName(): string
-    {
-        return UserFactory::class;
-    }
-
-    protected static function newFactory(): UserFactory
-    {
-        return UserFactory::new();
-    }
-
     public function __construct(string $name)
     {
         $this->name = $name;
