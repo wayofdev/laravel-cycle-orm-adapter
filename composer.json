@@ -50,12 +50,8 @@
         "wayofdev/cs-fixer-config": "^1.1"
     },
     "autoload": {
-        "files": [
-            "src/helpers.php"
-        ],
         "psr-4": {
-            "WayOfDev\\Cycle\\": "src/",
-            "WayOfDev\\Cycle\\Database\\Factories\\": "database/factories/"
+            "WayOfDev\\Cycle\\": "src/"
         }
     },
     "autoload-dev": {
