@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.0.2...v3.1.0) (2023-05-29)
+
+
+### Features
+
+* keep this package simple, remove laravel factories ([1b60ed9](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/1b60ed96a5fee765a5cabf0ae1ddd67be22b9fdd))
+
 ## [3.0.2](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.0.1...v3.0.2) (2023-05-27)
 
 
