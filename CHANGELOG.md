@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.1.4...v3.2.0) (2023-06-03)
+
+
+### Features
+
+* add refresh database testing helper ([b49d805](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/b49d80525b2bb082306dbe2936de885bf2a6bd30))
+
 ## [3.1.4](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.1.3...v3.1.4) (2023-06-03)
 
 
