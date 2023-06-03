@@ -7,9 +7,7 @@ namespace WayOfDev\Tests;
 use Faker\Factory as FakerFactory;
 use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\File;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Spatie\LaravelRay\RayServiceProvider;
 use WayOfDev\Cycle\Bridge\Laravel\Providers\CycleServiceProvider;
@@ -29,6 +27,8 @@ class TestCase extends OrchestraTestCase
     use InteractsWithDatabase;
     use RefreshDatabase;
 
+    protected ?string $migrationsPath = null;
+
     final protected static function faker(string $locale = 'en_US'): Generator
     {
         /** @var array<string, Generator> $fakers */
@@ -45,12 +45,9 @@ class TestCase extends OrchestraTestCase
     {
         parent::setUp();
 
-        $this->cleanupMigrations();
+        $this->migrationsPath = __DIR__ . '/../app/database/migrations/cycle';
+        $this->cleanupMigrations($this->migrationsPath . '/*.php');
         $this->refreshDatabase();
-
-        Factory::guessFactoryNamesUsing(
-            static fn (string $modelName) => 'WayOfDev\\Laravel\\Cycle\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
-        );
 
         if (app()->environment() === 'testing') {
             config()->set([
@@ -58,14 +55,14 @@ class TestCase extends OrchestraTestCase
                     config('cycle.tokenizer.directories'),
                     [__DIR__ . '/../app/Entities']
                 ),
-                'cycle.migrations.directory' => __DIR__ . '/../app/database/migrations/cycle',
+                'cycle.migrations.directory' => $this->migrationsPath,
             ]);
         }
     }
 
     protected function tearDown(): void
     {
-        $this->cleanupMigrations();
+        $this->cleanupMigrations($this->migrationsPath . '/*.php');
         $this->refreshDatabase();
 
         parent::tearDown();
@@ -104,15 +101,5 @@ class TestCase extends OrchestraTestCase
             CycleServiceProvider::class,
             RayServiceProvider::class,
         ];
-    }
-
-    protected function cleanupMigrations(): void
-    {
-        $path = __DIR__ . '/../app/database/migrations/cycle/*.php';
-
-        $files = File::glob($path);
-        foreach ($files as $file) {
-            File::delete($file);
-        }
     }
 }

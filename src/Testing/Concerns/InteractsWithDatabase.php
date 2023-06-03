@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace WayOfDev\Cycle\Testing\Concerns;
 
 use Cycle\Database\DatabaseProviderInterface;
+use Illuminate\Support\Facades\File;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot as ReverseConstraint;
 use WayOfDev\Cycle\Testing\Constraints\CountInDatabase;
@@ -78,5 +79,13 @@ trait InteractsWithDatabase
         );
 
         return $this;
+    }
+
+    protected function cleanupMigrations(string $pathGlob): void
+    {
+        $files = File::glob($pathGlob);
+        foreach ($files as $file) {
+            File::delete($file);
+        }
     }
 }
