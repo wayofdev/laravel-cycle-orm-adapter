@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace WayOfDev\Tests;
 
-use Cycle\Database\DatabaseProviderInterface;
-use Cycle\Database\Driver\HandlerInterface;
-use Cycle\Database\Table;
 use Faker\Factory as FakerFactory;
 use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel;
@@ -17,6 +14,7 @@ use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Spatie\LaravelRay\RayServiceProvider;
 use WayOfDev\Cycle\Bridge\Laravel\Providers\CycleServiceProvider;
 use WayOfDev\Cycle\Testing\Concerns\InteractsWithDatabase;
+use WayOfDev\Cycle\Testing\RefreshDatabase;
 
 use function array_key_exists;
 use function array_merge;
@@ -29,6 +27,7 @@ use function sprintf;
 class TestCase extends OrchestraTestCase
 {
     use InteractsWithDatabase;
+    use RefreshDatabase;
 
     final protected static function faker(string $locale = 'en_US'): Generator
     {
@@ -75,28 +74,6 @@ class TestCase extends OrchestraTestCase
     public function artisanCall(string $command, array $parameters = [])
     {
         return $this->app[Kernel::class]->call($command, $parameters);
-    }
-
-    protected function refreshDatabase(): void
-    {
-        $database = app(DatabaseProviderInterface::class)->database('default');
-
-        /** @var Table $table */
-        foreach ($database->getTables() as $table) {
-            $schema = $table->getSchema();
-            foreach ($schema->getForeignKeys() as $foreign) {
-                $schema->dropForeignKey($foreign->getColumns());
-            }
-
-            $schema->save(HandlerInterface::DROP_FOREIGN_KEYS);
-        }
-
-        /** @var Table $table */
-        foreach ($database->getTables() as $table) {
-            $schema = $table->getSchema();
-            $schema->declareDropped();
-            $schema->save();
-        }
     }
 
     protected function assertConsoleCommandOutputContainsStrings(
