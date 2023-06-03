@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.2.0...v3.3.0) (2023-06-03)
+
+
+### Features
+
+* add migrations cleanup helper ([9fa30c8](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/9fa30c880695776c30ad49ec549f1a23261bfff4))
+
 ## [3.2.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.1.4...v3.2.0) (2023-06-03)
 
 
