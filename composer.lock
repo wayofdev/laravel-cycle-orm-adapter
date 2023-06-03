@@ -8020,27 +8020,27 @@
         },
         {
             "name": "pestphp/pest-plugin-arch",
-            "version": "v2.1.2",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pestphp/pest-plugin-arch.git",
-                "reference": "485cbfbe2e194e9cfd8284625bd8922c9d27ac6f"
+                "reference": "88725fd0d6ae4025df39c27bd91e98d14b8f1916"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pestphp/pest-plugin-arch/zipball/485cbfbe2e194e9cfd8284625bd8922c9d27ac6f",
-                "reference": "485cbfbe2e194e9cfd8284625bd8922c9d27ac6f",
+                "url": "https://api.github.com/repos/pestphp/pest-plugin-arch/zipball/88725fd0d6ae4025df39c27bd91e98d14b8f1916",
+                "reference": "88725fd0d6ae4025df39c27bd91e98d14b8f1916",
                 "shasum": ""
             },
             "require": {
-                "nunomaduro/collision": "^7.5.0",
+                "nunomaduro/collision": "^7.5.2",
                 "pestphp/pest-plugin": "^2.0.1",
                 "php": "^8.1",
                 "ta-tikoma/phpunit-architecture-test": "^0.7.3"
             },
             "require-dev": {
-                "pestphp/pest": "^2.5.1",
-                "pestphp/pest-dev-tools": "^2.6.0"
+                "pestphp/pest": "dev-develop as 2.6.2",
+                "pestphp/pest-dev-tools": "^2.10.0"
             },
             "type": "library",
             "autoload": {
@@ -8068,7 +8068,7 @@
                 "unit"
             ],
             "support": {
-                "source": "https://github.com/pestphp/pest-plugin-arch/tree/v2.1.2"
+                "source": "https://github.com/pestphp/pest-plugin-arch/tree/v2.2.0"
             },
             "funding": [
                 {
@@ -8080,7 +8080,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-04-19T08:48:22+00:00"
+            "time": "2023-06-02T23:15:55+00:00"
         },
         {
             "name": "pestphp/pest-plugin-laravel",
@@ -8374,16 +8374,16 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "1.7.1",
+            "version": "1.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "dfc078e8af9c99210337325ff5aa152872c98714"
+                "reference": "b2fe4d22a5426f38e014855322200b97b5362c0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/dfc078e8af9c99210337325ff5aa152872c98714",
-                "reference": "dfc078e8af9c99210337325ff5aa152872c98714",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/b2fe4d22a5426f38e014855322200b97b5362c0d",
+                "reference": "b2fe4d22a5426f38e014855322200b97b5362c0d",
                 "shasum": ""
             },
             "require": {
@@ -8426,9 +8426,9 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
-                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.7.1"
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.7.2"
             },
-            "time": "2023-03-27T19:02:04+00:00"
+            "time": "2023-05-30T18:13:47+00:00"
         },
         {
             "name": "phpmyadmin/sql-parser",
@@ -8563,22 +8563,23 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.21.1",
+            "version": "1.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "e560a3eb5e76b35d6d92377e5abb6887c1c13c95"
+                "reference": "ec58baf7b3c7f1c81b3b00617c953249fb8cf30c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/e560a3eb5e76b35d6d92377e5abb6887c1c13c95",
-                "reference": "e560a3eb5e76b35d6d92377e5abb6887c1c13c95",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/ec58baf7b3c7f1c81b3b00617c953249fb8cf30c",
+                "reference": "ec58baf7b3c7f1c81b3b00617c953249fb8cf30c",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
+                "doctrine/annotations": "^2.0",
                 "nikic/php-parser": "^4.15",
                 "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpstan/extension-installer": "^1.0",
@@ -8603,9 +8604,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.21.1"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.22.0"
             },
-            "time": "2023-05-29T11:55:57+00:00"
+            "time": "2023-06-01T12:35:21+00:00"
         },
         {
             "name": "phpstan/phpstan",
