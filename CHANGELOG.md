@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.5](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.3.4...v3.3.5) (2023-06-06)
+
+
+### Miscellaneous
+
+* **deps:** update dependency nunomaduro/larastan to v2.6.1 ([fe0e51a](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/fe0e51a127b05eb48952636bb8f58f7bd5a999db))
+
 ## [3.3.4](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.3.3...v3.3.4) (2023-06-05)
 
 
