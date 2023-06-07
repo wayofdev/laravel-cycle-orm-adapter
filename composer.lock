@@ -11842,16 +11842,16 @@
         },
         {
             "name": "wayofdev/cs-fixer-config",
-            "version": "v1.2.9",
+            "version": "v1.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wayofdev/php-cs-fixer-config.git",
-                "reference": "aec853c4975d0eb0150a3b139ad6ef4672c5e78d"
+                "reference": "d5a29d1fcbb8d8e09e003cc63710c9d40a041971"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wayofdev/php-cs-fixer-config/zipball/aec853c4975d0eb0150a3b139ad6ef4672c5e78d",
-                "reference": "aec853c4975d0eb0150a3b139ad6ef4672c5e78d",
+                "url": "https://api.github.com/repos/wayofdev/php-cs-fixer-config/zipball/d5a29d1fcbb8d8e09e003cc63710c9d40a041971",
+                "reference": "d5a29d1fcbb8d8e09e003cc63710c9d40a041971",
                 "shasum": ""
             },
             "require": {
@@ -11902,7 +11902,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-05T07:51:31+00:00"
+            "time": "2023-06-05T12:38:52+00:00"
         },
         {
             "name": "zbateson/mail-mime-parser",
