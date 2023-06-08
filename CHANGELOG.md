@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.10](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.3.9...v3.3.10) (2023-06-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency cycle/database to v2.5.1 ([b3a9a6a](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/b3a9a6adc2b3fd840b436e62d57af4c4a035102d))
+
 ## [3.3.9](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.3.8...v3.3.9) (2023-06-08)
 
 
