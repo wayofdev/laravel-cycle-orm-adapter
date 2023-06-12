@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.15](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.3.14...v3.3.15) (2023-06-12)
+
+
+### Miscellaneous
+
+* **deps:** update dependency fakerphp/faker to v1.23.0 ([e22aab4](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/e22aab4a780d270bca04e021bd0437b47d9d8b90))
+
 ## [3.3.14](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.3.13...v3.3.14) (2023-06-12)
 
 
