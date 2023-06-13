@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.16](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.3.15...v3.3.16) (2023-06-13)
+
+
+### Miscellaneous
+
+* **deps:** update dependency orchestra/testbench to v8.5.7 ([45bb103](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/45bb103fcd21704e181cf3b10ccc4c5c9754702a))
+
 ## [3.3.15](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.3.14...v3.3.15) (2023-06-12)
 
 
