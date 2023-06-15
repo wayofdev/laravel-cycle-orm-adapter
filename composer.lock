@@ -8095,27 +8095,27 @@
         },
         {
             "name": "pestphp/pest-plugin-arch",
-            "version": "v2.2.0",
+            "version": "v2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pestphp/pest-plugin-arch.git",
-                "reference": "88725fd0d6ae4025df39c27bd91e98d14b8f1916"
+                "reference": "bac18387f015590e6d3883383cfb42e7550bb100"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pestphp/pest-plugin-arch/zipball/88725fd0d6ae4025df39c27bd91e98d14b8f1916",
-                "reference": "88725fd0d6ae4025df39c27bd91e98d14b8f1916",
+                "url": "https://api.github.com/repos/pestphp/pest-plugin-arch/zipball/bac18387f015590e6d3883383cfb42e7550bb100",
+                "reference": "bac18387f015590e6d3883383cfb42e7550bb100",
                 "shasum": ""
             },
             "require": {
-                "nunomaduro/collision": "^7.5.2",
+                "nunomaduro/collision": "^7.6.0",
                 "pestphp/pest-plugin": "^2.0.1",
                 "php": "^8.1",
                 "ta-tikoma/phpunit-architecture-test": "^0.7.3"
             },
             "require-dev": {
                 "pestphp/pest": "dev-develop as 2.6.2",
-                "pestphp/pest-dev-tools": "^2.10.0"
+                "pestphp/pest-dev-tools": "^2.12.0"
             },
             "type": "library",
             "autoload": {
@@ -8143,7 +8143,7 @@
                 "unit"
             ],
             "support": {
-                "source": "https://github.com/pestphp/pest-plugin-arch/tree/v2.2.0"
+                "source": "https://github.com/pestphp/pest-plugin-arch/tree/v2.2.1"
             },
             "funding": [
                 {
@@ -8155,7 +8155,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-02T23:15:55+00:00"
+            "time": "2023-06-15T16:05:13+00:00"
         },
         {
             "name": "pestphp/pest-plugin-laravel",
