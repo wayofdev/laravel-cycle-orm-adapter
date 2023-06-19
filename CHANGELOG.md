@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.3.23](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.3.22...v3.3.23) (2023-06-19)
+
+
+### Miscellaneous
+
+* **deps:** lock file maintenance ([2fcddf9](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/2fcddf948cf527f072fcf8a435fac73bb186ccf3))
+* **deps:** update dependency wayofdev/cs-fixer-config to v1.2.14 ([efd189e](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/efd189e09a5719e1231c32ffb8877b3e6b39f2c9))
+
 ## [3.3.22](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.3.21...v3.3.22) (2023-06-15)
 
 
