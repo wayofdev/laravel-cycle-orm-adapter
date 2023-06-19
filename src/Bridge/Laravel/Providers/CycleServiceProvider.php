@@ -53,10 +53,10 @@ final class CycleServiceProvider extends ServiceProvider
             Registrators\RegisterConfigs::class,
             Registrators\RegisterClassesInterface::class,
             Registrators\RegisterAnnotated::class,
-            Registrators\RegisterORM::class,
             Registrators\RegisterDatabase::class,
-            Registrators\RegisterMigrations::class,
             Registrators\RegisterSchema::class,
+            Registrators\RegisterORM::class,
+            Registrators\RegisterMigrations::class,
         ];
 
         foreach ($registrators as $registrator) {
