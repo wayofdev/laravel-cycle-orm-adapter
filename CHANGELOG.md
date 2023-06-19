@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.3.24...v3.4.0) (2023-06-19)
+
+
+### Features
+
+* bump version ([24641ec](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/24641ec95b07e71ac5e8623e9f7542b8b9325dd8))
+
 ## [3.3.24](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.3.23...v3.3.24) (2023-06-19)
 
 
