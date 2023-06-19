@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "ext-pdo": "*",
         "cycle/annotated": "*",
         "cycle/database": "^2.4",
@@ -63,8 +63,8 @@
     "scripts": {
         "cs:fix": "php vendor/bin/php-cs-fixer fix -v",
         "cs:diff": "php vendor/bin/php-cs-fixer fix --dry-run -v --diff",
-        "test": "php vendor/bin/pest",
-        "test:cc": "php vendor/bin/pest --coverage",
+        "test": "php vendor/bin/pest --colors=always",
+        "test:cc": "php vendor/bin/pest --colors=always --coverage",
         "stan": "php vendor/bin/phpstan analyse --memory-limit=256M",
         "stan:ci": "php vendor/bin/phpstan analyse --error-format=github",
         "post-autoload-dump": [
