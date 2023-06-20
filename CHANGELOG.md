@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.4.2](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.4.1...v3.4.2) (2023-06-20)
+
+
+### Miscellaneous
+
+* **deps:** update dependency phpstan/phpstan to v1.10.20 ([1832e5d](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/1832e5db5226add54e793a49bb3041658994e700))
+* **deps:** update dependency wayofdev/cs-fixer-config to v1.2.15 ([6fd6fa8](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/6fd6fa8573dad3877bb66947d469092647621c4a))
+
 ## [3.4.1](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.4.0...v3.4.1) (2023-06-20)
 
 
