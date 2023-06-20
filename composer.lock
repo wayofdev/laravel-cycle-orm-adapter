@@ -214,16 +214,16 @@
         },
         {
             "name": "cycle/orm",
-            "version": "v2.3.1",
+            "version": "v2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cycle/orm.git",
-                "reference": "86c1adccbd41dbae7a2157a1476093c7a96d54e8"
+                "reference": "15ea9c0ea0a7841d2483e55584312d6c183da20a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cycle/orm/zipball/86c1adccbd41dbae7a2157a1476093c7a96d54e8",
-                "reference": "86c1adccbd41dbae7a2157a1476093c7a96d54e8",
+                "url": "https://api.github.com/repos/cycle/orm/zipball/15ea9c0ea0a7841d2483e55584312d6c183da20a",
+                "reference": "15ea9c0ea0a7841d2483e55584312d6c183da20a",
                 "shasum": ""
             },
             "require": {
@@ -255,7 +255,7 @@
             "description": "PHP DataMapper ORM and Data Modelling Engine",
             "support": {
                 "issues": "https://github.com/cycle/orm/issues",
-                "source": "https://github.com/cycle/orm/tree/v2.3.1"
+                "source": "https://github.com/cycle/orm/tree/v2.3.2"
             },
             "funding": [
                 {
@@ -263,7 +263,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-05-01T11:08:56+00:00"
+            "time": "2023-06-19T21:41:40+00:00"
         },
         {
             "name": "cycle/schema-builder",
