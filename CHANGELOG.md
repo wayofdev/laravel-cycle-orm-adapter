@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.6](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.4.5...v3.4.6) (2023-06-23)
+
+
+### Miscellaneous
+
+* **deps:** update dependency spatie/laravel-ray to v1.32.5 ([1164af8](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/1164af82efa0b3663da309e5a821c715ba80f08a))
+
 ## [3.4.5](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.4.4...v3.4.5) (2023-06-22)
 
 
