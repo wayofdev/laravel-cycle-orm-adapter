@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.12](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.4.11...v3.4.12) (2023-06-29)
+
+
+### Miscellaneous
+
+* **deps:** update dependency nunomaduro/collision to v7.7.0 ([c2bb709](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/c2bb70917279b321f3abea8aadd229695a7f8df2))
+
 ## [3.4.11](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.4.10...v3.4.11) (2023-06-28)
 
 
