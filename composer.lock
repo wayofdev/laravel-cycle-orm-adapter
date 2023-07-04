@@ -2931,16 +2931,16 @@
         },
         {
             "name": "spiral/attributes",
-            "version": "v3.1.0",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spiral/attributes.git",
-                "reference": "b1c3f9cd8b7b0632f03e7046a38c2a98f3ed2e65"
+                "reference": "3d3aab14f2eb381b12e4cc8b857baf1acf42df2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spiral/attributes/zipball/b1c3f9cd8b7b0632f03e7046a38c2a98f3ed2e65",
-                "reference": "b1c3f9cd8b7b0632f03e7046a38c2a98f3ed2e65",
+                "url": "https://api.github.com/repos/spiral/attributes/zipball/3d3aab14f2eb381b12e4cc8b857baf1acf42df2c",
+                "reference": "3d3aab14f2eb381b12e4cc8b857baf1acf42df2c",
                 "shasum": ""
             },
             "require": {
@@ -2988,7 +2988,7 @@
                 "issues": "https://github.com/spiral/attributes/issues",
                 "source": "https://github.com/spiral/attributes"
             },
-            "time": "2023-03-15T07:25:15+00:00"
+            "time": "2023-07-04T10:58:38+00:00"
         },
         {
             "name": "spiral/core",
