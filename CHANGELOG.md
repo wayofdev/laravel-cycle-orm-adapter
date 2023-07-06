@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.4.28...v4.0.0) (2023-07-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* add ability to load cycle/entity-behavior
+
+### Features
+
+* add ability to load cycle/entity-behavior ([54de09a](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/54de09a8911d24230398167f1b81605a20544c10))
+
 ## [3.4.28](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v3.4.27...v3.4.28) (2023-07-06)
 
 
