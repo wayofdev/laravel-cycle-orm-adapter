@@ -6,6 +6,7 @@ namespace WayOfDev\Cycle\Bridge\Laravel\Providers\Registrators;
 
 use Cycle\Database\DatabaseProviderInterface;
 use Cycle\ORM\Config\RelationConfig;
+use Cycle\ORM\Entity\Behavior\EventDrivenCommandGenerator;
 use Cycle\ORM\EntityManager;
 use Cycle\ORM\EntityManagerInterface;
 use Cycle\ORM\Factory;
@@ -39,9 +40,17 @@ final class RegisterORM
         });
 
         $app->singleton(ORMInterface::class, function (Application $app): ORMInterface {
+            $commandGenerator = null;
+            $loadEntityBehavior = config('cycle.load_entity_behavior', true);
+
+            if (true === $loadEntityBehavior) {
+                $commandGenerator = new EventDrivenCommandGenerator($app->get(SchemaInterface::class), $app);
+            }
+
             return new ORM(
                 factory: $app->get(FactoryInterface::class),
-                schema: $app->get(SchemaInterface::class)
+                schema: $app->get(SchemaInterface::class),
+                commandGenerator: $commandGenerator
             );
         });
 

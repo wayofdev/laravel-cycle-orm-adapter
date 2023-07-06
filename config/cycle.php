@@ -235,4 +235,10 @@ return [
         //     \Cycle\ORM\Config\RelationConfig::RELATION => \Cycle\ORM\Relation\Embedded::class,
         // ],
     ],
+
+    /*
+     * Enables support of SoftDelete and other features from cycle/entity-behavior package
+     * @see https://github.com/cycle/entity-behavior
+     */
+    'load_cycle_behavior' => true,
 ];
