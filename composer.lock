@@ -8041,16 +8041,16 @@
         },
         {
             "name": "pestphp/pest",
-            "version": "v2.8.3",
+            "version": "v2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pestphp/pest.git",
-                "reference": "805b81edc05e6b5fafe84caee8350e81c9f54842"
+                "reference": "8322ff0f5e2d4d8c3ea7faa538f9c861482bb617"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pestphp/pest/zipball/805b81edc05e6b5fafe84caee8350e81c9f54842",
-                "reference": "805b81edc05e6b5fafe84caee8350e81c9f54842",
+                "url": "https://api.github.com/repos/pestphp/pest/zipball/8322ff0f5e2d4d8c3ea7faa538f9c861482bb617",
+                "reference": "8322ff0f5e2d4d8c3ea7faa538f9c861482bb617",
                 "shasum": ""
             },
             "require": {
@@ -8068,6 +8068,7 @@
             },
             "require-dev": {
                 "pestphp/pest-dev-tools": "^2.12.0",
+                "pestphp/pest-plugin-type-coverage": "^2.0.0",
                 "symfony/process": "^6.3.0"
             },
             "bin": [
@@ -8089,6 +8090,7 @@
                         "Pest\\Plugins\\ProcessIsolation",
                         "Pest\\Plugins\\Profile",
                         "Pest\\Plugins\\Retry",
+                        "Pest\\Plugins\\Snapshot",
                         "Pest\\Plugins\\Version",
                         "Pest\\Plugins\\Parallel"
                     ]
@@ -8113,7 +8115,7 @@
                     "email": "enunomaduro@gmail.com"
                 }
             ],
-            "description": "An elegant PHP Testing Framework.",
+            "description": "The elegant PHP Testing Framework.",
             "keywords": [
                 "framework",
                 "pest",
@@ -8124,7 +8126,7 @@
             ],
             "support": {
                 "issues": "https://github.com/pestphp/pest/issues",
-                "source": "https://github.com/pestphp/pest/tree/v2.8.3"
+                "source": "https://github.com/pestphp/pest/tree/v2.9.0"
             },
             "funding": [
                 {
@@ -8136,7 +8138,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-07-12T20:26:47+00:00"
+            "time": "2023-07-19T15:28:49+00:00"
         },
         {
             "name": "pestphp/pest-plugin",
