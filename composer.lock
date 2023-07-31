@@ -3884,16 +3884,16 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v6.3.2",
+            "version": "v6.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "78ce4c29757d657d2b41a91c328923b9a0d6b43d"
+                "reference": "9915db259f67d21eefee768c1abcf1cc61b1fc9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/78ce4c29757d657d2b41a91c328923b9a0d6b43d",
-                "reference": "78ce4c29757d657d2b41a91c328923b9a0d6b43d",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/9915db259f67d21eefee768c1abcf1cc61b1fc9e",
+                "reference": "9915db259f67d21eefee768c1abcf1cc61b1fc9e",
                 "shasum": ""
             },
             "require": {
@@ -3928,7 +3928,7 @@
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/finder/tree/v6.3.2"
+                "source": "https://github.com/symfony/finder/tree/v6.3.3"
             },
             "funding": [
                 {
@@ -3944,7 +3944,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-13T14:29:38+00:00"
+            "time": "2023-07-31T08:31:44+00:00"
         },
         {
             "name": "symfony/http-foundation",
@@ -8049,16 +8049,16 @@
         },
         {
             "name": "pestphp/pest",
-            "version": "v2.10.0",
+            "version": "v2.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pestphp/pest.git",
-                "reference": "5f7a1663dd38ba3845ed952fa3272ab8cc917b47"
+                "reference": "4de70da0a0d4aebc141f5a9a9ad4ccae56329895"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pestphp/pest/zipball/5f7a1663dd38ba3845ed952fa3272ab8cc917b47",
-                "reference": "5f7a1663dd38ba3845ed952fa3272ab8cc917b47",
+                "url": "https://api.github.com/repos/pestphp/pest/zipball/4de70da0a0d4aebc141f5a9a9ad4ccae56329895",
+                "reference": "4de70da0a0d4aebc141f5a9a9ad4ccae56329895",
                 "shasum": ""
             },
             "require": {
@@ -8135,7 +8135,7 @@
             ],
             "support": {
                 "issues": "https://github.com/pestphp/pest/issues",
-                "source": "https://github.com/pestphp/pest/tree/v2.10.0"
+                "source": "https://github.com/pestphp/pest/tree/v2.10.1"
             },
             "funding": [
                 {
@@ -8147,7 +8147,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-07-30T22:52:43+00:00"
+            "time": "2023-07-31T10:58:13+00:00"
         },
         {
             "name": "pestphp/pest-plugin",
