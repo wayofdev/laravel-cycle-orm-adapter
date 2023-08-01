@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.31](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.30...v4.0.31) (2023-08-01)
+
+
+### Miscellaneous
+
+* **deps:** update dependency pestphp/pest to v2.11.0 ([a729863](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/a72986375c5bb4d3bb2a0eb4688b8047d85d0446))
+
 ## [4.0.30](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.29...v4.0.30) (2023-08-01)
 
 
