@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.38](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.37...v4.0.38) (2023-08-05)
+
+
+### Miscellaneous
+
+* **deps:** update dependency phpstan/phpstan-deprecation-rules to v1.1.4 ([91757c8](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/91757c820eacc636d4177c33d65f99e04153027a))
+
 ## [4.0.37](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.36...v4.0.37) (2023-08-04)
 
 
