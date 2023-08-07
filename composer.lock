@@ -8098,21 +8098,21 @@
         },
         {
             "name": "pestphp/pest",
-            "version": "v2.12.1",
+            "version": "v2.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pestphp/pest.git",
-                "reference": "3742e74adf08415cef3912c10304e9184c1ee90d"
+                "reference": "e3a21384e69d6343f8223578bbc38d80e1224f08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pestphp/pest/zipball/3742e74adf08415cef3912c10304e9184c1ee90d",
-                "reference": "3742e74adf08415cef3912c10304e9184c1ee90d",
+                "url": "https://api.github.com/repos/pestphp/pest/zipball/e3a21384e69d6343f8223578bbc38d80e1224f08",
+                "reference": "e3a21384e69d6343f8223578bbc38d80e1224f08",
                 "shasum": ""
             },
             "require": {
                 "brianium/paratest": "^7.2.4",
-                "nunomaduro/collision": "^7.8.0",
+                "nunomaduro/collision": "^7.8.1",
                 "nunomaduro/termwind": "^1.15.1",
                 "pestphp/pest-plugin": "^2.0.1",
                 "pestphp/pest-plugin-arch": "^2.2.3",
@@ -8184,7 +8184,7 @@
             ],
             "support": {
                 "issues": "https://github.com/pestphp/pest/issues",
-                "source": "https://github.com/pestphp/pest/tree/v2.12.1"
+                "source": "https://github.com/pestphp/pest/tree/v2.12.2"
             },
             "funding": [
                 {
@@ -8196,7 +8196,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-08-04T10:23:55+00:00"
+            "time": "2023-08-07T09:29:25+00:00"
         },
         {
             "name": "pestphp/pest-plugin",
