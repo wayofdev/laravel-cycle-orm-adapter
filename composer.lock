@@ -7962,22 +7962,22 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v8.6.0",
+            "version": "v8.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "41d080cafc3e790d97a87903b567aa23503c7cc0"
+                "reference": "face71aed91a7f5f19ad13846cd81be27f29340d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/41d080cafc3e790d97a87903b567aa23503c7cc0",
-                "reference": "41d080cafc3e790d97a87903b567aa23503c7cc0",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/face71aed91a7f5f19ad13846cd81be27f29340d",
+                "reference": "face71aed91a7f5f19ad13846cd81be27f29340d",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": "^2.2",
                 "fakerphp/faker": "^1.21",
-                "laravel/framework": ">=10.17.0 <10.18.0",
+                "laravel/framework": ">=10.17.0 <10.19.0",
                 "mockery/mockery": "^1.5.1",
                 "orchestra/testbench-core": ">=8.6.0 <8.7.0",
                 "php": "^8.1",
@@ -8011,9 +8011,9 @@
             ],
             "support": {
                 "issues": "https://github.com/orchestral/testbench/issues",
-                "source": "https://github.com/orchestral/testbench/tree/v8.6.0"
+                "source": "https://github.com/orchestral/testbench/tree/v8.6.1"
             },
-            "time": "2023-08-08T08:29:25+00:00"
+            "time": "2023-08-08T14:41:41+00:00"
         },
         {
             "name": "orchestra/testbench-core",
