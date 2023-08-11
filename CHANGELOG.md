@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.52](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.51...v4.0.52) (2023-08-11)
+
+
+### Miscellaneous
+
+* **deps:** update dependency wayofdev/cs-fixer-config to v1.2.41 ([e534cb5](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/e534cb534607a654a06fa03d220addcb654935e0))
+
 ## [4.0.51](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.50...v4.0.51) (2023-08-11)
 
 
