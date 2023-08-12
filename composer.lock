@@ -7962,16 +7962,16 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v8.6.3",
+            "version": "v8.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "73f78b30e4a4c66e6fafa7c9dcc14ec9c29afb54"
+                "reference": "66d0b1e5e9461a3a2924be233416912e048d88bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/73f78b30e4a4c66e6fafa7c9dcc14ec9c29afb54",
-                "reference": "73f78b30e4a4c66e6fafa7c9dcc14ec9c29afb54",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/66d0b1e5e9461a3a2924be233416912e048d88bb",
+                "reference": "66d0b1e5e9461a3a2924be233416912e048d88bb",
                 "shasum": ""
             },
             "require": {
@@ -7979,7 +7979,7 @@
                 "fakerphp/faker": "^1.21",
                 "laravel/framework": ">=10.17.0 <10.19.0",
                 "mockery/mockery": "^1.5.1",
-                "orchestra/testbench-core": ">=8.6.2 <8.7.0",
+                "orchestra/testbench-core": ">=8.7.0 <8.8.0",
                 "php": "^8.1",
                 "phpunit/phpunit": "^9.6 || ^10.1",
                 "spatie/laravel-ray": "^1.32.4",
@@ -8011,22 +8011,22 @@
             ],
             "support": {
                 "issues": "https://github.com/orchestral/testbench/issues",
-                "source": "https://github.com/orchestral/testbench/tree/v8.6.3"
+                "source": "https://github.com/orchestral/testbench/tree/v8.7.0"
             },
-            "time": "2023-08-10T02:43:19+00:00"
+            "time": "2023-08-12T05:48:39+00:00"
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v8.6.2",
+            "version": "v8.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "b401efab5a5223a41d355daf7efc83a7615c9632"
+                "reference": "d110b67306056925bfb66fcef625667e094a7540"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/b401efab5a5223a41d355daf7efc83a7615c9632",
-                "reference": "b401efab5a5223a41d355daf7efc83a7615c9632",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/d110b67306056925bfb66fcef625667e094a7540",
+                "reference": "d110b67306056925bfb66fcef625667e094a7540",
                 "shasum": ""
             },
             "require": {
@@ -8094,7 +8094,7 @@
                 "issues": "https://github.com/orchestral/testbench/issues",
                 "source": "https://github.com/orchestral/testbench-core"
             },
-            "time": "2023-08-10T02:24:10+00:00"
+            "time": "2023-08-12T04:27:26+00:00"
         },
         {
             "name": "pestphp/pest",
