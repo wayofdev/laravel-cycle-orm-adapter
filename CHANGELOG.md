@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.59](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.58...v4.0.59) (2023-08-15)
+
+
+### Miscellaneous
+
+* **deps:** update dependency phpunit/phpunit to v10.3.2 ([126493d](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/126493dca6c9b9669cc753bd63be1d7b510d8d9e))
+
 ## [4.0.58](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.57...v4.0.58) (2023-08-14)
 
 
