@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.0.60](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.59...v4.0.60) (2023-08-15)
+
+
+### Miscellaneous
+
+* **deps:** update dependency orchestra/testbench to v8.8.0 ([5bfaebe](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/5bfaebe2fe2a511d2c78719c685ce95bc35fe36f))
+* **deps:** update dependency wayofdev/cs-fixer-config to v1.2.44 ([00bdc4a](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/00bdc4a112c762870b50d2d2ec6c32a3afc943d7))
+
 ## [4.0.59](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.58...v4.0.59) (2023-08-15)
 
 
