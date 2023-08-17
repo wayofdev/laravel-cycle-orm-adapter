@@ -7962,16 +7962,16 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v8.8.1",
+            "version": "v8.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "ba05ebe18c0bd54e418e8f4c10d091caf38673bc"
+                "reference": "0461702fe52fdf58dfd96236cebca377d8e8c7be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/ba05ebe18c0bd54e418e8f4c10d091caf38673bc",
-                "reference": "ba05ebe18c0bd54e418e8f4c10d091caf38673bc",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/0461702fe52fdf58dfd96236cebca377d8e8c7be",
+                "reference": "0461702fe52fdf58dfd96236cebca377d8e8c7be",
                 "shasum": ""
             },
             "require": {
@@ -7979,8 +7979,8 @@
                 "fakerphp/faker": "^1.21",
                 "laravel/framework": ">=10.17.0 <10.20.0",
                 "mockery/mockery": "^1.5.1",
-                "orchestra/testbench-core": ">=8.8.0 <8.9.0",
-                "orchestra/workbench": "^0.1.1",
+                "orchestra/testbench-core": ">=8.8.2 <8.9.0",
+                "orchestra/workbench": "^0.1.2",
                 "php": "^8.1",
                 "phpunit/phpunit": "^9.6 || ^10.1",
                 "spatie/laravel-ray": "^1.32.4",
@@ -8012,22 +8012,22 @@
             ],
             "support": {
                 "issues": "https://github.com/orchestral/testbench/issues",
-                "source": "https://github.com/orchestral/testbench/tree/v8.8.1"
+                "source": "https://github.com/orchestral/testbench/tree/v8.8.2"
             },
-            "time": "2023-08-15T13:52:31+00:00"
+            "time": "2023-08-17T00:51:20+00:00"
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v8.8.0",
+            "version": "v8.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "a4a724e6cefdbdd022a9b9737131c175ac78b76a"
+                "reference": "a2fea94fe56ce587e9cdd61d832d92ed504f0c07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/a4a724e6cefdbdd022a9b9737131c175ac78b76a",
-                "reference": "a4a724e6cefdbdd022a9b9737131c175ac78b76a",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/a2fea94fe56ce587e9cdd61d832d92ed504f0c07",
+                "reference": "a2fea94fe56ce587e9cdd61d832d92ed504f0c07",
                 "shasum": ""
             },
             "require": {
@@ -8095,20 +8095,20 @@
                 "issues": "https://github.com/orchestral/testbench/issues",
                 "source": "https://github.com/orchestral/testbench-core"
             },
-            "time": "2023-08-15T09:05:03+00:00"
+            "time": "2023-08-16T22:39:24+00:00"
         },
         {
             "name": "orchestra/workbench",
-            "version": "v0.1.1",
+            "version": "v0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/workbench.git",
-                "reference": "5e5bb38073d3def0a2043619a67ab6d4c4c51a72"
+                "reference": "46dcdd4fff4c8cbbc729f6404dcdbf09b0212fe2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/workbench/zipball/5e5bb38073d3def0a2043619a67ab6d4c4c51a72",
-                "reference": "5e5bb38073d3def0a2043619a67ab6d4c4c51a72",
+                "url": "https://api.github.com/repos/orchestral/workbench/zipball/46dcdd4fff4c8cbbc729f6404dcdbf09b0212fe2",
+                "reference": "46dcdd4fff4c8cbbc729f6404dcdbf09b0212fe2",
                 "shasum": ""
             },
             "require": {
@@ -8150,9 +8150,9 @@
             "description": "Workbench Companion for Laravel Packages Development",
             "support": {
                 "issues": "https://github.com/orchestral/workbench/issues",
-                "source": "https://github.com/orchestral/workbench/tree/v0.1.1"
+                "source": "https://github.com/orchestral/workbench/tree/v0.1.2"
             },
-            "time": "2023-08-15T10:09:25+00:00"
+            "time": "2023-08-16T12:27:01+00:00"
         },
         {
             "name": "pestphp/pest",
