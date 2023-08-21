@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.65](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.64...v4.0.65) (2023-08-21)
+
+
+### Miscellaneous
+
+* **deps:** lock file maintenance ([2eea039](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/2eea039fb85ba67366957e5ef4134a038ecd4499))
+
 ## [4.0.64](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.63...v4.0.64) (2023-08-19)
 
 
