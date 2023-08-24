@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.70](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.69...v4.0.70) (2023-08-24)
+
+
+### Miscellaneous
+
+* **deps:** update dependency phpstan/phpstan to v1.10.31 ([ab55cef](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/ab55cefc46cd7068a287b14a94372500524af2a5))
+
 ## [4.0.69](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.68...v4.0.69) (2023-08-22)
 
 
