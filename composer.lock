@@ -7129,16 +7129,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.25.0",
+            "version": "v3.25.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "9025b7d2b6e1d90a63d0ac0905018ce5d03ec88d"
+                "reference": "8e21d69801de6b5ecb0dbe0bcdf967b335b1260b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/9025b7d2b6e1d90a63d0ac0905018ce5d03ec88d",
-                "reference": "9025b7d2b6e1d90a63d0ac0905018ce5d03ec88d",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/8e21d69801de6b5ecb0dbe0bcdf967b335b1260b",
+                "reference": "8e21d69801de6b5ecb0dbe0bcdf967b335b1260b",
                 "shasum": ""
             },
             "require": {
@@ -7212,7 +7212,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.25.0"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.25.1"
             },
             "funding": [
                 {
@@ -7220,7 +7220,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-08-31T21:27:18+00:00"
+            "time": "2023-09-04T01:22:52+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -12480,16 +12480,16 @@
         },
         {
             "name": "wayofdev/cs-fixer-config",
-            "version": "v1.2.50",
+            "version": "v1.2.51",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wayofdev/php-cs-fixer-config.git",
-                "reference": "57df51cf14f159d562488ed81f7eebdd95bf2553"
+                "reference": "27dc29672dfece6f7e51cea4f34dc58100e93cba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wayofdev/php-cs-fixer-config/zipball/57df51cf14f159d562488ed81f7eebdd95bf2553",
-                "reference": "57df51cf14f159d562488ed81f7eebdd95bf2553",
+                "url": "https://api.github.com/repos/wayofdev/php-cs-fixer-config/zipball/27dc29672dfece6f7e51cea4f34dc58100e93cba",
+                "reference": "27dc29672dfece6f7e51cea4f34dc58100e93cba",
                 "shasum": ""
             },
             "require": {
@@ -12540,7 +12540,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-08-30T02:03:56+00:00"
+            "time": "2023-08-31T23:04:07+00:00"
         },
         {
             "name": "zbateson/mail-mime-parser",
