@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.87](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.86...v4.0.87) (2023-09-04)
+
+
+### Miscellaneous
+
+* **deps:** update actions/checkout action to v4 ([3afa62e](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/3afa62e26d170d3eff2b6c051e8fdf0099cad619))
+
 ## [4.0.86](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.85...v4.0.86) (2023-09-04)
 
 
