@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.98](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.97...v4.0.98) (2023-09-14)
+
+
+### Miscellaneous
+
+* **deps:** update codecov/codecov-action action to v4 ([27f9e81](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/27f9e81841d1b2d6ac86e1e44b16eda4a99b1028))
+
 ## [4.0.97](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.96...v4.0.97) (2023-09-13)
 
 
