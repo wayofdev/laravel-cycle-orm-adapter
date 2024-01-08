@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.0.100](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.99...v4.0.100) (2024-01-08)
+
+
+### Bug Fixes
+
+* ci workflow, package updates ([4526cca](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/4526cca16e1ca09359d22052d6b5ed09c1224fc8))
+* codecov ([a2cd12e](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/a2cd12e7ccb8b0a72aa4aaeab1b9b714b2f902fd))
+
 ## [4.0.99](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.98...v4.0.99) (2023-09-14)
 
 
