@@ -10,5 +10,11 @@
         "automerge": true,
         "automergeType": "pr",
         "platformAutomerge": true
-    }
+    },
+    "packageRules": [
+        {
+            "updateTypes": ["minor", "patch"],
+            "automerge": true
+        }
+    ]
 }
