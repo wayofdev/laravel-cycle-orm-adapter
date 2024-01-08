@@ -57,6 +57,8 @@ class HasInDatabase extends Constraint
     }
 
     /**
+     * @param mixed|null $options
+     *
      * @throws JsonException
      */
     public function toString($options = null): string
