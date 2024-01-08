@@ -1,5 +1,18 @@
 # Changelog
 
+## [4.1.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.101...v4.1.0) (2024-01-08)
+
+
+### Features
+
+* make repo compatible with phpunit ~10.5 ([77cdb0b](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/77cdb0b127591d735c1613558b948c2ccdb0dba8))
+* make repo compatible with phpunit ~10.5 ([b367819](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/b367819c297886b9dcf3227a42e20f4688671ed6))
+
+
+### Bug Fixes
+
+* **deps:** update dependency symfony/console to v7 ([4794d8b](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/4794d8b3b1a51d2df9e33c5ed33a3c49ca6994cf))
+
 ## [4.0.101](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.100...v4.0.101) (2024-01-08)
 
 
