@@ -47,7 +47,7 @@ class CountInDatabase extends Constraint
         );
     }
 
-    public function toString(int $options = 0): string
+    public function toString(): string
     {
         return (new ReflectionClass($this))->name;
     }
