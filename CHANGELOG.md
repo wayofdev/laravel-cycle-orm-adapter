@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.1](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.1.0...v4.1.1) (2024-01-08)
+
+
+### Bug Fixes
+
+* do not allow renovate to make major changes ([bb45cfe](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/bb45cfe9101fd188b36993eecfedc46166dc02c7))
+
 ## [4.1.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.0.101...v4.1.0) (2024-01-08)
 
 
