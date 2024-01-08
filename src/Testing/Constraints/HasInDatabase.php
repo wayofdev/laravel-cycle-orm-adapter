@@ -11,6 +11,7 @@ use JsonException;
 use PHPUnit\Framework\Constraint\Constraint;
 use Throwable;
 
+use function is_int;
 use function json_encode;
 use function sprintf;
 
@@ -58,8 +59,14 @@ class HasInDatabase extends Constraint
     /**
      * @throws JsonException
      */
-    public function toString(int $options = 0): string
+    public function toString($options = null): string
     {
-        return json_encode($this->data, JSON_THROW_ON_ERROR | $options);
+        if (is_int($options)) {
+            $options |= JSON_THROW_ON_ERROR;
+        } else {
+            $options = JSON_THROW_ON_ERROR;
+        }
+
+        return json_encode($this->data, $options | $options);
     }
 }
