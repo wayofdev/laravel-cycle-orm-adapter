@@ -1,5 +1,5 @@
 {
-    "version": "4.0.100",
+    "version": "4.0.101",
     "repository": {
         "url": "https://github.com/wayofdev/laravel-cycle-orm-adapter.git"
     }
