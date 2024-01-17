@@ -38,7 +38,7 @@ jobs:
 
       - name: ♻️ Restore cached dependencies
         id: cached-composer-dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: vendor
           key: vendor-${{ runner.os }}-${{ hashFiles('**/composer.lock') }}-${{ matrix.php }}
