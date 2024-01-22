@@ -8403,16 +8403,16 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v8.21.0",
+            "version": "v8.21.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "f2860d424e8ef7eb445b1081eab2a54d493e14b5"
+                "reference": "c22a81802a68e746e032edf65cbb68af28a52670"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/f2860d424e8ef7eb445b1081eab2a54d493e14b5",
-                "reference": "f2860d424e8ef7eb445b1081eab2a54d493e14b5",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/c22a81802a68e746e032edf65cbb68af28a52670",
+                "reference": "c22a81802a68e746e032edf65cbb68af28a52670",
                 "shasum": ""
             },
             "require": {
@@ -8420,7 +8420,7 @@
                 "fakerphp/faker": "^1.21",
                 "laravel/framework": "^10.40",
                 "mockery/mockery": "^1.5.1",
-                "orchestra/testbench-core": "^8.21",
+                "orchestra/testbench-core": "^8.21.1",
                 "orchestra/workbench": "^1.2 || ^8.2",
                 "php": "^8.1",
                 "phpunit/phpunit": "^9.6 || ^10.1",
@@ -8452,9 +8452,9 @@
             ],
             "support": {
                 "issues": "https://github.com/orchestral/testbench/issues",
-                "source": "https://github.com/orchestral/testbench/tree/v8.21.0"
+                "source": "https://github.com/orchestral/testbench/tree/v8.21.1"
             },
-            "time": "2024-01-19T14:57:29+00:00"
+            "time": "2024-01-22T03:22:22+00:00"
         },
         {
             "name": "orchestra/testbench-core",
