@@ -319,16 +319,16 @@
         },
         {
             "name": "cycle/migrations",
-            "version": "v4.2.2",
+            "version": "v4.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cycle/migrations.git",
-                "reference": "3687783d2b0a0220945ce88a62c5781718717eac"
+                "reference": "434b08be175bf87f920651b9f6d91fc1cb7ed3ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cycle/migrations/zipball/3687783d2b0a0220945ce88a62c5781718717eac",
-                "reference": "3687783d2b0a0220945ce88a62c5781718717eac",
+                "url": "https://api.github.com/repos/cycle/migrations/zipball/434b08be175bf87f920651b9f6d91fc1cb7ed3ba",
+                "reference": "434b08be175bf87f920651b9f6d91fc1cb7ed3ba",
                 "shasum": ""
             },
             "require": {
@@ -357,9 +357,9 @@
             "description": "Database migrations, migration scaffolding",
             "support": {
                 "issues": "https://github.com/cycle/migrations/issues",
-                "source": "https://github.com/cycle/migrations/tree/v4.2.2"
+                "source": "https://github.com/cycle/migrations/tree/v4.2.3"
             },
-            "time": "2023-12-04T16:48:52+00:00"
+            "time": "2024-01-25T10:49:43+00:00"
         },
         {
             "name": "cycle/orm",
