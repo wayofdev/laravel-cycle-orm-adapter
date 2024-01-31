@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.3](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.1.2...v4.1.3) (2024-01-31)
+
+
+### Bug Fixes
+
+* **deps:** update dependency symfony/console to v6.4.3 ([c534ae3](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/c534ae3b3e56ca620e3849bdd92eed4064cad72a))
+
 ## [4.1.2](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.1.1...v4.1.2) (2024-01-25)
 
 
