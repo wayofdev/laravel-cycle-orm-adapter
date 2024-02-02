@@ -45,7 +45,7 @@
         "phpstan/phpstan-deprecation-rules": "^1.1",
         "phpstan/phpstan-phpunit": "^1.3",
         "phpstan/phpstan-strict-rules": "^1.5",
-        "phpunit/phpunit": "^11.0",
+        "phpunit/phpunit": "^10.5",
         "roave/security-advisories": "dev-latest",
         "spatie/laravel-ray": "^1.32",
         "wayofdev/cs-fixer-config": "^1.1"
