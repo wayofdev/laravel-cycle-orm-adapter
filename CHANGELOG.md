@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.8](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.1.7...v4.1.8) (2024-02-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency cycle/entity-behavior to v1.3.0 ([cf30d52](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/cf30d52e3687f175a5c9793a0120d21218e96c92))
+
 ## [4.1.7](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.1.6...v4.1.7) (2024-02-08)
 
 
