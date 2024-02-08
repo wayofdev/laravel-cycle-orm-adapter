@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.5](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.1.4...v4.1.5) (2024-02-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency cycle/database to v2.8.1 ([9c13cea](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/9c13cea59e3e9121ed6437d53f86fbf534a3421a))
+
 ## [4.1.4](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.1.3...v4.1.4) (2024-02-08)
 
 
