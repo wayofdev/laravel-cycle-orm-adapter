@@ -182,16 +182,16 @@
         },
         {
             "name": "cycle/database",
-            "version": "2.8.0",
+            "version": "2.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cycle/database.git",
-                "reference": "dac6dac3605a3fd3b228a903cfd1ef3f03e08138"
+                "reference": "f9f70c8067ce436d0090118a1e75f8363d05048e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cycle/database/zipball/dac6dac3605a3fd3b228a903cfd1ef3f03e08138",
-                "reference": "dac6dac3605a3fd3b228a903cfd1ef3f03e08138",
+                "url": "https://api.github.com/repos/cycle/database/zipball/f9f70c8067ce436d0090118a1e75f8363d05048e",
+                "reference": "f9f70c8067ce436d0090118a1e75f8363d05048e",
                 "shasum": ""
             },
             "require": {
@@ -269,7 +269,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-02-08T11:25:02+00:00"
+            "time": "2024-02-08T16:04:55+00:00"
         },
         {
             "name": "cycle/entity-behavior",
