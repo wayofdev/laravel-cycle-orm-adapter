@@ -363,20 +363,20 @@
         },
         {
             "name": "cycle/orm",
-            "version": "v2.6.1",
+            "version": "v2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cycle/orm.git",
-                "reference": "1cf556d9c74393006ae5debfd9059c4523499aee"
+                "reference": "31e29e443dfb9dfe5cf6e92c913c2a287fbbb7f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cycle/orm/zipball/1cf556d9c74393006ae5debfd9059c4523499aee",
-                "reference": "1cf556d9c74393006ae5debfd9059c4523499aee",
+                "url": "https://api.github.com/repos/cycle/orm/zipball/31e29e443dfb9dfe5cf6e92c913c2a287fbbb7f8",
+                "reference": "31e29e443dfb9dfe5cf6e92c913c2a287fbbb7f8",
                 "shasum": ""
             },
             "require": {
-                "cycle/database": "^2.6",
+                "cycle/database": "^2.8.1",
                 "doctrine/instantiator": "^1.3.1 || ^2.0",
                 "ext-pdo": "*",
                 "php": ">=8.0",
@@ -390,7 +390,7 @@
                 "phpunit/phpunit": "^9.5",
                 "ramsey/uuid": "^4.0",
                 "spiral/tokenizer": "^2.8 || ^3.0",
-                "vimeo/psalm": "^4.9"
+                "vimeo/psalm": "5.21"
             },
             "type": "library",
             "autoload": {
@@ -402,18 +402,39 @@
             "license": [
                 "MIT"
             ],
+            "authors": [
+                {
+                    "name": "Anton Titov (wolfy-j)",
+                    "email": "wolfy-j@spiralscout.com"
+                },
+                {
+                    "name": "Aleksei Gagarin (roxblnfk)",
+                    "email": "alexey.gagarin@spiralscout.com"
+                },
+                {
+                    "name": "Pavel Butchnev (butschster)",
+                    "email": "pavel.buchnev@spiralscout.com"
+                },
+                {
+                    "name": "Maksim Smakouz (msmakouz)",
+                    "email": "maksim.smakouz@spiralscout.com"
+                }
+            ],
             "description": "PHP DataMapper ORM and Data Modelling Engine",
+            "homepage": "https://cycle-orm.dev",
             "support": {
+                "chat": "https://discord.gg/spiralphp",
+                "docs": "https://cycle-orm.dev/docs",
                 "issues": "https://github.com/cycle/orm/issues",
-                "source": "https://github.com/cycle/orm/tree/v2.6.1"
+                "source": "https://github.com/cycle/orm"
             },
             "funding": [
                 {
-                    "url": "https://github.com/roadrunner-server",
+                    "url": "https://github.com/sponsors/cycle",
                     "type": "github"
                 }
             ],
-            "time": "2024-01-04T12:09:49+00:00"
+            "time": "2024-02-08T17:51:52+00:00"
         },
         {
             "name": "cycle/schema-builder",
