@@ -273,21 +273,21 @@
         },
         {
             "name": "cycle/entity-behavior",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cycle/entity-behavior.git",
-                "reference": "891fd972047a453afa43ee8d8117c6532d0971bf"
+                "reference": "fd6de37bcee0d8e753805f83c574762e82426490"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cycle/entity-behavior/zipball/891fd972047a453afa43ee8d8117c6532d0971bf",
-                "reference": "891fd972047a453afa43ee8d8117c6532d0971bf",
+                "url": "https://api.github.com/repos/cycle/entity-behavior/zipball/fd6de37bcee0d8e753805f83c574762e82426490",
+                "reference": "fd6de37bcee0d8e753805f83c574762e82426490",
                 "shasum": ""
             },
             "require": {
-                "cycle/orm": "^2.0",
-                "cycle/schema-builder": "^2.5",
+                "cycle/orm": "^2.7",
+                "cycle/schema-builder": "^2.8",
                 "php": ">=8.0",
                 "psr/container": "^1.0|^2.0",
                 "psr/event-dispatcher": "^1",
@@ -310,12 +310,39 @@
             "license": [
                 "MIT"
             ],
+            "authors": [
+                {
+                    "name": "Anton Titov (wolfy-j)",
+                    "email": "wolfy-j@spiralscout.com"
+                },
+                {
+                    "name": "Aleksei Gagarin (roxblnfk)",
+                    "email": "alexey.gagarin@spiralscout.com"
+                },
+                {
+                    "name": "Pavel Butchnev (butschster)",
+                    "email": "pavel.buchnev@spiralscout.com"
+                },
+                {
+                    "name": "Maksim Smakouz (msmakouz)",
+                    "email": "maksim.smakouz@spiralscout.com"
+                }
+            ],
             "description": "Provides a collection of attributes that add behaviors to Cycle ORM entities",
+            "homepage": "https://cycle-orm.dev",
             "support": {
+                "chat": "https://discord.gg/spiralphp",
+                "docs": "https://cycle-orm.dev/docs",
                 "issues": "https://github.com/cycle/entity-behavior/issues",
-                "source": "https://github.com/cycle/entity-behavior/tree/1.2.0"
+                "source": "https://github.com/cycle/entity-behavior"
             },
-            "time": "2023-05-19T13:54:19+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/cycle",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-02-08T19:35:15+00:00"
         },
         {
             "name": "cycle/migrations",
