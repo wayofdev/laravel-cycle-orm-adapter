@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.9](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.1.8...v4.1.9) (2024-02-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency spiral/attributes to v3.1.5 ([c2fc855](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/c2fc855c9501e7c7902f076fdc2ba1dedb1cde65))
+
 ## [4.1.8](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.1.7...v4.1.8) (2024-02-08)
 
 
