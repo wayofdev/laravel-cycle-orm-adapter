@@ -48,7 +48,8 @@
         "phpunit/phpunit": "^10.5",
         "roave/security-advisories": "dev-latest",
         "spatie/laravel-ray": "^1.32",
-        "wayofdev/cs-fixer-config": "^1.1"
+        "wayofdev/cs-fixer-config": "^1.1",
+        "beberlei/assert": "^3.3"
     },
     "autoload": {
         "psr-4": {

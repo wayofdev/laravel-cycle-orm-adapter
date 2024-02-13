@@ -10,11 +10,10 @@ use Cycle\Database\Query\SelectQuery;
 use PHPUnit\Framework\Constraint\Constraint;
 use Throwable;
 
-use function is_int;
 use function json_encode;
 use function sprintf;
 
-class HasInDatabase extends Constraint
+class NotSoftDeletedInDatabase extends Constraint
 {
     protected int $show = 3;
 
@@ -22,11 +21,15 @@ class HasInDatabase extends Constraint
 
     protected array $data;
 
-    public function __construct(DatabaseProviderInterface $database, array $data)
+    protected string $deletedAtColumn;
+
+    public function __construct(DatabaseProviderInterface $database, array $data, string $deletedAtColumn)
     {
         $this->data = $data;
 
         $this->database = $database->database();
+
+        $this->deletedAtColumn = $deletedAtColumn;
     }
 
     public function matches(mixed $other): bool
@@ -35,7 +38,9 @@ class HasInDatabase extends Constraint
         $tableInterface = $this->database->table($other);
 
         try {
-            $count = $tableInterface->where($this->data)->count();
+            $count = $tableInterface->where($this->data)
+                ->andWhere($this->deletedAtColumn, '=', null)
+                ->count();
 
             return 0 < $count;
         } catch (Throwable $e) {
@@ -43,23 +48,17 @@ class HasInDatabase extends Constraint
         }
     }
 
-    public function failureDescription(mixed $other): string
+    public function failureDescription($other): string
     {
         return sprintf(
-            'a row in the table [%s] matches the attributes %s.',
+            'any existing row in the table [%s] matches the attributes %s.\n',
             $other,
-            $this->toString(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+            $this->toString()
         );
     }
 
-    public function toString(mixed $options = null): string
+    public function toString(): string
     {
-        if (is_int($options)) {
-            $options |= JSON_THROW_ON_ERROR;
-        } else {
-            $options = JSON_THROW_ON_ERROR;
-        }
-
-        return json_encode($this->data, $options | $options);
+        return json_encode($this->data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
 }

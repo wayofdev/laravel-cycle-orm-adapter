@@ -27,7 +27,7 @@ class RollbackCommandTest extends TestCase
         $this::assertCount(1, $database->getTables());
 
         $this->artisanCall('cycle:migrate', ['--force' => true]);
-        $this::assertCount(3, $database->getTables());
+        $this::assertCount(4, $database->getTables());
 
         $this->artisanCall('cycle:migrate:rollback', ['--force' => true]);
         $this::assertCount(1, $database->getTables());

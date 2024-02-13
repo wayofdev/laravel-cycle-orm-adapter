@@ -36,7 +36,7 @@ abstract class AbstractCommand extends Command
         return true;
     }
 
-    protected function verifyEnvironment(string $confirmationQuestion = null): bool
+    protected function verifyEnvironment(?string $confirmationQuestion = null): bool
     {
         $confirmationQuestion = $confirmationQuestion ?? self::DEFAULT_CONFIRMATION;
 

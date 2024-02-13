@@ -30,7 +30,7 @@ class User
     public ?User $friend = null;
 
     #[HasMany(target: User::class, outerKey: 'userId', nullable: true)]
-    public null|iterable $friends = [];
+    public iterable|null $friends = [];
 
     #[HasMany(target: User::class, outerKey: 'userId', nullable: true, collection: 'array')]
     public ?array $friendsAsArray = [];
