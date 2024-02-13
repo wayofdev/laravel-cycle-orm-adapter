@@ -10,6 +10,8 @@ use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot as ReverseConstraint;
 use WayOfDev\Cycle\Testing\Constraints\CountInDatabase;
 use WayOfDev\Cycle\Testing\Constraints\HasInDatabase;
+use WayOfDev\Cycle\Testing\Constraints\NotSoftDeletedInDatabase;
+use WayOfDev\Cycle\Testing\Constraints\SoftDeletedInDatabase;
 
 /**
  * @method void assertThat($value, Constraint $constraint, string $message = '')
@@ -87,5 +89,33 @@ trait InteractsWithDatabase
         foreach ($files as $file) {
             File::delete($file);
         }
+    }
+
+    protected function assertSoftDeleted($table, array $data = [], $connection = null, $deletedAtColumn = 'deleted_at'): self
+    {
+        $this->assertThat(
+            $table,
+            new SoftDeletedInDatabase(
+                app(DatabaseProviderInterface::class),
+                $data,
+                $deletedAtColumn,
+            )
+        );
+
+        return $this;
+    }
+
+    protected function assertNotSoftDeleted($table, array $data = [], $connection = null, $deletedAtColumn = 'deleted_at'): self
+    {
+        $this->assertThat(
+            $table,
+            new NotSoftDeletedInDatabase(
+                app(DatabaseProviderInterface::class),
+                $data,
+                $deletedAtColumn,
+            )
+        );
+
+        return $this;
     }
 }

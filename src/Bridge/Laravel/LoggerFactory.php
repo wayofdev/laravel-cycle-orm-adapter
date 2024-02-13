@@ -15,7 +15,7 @@ final class LoggerFactory implements LoggerFactoryInterface
     {
     }
 
-    public function getLogger(DriverInterface $driver = null): LoggerInterface
+    public function getLogger(?DriverInterface $driver = null): LoggerInterface
     {
         return $this->logger->getLogger();
     }
