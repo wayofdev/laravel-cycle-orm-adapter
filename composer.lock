@@ -390,16 +390,16 @@
         },
         {
             "name": "cycle/orm",
-            "version": "v2.7.0",
+            "version": "v2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cycle/orm.git",
-                "reference": "31e29e443dfb9dfe5cf6e92c913c2a287fbbb7f8"
+                "reference": "230dc9fa30a1aa6ca4e207e567a1b2500c528fb3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cycle/orm/zipball/31e29e443dfb9dfe5cf6e92c913c2a287fbbb7f8",
-                "reference": "31e29e443dfb9dfe5cf6e92c913c2a287fbbb7f8",
+                "url": "https://api.github.com/repos/cycle/orm/zipball/230dc9fa30a1aa6ca4e207e567a1b2500c528fb3",
+                "reference": "230dc9fa30a1aa6ca4e207e567a1b2500c528fb3",
                 "shasum": ""
             },
             "require": {
@@ -461,7 +461,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-02-08T17:51:52+00:00"
+            "time": "2024-02-13T10:06:41+00:00"
         },
         {
             "name": "cycle/schema-builder",
