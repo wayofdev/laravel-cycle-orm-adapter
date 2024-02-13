@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.2.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.1.10...v4.2.0) (2024-02-13)
+
+
+### Features
+
+* add testing methods to check for soft-deleted entities ([59b54f6](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/59b54f6b791834286a42cc3570612d779d090388))
+
 ## [4.1.10](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.1.9...v4.1.10) (2024-02-13)
 
 
