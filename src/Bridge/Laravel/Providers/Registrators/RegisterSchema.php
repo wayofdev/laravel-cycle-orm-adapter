@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace WayOfDev\Cycle\Bridge\Laravel\Providers\Registrators;
 
+use Cycle\Database\DatabaseProviderInterface;
 use Cycle\ORM\SchemaInterface;
+use Cycle\Schema\Defaults;
 use Cycle\Schema\Registry;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Cache\Factory as CacheFactory;
@@ -35,6 +37,17 @@ final class RegisterSchema
                 closure: fn () => Container::getInstance(),
                 config: $app->get(SchemaConfig::class),
             );
+        });
+
+        $app->bind(Registry::class, static function (Application $app): Registry {
+            $defaults = new Defaults();
+
+            /** @var SchemaConfig $config */
+            $config = $app->get(SchemaConfig::class);
+
+            $defaults->merge($config->defaults());
+
+            return new Registry($app->get(DatabaseProviderInterface::class), $defaults);
         });
 
         $app->bind(SchemaInterface::class, static function (Application $app): SchemaInterface {

@@ -23,9 +23,10 @@ class MigrateCommandTest extends TestCase
         $this->artisanCall('cycle:migrate:init');
         $this->artisanCall('cycle:orm:migrate', ['--force' => true]);
 
+        // @phpstan-ignore-next-line
         $this::assertCount(1, $database->getTables());
 
         $this->artisanCall('cycle:migrate', ['--force' => true]);
-        $this::assertCount(4, $database->getTables());
+        $this::assertCount(5, $database->getTables());
     }
 }

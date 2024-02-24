@@ -23,12 +23,13 @@ class ReplayCommandTest extends TestCase
         $this->assertConsoleCommandOutputContainsStrings('cycle:migrate:replay', ['--force' => true], 'No');
 
         $this->artisanCall('cycle:orm:migrate', ['--force' => true]);
+        // @phpstan-ignore-next-line
         $this::assertCount(1, $database->getTables());
 
         $this->artisanCall('cycle:migrate', ['--force' => true]);
-        $this::assertCount(4, $database->getTables());
+        $this::assertCount(5, $database->getTables());
 
         $this->artisanCall('cycle:migrate:replay', ['--force' => true]);
-        $this::assertCount(4, $database->getTables());
+        $this::assertCount(5, $database->getTables());
     }
 }

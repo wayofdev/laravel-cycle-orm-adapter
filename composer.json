@@ -25,6 +25,7 @@
         "cycle/schema-migrations-generator": "^2.2",
         "cycle/schema-renderer": "^1.2",
         "illuminate/console": "^10.45",
+        "cycle/schema-builder": "^2.8.0",
         "illuminate/contracts": "^10.45",
         "illuminate/support": "^10.45",
         "laminas/laminas-hydrator": "^4.15",

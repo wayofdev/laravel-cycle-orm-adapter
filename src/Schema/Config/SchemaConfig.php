@@ -45,4 +45,9 @@ class SchemaConfig extends InjectableConfig
     {
         return $this->config['cache']['enabled'];
     }
+
+    public function defaults()
+    {
+        return $this->config['defaults'];
+    }
 }
