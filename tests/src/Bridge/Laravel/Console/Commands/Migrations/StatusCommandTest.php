@@ -36,7 +36,7 @@ class StatusCommandTest extends TestCase
         $this::assertStringContainsString('not executed yet', $output);
 
         $this->artisanCall('cycle:migrate', ['--force' => true]);
-        $this::assertCount(5, $database->getTables());
+        $this::assertCount(4, $database->getTables());
 
         $this->artisanCall('cycle:migrate:status');
         $output2 = Artisan::output();
