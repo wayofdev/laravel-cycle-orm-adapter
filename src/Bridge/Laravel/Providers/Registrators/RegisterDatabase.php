@@ -10,7 +10,7 @@ use Cycle\Database\DatabaseManager;
 use Cycle\Database\DatabaseProviderInterface;
 use Cycle\Database\LoggerFactoryInterface;
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Log\Logger;
+use Illuminate\Log\LogManager;
 use WayOfDev\Cycle\Bridge\Laravel\LoggerFactory;
 
 /**
@@ -22,7 +22,8 @@ final class RegisterDatabase
     {
         $app->singleton(LoggerFactoryInterface::class, static function (Application $app): LoggerFactoryInterface {
             return new LoggerFactory(
-                logger: $app->get(Logger::class)
+                manager: $app->get(LogManager::class),
+                databaseConfig: $app->get(DatabaseConfig::class),
             );
         });
 

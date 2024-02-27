@@ -136,6 +136,21 @@ return [
                 queryCache: true,
             ),
         ],
+
+        /*
+         * Default logger configuration
+         *
+         * Use any of channels configured in your logging.php file
+         */
+        'logger' => [
+            'default' => env('DB_DEFAULT_LOGGER_CHANNEL', null),
+            'drivers' => [
+                'sqlite' => env('DB_DEFAULT_LOGGER_CHANNEL', null),
+                'pgsql' => env('DB_DEFAULT_LOGGER_CHANNEL', null),
+                'mysql' => env('DB_DEFAULT_LOGGER_CHANNEL', null),
+                'sqlserver' => env('DB_DEFAULT_LOGGER_CHANNEL', null),
+            ],
+        ],
     ],
 
     'schema' => [
@@ -159,9 +174,7 @@ return [
             SchemaInterface::MAPPER => Cycle\ORM\Mapper\Mapper::class,
             SchemaInterface::REPOSITORY => Cycle\ORM\Select\Repository::class,
             SchemaInterface::SCOPE => null,
-            SchemaInterface::TYPECAST_HANDLER => [
-                // \Cycle\ORM\Parser\Typecast::class,  \App\Infrastructure\CycleORM\Typecaster\UuidTypecast::class,
-            ],
+            SchemaInterface::TYPECAST_HANDLER => null,
         ],
 
         'collections' => [
