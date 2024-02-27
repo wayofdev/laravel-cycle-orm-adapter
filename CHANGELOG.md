@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.3.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.2.1...v4.3.0) (2024-02-27)
+
+
+### Features
+
+* add configurable, optional logger / profiler ([0b6e4c1](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/0b6e4c1f13fdf9cdb8ab1ba369fbac444711765e))
+* add development files to export-ignore via git attributes ([16602a6](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/16602a61735f2a4700c1d05d28e09cfed4830520))
+
 ## [4.2.1](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.2.0...v4.2.1) (2024-02-27)
 
 
