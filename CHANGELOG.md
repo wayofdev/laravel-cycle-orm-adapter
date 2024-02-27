@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.3.1](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.3.0...v4.3.1) (2024-02-27)
+
+
+### Bug Fixes
+
+* git attributes ([90d33ff](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/90d33ffdcec7bb7061fc50b6d695e6b13eda3c8c))
+
 ## [4.3.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.2.1...v4.3.0) (2024-02-27)
 
 
