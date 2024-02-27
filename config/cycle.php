@@ -136,6 +136,21 @@ return [
                 queryCache: true,
             ),
         ],
+
+        /*
+         * Default logger configuration
+         *
+         * Use any of channels configured in your logging.php file
+         */
+        'logger' => [
+            'default' => env('DB_DEFAULT_LOGGER_CHANNEL', null),
+            'drivers' => [
+                'sqlite' => env('DB_DEFAULT_LOGGER_CHANNEL', null),
+                'pgsql' => env('DB_DEFAULT_LOGGER_CHANNEL', null),
+                'mysql' => env('DB_DEFAULT_LOGGER_CHANNEL', null),
+                'sqlserver' => env('DB_DEFAULT_LOGGER_CHANNEL', null),
+            ],
+        ],
     ],
 
     'schema' => [

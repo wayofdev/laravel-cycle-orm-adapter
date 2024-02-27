@@ -172,9 +172,12 @@ lint-stan-ci:
 	$(APP_COMPOSER) stan:ci
 .PHONY: lint-stan-ci
 
+#test: ## Run project php-unit and pest tests
+#	$(APP_COMPOSER) test
+#.PHONY: test
+
 test: ## Run project php-unit and pest tests
-	$(APP_COMPOSER) test
-.PHONY: test
+	$(APP_RUNNER) vendor/bin/pest tests/src/Bridge/Laravel/LoggerFactoryTest.php
 
 test-cc: ## Run project php-unit and pest tests in coverage mode and build report
 	$(APP_COMPOSER) test:cc
