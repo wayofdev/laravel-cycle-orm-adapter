@@ -14,11 +14,11 @@ class MigrateCommandTest extends TestCase
     public const USER_MIGRATION = [
         'default.users',
         'create table',
-        'add column id',
-        'add column user_id',
-        'add column name',
+        'add column [id]',
+        'add column [user_id]',
+        'add column [name]',
         'add index on [user_id]',
-        'add foreign key on user_id',
+        'add foreign key on [user_id]',
     ];
 
     protected function setUp(): void
@@ -84,7 +84,7 @@ class MigrateCommandTest extends TestCase
         $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', ['-r' => true], [
             'default.tags',
             'create table',
-            'add column id',
+            'add column [id]',
         ]);
 
         File::delete($entity);

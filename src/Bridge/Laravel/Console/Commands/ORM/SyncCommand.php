@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace WayOfDev\Cycle\Bridge\Laravel\Console\Commands\ORM;
 
+use Cycle\Schema\Generator\PrintChanges;
 use Cycle\Schema\Generator\SyncTables;
 use Cycle\Schema\Registry;
 use Illuminate\Console\Command;
-use WayOfDev\Cycle\Bridge\Laravel\Console\Commands\ORM\Generators\ShowChanges;
 use WayOfDev\Cycle\Contracts\CacheManager as CacheManagerContract;
 use WayOfDev\Cycle\Contracts\GeneratorLoader;
 use WayOfDev\Cycle\Schema\Compiler;
@@ -28,7 +28,7 @@ final class SyncCommand extends Command
         Registry $registry,
         CacheManagerContract $cache
     ): int {
-        $diff = new ShowChanges($this->output);
+        $diff = new PrintChanges($this->output);
         $queue = $generators
             ->add(GeneratorLoader::GROUP_RENDER, $diff)
             ->add(GeneratorLoader::GROUP_POSTPROCESS, new SyncTables());

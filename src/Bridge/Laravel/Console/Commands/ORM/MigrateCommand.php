@@ -7,11 +7,11 @@ namespace WayOfDev\Cycle\Bridge\Laravel\Console\Commands\ORM;
 use Cycle\Migrations\State;
 use Cycle\Schema\Compiler as CycleSchemaCompiler;
 use Cycle\Schema\Generator\Migrations\GenerateMigrations;
+use Cycle\Schema\Generator\PrintChanges;
 use Cycle\Schema\Registry;
 use Symfony\Component\Console\Command\Command;
 use WayOfDev\Cycle\Bridge\Laravel\Console\Commands\Migrations\AbstractCommand;
 use WayOfDev\Cycle\Bridge\Laravel\Console\Commands\Migrations\MigrateCommand as DatabaseMigrateCommand;
-use WayOfDev\Cycle\Bridge\Laravel\Console\Commands\ORM\Generators\ShowChanges;
 use WayOfDev\Cycle\Contracts\CacheManager as CacheManagerContract;
 use WayOfDev\Cycle\Contracts\GeneratorLoader;
 use WayOfDev\Cycle\Schema\Compiler;
@@ -40,13 +40,13 @@ final class MigrateCommand extends AbstractCommand
 
         foreach ($this->migrator->getMigrations() as $migration) {
             if ($migration->getState()->getStatus() !== State::STATUS_EXECUTED) {
-                $this->warn('Outstanding migrations found, run `cycle:orm:migrate` first!');
+                $this->warn('Outstanding migrations found, run `cycle:migrate` first!');
 
                 return self::FAILURE;
             }
         }
 
-        $diff = new ShowChanges($this->output);
+        $diff = new PrintChanges($this->output);
         $queue = $generators->add(GeneratorLoader::GROUP_RENDER, $diff);
 
         $schemaCompiler = Compiler::compile($registry, $queue);
