@@ -40,7 +40,7 @@ abstract class AbstractCommand extends Command
     {
         $confirmationQuestion = $confirmationQuestion ?? self::DEFAULT_CONFIRMATION;
 
-        if ($this->option('force') || $this->config->isSafe()) {
+        if ($this->isForced() || $this->config->isSafe()) {
             return true;
         }
 
@@ -69,11 +69,31 @@ abstract class AbstractCommand extends Command
         return array_merge(
             static::OPTIONS,
             [
-                ['force', 's', InputOption::VALUE_NONE, 'Skip safe environment check'],
+                ['force', null, InputOption::VALUE_NONE, 'Force the operation to run when in production'],
+                ['no-interaction', 'n', InputOption::VALUE_NONE, 'Do not ask any interactive question'],
             ]
         );
     }
 
+    /**
+     * Check if the operation is being forced.
+     */
+    protected function isForced(): bool
+    {
+        return $this->option('force');
+    }
+
+    /**
+     * Check if the command is running in interactive mode.
+     */
+    protected function isInteractive(): bool
+    {
+        return ! $this->option('no-interaction');
+    }
+
+    /**
+     * Configure the command options.
+     */
     protected function configure(): void
     {
         foreach ($this->defineOptions() as $option) {

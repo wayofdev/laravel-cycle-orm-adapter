@@ -28,7 +28,7 @@ class StatusCommandTest extends TestCase
         $output = Artisan::output();
         $this::assertStringContainsString('No migrations', $output);
 
-        $this->artisanCall('cycle:orm:migrate');
+        $this->artisanCall('cycle:orm:migrate', ['-n' => true]);
         $this::assertCount(1, $database->getTables());
 
         $this->artisanCall('cycle:migrate:status');

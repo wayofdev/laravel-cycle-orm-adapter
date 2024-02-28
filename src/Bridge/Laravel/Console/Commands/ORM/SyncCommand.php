@@ -7,7 +7,7 @@ namespace WayOfDev\Cycle\Bridge\Laravel\Console\Commands\ORM;
 use Cycle\Schema\Generator\PrintChanges;
 use Cycle\Schema\Generator\SyncTables;
 use Cycle\Schema\Registry;
-use Illuminate\Console\Command;
+use WayOfDev\Cycle\Bridge\Laravel\Console\Commands\Migrations\AbstractCommand;
 use WayOfDev\Cycle\Contracts\CacheManager as CacheManagerContract;
 use WayOfDev\Cycle\Contracts\GeneratorLoader;
 use WayOfDev\Cycle\Schema\Compiler;
@@ -17,7 +17,7 @@ use WayOfDev\Cycle\Schema\Compiler;
  *
  * @see https://github.com/spiral/cycle-bridge/blob/master/src/Console/Command/CycleOrm/SyncCommand.php
  */
-final class SyncCommand extends Command
+final class SyncCommand extends AbstractCommand
 {
     protected $signature = 'cycle:orm:sync';
 
@@ -28,6 +28,10 @@ final class SyncCommand extends Command
         Registry $registry,
         CacheManagerContract $cache
     ): int {
+        if (! $this->verifyEnvironment('This operation is not recommended for production environment.')) {
+            return self::FAILURE;
+        }
+
         $diff = new PrintChanges($this->output);
         $queue = $generators
             ->add(GeneratorLoader::GROUP_RENDER, $diff)
@@ -37,7 +41,7 @@ final class SyncCommand extends Command
         $schemaCompiler->toMemory($cache);
 
         if ($diff->hasChanges()) {
-            $this->info('ORM Schema has been synchronized!');
+            $this->info('ORM Schema has been synchronized with database.');
         }
 
         return self::SUCCESS;

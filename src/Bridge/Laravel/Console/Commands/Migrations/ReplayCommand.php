@@ -22,8 +22,8 @@ final class ReplayCommand extends AbstractCommand
             return self::FAILURE;
         }
 
-        $rollback = ['--force' => $this->option('force')];
-        $migrate = ['--force' => $this->option('force')];
+        $rollback = ['--force' => $this->isForced()];
+        $migrate = ['--force' => $this->isForced()];
 
         if ($this->option('all')) {
             $rollback['--all'] = true;
@@ -31,7 +31,7 @@ final class ReplayCommand extends AbstractCommand
             $migrate['--one'] = true;
         }
 
-        $this->info('Rolling back executed migration(s)...');
+        $this->warn('Rolling back executed migration(s)...');
         $this->call(RollbackCommand::class, $rollback);
 
         $this->info('');

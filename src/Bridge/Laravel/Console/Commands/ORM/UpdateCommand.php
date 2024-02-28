@@ -30,7 +30,7 @@ final class UpdateCommand extends Command
 
         Compiler::compile($registry, $generators)->toMemory($cache);
 
-        $this->info('Done');
+        $this->info('Schema has been updated.');
 
         return self::SUCCESS;
     }
