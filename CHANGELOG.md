@@ -1,5 +1,14 @@
 # Changelog
 
+## [4.5.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.4.0...v4.5.0) (2024-02-28)
+
+
+### Features
+
+* split option for separate migration files via console ([62b0075](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/62b0075aa11c887939ce0bceced204f3f48d27eb))
+* sync command will ask for confirmation on production, unless `--force` option was passed ([62b0075](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/62b0075aa11c887939ce0bceced204f3f48d27eb))
+* use native PrintChanges from Cycle/Database package ([16472cf](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/16472cf487b5c650ae1d663153fa15aeba90f159))
+
 ## [4.4.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.3.1...v4.4.0) (2024-02-28)
 
 
