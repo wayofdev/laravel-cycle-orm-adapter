@@ -17,7 +17,7 @@ final class MigrateCommand extends AbstractCommand
                            {--o|one : Execute only one (first) migration. }
                            {--seed : Indicates if the seed task should be re-run }';
 
-    protected $description = 'Perform one or all outstanding migrations';
+    protected $description = 'Execute one or multiple migrations.';
 
     public function handle(): int
     {
@@ -49,7 +49,7 @@ final class MigrateCommand extends AbstractCommand
         }
 
         if ($this->option('seed')) {
-            $this->call('db:seed', ['--force' => $this->option('force')]);
+            $this->call('db:seed', ['--force' => $this->isForced()]);
         }
 
         return self::SUCCESS;

@@ -14,11 +14,11 @@ class MigrateCommandTest extends TestCase
     public const USER_MIGRATION = [
         'default.users',
         'create table',
-        'add column id',
-        'add column user_id',
-        'add column name',
+        'add column [id]',
+        'add column [user_id]',
+        'add column [name]',
         'add index on [user_id]',
-        'add foreign key on user_id',
+        'add foreign key on [user_id]',
     ];
 
     protected function setUp(): void
@@ -35,8 +35,8 @@ class MigrateCommandTest extends TestCase
      */
     public function it_runs_migrate(): void
     {
-        $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', [], self::USER_MIGRATION);
-        $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', [], 'Outstanding migrations found');
+        $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', ['-n' => true], self::USER_MIGRATION);
+        $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', ['-n' => true], 'Outstanding migrations found');
     }
 
     /**
@@ -44,9 +44,9 @@ class MigrateCommandTest extends TestCase
      */
     public function it_runs_migrate_with_no_changes(): void
     {
-        $this->artisanCall('cycle:orm:migrate');
+        $this->artisanCall('cycle:orm:migrate', ['-n' => true]);
         $this->artisanCall('cycle:migrate', ['--force' => true]);
-        $this->artisanCall('cycle:orm:migrate');
+        $this->artisanCall('cycle:orm:migrate', ['-n' => true]);
 
         $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', [], 'No database changes');
     }
@@ -84,7 +84,7 @@ class MigrateCommandTest extends TestCase
         $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', ['-r' => true], [
             'default.tags',
             'create table',
-            'add column id',
+            'add column [id]',
         ]);
 
         File::delete($entity);

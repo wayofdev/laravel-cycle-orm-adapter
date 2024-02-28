@@ -13,7 +13,7 @@ final class InitCommand extends AbstractCommand
 {
     protected $signature = 'cycle:migrate:init';
 
-    protected $description = 'Create the cycle orm migrations table';
+    protected $description = 'Create the cycle orm migrations table if it does not exist.';
 
     public function handle(): int
     {
