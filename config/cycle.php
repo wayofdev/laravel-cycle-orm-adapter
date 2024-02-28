@@ -13,7 +13,7 @@ use WayOfDev\Cycle\Contracts\GeneratorLoader;
 return [
     /*
      * Where ClassLocator should search for entities and embeddings.
-     * Important: By default, Laravel's application skeleton has its Model classes in the app/Models folder.
+     * Important: By default, Laravel application skeleton has its Model classes in the app/Models folder.
      * With Cycle you'll need to create a dedicated folder for your Entities and point your config/cycle.php
      * paths array to it. If you don't, Cycle will scan your whole app/ folder for files,
      * which will have a huge impact on performance!
@@ -228,9 +228,9 @@ return [
 
     'migrations' => [
         'directory' => database_path('migrations/cycle'),
-
+        'strategy' => Schema\Generator\Migrations\Strategy\SingleFileStrategy::class,
+        'nameGenerator' => Schema\Generator\Migrations\NameBasedOnChangesGenerator::class,
         'table' => env('DB_MIGRATIONS_TABLE', 'cycle_migrations'),
-
         'safe' => env('APP_ENV') !== 'production',
     ],
 
@@ -253,5 +253,7 @@ return [
      * Enables support of SoftDelete and other features from cycle/entity-behavior package
      * @see https://github.com/cycle/entity-behavior
      */
-    'load_cycle_behavior' => true,
+    'entityBehavior' => [
+        'register' => true,
+    ],
 ];

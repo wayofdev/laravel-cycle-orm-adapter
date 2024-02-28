@@ -41,7 +41,7 @@ final class RegisterORM
 
         $app->singleton(ORMInterface::class, function (Application $app): ORMInterface {
             $commandGenerator = null;
-            $loadEntityBehavior = config('cycle.load_entity_behavior', true);
+            $loadEntityBehavior = config('cycle.entityBehavior.register', true);
 
             if (true === $loadEntityBehavior) {
                 $commandGenerator = new EventDrivenCommandGenerator($app->get(SchemaInterface::class), $app);
