@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.4.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.3.1...v4.4.0) (2024-02-28)
+
+
+### Features
+
+* add support for migration strategies ([92295cd](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/92295cdce93d1b0a95dcb42293e07fc0b27c8b4b))
+
 ## [4.3.1](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.3.0...v4.3.1) (2024-02-27)
 
 
