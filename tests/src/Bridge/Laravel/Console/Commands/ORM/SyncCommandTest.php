@@ -49,4 +49,29 @@ class SyncCommandTest extends TestCase
 
         $this::assertSame(1, $u->id);
     }
+
+    /**
+     * @test
+     */
+    public function it_fails_in_production_without_force(): void
+    {
+        // Set the application environment to production
+        config()->set('cycle.migrations.safe', false);
+
+        $warningOutput = 'This operation is not recommended for production environment.';
+        $confirmationQuestion = 'Would you like to continue?';
+
+        // Simulate running the command and answering 'no' to the confirmation question
+        $this->artisan('cycle:orm:sync')
+            ->expectsOutput($warningOutput)
+            ->expectsQuestion($confirmationQuestion, false)
+            ->expectsOutput('Cancelling operation...')
+            ->assertFailed();
+
+        // To test the affirmative path, simulate answering 'yes'
+        $this->artisan('cycle:orm:sync')
+            ->expectsOutput($warningOutput)
+            ->expectsQuestion($confirmationQuestion, 'yes')
+            ->assertSuccessful();
+    }
 }

@@ -4,7 +4,11 @@ declare(strict_types=1);
 
 namespace WayOfDev\Tests\Bridge\Laravel\Console\Commands\ORM;
 
+use Cycle\ORM\SchemaInterface;
 use Illuminate\Support\Facades\File;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
+use WayOfDev\Cycle\Contracts\CacheManager;
 use WayOfDev\Tests\TestCase;
 
 use function file_put_contents;
@@ -36,7 +40,10 @@ class MigrateCommandTest extends TestCase
     public function it_runs_migrate(): void
     {
         $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', ['-n' => true], self::USER_MIGRATION);
-        $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', ['-n' => true], 'Outstanding migrations found');
+
+        $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', ['-n' => true], [
+            'Outstanding migrations found',
+        ]);
     }
 
     /**
@@ -88,5 +95,26 @@ class MigrateCommandTest extends TestCase
         ]);
 
         File::delete($entity);
+    }
+
+    /**
+     * @test
+     *
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function it_passes_schema_defaults_to_compiler(): void
+    {
+        config()->set('cycle.schema.defaults', [
+            SchemaInterface::TYPECAST_HANDLER => ['foo'],
+        ]);
+
+        $this->artisanCall('cycle:orm:migrate', ['-n' => true]);
+        $this->artisanCall('cycle:migrate', ['--force' => true]);
+        $this->artisanCall('cycle:orm:migrate', ['-n' => true]);
+
+        $cacheManager = $this->app->get(CacheManager::class);
+
+        $this::assertSame(['foo'], $cacheManager->get()['role'][SchemaInterface::TYPECAST_HANDLER]);
     }
 }

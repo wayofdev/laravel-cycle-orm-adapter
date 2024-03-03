@@ -14,6 +14,7 @@ use Cycle\ORM\FactoryInterface;
 use Cycle\ORM\ORM;
 use Cycle\ORM\ORMInterface;
 use Cycle\ORM\SchemaInterface;
+use Cycle\ORM\Transaction\CommandGeneratorInterface;
 use Illuminate\Contracts\Foundation\Application;
 use WayOfDev\Cycle\Bridge\Laravel\Factories\SpiralFactory;
 use WayOfDev\Cycle\Schema\Config\SchemaConfig;
@@ -39,13 +40,16 @@ final class RegisterORM
             );
         });
 
-        $app->singleton(ORMInterface::class, function (Application $app): ORMInterface {
-            $commandGenerator = null;
-            $loadEntityBehavior = config('cycle.entityBehavior.register', true);
+        if ($this->shouldLoadEntityBehavior() === true) {
+            $app->bind(CommandGeneratorInterface::class, function (Application $app): CommandGeneratorInterface {
+                return new EventDrivenCommandGenerator($app->get(SchemaInterface::class), $app);
+            });
+        }
 
-            if (true === $loadEntityBehavior) {
-                $commandGenerator = new EventDrivenCommandGenerator($app->get(SchemaInterface::class), $app);
-            }
+        $app->singleton(ORMInterface::class, function (Application $app): ORMInterface {
+            $commandGenerator = $this->shouldLoadEntityBehavior()
+                ? $app->get(CommandGeneratorInterface::class)
+                : null;
 
             return new ORM(
                 factory: $app->get(FactoryInterface::class),
@@ -59,5 +63,10 @@ final class RegisterORM
                 $app->get(ORMInterface::class)
             );
         });
+    }
+
+    private function shouldLoadEntityBehavior(): bool
+    {
+        return config('cycle.entityBehavior.register', true);
     }
 }

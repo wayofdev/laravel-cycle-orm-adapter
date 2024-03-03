@@ -10,6 +10,7 @@ use Cycle\ORM\FactoryInterface;
 use Cycle\ORM\ORM;
 use Cycle\ORM\ORMInterface;
 use Cycle\ORM\Transaction\CommandGenerator;
+use Cycle\ORM\Transaction\CommandGeneratorInterface;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use WayOfDev\Tests\TestCase;
@@ -51,6 +52,9 @@ class RegisterORMTest extends TestCase
 
     /**
      * @test
+     *
+     * @throws NotFoundExceptionInterface
+     * @throws ContainerExceptionInterface
      */
     public function it_registers_entity_behavior_by_default(): void
     {
@@ -61,6 +65,11 @@ class RegisterORMTest extends TestCase
         }
 
         $this::assertInstanceOf(EventDrivenCommandGenerator::class, $class->getCommandGenerator());
+
+        $this::assertInstanceOf(
+            EventDrivenCommandGenerator::class,
+            $this->app->get(CommandGeneratorInterface::class)
+        );
     }
 
     /**

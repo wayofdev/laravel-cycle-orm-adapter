@@ -218,6 +218,8 @@ return [
                 Schema\Generator\RenderModifiers::class,
                 // Add @Table column declarations
                 Annotated\MergeIndexes::class,
+                // Add foreign keys
+                Schema\Generator\ForeignKeys::class,
             ],
             GeneratorLoader::GROUP_POSTPROCESS => [
                 // Typecast non string columns

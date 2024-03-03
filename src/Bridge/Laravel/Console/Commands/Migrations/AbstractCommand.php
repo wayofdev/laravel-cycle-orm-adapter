@@ -44,7 +44,7 @@ abstract class AbstractCommand extends Command
             return true;
         }
 
-        $this->line($confirmationQuestion, 'fg=red');
+        $this->error($confirmationQuestion);
 
         if (! $this->askConfirmation()) {
             $this->comment('Cancelling operation...');
