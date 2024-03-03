@@ -48,7 +48,7 @@ final class MigrateCommand extends AbstractCommand
 
         foreach ($this->migrator->getMigrations() as $migration) {
             if ($migration->getState()->getStatus() !== State::STATUS_EXECUTED) {
-                if ($this->isInteractive() && $this->output->confirm('Outstanding migrations found. Do you want to run `cycle:migrate` now?')) {
+                if ($this->isForced() || ($this->isInteractive() && $this->output->confirm('Outstanding migrations found. Do you want to run `cycle:migrate` now?'))) {
                     $this->call(DatabaseMigrateCommand::class, ['--force' => true]);
                 } else {
                     $this->warn('Outstanding migrations found, run `cycle:migrate` first.');
