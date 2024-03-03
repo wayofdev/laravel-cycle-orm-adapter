@@ -1,5 +1,14 @@
 # Changelog
 
+## [4.6.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.5.0...v4.6.0) (2024-03-03)
+
+
+### Features
+
+* add foreign keys schema generator ([8aee302](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/8aee30242c4839b5c1b4d45c8b737104ce8db42a))
+* bind entity behaviour to interface ([8b69fe9](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/8b69fe97080e298c76ac32b97dd36a17ce7f0b1d))
+* improve coverage for console command tests ([62440db](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/62440dbdf26a9a3db947ab3945d692f1dbe4930f))
+
 ## [4.5.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.4.0...v4.5.0) (2024-02-28)
 
 
