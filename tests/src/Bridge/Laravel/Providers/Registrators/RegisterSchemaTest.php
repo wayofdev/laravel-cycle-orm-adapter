@@ -58,7 +58,7 @@ class RegisterSchemaTest extends TestCase
         $this::assertInstanceOf(GeneratorLoader::class, $class1);
         $this::assertInstanceOf(GeneratorQueue::class, $class1);
 
-        $this::assertCount(13, $class1->get());
+        $this::assertCount(14, $class1->get());
     }
 
     /**
