@@ -28,7 +28,6 @@
         "cycle/schema-builder": "^2.8",
         "illuminate/contracts": "^10.45",
         "illuminate/support": "^10.45",
-        "laminas/laminas-hydrator": "^4.15",
         "spiral/attributes": "^3.1",
         "symfony/console": "^6.4"
     },
