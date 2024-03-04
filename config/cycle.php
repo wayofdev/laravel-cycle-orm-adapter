@@ -50,8 +50,24 @@ return [
          * Should class locator cache the results?
          */
         'cache' => [
-            'directory' => null,
-            'enabled' => false,
+            'enabled' => env('CYCLE_TOKENIZER_CACHE_TARGETS', true),
+            'directory' => storage_path('framework/cache/cycle/tokenizer'),
+        ],
+
+        /*
+         * What kind of classes should be loaded?
+         */
+        'load' => [
+            'classes' => env('CYCLE_TOKENIZER_LOAD_CLASSES', true),
+            'enums' => env('CYCLE_TOKENIZER_LOAD_ENUMS', false),
+            'interfaces' => env('CYCLE_TOKENIZER_LOAD_INTERFACES', false),
+        ],
+    ],
+
+    'attributes' => [
+        'cache' => [
+            'enabled' => env('CYCLE_ATTRIBUTES_CACHE', true),
+            'store' => env('CYCLE_ATTRIBUTES_CACHE_DRIVER', 'file'),
         ],
     ],
 
@@ -163,7 +179,7 @@ return [
          */
         'cache' => [
             'enabled' => env('CYCLE_SCHEMA_CACHE', true),
-            'store' => env('CACHE_DRIVER', 'file'),
+            'store' => env('CYCLE_SCHEMA_CACHE_DRIVER', 'file'),
         ],
 
         /*
