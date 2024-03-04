@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.7.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.6.0...v4.7.0) (2024-03-04)
+
+
+### Features
+
+* support for `cycle/annotated` v4.x ([4be5ace](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/4be5acebd45773649838ee25181d0683bb157c8a))
+
 ## [4.6.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.5.0...v4.6.0) (2024-03-03)
 
 
