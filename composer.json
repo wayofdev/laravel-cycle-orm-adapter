@@ -17,7 +17,7 @@
     "require": {
         "php": "^8.2",
         "ext-pdo": "*",
-        "cycle/annotated": "^3.5",
+        "cycle/annotated": "^4.0",
         "cycle/database": "^2.8",
         "cycle/entity-behavior": "^1.3",
         "cycle/migrations": "^4.2",
