@@ -13,7 +13,7 @@ use Spiral\Tokenizer\ScopedClassesInterface;
 use Spiral\Tokenizer\Tokenizer;
 use WayOfDev\Tests\TestCase;
 
-class RegisterClassesInterfaceTest extends TestCase
+class RegisterTokenizerTest extends TestCase
 {
     /**
      * @test

@@ -17,7 +17,7 @@ use Spiral\Tokenizer\Tokenizer;
 /**
  * @see https://github.com/spiral/tokenizer/blob/master/src/Bootloader/TokenizerBootloader.php
  */
-final class RegisterClassesInterface
+final class RegisterTokenizer
 {
     public function __invoke(Application $app): void
     {

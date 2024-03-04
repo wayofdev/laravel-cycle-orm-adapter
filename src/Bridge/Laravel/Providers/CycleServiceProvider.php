@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace WayOfDev\Cycle\Bridge\Laravel\Providers;
 
+use Cycle\ORM\ORM as CycleORM;
 use Cycle\ORM\ORMInterface;
 use Illuminate\Contracts\Config\Repository as IlluminateConfig;
 use Illuminate\Support\ServiceProvider;
@@ -34,6 +35,7 @@ final class CycleServiceProvider extends ServiceProvider
         $warmup = $config->get('cycle.warmup');
 
         if (true === $warmup) {
+            /** @var CycleORM $orm */
             $orm = $this->app->get(ORMInterface::class);
             $orm->prepareServices();
         }
@@ -51,7 +53,8 @@ final class CycleServiceProvider extends ServiceProvider
 
         $registrators = [
             Registrators\RegisterConfigs::class,
-            Registrators\RegisterClassesInterface::class,
+            Registrators\RegisterTokenizer::class,
+            Registrators\RegisterAttributes::class,
             Registrators\RegisterAnnotated::class,
             Registrators\RegisterDatabase::class,
             Registrators\RegisterSchema::class,
