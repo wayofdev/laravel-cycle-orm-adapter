@@ -17,7 +17,7 @@
 <a href="https://packagist.org/packages/wayofdev/laravel-cycle-orm-adapter"><img src="https://img.shields.io/packagist/l/wayofdev/laravel-cycle-orm-adapter?style=flat-square&color=blue&logo=packagist" alt="Software License"/></a>
 <a href="https://packagist.org/packages/wayofdev/laravel-cycle-orm-adapter"><img alt="Commits since latest release" src="https://img.shields.io/github/commits-since/wayofdev/laravel-cycle-orm-adapter/latest?style=flat-square"></a>
 <a href="https://app.codecov.io/gh/wayofdev/laravel-cycle-orm-adapter"><img alt="Codecov" src="https://img.shields.io/codecov/c/github/wayofdev/laravel-cycle-orm-adapter?style=flat-square&logo=codecov"></a>
-<a href=""><img src="https://img.shields.io/badge/phpstan%20level-6%20of%209-yellowgreen?style=flat-square&logo=php"></a>
+<a href=""><img src="https://img.shields.io/badge/phpstan%20level-5%20of%209-yellowgreen?style=flat-square&logo=php"></a>
 </div>
 
 <br>
@@ -25,8 +25,8 @@
 <br>
 
 <div align="center">
-<img width="320" src="assets/on-white-bg.png#gh-light-mode-only">
-<img width="320" src="assets/on-black-bg.png#gh-dark-mode-only">
+<img width="320" src="assets/on-white-bg.png#gh-light-mode-only" alt="CycleORM + WayOfDev + Laravel Logo for Light GitHub Mode">
+<img width="320" src="assets/on-black-bg.png#gh-dark-mode-only" alt="CycleORM + WayOfDev + Laravel Logo for Dark GitHub Mode">
 </div>
 
 <br>
@@ -46,6 +46,14 @@ If you **like/use** this package, please consider **starring** ⭐️ it. Thanks
 ## 📚 Documentation
 
 The full documentation for the package is available at [https://laravel-cycle-orm-adapter.wayof.dev](https://laravel-cycle-orm-adapter.wayof.dev).
+
+<br>
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+If you would like to contribute to the package, please see the [Contributing Guide](https://laravel-cycle-orm-adapter.wayof.dev/contributing) file for more information.
 
 <br>
 
