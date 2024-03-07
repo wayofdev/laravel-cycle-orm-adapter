@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.8.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.7.0...v4.8.0) (2024-03-07)
+
+
+### Features
+
+* add initial documentation ([0419442](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/04194423bba896c6c482da192e1d82b9213d49e4))
+
 ## [4.7.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.6.0...v4.7.0) (2024-03-04)
 
 
