@@ -1,0 +1,81 @@
+# Validation
+
+Laravel provides several different approaches to validate your application's incoming data. As we plan to use this package in larger projects, better approach would be to use Laravel [Form Request Validation](https://laravel.com/docs/10.x/validation#form-request-validation). This way we can keep our controllers clean and our code more readable.
+
+Both `unique` and `exists` validation rules, require the database to be queried. This packages provides this integration.
+
+## ⚡️ Unique
+
+The field under validation must be unique for a given Entity. If the column option is not specified, the field name will be used.
+
+To accomplish this, we can use `WayOfDev\Cycle\Bridge\Laravel\Rules\Unique` rule class.
+
+### Example Form Request
+
+This example shows how to use `Unique` rule class in a form request.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Bridge\Laravel\Admin\Product\Requests;
+
+use Cycle\Database\DatabaseInterface;
+use WayOfDev\Cycle\Bridge\Laravel\Rules\Unique;
+
+final class StoreFormRequest
+{
+    public function rules(DatabaseInterface $database): array
+    {
+        return [
+            'name' => ['required'], // ... just a simple required rule
+            // ... other rules
+            'category.id' => [
+                'bail',
+                'required',
+                'uuid',
+                new Unique($database, 'categories', 'id')
+            ],
+        ];
+    }
+}
+```
+
+## ⚡️ Exists
+
+The field under validation must exist on a given Entity. If the column option is not specified, the field name will be used.
+
+To accomplish this, we can use `WayOfDev\Cycle\Bridge\Laravel\Rules\Exists` rule class.
+
+### Example Form Request
+
+This example shows how to use `Exists` rule class in a form request.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Bridge\Laravel\Admin\Product\Requests;
+
+use Cycle\Database\DatabaseInterface;
+use WayOfDev\Cycle\Bridge\Laravel\Rules\Exists;
+
+final class StoreFormRequest
+{
+    public function rules(DatabaseInterface $database): array
+    {
+        return [
+            'name' => ['required'], // ... just a simple required rule
+            // ... other rules
+            'category.id' => [
+                'bail',
+                'required',
+                'uuid',
+                new Exists($database, 'categories', 'id')
+            ],
+        ];
+    }
+}
+```
