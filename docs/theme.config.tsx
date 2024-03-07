@@ -1,9 +1,6 @@
-import React from 'react'
 import {DocsThemeConfig, useTheme} from 'nextra-theme-docs'
-
-
 const Logo = () => {
-    const {theme} = useTheme();
+    const {resolvedTheme} = useTheme();
     const title = 'Laravel CycleORM Adapter';
 
     const lightLogo = (
@@ -27,7 +24,6 @@ const Logo = () => {
         </svg>
     );
 
-    // Dark theme logo
     const darkLogo = (
         <svg className="nx-h-8 nx-w-auto" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1"
              x="0px" y="0px" xmlSpace="preserve"
@@ -48,9 +44,9 @@ const Logo = () => {
     return (
         <div className="nx-w-full nx-flex nx-items-center">
             <div className="nx-flex nx-items-center">
-                {theme === 'light' ? lightLogo : darkLogo}
+                {resolvedTheme === 'light' ? lightLogo : darkLogo}
                 <span
-                    className="nx-ml-2 font-semibold whitespace-nowrap">Laravel CycleORM Adapter</span>
+                    className="nx-ml-2 font-semibold whitespace-nowrap">{title}</span>
             </div>
         </div>
     );
