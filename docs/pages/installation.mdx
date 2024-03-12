@@ -9,11 +9,21 @@ Before you begin, ensure your development environment meets the following requir
 - **PHP Version:** 8.2 or higher
 - **Laravel:** 10.x or higher
 
+## 🧩 Compatibility Map
+
+| Laravel | Cycle ORM Adapter | Cycle ORM |
+|---------|-------------------|-----------|
+| 10.x    | 4.x               | 2.x       |
+| 11.x    | 5.x (Planned)     | 2.x       |
+
+
 ## 🚀 Quick Start
 
 Installing the Laravel Cycle ORM Adapter is straightforward with Composer. Follow the steps below to add the adapter to your Laravel project.
 
-### Step 1: Install the Adapter
+<div className="steps-container">
+
+### Step: Install the Adapter
 
 For the core functionality, run the following Composer command in your terminal:
 
@@ -23,7 +33,7 @@ $ composer req wayofdev/laravel-cycle-orm-adapter
 
 This command installs the wayofdev/laravel-cycle-orm-adapter package, integrating Cycle ORM into your Laravel application.
 
-### Step 2: Publish Configuration
+### Step: Publish Configuration
 
 After installing the package, publish the configuration file using the `vendor:publish` command:
 
@@ -31,6 +41,8 @@ After installing the package, publish the configuration file using the `vendor:p
 $ php artisan vendor:publish \
   --provider="WayOfDev\Cycle\Bridge\Laravel\Providers\CycleServiceProvider"
 ```
+
+</div>
 
 ## 🏭 Database Factories (Optional)
 

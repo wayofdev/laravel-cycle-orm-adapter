@@ -29,6 +29,8 @@ EXPORT_VARS = '\
 	$${COMPOSE_PROJECT_NAME} \
 	$${COMPOSER_AUTH}'
 
+NPM_RUNNER ?= pnpm
+
 
 # Self documenting Makefile code
 # ------------------------------------------------------------------------------------
@@ -182,3 +184,9 @@ test: ## Run project php-unit and pest tests
 test-cc: ## Run project php-unit and pest tests in coverage mode and build report
 	$(APP_COMPOSER) test:cc
 .PHONY: test-cc
+
+# Documentation
+# ------------------------------------------------------------------------------------
+docs-deps-update: ## Check for outdated dependencies and automatically update them using pnpm
+	cd docs && $(NPM_RUNNER) run deps:update
+.PHONY: docs-deps-update

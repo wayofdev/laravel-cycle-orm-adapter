@@ -49,6 +49,32 @@ This leads to more readable messages that are easy to follow when looking throug
 - **chore** — Other changes that don't modify src or test files
 - **security** — A code change that fixes a security issue
 
+## 🧪 Running Tests
+
+### → PHPUnit Tests
+
+To run phpunit (pest) tests, run the following command:
+
+```bash
+$ make test
+```
+
+### → Static Analysis
+
+Run Code quality checks using [PHPStan](https://phpstan.org):
+
+```bash
+$ make lint-stan
+```
+
+### → Coding Standards Fixing
+
+Fix code using [The PHP Coding Standards Fixer](https://github.com/wayofdev/php-cs-fixer-config) to follow our standards:
+
+```bash
+$ make lint-php
+```
+
 ## 🔓 Security Vulnerabilities
 
 If you discover a security vulnerability within this package, please send an e-mail to WayOfDev via the@wayof.dev. All security vulnerabilities will be promptly addressed.
