@@ -74,3 +74,57 @@ class ExampleTest extends TestCase
     }
 }
 ```
+
+## Available Assertions
+
+This adapter package overrides Laravel's assertion methods to make them work with CycleORM entities. Use `WayOfDev\Cycle\Testing\Concerns\InteractsWithDatabase` trait in your base test case or in test cases where it is needed, instead of default Laravel `InteractsWithDatabase` trait.
+
+### `assertDatabaseCount`
+
+Assert that a table in the database contains the given number of records:
+
+```php
+$this->assertDatabaseCount('posts', 1);
+```
+
+### `assertDatabaseHas`
+
+Assert that a table in the database contains records matching the given key / value query constraints:
+
+```php
+$this->assertDatabaseHas('posts', [
+    'id' => $response->json('id'),
+    'title' => 'New Post'
+]);
+```
+
+### `assertDatabaseMissing`
+
+Assert that a table in the database does not contain records matching the given key / value query constraints:
+
+```php
+$this->assertDatabaseMissing('posts', [
+    'id' => $response->json('id'),
+    'title' => 'New Post'
+]);
+```
+
+### `assertSoftDeleted`
+
+Assert that a given entity has been soft-deleted:
+
+```php
+$this->assertSoftDeleted('posts', [
+    'id' => $post->id
+]);
+```
+
+### `assertNotSoftDeleted`
+
+Opposite to `assertSoftDeleted` method. Assert that a given entity has not been soft-deleted:
+
+```php
+$this->assertNotSoftDeleted('posts', [
+    'id' => $post->id
+]);
+```
