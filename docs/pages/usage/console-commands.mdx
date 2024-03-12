@@ -1,23 +1,115 @@
-# Console Commands
+import {Callout} from "nextra-theme-docs";
 
 This package includes CycleORM commands implemented as Laravel Console Commands, you can use them to manage your database schema and perform migrations.
 
-The package extends Laravel's artisan commands, introducing a set of commands specifically designed for managing Cycle ORM migrations and database schema. These commands are intuitive for Laravel developers and follow the framework's conventions.
+The package extends Laravel's artisan commands, introducing a set of commands specifically designed for managing CycleORM migrations and database schema. These commands are intuitive for Laravel developers and follow the framework's conventions.
 
 
 ## 🛠️ Commands for Migrations
 
-The package includes a set of commands for managing migrations. These commands are similar to Laravel's migration commands, but they are designed to work with Cycle ORM.
+Migration commands are essential for managing your database's evolution over time. They allow for the creation, execution, rollback, and status checking of migrations.
 
-### Table of Contents
+### Command List
 
-| Command                  | Description                                                                                                     |
-|--------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `cycle:migrate`          | Executes pending migrations. Use the --one flag to execute only the first pending migration.                    |
-| `cycle:migrate:replay`   | Replays migrations by rolling them back and then re-applying them. Use the --all flag to replay all migrations. |
-| `cycle:migrate:rollback` | Rolls back the last batch of migrations by default. Use the --all flag to roll back all migrations.             |
-| `cycle:migrate:init`     | Initializes the migration system by creating the necessary migrations table.                                    |
-| `cycle:migrate:status`   | Displays the status of all migrations, indicating which have been applied.                                      |
-| `cycle:migrate:fresh`    | Drops all tables and re-runs all migrations, providing a clean slate. ⚠️                                        |
+| Command                  | Description                                                                                                       |
+|--------------------------|-------------------------------------------------------------------------------------------------------------------|
+| `cycle:migrate:init`     | Initializes the migration system by creating the necessary migrations table.                                      |
+| `cycle:migrate`          | Executes pending migrations. Use the `--one` flag to execute only the first pending migration.                    |
+| `cycle:migrate:replay`   | Replays migrations by rolling them back and then re-applying them. Use the `--all` flag to replay all migrations. |
+| `cycle:migrate:rollback` | Rolls back the last batch of migrations by default. Use the `--all` flag to roll back all migrations.             |
+| `cycle:migrate:status`   | Displays the status of all migrations, indicating which have been applied.                                        |
+| `cycle:migrate:fresh`    | Drops all tables and re-runs all migrations, providing a clean slate. ⚠️                                          |
 
-### Usage
+### Initializing Migrations
+
+`cycle:migrate:init`
+
+This command is your starting point for migration management. It initializes the migration system by creating the necessary migrations table in your database, ensuring that you can start tracking and executing migrations.
+
+#### Usage:
+
+```bash
+php artisan cycle:migrate:init
+```
+
+### Running Migrations
+
+`cycle:migrate`
+
+To apply pending migrations to your database, use the `cycle:migrate` command. This will execute all migrations that have not yet been applied, updating your database schema accordingly.
+
+#### Usage:
+
+```bash
+php artisan cycle:migrate
+```
+
+#### Options:
+
+`--one`: Executes only the first pending migration, allowing for more granular control over the migration process.
+
+### Replaying Migrations
+
+`cycle:migrate:replay`
+
+This command facilitates the replaying of migrations by first rolling them back and then re-applying them. It's particularly useful for development environments where you need to quickly test changes to migrations.
+
+#### Usage:
+
+```bash
+php artisan cycle:migrate:replay
+```
+
+#### Options:
+
+`--all`: Replays all migrations, effectively refreshing your entire database schema.
+
+
+### Rolling Back Migrations
+
+`cycle:migrate:rollback`
+
+To undo the last batch of migrations, you can use the `cycle:migrate:rollback` command. This is useful when you need to revert changes made by the most recent migrations.
+
+#### Usage:
+
+```bash
+php artisan cycle:migrate:rollback
+```
+
+#### Options:
+
+`--all`: Rolls back all migrations, allowing you to revert your database schema to its initial state.
+
+
+### Checking Migration Status
+
+`cycle:migrate:status`
+
+Keeping track of which migrations have been applied is crucial for database management. The `cycle:migrate:status` command displays the status of all migrations, indicating which have been applied and which are pending.
+
+#### Usage:
+
+```bash
+php artisan cycle:migrate:status
+```
+
+### Fresh Schema Command
+
+`cycle:migrate:fresh`
+
+When you need to start from a clean slate, the `cycle:migrate:fresh` command drops all tables from the database and re-runs all migrations. This is particularly useful for resetting the database to a known state during development or testing.
+
+#### Usage:
+
+```bash
+php artisan cycle:migrate:fresh
+```
+
+<Callout type="warning" emoji="⚠️">
+    Be cautious when using the `cycle:migrate:fresh` command, as it will permanently delete all data in your database.
+</Callout>
+
+#### Options:
+
+`--seed`: Seeds the database after running the migrations, populating it with initial data.
