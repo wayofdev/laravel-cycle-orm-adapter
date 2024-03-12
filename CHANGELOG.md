@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.9.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.8.2...v4.9.0) (2024-03-12)
+
+
+### Features
+
+* add seed() testing method in helpers ([32d9356](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/32d935661b3facf61e8049bbe13460b820e23d5a))
+* support for laravel 11.x [#570](https://github.com/wayofdev/laravel-cycle-orm-adapter/issues/570) ([32d9356](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/32d935661b3facf61e8049bbe13460b820e23d5a))
+
 ## [4.8.2](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.8.1...v4.8.2) (2024-03-12)
 
 
