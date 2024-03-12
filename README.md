@@ -49,6 +49,16 @@ The full documentation for the package is available at [https://laravel-cycle-or
 
 <br>
 
+
+## 🧩 Compatibility Map
+
+| Laravel | Cycle ORM Adapter | Cycle ORM |
+|---------|-------------------|-----------|
+| 10.x    | 4.x               | 2.x       |
+| 11.x    | 5.x (Planned)     | 2.x       |
+
+<br>
+
 ## 🤝 Contributing
 
 Contributions are welcome!

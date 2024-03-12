@@ -1,1 +1,23 @@
 # Console Commands
+
+This package includes CycleORM commands implemented as Laravel Console Commands, you can use them to manage your database schema and perform migrations.
+
+The package extends Laravel's artisan commands, introducing a set of commands specifically designed for managing Cycle ORM migrations and database schema. These commands are intuitive for Laravel developers and follow the framework's conventions.
+
+
+## 🛠️ Commands for Migrations
+
+The package includes a set of commands for managing migrations. These commands are similar to Laravel's migration commands, but they are designed to work with Cycle ORM.
+
+### Table of Contents
+
+| Command                  | Description                                                                                                     |
+|--------------------------|-----------------------------------------------------------------------------------------------------------------|
+| `cycle:migrate`          | Executes pending migrations. Use the --one flag to execute only the first pending migration.                    |
+| `cycle:migrate:replay`   | Replays migrations by rolling them back and then re-applying them. Use the --all flag to replay all migrations. |
+| `cycle:migrate:rollback` | Rolls back the last batch of migrations by default. Use the --all flag to roll back all migrations.             |
+| `cycle:migrate:init`     | Initializes the migration system by creating the necessary migrations table.                                    |
+| `cycle:migrate:status`   | Displays the status of all migrations, indicating which have been applied.                                      |
+| `cycle:migrate:fresh`    | Drops all tables and re-runs all migrations, providing a clean slate. ⚠️                                        |
+
+### Usage
