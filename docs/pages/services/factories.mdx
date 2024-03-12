@@ -1,6 +1,6 @@
 import { Callout } from "nextra-theme-docs";
 
-Like [Eloquent Factories](https://laravel.com/docs/10.x/eloquent-factories) this package enables you to define factories for your database models, integrating Cycle ORM with Laravel's elegant syntax and functionality.
+Like [Eloquent Factories](https://laravel.com/docs/10.x/eloquent-factories) this package enables you to define factories for your entities, integrating Cycle ORM with Laravel's elegant syntax and functionality.
 
 This feature is available through the [wayofdev/laravel-cycle-orm-factories](https://github.com/wayofdev/laravel-cycle-orm-factories), be sure to check [installation](/installation#-database-factories-optional) instructions.
 
@@ -163,7 +163,7 @@ State manipulation methods allow you to define discrete modifications that can b
 
 State transformation methods typically call the state method provided by `WayOfDev\DatabaseSeeder\Factories\AbstractFactory` class. The state method accepts a closure which will receive the array of raw attributes defined for the factory and should return an array of attributes to modify:
 
-<Callout type="note">
+<Callout type="info" emoji="💡">
     💡 It is non-destructive, it will only update the properties passed in the returned array and will not remove any properties from the definition array.
 </Callout>
 
@@ -436,7 +436,7 @@ class PostFactory extends AbstractFactory
     }
 
     // example with User created by factory
-    public function withUser(UserFactory $userFactory): self
+    public function withUser(): self
     {
         return $this->state(fn (Generator $faker, array $definition) => [
             'user' => UserFactory::new()->createOne(), // or makeOne to allow cascade persisting
