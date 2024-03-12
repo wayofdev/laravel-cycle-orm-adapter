@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.8.2](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.8.1...v4.8.2) (2024-03-12)
+
+
+### Bug Fixes
+
+* **deps:** update illuminate packages to v11 ([1ecbf98](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/1ecbf98d010ebbbd24d18fd99c158c51f8a111c4))
+
 ## [4.8.1](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.8.0...v4.8.1) (2024-03-07)
 
 
