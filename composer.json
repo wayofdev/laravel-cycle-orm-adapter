@@ -24,10 +24,10 @@
         "cycle/orm": "^2.7",
         "cycle/schema-migrations-generator": "^2.2",
         "cycle/schema-renderer": "^1.2",
-        "illuminate/console": "^10.45",
+        "illuminate/console": "^11.0",
         "cycle/schema-builder": "^2.8",
-        "illuminate/contracts": "^10.45",
-        "illuminate/support": "^10.45",
+        "illuminate/contracts": "^11.0",
+        "illuminate/support": "^11.0",
         "spiral/attributes": "^3.1",
         "symfony/console": "^6.4"
     },
