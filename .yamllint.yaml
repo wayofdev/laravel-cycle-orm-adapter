@@ -5,6 +5,7 @@ extends: default
 ignore: |
   .build/
   vendor/
+  docs/
 
 # Overwrite above default rules
 rules:

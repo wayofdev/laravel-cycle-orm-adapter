@@ -1,1 +1,76 @@
-# Testing
+import {Callout} from "nextra-theme-docs";
+
+## Introduction
+
+Adapter package provides a set of modified Laravel testing traits and methods to make testing easier, and as close as possible to native Laravel Testing methods, when using CycleORM.
+
+<Callout type="info" emoji="💡">
+    Check also [Laravel Database Testing](https://laravel.com/docs/10.x/database-testing) documentation.
+</Callout>
+
+## Resetting the Database After Each Test
+
+@todo This trait is not yet implemented as native adapter functionality.
+
+Currently, you can use default `Illuminate\Foundation\Testing\RefreshDatabase` trait to reset the database after each test. It will use the default Laravel database connection to reset the database.
+
+
+## Entity Factories
+
+When testing, you may need to insert a few records into your database before executing your test. Instead of manually specifying the value of each column when you create this test data, Adapter package allows you to define a set of default attributes for each of your CycleORM [Entities](/usage/entities) using [Entity Factories](/services/factories).
+
+Once you have defined an entity factory, you may utilize the factory within your test to create entities:
+
+```php
+use Database\Factories\Post\PostFactory;
+
+/**
+ * @test
+ */
+public function it_creates_post_entity_and_persists_it(): void
+{
+    $post = PostFactory::new()->create();
+
+    // ...
+}
+```
+
+## Running Seeders
+
+If you would like to use [database seeders](/services/seeders) to populate your database during a feature test, you may invoke the `seed` method. By default, the `seed` method will execute the `DatabaseSeeder`, which should execute all of your other seeders. Alternatively, you pass a specific seeder class name to the `seed` method:
+
+```php
+<?php
+
+namespace Tests\Feature;
+
+use Database\Seeders\Post\PostSeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    use RefreshDatabase;
+
+    /**
+     * @test
+     */
+    public function it_can_seed_posts(): void
+    {
+        // Run the DatabaseSeeder...
+        $this->seed();
+
+        // Run a specific seeder...
+        $this->seed(PostSeeder::class);
+
+        // ...
+
+        // Run an array of specific seeders...
+        $this->seed([
+            OrderStatusSeeder::class,
+            TransactionStatusSeeder::class,
+            // ...
+        ]);
+    }
+}
+```

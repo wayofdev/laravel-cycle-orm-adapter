@@ -8,6 +8,7 @@ use Cycle\Database\DatabaseProviderInterface;
 use Illuminate\Support\Facades\File;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot as ReverseConstraint;
+use WayOfDev\Cycle\Support\Arr;
 use WayOfDev\Cycle\Testing\Constraints\CountInDatabase;
 use WayOfDev\Cycle\Testing\Constraints\HasInDatabase;
 use WayOfDev\Cycle\Testing\Constraints\NotSoftDeletedInDatabase;
@@ -18,6 +19,18 @@ use WayOfDev\Cycle\Testing\Constraints\SoftDeletedInDatabase;
  */
 trait InteractsWithDatabase
 {
+    /**
+     * @param array|string $class
+     */
+    public function seed($class = 'Database\\Seeders\\DatabaseSeeder'): static
+    {
+        foreach (Arr::wrap($class) as $wrappedClass) {
+            $this->artisan('db:seed', ['--class' => $wrappedClass, '--no-interaction' => true]);
+        }
+
+        return $this;
+    }
+
     /**
      * @param string|object $table
      * @param string|null $connection

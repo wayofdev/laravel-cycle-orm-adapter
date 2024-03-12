@@ -7,6 +7,7 @@ namespace WayOfDev\Cycle\Support;
 use function array_key_exists;
 use function explode;
 use function is_array;
+use function is_null;
 use function str_contains;
 
 /**
@@ -58,5 +59,17 @@ final class Arr
         }
 
         return $array;
+    }
+
+    /**
+     * If the given value is not an array and not null, wrap it in one.
+     */
+    public static function wrap(mixed $value): array
+    {
+        if (is_null($value)) {
+            return [];
+        }
+
+        return is_array($value) ? $value : [$value];
     }
 }
