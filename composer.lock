@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6daf927b7f3b5f4174a16ab0e8c681e",
+    "content-hash": "df238f9f4a0b60f1deb0c1044bb578b9",
     "packages": [
         {
             "name": "brick/math",
@@ -9729,16 +9729,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.60",
+            "version": "1.10.61",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "95dcea7d6c628a3f2f56d091d8a0219485a86bbe"
+                "reference": "30049da2df0941c38e2ba49372018aa796b90db4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/95dcea7d6c628a3f2f56d091d8a0219485a86bbe",
-                "reference": "95dcea7d6c628a3f2f56d091d8a0219485a86bbe",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/30049da2df0941c38e2ba49372018aa796b90db4",
+                "reference": "30049da2df0941c38e2ba49372018aa796b90db4",
                 "shasum": ""
             },
             "require": {
@@ -9787,7 +9787,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-07T13:30:19+00:00"
+            "time": "2024-03-13T09:49:39+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
