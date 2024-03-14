@@ -1,6 +1,6 @@
 import {Callout} from "nextra-theme-docs";
 
-## Introduction
+## 🗒️ Introduction
 
 Laravel includes the ability to seed your database with data using seed classes. All seed classes are stored in the database/seeders directory.
 Same as in Laravel with Eloquent, you can use default Laravel seeders to seed your data into the database, by using CycleORM database factories.
@@ -42,7 +42,7 @@ final class PostSeeder extends Seeder
         $author = UserFactory::new()->createOne();
         $posts = PostFactory::new()->withUser($author)->times(20)->create();
 
-        $collection->each(function (Post $post): void {
+        $posts->each(function (Post $post): void {
             CommentFactory::new([
                 'post' => $post,
             ])->times(10)->create();

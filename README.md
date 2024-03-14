@@ -59,7 +59,7 @@ The full documentation for the package is available at [https://laravel-cycle-or
 
 <br>
 
-## 🤝 Contributing
+## 📥 Contributing
 
 Contributions are welcome!
 

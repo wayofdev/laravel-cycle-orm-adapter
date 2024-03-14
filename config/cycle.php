@@ -159,12 +159,12 @@ return [
          * Use any of channels configured in your logging.php file
          */
         'logger' => [
-            'default' => env('DB_DEFAULT_LOGGER_CHANNEL', null),
+            'default' => env('DB_DEFAULT_LOGGER', null),
             'drivers' => [
-                'sqlite' => env('DB_DEFAULT_LOGGER_CHANNEL', null),
-                'pgsql' => env('DB_DEFAULT_LOGGER_CHANNEL', null),
-                'mysql' => env('DB_DEFAULT_LOGGER_CHANNEL', null),
-                'sqlserver' => env('DB_DEFAULT_LOGGER_CHANNEL', null),
+                'sqlite' => env('DB_DEFAULT_LOGGER', null),
+                'pgsql' => env('DB_DEFAULT_LOGGER', null),
+                'mysql' => env('DB_DEFAULT_LOGGER', null),
+                'sqlserver' => env('DB_DEFAULT_LOGGER', null),
             ],
         ],
     ],
@@ -272,6 +272,6 @@ return [
      * @see https://github.com/cycle/entity-behavior
      */
     'entityBehavior' => [
-        'register' => true,
+        'register' => env('CYCLE_REGISTER_ENTITY_BEHAVIOUR', true),
     ],
 ];

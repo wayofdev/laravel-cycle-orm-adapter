@@ -1,6 +1,6 @@
 import {Callout} from "nextra-theme-docs";
 
-## Introduction
+## 🗒️ Introduction
 
 Adapter package provides a set of modified Laravel testing traits and methods to make testing easier, and as close as possible to native Laravel Testing methods, when using CycleORM.
 
@@ -8,14 +8,14 @@ Adapter package provides a set of modified Laravel testing traits and methods to
     Check also [Laravel Database Testing](https://laravel.com/docs/10.x/database-testing) documentation.
 </Callout>
 
-## Resetting the Database After Each Test
+## 🗑️ Resetting the Database After Each Test
 
 @todo This trait is not yet implemented as native adapter functionality.
 
 Currently, you can use default `Illuminate\Foundation\Testing\RefreshDatabase` trait to reset the database after each test. It will use the default Laravel database connection to reset the database.
 
 
-## Entity Factories
+## 🏭 Entity Factories
 
 When testing, you may need to insert a few records into your database before executing your test. Instead of manually specifying the value of each column when you create this test data, Adapter package allows you to define a set of default attributes for each of your CycleORM [Entities](/usage/entities) using [Entity Factories](/services/factories).
 
@@ -35,7 +35,7 @@ public function it_creates_post_entity_and_persists_it(): void
 }
 ```
 
-## Running Seeders
+## 👟 Running Seeders
 
 If you would like to use [database seeders](/services/seeders) to populate your database during a feature test, you may invoke the `seed` method. By default, the `seed` method will execute the `DatabaseSeeder`, which should execute all of your other seeders. Alternatively, you pass a specific seeder class name to the `seed` method:
 
@@ -75,7 +75,7 @@ class ExampleTest extends TestCase
 }
 ```
 
-## Available Assertions
+## 🔍 Available Assertions
 
 This adapter package overrides Laravel's assertion methods to make them work with CycleORM entities. Use `WayOfDev\Cycle\Testing\Concerns\InteractsWithDatabase` trait in your base test case or in test cases where it is needed, instead of default Laravel `InteractsWithDatabase` trait.
 
