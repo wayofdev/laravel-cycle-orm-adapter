@@ -9,10 +9,7 @@ const Logo = () => {
              x="0px" y="0px" xmlSpace="preserve"
              viewBox="881.02 445.23 157.96 189.54">
             <style>
-                {`.st0{fill:#FFFFFF;}
-        .st1{fill:#6495ED;}
-        .st2{fill:#ADFF2F;}
-        .st3{fill:#87CEEB;}`}
+                {`.st0{fill:#FFFFFF;}.st1{fill:#6495ED;}.st2{fill:#ADFF2F;}.st3{fill:#87CEEB;}`}
             </style>
             <g>
                 <path
@@ -29,7 +26,7 @@ const Logo = () => {
              x="0px" y="0px" xmlSpace="preserve"
              viewBox="881.02 445.23 157.96 189.54">
             <style>
-                {`   .st0{fill:#FFFFFF;} .st1{fill:#6495ED;} .st2{fill:#ADFF2F;} .st3{fill:#87CEEB;}`}
+                {`.st0{fill:#FFFFFF;}.st1{fill:#6495ED;}.st2{fill:#ADFF2F;}.st3{fill:#87CEEB;}`}
             </style>
             <g>
                 <path className="st0"
@@ -52,7 +49,6 @@ const Logo = () => {
     );
 }
 
-
 const config: DocsThemeConfig = {
     logo: Logo,
     project:
@@ -66,6 +62,11 @@ const config: DocsThemeConfig = {
             text: 'Laravel CycleORM Adapter Documentation',
         }
     ,
+    useNextSeoProps() {
+        return {
+            titleTemplate: '%s – Laravel-CycleORM-Adapter',
+        }
+    }
 }
 
 export default config

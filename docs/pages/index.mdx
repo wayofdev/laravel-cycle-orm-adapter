@@ -1,8 +1,10 @@
+import ExternalLink from "../components/external-link";
+
 # Introduction
 
-Unlock the full potential of [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) in your Laravel projects with the [wayofdev/laravel-cycle-orm-adapter](https://github.com/wayofdev/laravel-cycle-orm-adapter) — the adapter package that seamlessly integrates the capabilities of [CycleORM](https://cycle-orm.dev) — DataMapper ORM into [Laravel Framework](https://laravel.com).
+Unlock the full potential of Domain-Driven Design in your Laravel projects with the <ExternalLink href="https://github.com/wayofdev/laravel-cycle-orm-adapter">laravel-cycle-orm-adapter</ExternalLink> — the adapter package that seamlessly integrates the capabilities of <ExternalLink href="https://cycle-orm.dev">CycleORM</ExternalLink> — DataMapper ORM into <ExternalLink href="https://laravel.com">Laravel Framework</ExternalLink>.
 
-This adapter bridges the gap between Laravel's rapid development capabilities and Cycle ORM's Data Mapper features, enabling you to craft complex, domain-centric applications, with separation of concerns, and a clear distinction between the domain model and the persistence layer.
+This adapter bridges the gap between Laravel's rapid development capabilities and CycleORM's Data Mapper features, enabling you to craft complex, domain-centric applications, with separation of concerns, and a clear distinction between the domain model and the persistence layer.
 
 ## 🧐 Understanding the Limitations of Eloquent
 
@@ -19,15 +21,15 @@ The Active Record pattern tightly couples domain logic and data persistence with
 
 There were many attempts to bring DDD to Laravel:
 
-* [Laravel Beyond CRUD approach](https://laravel-beyond-crud.com) by Spatie
+* <ExternalLink href="https://laravel-beyond-crud.com">Laravel Beyond CRUD approach</ExternalLink> by Spatie
 
-* [Conciliating Laravel and DDD](https://lorisleiva.com/conciliating-laravel-and-ddd)  by Loris Leiva
+* <ExternalLink href="https://lorisleiva.com/conciliating-laravel-and-ddd">Conciliating Laravel and DDD</ExternalLink> by Loris Leiva
 
-* [Yet another Laravel 10 DDD interpretation](https://github.com/Orphail/laravel-ddd)
+* <ExternalLink href="https://github.com/Orphail/laravel-ddd">Yet another Laravel 10 DDD interpretation</ExternalLink>
 
 these often involve workarounds to adapt Eloquent rather than a fundamental shift in approach.
 
-The `laravel-cycle-orm-adapter` bridges this gap, by introducing DataMapper pattern capabilities to Laravel, empowering you to unlock the full potential of DDD within your projects.
+The <ExternalLink href="https://github.com/wayofdev/laravel-cycle-orm-adapter">laravel-cycle-orm-adapter</ExternalLink> bridges this gap, by introducing DataMapper pattern capabilities to Laravel, empowering you to unlock the full potential of DDD within your projects.
 
 Here's why this combination shines:
 
@@ -40,20 +42,20 @@ Here's why this combination shines:
 
 ## 🚀 Features
 
-### Laravel Cycle ORM Adapter Features
-- **Seamless Integration**: The adapter is designed to work seamlessly with Laravel, allowing you to use Cycle ORM in your Laravel projects without any hassle.
+### Laravel CycleORM Adapter Features
+- **Seamless Integration**: The adapter is designed to work seamlessly with Laravel, allowing you to use CycleORM in your Laravel projects without any hassle.
 - **Entity as Source of Truth for Database Migrations**: The adapter allows you to use your domain entities as the source of truth for your database schema, making it easier to keep your database schema in sync with your domain model.
-- **Laravel Collections Support**: The adapter provides support for [Laravel Collections](https://laravel.com/docs/10.x/collections), allowing you to use them with your domain models and repositories
-- **Database Factories**: Use Laravel database seeders together with CycleORM Entity Factories via [wayofdev/laravel-cycle-orm-factories](https://github.com/wayofdev/laravel-cycle-orm-factories)
-- **Real Repositories**: [Avoid breaking the Repository Design Pattern in Laravel](https://medium.com/@sergiumneagu/laravel-why-youve-been-using-the-repository-pattern-the-wrong-way-952aedf1989b), maintaining a clear separation between your domain logic and the persistence layer.
+- **Laravel Collections Support**: The adapter provides support for <ExternalLink href="https://laravel.com/docs/10.x/collections">Laravel Collections</ExternalLink>, allowing you to use them with your domain models and repositories
+- **Database Factories**: Use Laravel database seeders together with CycleORM Entity Factories via <ExternalLink href="https://github.com/wayofdev/laravel-cycle-orm-factories">wayofdev/laravel-cycle-orm-factories</ExternalLink>
+- **Real Repositories**: <ExternalLink href="https://medium.com/@sergiumneagu/laravel-why-youve-been-using-the-repository-pattern-the-wrong-way-952aedf1989b">Avoid breaking the Repository Design Pattern in Laravel</ExternalLink>, maintaining a clear separation between your domain logic and the persistence layer.
 
 
-### Cycle ORM Features
-- **Domain-Driven Design**: Cycle ORM is designed to work with complex domain models, making it a perfect fit for DDD.
-- **Data Mapper**: Cycle ORM is a Data Mapper ORM, which means that it allows you to define your domain models and their relationships in a way that is more natural and expressive.
-- **Powerful Query Builder**: Cycle ORM provides a powerful query builder that allows you to write complex queries in a way that is easy to read and understand.
-- **Schema Management**: Cycle ORM provides powerful schema management capabilities, allowing you to define your database schema using PHP code.
+### CycleORM Features
+- **Domain-Driven Design**: CycleORM is designed to work with complex domain models, making it a perfect fit for DDD.
+- **Data Mapper**: CycleORM is a Data Mapper ORM, which means that it allows you to define your domain models and their relationships in a way that is more natural and expressive.
+- **Powerful Query Builder**: CycleORM provides a powerful query builder that allows you to write complex queries in a way that is easy to read and understand.
+- **Schema Management**: CycleORM provides powerful schema management capabilities, allowing you to define your database schema using PHP code.
 
 ## 🛠️ Want to see it in action?
 
-Explore the Laravel CycleORM Starter Kit project: [laravel-cycle-orm-starter-kit](https://github.com/wayofdev/laravel-cycle-starter-tpl), based on Laravel 10.x. It showcases the practical use of the adapter in a real-world application, demonstrating how to leverage CycleORM's strengths within a Laravel project.
+Explore the Laravel CycleORM Starter Kit project: <ExternalLink href="https://github.com/wayofdev/laravel-cycle-starter-tpl">laravel-cycle-orm-starter-kit</ExternalLink>, based on Laravel 10.x. It showcases the practical use of the adapter in a real-world application, demonstrating how to leverage CycleORM's strengths within a Laravel project.

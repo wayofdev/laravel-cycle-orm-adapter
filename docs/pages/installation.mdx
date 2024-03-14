@@ -1,6 +1,8 @@
+import ExternalLink from "../components/external-link";
+
 # Installation
 
-Welcome to the installation guide for the Laravel Cycle ORM Adapter. This document will walk you through the setup process to get you up and running quickly.
+Welcome to the installation guide for the Laravel CycleORM Adapter. This document will walk you through the setup process to get you up and running quickly.
 
 ## 🚩 Prerequisites
 
@@ -11,15 +13,15 @@ Before you begin, ensure your development environment meets the following requir
 
 ## 🧩 Compatibility Map
 
-| Laravel | Cycle ORM | Adapter |
-|---------|-----------|---------|
-| ^10.28  | 2.x       | 4.x     |
-| 11.x    | 2.x       | ^4.9.0  |
+| Laravel | CycleORM | Adapter |
+|---------|----------|---------|
+| ^10.28  | 2.x      | 4.x     |
+| 11.x    | 2.x      | ^4.9.0  |
 
 
 ## 🚀 Quick Start
 
-Installing the Laravel Cycle ORM Adapter is straightforward with Composer. Follow the steps below to add the adapter to your Laravel project.
+Installing the Laravel CycleORM Adapter is straightforward with Composer. Follow the steps below to add the adapter to your Laravel project.
 
 <div className="steps-container">
 
@@ -31,7 +33,7 @@ For the core functionality, run the following Composer command in your terminal:
 $ composer req wayofdev/laravel-cycle-orm-adapter
 ```
 
-This command installs the wayofdev/laravel-cycle-orm-adapter package, integrating Cycle ORM into your Laravel application.
+This command installs the wayofdev/laravel-cycle-orm-adapter package, integrating CycleORM into your Laravel application.
 
 ### Step: Publish Configuration
 
@@ -46,10 +48,10 @@ $ php artisan vendor:publish \
 
 ## 🏭 Database Factories (Optional)
 
-If you need support for [Eloquent-like Factories](https://laravel.com/docs/10.x/eloquent-factories), install the following package:
+If you need support for <ExternalLink href="https://laravel.com/docs/11.x/eloquent-factories">Eloquent-like Factories</ExternalLink>, install the following package:
 
 ```bash
 $ composer req --dev wayofdev/laravel-cycle-orm-factories
 ```
 
-which will install the [wayofdev/laravel-cycle-orm-factories](https://github.com/wayofdev/laravel-cycle-orm-factories) package to provide similar functionality
+which will install the <ExternalLink href="https://github.com/wayofdev/laravel-cycle-orm-factories">wayofdev/laravel-cycle-orm-factories</ExternalLink> package to provide similar functionality

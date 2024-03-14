@@ -1,4 +1,5 @@
 import { Callout } from 'nextra-theme-docs'
+import ExternalLink from "../components/external-link";
 
 # Contributing
 
@@ -28,8 +29,8 @@ The latest changes are always in master branch, so please make your Pull Request
 
 ## ✉️ Git Message Format
 
-This repo adheres to the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
-Commit messages are enforced through [commitizen](https://github.com/commitizen-tools/commitizen) and a [pre-commit](https://pre-commit.com), please use `make hooks` to install them.
+This repo adheres to the <ExternalLink href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</ExternalLink> specification.
+Commit messages are enforced through <ExternalLink href="https://github.com/commitizen-tools/commitizen">commitizen</ExternalLink> and a <ExternalLink href="https://pre-commit.com">pre-commit</ExternalLink>, please use `make hooks` to install them.
 
 This leads to more readable messages that are easy to follow when looking through the project history and also allows to generate changelogs automatically.
 
@@ -61,7 +62,7 @@ $ make test
 
 ### → Static Analysis
 
-Run Code quality checks using [PHPStan](https://phpstan.org):
+Run Code quality checks using <ExternalLink href="https://phpstan.org">PHPStan</ExternalLink>:
 
 ```bash
 $ make lint-stan
@@ -69,7 +70,7 @@ $ make lint-stan
 
 ### → Coding Standards Fixing
 
-Fix code using [The PHP Coding Standards Fixer](https://github.com/wayofdev/php-cs-fixer-config) to follow our standards:
+Fix code using <ExternalLink href="https://github.com/wayofdev/php-cs-fixer-config">The PHP Coding Standards Fixer</ExternalLink> to follow our standards:
 
 ```bash
 $ make lint-php
@@ -81,4 +82,4 @@ If you discover a security vulnerability within this package, please send an e-m
 
 ## 🤝 Code of Conduct
 
-We are using the [Contributor Covenant](https://www.contributor-covenant.org/) as our Code of Conduct, to keep discussion open and inclusive. Please, take a moment to read and follow our [Code of Conduct](https://github.com/wayofdev/laravel-cycle-orm-adapter/blob/master/.github/CODE_OF_CONDUCT.md).
+We are using the <ExternalLink href="https://www.contributor-covenant.org">Contributor Covenant</ExternalLink> as our Code of Conduct, to keep discussion open and inclusive. Please, take a moment to read and follow our <ExternalLink href="https://github.com/wayofdev/laravel-cycle-orm-adapter/blob/master/.github/CODE_OF_CONDUCT.md">Code of Conduct</ExternalLink>.

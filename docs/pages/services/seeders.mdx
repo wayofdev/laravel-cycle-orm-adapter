@@ -1,12 +1,13 @@
 import {Callout} from "nextra-theme-docs";
+import ExternalLink from "../../components/external-link";
 
-## Introduction
+## 🗒️ Introduction
 
 Laravel includes the ability to seed your database with data using seed classes. All seed classes are stored in the database/seeders directory.
 Same as in Laravel with Eloquent, you can use default Laravel seeders to seed your data into the database, by using CycleORM database factories.
 
 <Callout type="info" emoji="💡">
-Check also [Laravel Database Seeders](https://laravel.com/docs/10.x/seeding) documentation.
+Check also <ExternalLink href="https://laravel.com/docs/10.x/seeding">Laravel Database Seeders</ExternalLink> documentation.
 </Callout>
 
 ## ✏️ Writing Seeders
@@ -19,7 +20,7 @@ php artisan make:seeder PostSeeder
 
 ## ⚡️ Using Entity Factories
 
-Best way to use seeders is to use Entity Factories, which is provided by [wayofdev/laravel-cycle-orm-factories](https://github.com/wayofdev/laravel-cycle-orm-factories). You can create a factory for each of your entities and use them to seed your database.
+Best way to use seeders is to use Entity Factories, which is provided by <ExternalLink href="https://github.com/wayofdev/laravel-cycle-orm-factories">wayofdev/laravel-cycle-orm-factories</ExternalLink>. You can create a factory for each of your entities and use them to seed your database.
 
 In this documentation section we will use examples from [Factories](/services/factories) documentation page.
 
@@ -42,7 +43,7 @@ final class PostSeeder extends Seeder
         $author = UserFactory::new()->createOne();
         $posts = PostFactory::new()->withUser($author)->times(20)->create();
 
-        $collection->each(function (Post $post): void {
+        $posts->each(function (Post $post): void {
             CommentFactory::new([
                 'post' => $post,
             ])->times(10)->create();
