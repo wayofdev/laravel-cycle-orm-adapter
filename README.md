@@ -85,7 +85,7 @@ Created in **2022** by [lotyp / wayofdev](https://github.com/wayofdev)
 
 * The official [spiral/cycle-bridge](https://github.com/spiral/cycle-bridge) for Spiral Framework
 
-* Alternative implementation of Cycle ORM for Laravel — [wakebit/laravel-cycle](https://github.com/wakebit/laravel-cycle) (abandoned)
+* Alternative implementation of Cycle ORM for Laravel — [wakebit/laravel-cycle](https://github.com/wakebit/laravel-cycle)
 
 
 <br>
