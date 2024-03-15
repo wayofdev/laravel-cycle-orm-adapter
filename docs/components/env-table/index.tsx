@@ -1,7 +1,7 @@
 import styles from './style.module.css'
 
 export function OptionTable({ options }: { options: [string, string, string, string][] }) {
-    const createMarkup = (htmlContent) => {
+    const createMarkup = (htmlContent: string) => {
         return { __html: htmlContent };
     };
 
