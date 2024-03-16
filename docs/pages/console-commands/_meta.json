@@ -1,0 +1,5 @@
+{
+    "migration-commands": "Migration Commands",
+    "orm-commands": "ORM Commands",
+    "database-commands": "Database Commands"
+}

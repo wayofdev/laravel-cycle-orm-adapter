@@ -1,8 +1,9 @@
 {
   "index": "Introduction",
-  "installation": "Installation",
-  "configuration": "Configuration",
-  "usage": "Usage",
+  "getting-started": "Getting Started",
+  "working-with-entities": "Working with Entities",
+  "working-with-relationships": "Working with Relationships",
+  "console-commands": "Console Commands",
   "services": "Services",
   "contributing": "Contributing"
 }

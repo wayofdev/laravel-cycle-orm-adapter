@@ -1,13 +1,9 @@
 import {Callout} from "nextra-theme-docs";
 import ExternalLink from "../../components/external-link";
 
-## 🗒️ Introduction
+# Testing
 
 Adapter package provides a set of modified Laravel testing traits and methods to make testing easier, and as close as possible to native Laravel Testing methods, when using CycleORM.
-
-<Callout type="info" emoji="💡">
-    Check also <ExternalLink href="https://laravel.com/docs/10.x/database-testing">Laravel Database Testing</ExternalLink> documentation.
-</Callout>
 
 ## 🗑️ Resetting the Database After Each Test
 
@@ -18,7 +14,7 @@ Currently, you can use default `Illuminate\Foundation\Testing\RefreshDatabase` t
 
 ## 🏭 Entity Factories
 
-When testing, you may need to insert a few records into your database before executing your test. Instead of manually specifying the value of each column when you create this test data, Adapter package allows you to define a set of default attributes for each of your CycleORM [Entities](/usage/entities) using [Entity Factories](/services/factories).
+When testing, you may need to insert a few records into your database before executing your test. Instead of manually specifying the value of each column when you create this test data, Adapter package allows you to define a set of default attributes for each of your CycleORM [Entities](/working-with-entities/defining-entities) using [Entity Factories](/services/factories).
 
 Once you have defined an entity factory, you may utilize the factory within your test to create entities:
 
@@ -42,6 +38,8 @@ If you would like to use [database seeders](/services/seeders) to populate your 
 
 ```php
 <?php
+
+declare(strict_types=1);
 
 namespace Tests\Feature;
 
@@ -129,3 +127,7 @@ $this->assertNotSoftDeleted('posts', [
     'id' => $post->id
 ]);
 ```
+
+<Callout>
+    Check also <ExternalLink href="https://laravel.com/docs/10.x/database-testing">Laravel Database Testing</ExternalLink> documentation.
+</Callout>

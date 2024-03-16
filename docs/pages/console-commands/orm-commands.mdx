@@ -1,0 +1,38 @@
+import {Callout} from "nextra-theme-docs";
+import {OptionTable} from "../../components/env-table";
+
+# ORM Commands
+
+The following commands are available for managing the ORM.
+
+### Command Reference Table
+
+export const columns = [
+    {
+        key: 'command',
+        header: 'Command',
+        headerClassName: '',
+        cellClassName: 'whitespace-pre py-2 font-mono text-xs font-semibold leading-6 text-violet-600 dark:text-violet-500'
+    },
+    {
+        key: 'description',
+        header: 'Description',
+        headerClassName: 'px-6',
+        cellClassName: 'py-2 pl-6',
+    }
+]
+
+export const commands = [
+    ["cycle:orm", "Init or update cycle schema from database and annotated classes"],
+    ["cycle:orm:migrate", "Generate ORM schema migrations."],
+    ["cycle:orm:render", "Display ORM schema in your console."],
+    ["cycle:orm:sync", "Sync Cycle ORM schema with database without intermediate migration (risk operation)."],
+];
+
+<OptionTable
+    options={commands.map(([command, description]) => ({
+        command,
+        description
+    }))}
+    columns={columns}
+/>

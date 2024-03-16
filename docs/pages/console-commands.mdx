@@ -1,0 +1,32 @@
+import { Card, Cards } from 'nextra/components'
+import {BookOpenIcon} from "@heroicons/react/20/solid";
+
+# Console Commands
+
+This package includes CycleORM commands implemented as Laravel Console Commands, you can use them to manage your database schema and perform migrations.
+
+The package extends Laravel's artisan commands, introducing a set of commands specifically designed for managing CycleORM migrations and database schema. These commands are intuitive for Laravel developers and follow the framework's conventions.
+
+
+## 📚 Explore each Console Command
+
+<Cards>
+    <Card
+        title="Migration Commands"
+        href="/console-commands/migrations"
+        icon={<BookOpenIcon className="h-5 w-5 text-gray-500" />}
+        children=""
+    />
+    <Card
+        title="ORM Commands"
+        href="/console-commands/database"
+        icon={<BookOpenIcon className="h-5 w-5 text-gray-500" />}
+        children=""
+    />
+    <Card
+        title="Database Commands"
+        href="/console-commands/has-many"
+        icon={<BookOpenIcon className="h-5 w-5 text-gray-500" />}
+        children=""
+    />
+</Cards>

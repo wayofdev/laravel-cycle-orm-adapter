@@ -1,14 +1,10 @@
 import {Callout} from "nextra-theme-docs";
 import ExternalLink from "../../components/external-link";
 
-## 🗒️ Introduction
+# Seeders
 
 Laravel includes the ability to seed your database with data using seed classes. All seed classes are stored in the database/seeders directory.
 Same as in Laravel with Eloquent, you can use default Laravel seeders to seed your data into the database, by using CycleORM database factories.
-
-<Callout type="info" emoji="💡">
-Check also <ExternalLink href="https://laravel.com/docs/10.x/seeding">Laravel Database Seeders</ExternalLink> documentation.
-</Callout>
 
 ## ✏️ Writing Seeders
 
@@ -28,6 +24,8 @@ For example, let's create 20 posts and 10 comments for each post:
 
 ```php
 <?php
+
+declare(strict_types=1);
 
 namespace Database\Seeders\Post;
 
@@ -51,3 +49,7 @@ final class PostSeeder extends Seeder
     }
 }
 ```
+
+<Callout>
+    Check also <ExternalLink href="https://laravel.com/docs/10.x/seeding">Laravel Database Seeders</ExternalLink> documentation.
+</Callout>

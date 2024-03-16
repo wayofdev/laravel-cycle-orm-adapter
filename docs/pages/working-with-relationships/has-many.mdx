@@ -1,0 +1,33 @@
+import {Callout} from "nextra-theme-docs";
+import ExternalLink from "../../components/external-link";
+
+# Has Many (One-to-Many)
+
+The `HasMany` relationship links one entity to multiple related entities. For example, if each user can have multiple posts, this relationship can be annotated in the `User` entity.
+
+```php filename="app/Entities/User.php"
+<?php
+
+declare(strict_types=1);
+
+namespace App\Entities;
+
+use Cycle\Annotated\Annotation\Column;
+use Cycle\Annotated\Annotation\Entity;
+use Cycle\Annotated\Annotation\Relation\HasMany;
+use Illuminate\Support\Collection;
+
+#[Entity]
+class User
+{
+    #[Column(type: 'primary')]
+    private string $id;
+
+    #[HasMany(target: App\Entities\Post::class)]
+    private Collection $posts;
+}
+```
+
+<Callout>
+    Detailed explanation of <ExternalLink href="https://cycle-orm.dev/docs/relation-has-many/current/en">One-to-Many (HasMany) relationships</ExternalLink> in CycleORM documentation.
+</Callout>

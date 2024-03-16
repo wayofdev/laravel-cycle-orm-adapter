@@ -1,10 +1,25 @@
+import React from 'react';
 import styles from './style.module.css'
 
-export function OptionTable({ options }: { options: [string, string, string, string][] }) {
-    const createMarkup = (htmlContent: string) => {
-        return { __html: htmlContent };
-    };
+export const createMarkup = (htmlContent: string) => {
+    return {__html: htmlContent};
+};
 
+type ColumnConfig = {
+    key: string;
+    header: string;
+    headerClassName?: string;
+    cellClassName?: string;
+    render?: (value: any, row: any) => React.ReactNode;
+};
+
+export function OptionTable({
+    options,
+    columns,
+}: {
+    options: Record<string, any>[];
+    columns: ColumnConfig[];
+}) {
     return (
         <div
             className={
@@ -15,32 +30,29 @@ export function OptionTable({ options }: { options: [string, string, string, str
             <table className="w-full border-collapse text-sm">
                 <thead>
                 <tr className="border-b py-4 text-left dark:border-neutral-700">
-                    <th className="py-2 font-semibold">Environment Variable</th>
-                    <th className="py-2 pl-6 font-semibold">Available Values</th>
-                    <th className="py-2 pl-6 font-semibold">Default</th>
-                    <th className="px-6 py-2 font-semibold">Description</th>
+                    {columns.map(({header, headerClassName}) => (
+                        <th key={header} className={`py-2 font-semibold ${headerClassName || ''}`}>
+                            {header}
+                        </th>
+                    ))}
                 </tr>
                 </thead>
                 <tbody className="align-baseline text-gray-900 dark:text-gray-100">
-                {options.map(([variable, values, defaultValue, description]) => (
+                {options.map((row, rowIndex) => (
                     <tr
-                        key={variable}
+                        key={rowIndex}
                         className="border-b border-gray-100 dark:border-neutral-700/50"
                     >
-                        <td className="whitespace-pre py-2 font-mono text-xs font-semibold leading-6 text-violet-600 dark:text-violet-500">
-                            {variable}
-                        </td>
-                        <td className="whitespace-pre py-2 pl-6 font-mono text-xs font-semibold leading-6 text-slate-500 dark:text-slate-400">
-                            {values}
-                        </td>
-                        <td className="whitespace-pre py-2 pl-6 font-mono text-xs font-semibold leading-6 text-slate-500 dark:text-slate-400">
-                            {defaultValue}
-                        </td>
-                        <td className="py-2 pl-6" dangerouslySetInnerHTML={createMarkup(description)}></td>
+                        {columns.map(({key, cellClassName, render}) => (
+                            <td key={key}
+                                className={cellClassName}>
+                                {render ? render(row[key], row) : row[key]}
+                            </td>
+                        ))}
                     </tr>
                 ))}
                 </tbody>
             </table>
         </div>
-    )
+    );
 }
