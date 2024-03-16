@@ -1,0 +1,91 @@
+import {Callout} from "nextra-theme-docs";
+import ExternalLink from "../../components/external-link";
+
+# Defining Entities
+
+To get started with CycleORM entities in Laravel, you typically place your entity classes in the `app/Entities` directory. This is a departure from the conventional `app/Models` directory used by Eloquent.
+
+Here's a basic example of a `Post` entity in CycleORM:
+
+```php filename="app/Entities/Post.php" copy
+<?php
+
+declare(strict_types=1);
+
+namespace App\Entities;
+
+use Cycle\Annotated\Annotation\Column;
+use Cycle\Annotated\Annotation\Entity;
+use Cycle\ORM\Entity\Behavior\Uuid\Uuid7;
+use Ramsey\Uuid\UuidInterface;
+
+#[Entity]
+#[Uuid7(field: 'id')]
+class Post
+{
+    #[Column(type: 'uuid', primary: true)]
+    public UuidInterface $id;
+
+    #[Column(type: "string")]
+    private string $title;
+
+    #[Column(type: "text")]
+    private string $content;
+
+    public function __construct(string $title, string $content)
+    {
+        $this->title = $title;
+        $this->content = $content;
+    }
+
+    public function id(): UuidInterface
+    {
+        return $this->id;
+    }
+
+    public function title(): string
+    {
+        return $this->title;
+    }
+
+    public function content(): string
+    {
+        return $this->content;
+    }
+}
+```
+
+By default, the laravel-cycle-orm-adapter is configured to scan the `app/Entities` directory for entities. However, you can customize this behavior by modifying the tokenizer section in the `config/cycle.php` configuration file. Here's how you can adjust it:
+
+```php {4} filename="config/cycle.php"
+return [
+    'tokenizer' => [
+        'directories' => [
+            app_path('Entities'), // Directs CycleORM to scan this directory for entities
+        ],
+        // Additional configuration...
+    ],
+];
+```
+
+For projects adopting Domain-Driven Design (DDD) principles, it's common to place entities within a domain-specific layer, such as `Domain/Post`, rather than a single directory. This approach not only organizes your codebase around your business domain but also enhances the scalability and maintainability of your application.
+
+Adjusting the `config/cycle.php` for a DDD structure might look like this:
+
+```php {4,5} filename="config/cycle.php"
+return [
+    'tokenizer' => [
+        'directories' => [
+            __DIR__ . '/../src/Domain', // Load entities from all Domains
+            __DIR__ . '/../vendor/wayofdev/laravel-webhook-client/src/Entities', // Load entities from vendor directory
+        ],
+        // Additional configuration...
+    ],
+];
+```
+
+This setup ensures that your Laravel application benefits from the clear separation of concerns provided by the Data Mapper pattern, with CycleORM efficiently managing the persistence of your domain entities.
+
+<Callout>
+    Read full documentation about <ExternalLink href="https://cycle-orm.dev/docs/entity-behaviors-uuid/current/en">Entities in CycleORM</ExternalLink>.
+</Callout>

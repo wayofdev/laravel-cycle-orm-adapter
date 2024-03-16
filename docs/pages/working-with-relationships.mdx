@@ -1,0 +1,37 @@
+import { Card, Cards } from 'nextra/components'
+import {BookOpenIcon} from "@heroicons/react/20/solid";
+
+# Working with Relationships
+
+Eloquent, leveraging the Active Record pattern, integrates relationship logic directly into model classes. Defining a relationship in Eloquent involves creating methods that return special relationship objects (`HasOne`, `HasMany`, `BelongsTo`, etc.). These methods encapsulate the SQL necessary to fetch related records, providing a fluent interface for querying and interacting with these relationships. Downside of this approach is that it can lead to bloated model classes and tight coupling between domain logic and database interactions.
+
+Relationships in CycleORM are defined using annotations within the entity classes themselves. Instead of returning special relationship objects, CycleORM works directly with the related entities or collections of entities, providing a more direct representation of the domain model. This approach allows you to define relationships in a more declarative manner, keeping the domain logic separate from the persistence layer.
+
+## 📚 Explore by Relationship Type
+
+<Cards>
+    <Card
+        title="Has One"
+        href="/working-relationships/has-one"
+        children=""
+        icon={<BookOpenIcon className="h-5 w-5 text-gray-500" />}
+    />
+    <Card
+        title="Has Many"
+        href="/working-relationships/has-many"
+        children=""
+        icon={<BookOpenIcon className="h-5 w-5 text-gray-500" />}
+    />
+    <Card
+        title="Belongs To"
+        href="/working-relationships/belongs-to"
+        children=""
+        icon={<BookOpenIcon className="h-5 w-5 text-gray-500" />}
+    />
+    <Card
+        title="Many to Many"
+        href="/working-relationships/many-to-many"
+        children=""
+        icon={<BookOpenIcon className="h-5 w-5 text-gray-500" />}
+    />
+</Cards>

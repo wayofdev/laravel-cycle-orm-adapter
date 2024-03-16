@@ -1,18 +1,22 @@
 import { Callout } from "nextra-theme-docs";
 import ExternalLink from "../../components/external-link";
 
+# Factories
+
 ## 🗒️ Introduction
 
 Like <ExternalLink href="https://laravel.com/docs/10.x/eloquent-factories">Eloquent Factories</ExternalLink> this package enables you to define factories for your entities, integrating CycleORM with Laravel's elegant syntax and functionality.
 
-This feature is available through the <ExternalLink href="https://github.com/wayofdev/laravel-cycle-orm-factories">wayofdev/laravel-cycle-orm-factories</ExternalLink>, be sure to check [installation](/installation#-database-factories-optional) instructions.
+This feature is available through the <ExternalLink href="https://github.com/wayofdev/laravel-cycle-orm-factories">wayofdev/laravel-cycle-orm-factories</ExternalLink>, be sure to check [installation](/getting-started/installation#-database-factories-optional) instructions.
 
-When testing your application or seeding your database, you may need to insert a few records into your database. Instead of manually specifying the value of each column, this package, same as Laravel, allows you to define a set of default attributes for each of your [Entities](/usage/entities) using factory classes.
+When testing your application or seeding your database, you may need to insert a few records into your database. Instead of manually specifying the value of each column, this package, same as Laravel, allows you to define a set of default attributes for each of your [Entities](/working-with-entities/defining-entities) using factory classes.
 
 Consider a `Post` Entity example to illustrate how to write a factory:
 
 ```php
 <?php
+
+declare(strict_types=1);
 
 namespace Database\Factories;
 
@@ -279,7 +283,6 @@ class Post
         $this->title = $title;
         $this->content = $content;
         $this->user = $user;
-        $this->comments = $comments;
 
         $this->comments = new Collection()
     }

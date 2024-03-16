@@ -66,6 +66,10 @@ const config: DocsThemeConfig = {
         return {
             titleTemplate: '%s – Laravel-CycleORM-Adapter',
         }
+    },
+    sidebar: {
+        toggleButton: true,
+        defaultMenuCollapseLevel: 3,
     }
 }
 

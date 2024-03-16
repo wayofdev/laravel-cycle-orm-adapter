@@ -1,0 +1,6 @@
+{
+    "has-one": "Has One (One-to-One)",
+    "has-many": "Has Many (One-to-Many)",
+    "belongs-to": "Belongs To (Many-to-One)",
+    "many-to-many": "Many to Many"
+}
