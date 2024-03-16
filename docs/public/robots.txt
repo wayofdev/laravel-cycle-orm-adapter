@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://laravel-cycle-orm-adapter.wayof.dev
+
+# Sitemaps
+Sitemap: https://laravel-cycle-orm-adapter.wayof.dev/sitemap.xml

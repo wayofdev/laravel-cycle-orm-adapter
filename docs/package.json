@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "deps:update": "pnpm dlx npm-check-updates --configFileName .ncurc.yml -u --deep --mergeConfig && pnpm install"
   },
@@ -22,6 +23,7 @@
     "@heroicons/react": "^2.1.1",
     "@vercel/analytics": "^1.2.2",
     "next": "^14.1.3",
+    "next-sitemap": "^4.2.3",
     "nextra": "latest",
     "nextra-theme-docs": "latest",
     "react": "^18.2.0",
