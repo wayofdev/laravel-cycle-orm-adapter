@@ -66,41 +66,79 @@ const config: DocsThemeConfig = {
     ,
     useNextSeoProps() {
         return {
-            titleTemplate: '%s – Laravel-CycleORM-Adapter',
+            titleTemplate: '%s | Laravel-CycleORM-Adapter',
+            themeColor: '#fff',
+            description: 'Laravel package that provides Cycle ORM integration.',
+            openGraph: {
+                type: 'website',
+                locale: 'en_US',
+                url: 'https://laravel-cycle-orm-adapter.wayof.dev',
+                site_name: 'Laravel-CycleORM-Adapter',
+                images: [
+                    {
+                        url: 'https://laravel-cycle-orm-adapter.wayof.dev/og.png',
+                        width: 1200,
+                        height: 630,
+                        alt: 'Laravel-CycleORM-Adapter',
+                    },
+                ],
+            },
+            additionalLinkTags: [
+                {
+                    rel: 'icon',
+                    href: '/favicon.ico',
+                },
+                {
+                    rel: 'icon',
+                    href: '/favicon-32x32.png',
+                    sizes: '32x32',
+                    type: 'image/png',
+                },
+                {
+                    rel: 'icon',
+                    href: '/favicon-16x16.png',
+                    sizes: '16x16',
+                    type: 'image/png',
+                },
+                {
+                    rel: 'apple-touch-icon',
+                    href: '/apple-touch-icon.png',
+                    sizes: '180x180',
+                },
+                {
+                    rel: 'manifest',
+                    href: '/site.webmanifest',
+                },
+            ],
         }
+    },
+    head: function useHead() {
+        const { title } = useConfig()
+
+        const socialCard = 'https://laravel-cycle-orm-adapter.wayof.dev/og.png'
+        const currentTitle = title ? title + ' | Laravel-CycleORM-Adapter' : 'Laravel-CycleORM-Adapter'
+        const description = 'Laravel package that provides Cycle ORM integration.'
+
+        return (
+            <>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <meta httpEquiv="Content-Language" content="en"/>
+                <meta name="description" content={description}/>
+                <meta name="og:description" content={description}/>
+                <meta name="twitter:title" content={currentTitle}/>
+                <meta name="twitter:card" content="summary_large_image"/>
+                <meta name="twitter:image" content={socialCard}/>
+                <meta name="twitter:site:domain" content="laravel-cycle-orm-adapter.wayof.dev"/>
+                <meta name="twitter:url" content="laravel-cycle-orm-adapter.wayof.dev"/>
+                <meta name="twitter:description" content={description}/>
+                <meta name="og:title" content={currentTitle}/>
+                <meta name="og:image" content={socialCard}/>
+            </>
+        )
     },
     sidebar: {
         toggleButton: true,
         defaultMenuCollapseLevel: 3,
-    },
-    head: function useHead() {
-        const { title } = useConfig()
-        const socialCard = 'https://laravel-cycle-orm-adapter.wayof.dev/og.png'
-
-        return (
-            <>
-                <meta name="msapplication-TileColor" content="#fff" />
-                <meta name="theme-color" content="#fff" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta httpEquiv="Content-Language" content="en" />
-                <meta name="description" content="Laravel package that provides Cycle ORM integration."/>
-                <meta name="og:description" content="Laravel package that provides Cycle ORM integration."/>
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:image" content={socialCard} />
-                <meta name="twitter:site:domain" content="laravel-cycle-orm-adapter.wayof.dev" />
-                <meta name="twitter:url" content="laravel-cycle-orm-adapter.wayof.dev" />
-                <meta
-                    name="og:title"
-                    content={title ? title + ' – Laravel-CycleORM-Adapter' : 'Laravel-CycleORM-Adapter'}
-                />
-                <meta name="og:image" content={socialCard} />
-                <meta name="apple-mobile-web-app-title" content="W" />
-                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-                <link rel="manifest" href="/site.webmanifest" />
-            </>
-        )
     },
 }
 
