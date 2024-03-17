@@ -1,5 +1,6 @@
 import {Callout} from "nextra-theme-docs";
 import {OptionTable} from "../../components/env-table";
+import AsciinemaPlayer from "../../components/asciinema-player/player";
 
 # Migration Commands
 
@@ -65,7 +66,27 @@ php artisan cycle:migrate
 
 #### Options
 
-`--one`: Executes only the first pending migration, allowing for more granular control over the migration process.
+- `--one`: Executes only the first pending migration, allowing for more granular control over the migration process.
+
+#### Example
+
+Recording shows the visualization of applying migrations to the database.
+
+<br/>
+
+<AsciinemaPlayer
+    src="https://asciinema.org/a/sRNJPTQZTHxRoiGVAqxKvR48K.cast"
+    options={{
+        idleTimeLimit: 2,
+        preload: true,
+        loop: 0,
+        speed: 1.0,
+        theme: 'monokai',
+        rows: 28,
+        cols: 120,
+        poster: "npt:0:03"
+    }}
+/>
 
 ### Replaying Migrations
 
@@ -81,7 +102,7 @@ php artisan cycle:migrate:replay
 
 #### Options
 
-`--all`: Replays all migrations, effectively refreshing your entire database schema.
+- `--all`: Replays all migrations, effectively refreshing your entire database schema.
 
 
 ### Rolling Back Migrations
@@ -98,7 +119,7 @@ php artisan cycle:migrate:rollback
 
 #### Options
 
-`--all`: Rolls back all migrations, allowing you to revert your database schema to its initial state.
+- `--all`: Rolls back all migrations, allowing you to revert your database schema to its initial state.
 
 
 ### Checking Migration Status
@@ -131,4 +152,4 @@ php artisan cycle:migrate:fresh
 
 #### Options
 
-`--seed`: Seeds the database after running the migrations, populating it with initial data.
+- `--seed`: Seeds the database after running the migrations, populating it with initial data.

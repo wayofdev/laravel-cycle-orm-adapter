@@ -1,9 +1,10 @@
 import {Callout} from "nextra-theme-docs";
 import {OptionTable} from "../../components/env-table";
+import AsciinemaPlayer from "../../components/asciinema-player/player";
 
 # ORM Commands
 
-The following commands are available for managing the ORM.
+ORM commands facilitate the management of the Object-Relational Mapping layer, allowing for the initialization and updating of schemas, migration generation, schema visualization, and direct synchronization with the database.
 
 ### Command Reference Table
 
@@ -36,3 +37,105 @@ export const commands = [
     }))}
     columns={columns}
 />
+
+### Initializing or Updating ORM Schema
+
+`cycle:orm`
+
+This command initializes or updates the Cycle ORM schema by analyzing the database structure and annotated classes.
+
+#### Usage
+
+```bash
+php artisan cycle:orm
+```
+
+### Generating ORM Schema Migrations
+
+`cycle:orm:migrate`
+
+Use this command to generate migrations based on the current ORM schema. It's a crucial step for evolving the database schema in a controlled manner.
+
+#### Usage
+
+```bash
+php artisan cycle:orm:migrate
+```
+
+#### Options
+
+- `--r|run` - Automatically run generated migration.
+- `--s|split` - Split migration into multiple files (one per table).
+
+#### Example
+
+Recording shows migration file generation on existing Domain Entities and their relationships.
+
+<br/>
+
+<AsciinemaPlayer
+    src="https://asciinema.org/a/Q7uli4kvEkbbzqt4LBLNlCCkE.cast"
+    options={{
+        idleTimeLimit: 2,
+        preload: true,
+        loop: 0,
+        speed: 1.0,
+        theme: 'monokai',
+        rows: 28,
+        cols: 120,
+        poster: "npt:0:04"
+    }}
+/>
+
+### Displaying ORM Schema
+
+`cycle:orm:render`
+
+To visualize the current ORM schema directly in your console, use the `cycle:orm:render` command. This can help with understanding the structure and relationships defined in your ORM.
+
+#### Usage
+
+```bash
+php artisan cycle:orm:render
+```
+
+#### Options
+
+- `--nc|no-color` - Display output without colors.
+- `--p|php` - Display output as PHP code.
+
+#### Example
+
+Recording shows the visualization of the ORM schema in the console for existing `App/Entities/Post` entity.
+
+<br/>
+
+<AsciinemaPlayer
+    src="https://asciinema.org/a/0ZTAlr5EWbVlll86A4EKm35N1.cast"
+    options={{
+        idleTimeLimit: 2,
+        preload: true,
+        loop: 0,
+        speed: 1.0,
+        theme: 'monokai',
+        rows: 28,
+        cols: 120,
+        poster: "npt:0:03"
+    }}
+/>
+
+### Synchronizing ORM Schema with Database
+
+`cycle:orm:sync`
+
+This command directly synchronizes the Cycle ORM schema with the database. It bypasses the migration system and applies changes directly, which can be risky.
+
+#### Usage
+
+```bash
+php artisan cycle:orm:sync
+```
+
+<Callout type="warning" emoji="⚠️">
+    Be cautious when using the `cycle:orm:sync` command, as it directly alters the database schema and can potentially lead to data loss.
+</Callout>

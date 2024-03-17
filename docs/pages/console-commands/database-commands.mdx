@@ -1,9 +1,10 @@
 import {Callout} from "nextra-theme-docs";
 import {OptionTable} from "../../components/env-table";
+import Image from 'next/image';
 
 # Database Commands
 
-The following commands are available for managing the database.
+Database commands provides tooling to manage and inspect your databases.
 
 ### Command Reference Table
 
@@ -34,3 +35,39 @@ export const commands = [
     }))}
     columns={columns}
 />
+
+### Listing Databases
+
+`cycle:db:list`
+
+This command provides a comprehensive list of all databases, along with their tables and the count of records in each table.
+
+#### Usage
+
+```bash
+php artisan cycle:db:list
+```
+
+#### Example
+
+<Image src="/images/command.cycle-db-list.png" alt="Listing Databases" width={1882} height={1016} />
+
+### Describing Table Schema
+
+`cycle:db:table`
+
+To get detailed information about the schema of a specific table, use the cycle:db:table command. This includes column names, types, and other relevant metadata.
+
+#### Usage
+
+```bash
+php artisan cycle:db:table your_table_name
+```
+
+#### Options
+
+`--d|database`: The name of the database to use. If not provided, the default database will be used.
+
+#### Example
+
+<Image src="/images/command.cycle-db-table.png" alt="Listing Table Contents" width={1882} height={1016} />
