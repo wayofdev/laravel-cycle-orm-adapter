@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.10.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.9.0...v4.10.0) (2024-03-16)
+
+
+### Features
+
+* add entity-behavior-uuid by default ([45cd7e9](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/45cd7e9c06bebb4d1293ce3aed2310accb1f8045))
+
 ## [4.9.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.8.2...v4.9.0) (2024-03-12)
 
 
