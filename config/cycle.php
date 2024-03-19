@@ -104,9 +104,25 @@ return [
             /*
              * Setup sqlite database in-memory for testing purposes
              */
-            'sqlite' => new Config\SQLiteDriverConfig(
+            'memory' => new Config\SQLiteDriverConfig(
                 connection: new Config\SQLite\MemoryConnectionConfig(),
                 queryCache: true
+            ),
+
+            'sqlite' => new Config\SQLiteDriverConfig(
+                connection: new Config\SQLite\FileConnectionConfig(
+                    database: env('DB_DATABASE', database_path('database.sqlite'))
+                ),
+                driver: Driver\SQLite\SQLiteDriver::class,
+                reconnect: true,
+                timezone: 'UTC',
+                queryCache: true,
+                readonlySchema: false,
+                readonly: false,
+                options: [
+                    'logInterpolatedQueries' => env('DB_USE_TELESCOPE_LOGGER', false),
+                    'logQueryParameters' => env('DB_USE_TELESCOPE_LOGGER', false),
+                ],
             ),
 
             'pgsql' => new Config\PostgresDriverConfig(
@@ -121,7 +137,13 @@ return [
                 driver: Driver\Postgres\PostgresDriver::class,
                 reconnect: true,
                 timezone: 'UTC',
-                queryCache: true
+                queryCache: true,
+                readonlySchema: false,
+                readonly: false,
+                options: [
+                    'logInterpolatedQueries' => env('DB_USE_TELESCOPE_LOGGER', false),
+                    'logQueryParameters' => env('DB_USE_TELESCOPE_LOGGER', false),
+                ],
             ),
 
             'mysql' => new Config\MySQLDriverConfig(
@@ -136,6 +158,12 @@ return [
                 reconnect: true,
                 timezone: 'UTC',
                 queryCache: true,
+                readonlySchema: false,
+                readonly: false,
+                options: [
+                    'logInterpolatedQueries' => env('DB_USE_TELESCOPE_LOGGER', false),
+                    'logQueryParameters' => env('DB_USE_TELESCOPE_LOGGER', false),
+                ],
             ),
 
             'sqlserver' => new Config\SQLServerDriverConfig(
@@ -150,6 +178,12 @@ return [
                 reconnect: true,
                 timezone: 'UTC',
                 queryCache: true,
+                readonlySchema: false,
+                readonly: false,
+                options: [
+                    'logInterpolatedQueries' => env('DB_USE_TELESCOPE_LOGGER', false),
+                    'logQueryParameters' => env('DB_USE_TELESCOPE_LOGGER', false),
+                ],
             ),
         ],
 
@@ -159,7 +193,23 @@ return [
          * Use any of channels configured in your logging.php file
          */
         'logger' => [
+            /*
+             * If enabled, allows laravel/telescope to catch all queries
+             */
+            'use_telescope' => env('DB_USE_TELESCOPE_LOGGER', false),
+
+            /*
+             * Default logger channel to use with all databases
+             * Set to null to disable logging
+             * Use any of channels configured in your logging.php file
+             */
             'default' => env('DB_DEFAULT_LOGGER', null),
+
+            /*
+             * Logger channels for specific drivers
+             * Set to null to disable logging
+             * Use any of channels configured in your logging.php file
+             */
             'drivers' => [
                 'sqlite' => env('DB_DEFAULT_LOGGER', null),
                 'pgsql' => env('DB_DEFAULT_LOGGER', null),
