@@ -8,6 +8,7 @@ use Cycle\Database\Config\DatabaseConfig;
 use Cycle\Database\Driver\DriverInterface;
 use Cycle\Database\LoggerFactoryInterface;
 use Cycle\Database\NamedInterface;
+use Illuminate\Log\Logger;
 use Illuminate\Log\LogManager;
 use Illuminate\Support\Facades\Event;
 use Mockery as m;
@@ -37,6 +38,8 @@ class LoggerFactoryTest extends TestCase
      */
     public function it_should_return_custom_logger_from_factory(): void
     {
+        $this->app['config']->set('cycle.database.logger.use_telescope', false);
+
         $mockDriver = m::mock(DriverInterface::class, NamedInterface::class);
         $mockDriver->shouldReceive('getName')->andReturn('custom');
 
@@ -48,6 +51,8 @@ class LoggerFactoryTest extends TestCase
         // @phpstan-ignore-next-line
         $logger = $loggerFactory->getLogger($mockDriver);
         $logger->info('Test log entry');
+
+        $this::assertInstanceOf(Logger::class, $logger);
 
         $logContent = file_get_contents(storage_path('logs/logger-factory-test.log'));
         $this::assertStringContainsString('Test log entry', $logContent);
