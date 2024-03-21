@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.10.2](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.10.1...v4.10.2) (2024-03-21)
+
+
+### Bug Fixes
+
+* improve test coverage for logger ([b84a52d](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/b84a52dfc34a14e489142231578b1b00599d1b0e))
+
 ## [4.10.1](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.10.0...v4.10.1) (2024-03-20)
 
 
