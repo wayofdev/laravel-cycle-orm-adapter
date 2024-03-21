@@ -7,9 +7,7 @@ namespace WayOfDev\Cycle\Bridge\Telescope\Entities;
 use Cycle\Annotated\Annotation\Column;
 use Cycle\Annotated\Annotation\Entity;
 use Cycle\Annotated\Annotation\ForeignKey;
-use Cycle\Annotated\Annotation\Relation\HasMany;
 use Cycle\Annotated\Annotation\Table\Index;
-use Illuminate\Support\Collection;
 
 #[Index(columns: ['entry_uuid', 'tag'])]
 #[Index(columns: ['tag'])]
