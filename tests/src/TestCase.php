@@ -9,7 +9,6 @@ use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Support\Facades\Artisan;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use Spatie\LaravelRay\RayServiceProvider;
 use WayOfDev\Cycle\Bridge\Laravel\Providers\CycleServiceProvider;
 use WayOfDev\Cycle\Testing\Concerns\InteractsWithDatabase;
 use WayOfDev\Cycle\Testing\RefreshDatabase;
@@ -53,7 +52,8 @@ class TestCase extends OrchestraTestCase
             config()->set([
                 'cycle.tokenizer.directories' => array_merge(
                     config('cycle.tokenizer.directories'),
-                    [__DIR__ . '/../app/Entities']
+                    [__DIR__ . '/../app/Entities'],
+                    // [__DIR__ . '/../../src/Bridge/Telescope/Entities'],
                 ),
                 'cycle.migrations.directory' => $this->migrationsPath,
             ]);
@@ -99,7 +99,6 @@ class TestCase extends OrchestraTestCase
     {
         return [
             CycleServiceProvider::class,
-            RayServiceProvider::class,
         ];
     }
 }
