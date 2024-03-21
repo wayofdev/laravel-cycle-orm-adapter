@@ -3,5 +3,6 @@
     "seeders": "Seeders",
     "testing": "Testing",
     "validation": "Validation",
+    "pagination": "Pagination",
     "laravel-telescope": "Laravel Telescope"
 }
