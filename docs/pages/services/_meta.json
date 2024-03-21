@@ -1,0 +1,7 @@
+{
+    "factories": "Factories",
+    "seeders": "Seeders",
+    "testing": "Testing",
+    "validation": "Validation",
+    "laravel-telescope": "Laravel Telescope"
+}

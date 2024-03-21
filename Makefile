@@ -198,3 +198,7 @@ docs-deps-install: ## Install dependencies for documentation using pnpm
 docs-up: ## Start documentation server
 	cd docs && $(NPM_RUNNER) dev
 .PHONY: docs-up
+
+docs-build: ## Build documentation
+	cd docs && $(NPM_RUNNER) build
+.PHONY: docs-up

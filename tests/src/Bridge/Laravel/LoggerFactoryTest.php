@@ -6,13 +6,17 @@ namespace WayOfDev\Tests\Bridge\Laravel;
 
 use Cycle\Database\Config\DatabaseConfig;
 use Cycle\Database\Driver\DriverInterface;
+use Cycle\Database\LoggerFactoryInterface;
 use Cycle\Database\NamedInterface;
 use Illuminate\Log\LogManager;
+use Illuminate\Support\Facades\Event;
 use Mockery as m;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Psr\Log\NullLogger;
 use WayOfDev\Cycle\Bridge\Laravel\LoggerFactory;
+use WayOfDev\Cycle\Bridge\Telescope\Events\Database\QueryExecuted;
+use WayOfDev\Cycle\Bridge\Telescope\TelescopeLogger;
 use WayOfDev\Tests\TestCase;
 
 use function file_get_contents;
@@ -55,6 +59,32 @@ class LoggerFactoryTest extends TestCase
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
+    public function it_should_fire_query_executed_event_when_query_is_logged(): void
+    {
+        $this->app['config']->set('cycle.database.logger.use_telescope', true);
+
+        Event::fake([QueryExecuted::class]);
+
+        $factory = $this->app->get(LoggerFactoryInterface::class);
+        $logger = $factory->getLogger();
+
+        $this::assertInstanceOf(TelescopeLogger::class, $logger);
+
+        // Simulate logging a query
+        $logger->info('SELECT * FROM users', ['elapsed' => 50]);
+
+        // Assert that the QueryExecuted event was dispatched
+        Event::assertDispatched(QueryExecuted::class, function ($event) {
+            return 'SELECT * FROM users' === $event->sql;
+        });
+    }
+
+    /**
+     * @test
+     *
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function it_should_return_null_logger_from_factory(): void
     {
         config()->set('cycle.database.logger', [
@@ -89,6 +119,7 @@ class LoggerFactoryTest extends TestCase
 
         // Set the database logger configuration
         $app['config']->set('cycle.database.logger', [
+            'use_telescope' => true,
             'default' => 'stack',
             'drivers' => [
                 'sqlite' => 'stack',

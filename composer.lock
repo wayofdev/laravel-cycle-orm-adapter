@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd3e51565536d38ff11d4f7a42d382ad",
+    "content-hash": "5be066ab04a089f941bb0ed17cffe281",
     "packages": [
         {
             "name": "brick/math",
@@ -6989,16 +6989,16 @@
         },
         {
             "name": "composer/pcre",
-            "version": "3.1.2",
+            "version": "3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/pcre.git",
-                "reference": "4775f35b2d70865807c89d32c8e7385b86eb0ace"
+                "reference": "5b16e25a5355f1f3afdfc2f954a0a80aec4826a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/pcre/zipball/4775f35b2d70865807c89d32c8e7385b86eb0ace",
-                "reference": "4775f35b2d70865807c89d32c8e7385b86eb0ace",
+                "url": "https://api.github.com/repos/composer/pcre/zipball/5b16e25a5355f1f3afdfc2f954a0a80aec4826a8",
+                "reference": "5b16e25a5355f1f3afdfc2f954a0a80aec4826a8",
                 "shasum": ""
             },
             "require": {
@@ -7040,7 +7040,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/pcre/issues",
-                "source": "https://github.com/composer/pcre/tree/3.1.2"
+                "source": "https://github.com/composer/pcre/tree/3.1.3"
             },
             "funding": [
                 {
@@ -7056,7 +7056,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-07T15:38:35+00:00"
+            "time": "2024-03-19T10:26:25+00:00"
         },
         {
             "name": "composer/semver",
@@ -7858,16 +7858,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.51.0",
+            "version": "v3.52.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "127fa74f010da99053e3f5b62672615b72dd6efd"
+                "reference": "a3564bd66f4bce9bc871ef18b690e2dc67a7f969"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/127fa74f010da99053e3f5b62672615b72dd6efd",
-                "reference": "127fa74f010da99053e3f5b62672615b72dd6efd",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/a3564bd66f4bce9bc871ef18b690e2dc67a7f969",
+                "reference": "a3564bd66f4bce9bc871ef18b690e2dc67a7f969",
                 "shasum": ""
             },
             "require": {
@@ -7938,7 +7938,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.51.0"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.52.0"
             },
             "funding": [
                 {
@@ -7946,7 +7946,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-02-28T19:50:06+00:00"
+            "time": "2024-03-18T18:40:11+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -8229,6 +8229,74 @@
                 }
             ],
             "time": "2024-02-27T03:16:03+00:00"
+        },
+        {
+            "name": "laravel/telescope",
+            "version": "v5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/telescope.git",
+                "reference": "e398fae4836e68b3d3734d7cdc37622eaf90fdd9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/e398fae4836e68b3d3734d7cdc37622eaf90fdd9",
+                "reference": "e398fae4836e68b3d3734d7cdc37622eaf90fdd9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laravel/framework": "^8.37|^9.0|^10.0|^11.0",
+                "php": "^8.0",
+                "symfony/var-dumper": "^5.0|^6.0|^7.0"
+            },
+            "require-dev": {
+                "ext-gd": "*",
+                "guzzlehttp/guzzle": "^6.0|^7.0",
+                "laravel/octane": "^1.4|^2.0|dev-develop",
+                "orchestra/testbench": "^6.40|^7.37|^8.17|^9.0",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^9.0|^10.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Telescope\\TelescopeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Telescope\\": "src/",
+                    "Laravel\\Telescope\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                },
+                {
+                    "name": "Mohamed Said",
+                    "email": "mohamed@laravel.com"
+                }
+            ],
+            "description": "An elegant debug assistant for the Laravel framework.",
+            "keywords": [
+                "debugging",
+                "laravel",
+                "monitoring"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/telescope/issues",
+                "source": "https://github.com/laravel/telescope/tree/v5.0.0"
+            },
+            "time": "2024-03-12T14:17:54+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -8798,16 +8866,16 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v9.0.0",
+            "version": "v9.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "e7c789813525875dba7480c79f9a48fc9a92a612"
+                "reference": "30640d88b173f9ab44341a282260993f454ed187"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/e7c789813525875dba7480c79f9a48fc9a92a612",
-                "reference": "e7c789813525875dba7480c79f9a48fc9a92a612",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/30640d88b173f9ab44341a282260993f454ed187",
+                "reference": "30640d88b173f9ab44341a282260993f454ed187",
                 "shasum": ""
             },
             "require": {
@@ -8815,7 +8883,7 @@
                 "fakerphp/faker": "^1.23",
                 "laravel/framework": "^11.0",
                 "mockery/mockery": "^1.6",
-                "orchestra/testbench-core": "^9.0.1",
+                "orchestra/testbench-core": "^9.0.6",
                 "orchestra/workbench": "^9.0",
                 "php": "^8.2",
                 "phpunit/phpunit": "^10.5 || ^11.0.1",
@@ -8847,22 +8915,22 @@
             ],
             "support": {
                 "issues": "https://github.com/orchestral/testbench/issues",
-                "source": "https://github.com/orchestral/testbench/tree/v9.0.0"
+                "source": "https://github.com/orchestral/testbench/tree/v9.0.1"
             },
-            "time": "2024-03-13T07:03:13+00:00"
+            "time": "2024-03-19T13:04:45+00:00"
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v9.0.3",
+            "version": "v9.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "b14f865a1abc827193e73c25559ad9bcf7851802"
+                "reference": "ea532af82da288d363b7dc7c96edae6bbb329efe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/b14f865a1abc827193e73c25559ad9bcf7851802",
-                "reference": "b14f865a1abc827193e73c25559ad9bcf7851802",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/ea532af82da288d363b7dc7c96edae6bbb329efe",
+                "reference": "ea532af82da288d363b7dc7c96edae6bbb329efe",
                 "shasum": ""
             },
             "require": {
@@ -8938,7 +9006,7 @@
                 "issues": "https://github.com/orchestral/testbench/issues",
                 "source": "https://github.com/orchestral/testbench-core"
             },
-            "time": "2024-03-14T14:04:45+00:00"
+            "time": "2024-03-19T11:20:27+00:00"
         },
         {
             "name": "orchestra/workbench",
@@ -10620,12 +10688,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "eedc674d89085b0199bd96bfad410404fb2f5dbf"
+                "reference": "a93bfa3d635bfaf71fa8c459a6df6278c5cdb9e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/eedc674d89085b0199bd96bfad410404fb2f5dbf",
-                "reference": "eedc674d89085b0199bd96bfad410404fb2f5dbf",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/a93bfa3d635bfaf71fa8c459a6df6278c5cdb9e8",
+                "reference": "a93bfa3d635bfaf71fa8c459a6df6278c5cdb9e8",
                 "shasum": ""
             },
             "conflict": {
@@ -10808,6 +10876,7 @@
                 "friendsofsymfony/oauth2-php": "<1.3",
                 "friendsofsymfony/rest-bundle": ">=1.2,<1.2.2",
                 "friendsofsymfony/user-bundle": ">=1.2,<1.3.5",
+                "friendsofsymfony1/symfony1": ">=1.3,<1.5.13",
                 "friendsoftypo3/mediace": ">=7.6.2,<7.6.5",
                 "friendsoftypo3/openid": ">=4.5,<4.5.31|>=4.7,<4.7.16|>=6,<6.0.11|>=6.1,<6.1.6",
                 "froala/wysiwyg-editor": "<3.2.7|>=4.0.1,<=4.1.1",
@@ -10851,6 +10920,7 @@
                 "ibexa/user": ">=4,<4.4.3",
                 "icecoder/icecoder": "<=8.1",
                 "idno/known": "<=1.3.1",
+                "ilicmiljan/secure-props": ">=1.2,<1.2.2",
                 "illuminate/auth": "<5.5.10",
                 "illuminate/cookie": ">=4,<=4.0.11|>=4.1,<=4.1.99999|>=4.2,<=4.2.99999|>=5,<=5.0.99999|>=5.1,<=5.1.99999|>=5.2,<=5.2.99999|>=5.3,<=5.3.99999|>=5.4,<=5.4.99999|>=5.5,<=5.5.49|>=5.6,<=5.6.99999|>=5.7,<=5.7.99999|>=5.8,<=5.8.99999|>=6,<6.18.31|>=7,<7.22.4",
                 "illuminate/database": "<6.20.26|>=7,<7.30.5|>=8,<8.40",
@@ -11352,7 +11422,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-13T21:04:41+00:00"
+            "time": "2024-03-18T21:04:52+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -13218,16 +13288,16 @@
         },
         {
             "name": "zbateson/mb-wrapper",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zbateson/mb-wrapper.git",
-                "reference": "faf35dddfacfc5d4d5f9210143eafd7a7fe74334"
+                "reference": "09a8b77eb94af3823a9a6623dcc94f8d988da67f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zbateson/mb-wrapper/zipball/faf35dddfacfc5d4d5f9210143eafd7a7fe74334",
-                "reference": "faf35dddfacfc5d4d5f9210143eafd7a7fe74334",
+                "url": "https://api.github.com/repos/zbateson/mb-wrapper/zipball/09a8b77eb94af3823a9a6623dcc94f8d988da67f",
+                "reference": "09a8b77eb94af3823a9a6623dcc94f8d988da67f",
                 "shasum": ""
             },
             "require": {
@@ -13238,7 +13308,7 @@
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "*",
                 "phpstan/phpstan": "*",
-                "phpunit/phpunit": "<=9.0"
+                "phpunit/phpunit": "<10.0"
             },
             "suggest": {
                 "ext-iconv": "For best support/performance",
@@ -13275,7 +13345,7 @@
             ],
             "support": {
                 "issues": "https://github.com/zbateson/mb-wrapper/issues",
-                "source": "https://github.com/zbateson/mb-wrapper/tree/1.2.0"
+                "source": "https://github.com/zbateson/mb-wrapper/tree/1.2.1"
             },
             "funding": [
                 {
@@ -13283,7 +13353,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-01-11T23:05:44+00:00"
+            "time": "2024-03-18T04:31:04+00:00"
         },
         {
             "name": "zbateson/stream-decorators",

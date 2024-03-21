@@ -1,0 +1,87 @@
+import ExternalLink from "../../components/external-link";
+import Image from 'next/image'
+
+# Laravel Telescope
+
+## 🗒️ Introduction
+
+<ExternalLink href="https://laravel.com/docs/11.x/telescope">Laravel Telescope</ExternalLink> is an elegant debug assistant for the Laravel framework. Telescope provides insight into the requests coming into your application, exceptions, log entries, database queries, queued jobs, mail, notifications, cache operations, scheduled tasks, variable dumps and more. Telescope makes a wonderful companion to your local Laravel development environment.
+
+This adapter package provides you with abillity to also log and debug your Cycle ORM queries in Laravel Telescope.
+
+## 📀 Installation
+
+<div className="steps-container">
+
+### Step 1: Install Telescope
+
+Install, telescope as usual, via Composer package manager:
+
+```bash
+composer require laravel/telescope
+```
+
+### Step 2: Publish Telescope Assets and run Migrations
+
+After installing Telescope, publish its assets and migrations using the telescope:install Artisan command. After installing Telescope, you should also run the migrate command in order to create the tables needed to store Telescope's data:
+
+```bash
+php artisan telescope:install
+
+php artisan migrate
+```
+
+### Step 3: Add the CycleORM Query Watcher
+
+Next, edit your `config/telescope.php` configuration file and add the following lines to the `watchers` array, right after the default`Watchers\QueryWatcher::class` line:
+
+```php {13-18} filename="config/telescope.php"
+return [
+    // ...
+
+    'watchers' => [
+        // ...
+        Watchers\QueryWatcher::class => [
+            'enabled' => true,
+            'ignore_packages' => true,
+            'ignore_paths' => [],
+            'slow' => 100,
+        ],
+
+        WayOfDev\Cycle\Bridge\Telescope\Watchers\QueryWatcher::class => [
+            'enabled' => true,
+            'ignore_packages' => true,
+            'ignore_paths' => [],
+            'slow' => 100,
+        ],
+    ],
+    // ...
+];
+```
+
+### Step 4: Add .env Configuration
+
+Add the following configuration to your `.env` file:
+
+```dotenv filename=".env"
+...
+
+DB_USE_TELESCOPE_LOGGER=true
+
+...
+```
+
+### Step 5: Access Laravel Telescope
+
+Finally, you may access the Telescope dashboard via the `/telescope` route. Of course, don't forget to start your Laravel application:
+
+```bash
+php artisan serve
+```
+</div>
+
+## 🎉 Final Result
+
+Now, you can access the Laravel Telescope dashboard and see all the CycleORM queries executed by your application.
+
+<Image src="/images/telescope-min.png" alt="Hello" width={1600} height={1483} />

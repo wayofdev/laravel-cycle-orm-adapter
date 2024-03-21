@@ -74,6 +74,7 @@ These variables offer further customization for CycleORM's operation within Lara
 export const extraEnv = [
     ["DB_DEFAULT_CONNECTION", "string", "default", "The default database connection."],
     ["DB_DEFAULT_LOGGER", "?string", "null", "Laravel logger channel, to log queries. Loggers can be added in `config/logging.php`"],
+    ["DB_USE_TELESCOPE_LOGGER", "boolean", "false", "When enabled, `QueryExecuted` event will be fired through `TelescopeLogger` class."],
     ["DB_MIGRATIONS_TABLE", "string", "cycle_migrations", "The table name for the migrations."],
     ["CYCLE_TOKENIZER_CACHE_TARGETS", "boolean", "true", "Determines whether to cache located classes utilizing annotations."],
     ["CYCLE_TOKENIZER_LOAD_CLASSES", "boolean", "true", "Controls whether files of type `class` should be loaded."],

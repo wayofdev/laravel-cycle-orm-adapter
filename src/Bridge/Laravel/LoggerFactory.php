@@ -11,6 +11,8 @@ use Cycle\Database\NamedInterface;
 use Illuminate\Log\LogManager;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
+use WayOfDev\Cycle\Bridge\Telescope\TelescopeLogger;
+use WayOfDev\Cycle\Support\Arr;
 
 final class LoggerFactory implements LoggerFactoryInterface
 {
@@ -39,6 +41,12 @@ final class LoggerFactory implements LoggerFactoryInterface
             }
         }
 
-        return $this->manager->channel($channel);
+        $logger = $this->manager->channel($channel);
+
+        if (Arr::get($this->config, 'use_telescope') === true) {
+            return new TelescopeLogger($logger);
+        }
+
+        return $logger;
     }
 }
