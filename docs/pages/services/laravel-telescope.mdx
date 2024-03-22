@@ -21,17 +21,43 @@ Install, telescope as usual, via Composer package manager:
 composer require laravel/telescope
 ```
 
-### Step 2: Publish Telescope Assets and run Migrations
+### Step 2: Publish Telescope Assets
 
-After installing Telescope, publish its assets and migrations using the telescope:install Artisan command. After installing Telescope, you should also run the migrate command in order to create the tables needed to store Telescope's data:
+After installing Telescope, publish its assets and migrations using the `telescope:install` Artisan command.
 
 ```bash
 php artisan telescope:install
-
-php artisan migrate
 ```
 
-### Step 3: Add the CycleORM Query Watcher
+### Step 3: Run Telescope Migrations trough Cycle-ORM-Adapter
+
+After installing Telescope, you should also run the migrate command in order to create the tables needed to store Telescope's data, but as you are using Cycle ORM, you should avoid using default `php artisan migrate` command, and instead, do the following steps:
+
+Edit `config/cycle.php` file and add the following code to the `tokenizer.directories` array:
+
+```php {7} filename="config/cycle.php"
+return [
+    // ...
+    'tokenizer' => [
+    // ...
+        'directories' => [
+            app_path(),
+            __DIR__ . '/../vendor/wayofdev/laravel-cycle-orm-adapter/src/Bridge/Telescope/Entities',
+        ],
+    ],
+],
+```
+
+Run the following command to create the Telescope tables:
+
+```bash
+php artisan cycle:migrate:init
+
+php artisan cycle:orm:migrate --split --run
+```
+
+
+### Step 4: Add the CycleORM Query Watcher
 
 Next, edit your `config/telescope.php` configuration file and add the following lines to the `watchers` array, right after the default`Watchers\QueryWatcher::class` line:
 
@@ -59,7 +85,7 @@ return [
 ];
 ```
 
-### Step 4: Add .env Configuration
+### Step 5: Add .env Configuration
 
 Add the following configuration to your `.env` file:
 
@@ -71,7 +97,7 @@ DB_USE_TELESCOPE_LOGGER=true
 ...
 ```
 
-### Step 5: Access Laravel Telescope
+### Step 6: Access Laravel Telescope
 
 Finally, you may access the Telescope dashboard via the `/telescope` route. Of course, don't forget to start your Laravel application:
 
