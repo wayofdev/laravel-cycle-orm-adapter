@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.10.3](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.10.2...v4.10.3) (2024-03-22)
+
+
+### Bug Fixes
+
+* telescope class naming ([207c453](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/207c453626039d87befefdefdbf961870fbe87a7))
+* telescope entities should be same as native migrations ([e03e748](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/e03e74834ee5a59165f6ccbba1b4fa37d748b378))
+
 ## [4.10.2](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.10.1...v4.10.2) (2024-03-21)
 
 
