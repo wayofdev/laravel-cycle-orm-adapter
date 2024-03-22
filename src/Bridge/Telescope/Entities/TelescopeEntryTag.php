@@ -13,7 +13,7 @@ use Cycle\Annotated\Annotation\Table\Index;
 #[Index(columns: ['tag'])]
 #[ForeignKey(target: TelescopeEntry::class, innerKey: 'entry_uuid', outerKey: 'uuid', action: 'CASCADE')]
 #[Entity(table: 'telescope_entries_tags')]
-class TelescopeEntriesTags
+class TelescopeEntryTag
 {
     #[Column(type: 'primary')]
     public int $id;
