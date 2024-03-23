@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.10.4](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.10.3...v4.10.4) (2024-03-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @heroicons/react to v2.1.3 ([57cddcc](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/57cddccab570e8a43c40eef91117ebd83d54600c))
+
 ## [4.10.3](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.10.2...v4.10.3) (2024-03-22)
 
 
