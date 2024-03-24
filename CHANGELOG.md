@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.11.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.10.4...v4.11.0) (2024-03-24)
+
+
+### Features
+
+* add integration with cache, sessions, queue ([1738aea](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/1738aea13a2e3df6486feebe9aa219edc851e915))
+
 ## [4.10.4](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.10.3...v4.10.4) (2024-03-23)
 
 
