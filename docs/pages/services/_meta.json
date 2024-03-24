@@ -4,5 +4,8 @@
     "testing": "Testing",
     "validation": "Validation",
     "pagination": "Pagination",
+    "sessions": "Sessions",
+    "queue": "Queue",
+    "cache": "Cache",
     "laravel-telescope": "Laravel Telescope"
 }

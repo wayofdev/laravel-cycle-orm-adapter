@@ -8,12 +8,68 @@ Pagination is provided by external package [wayofdev/laravel-paginator](https://
 composer require wayofdev/laravel-paginator
 ```
 
-## Usage
+## Usage with Repositories
 
 <div className="steps-container">
 
 ### Step 1: Define `paginate()` method in your Repository
 
-@todo
+Create a `paginate()` method in your abstract repository class that will return a `CyclePaginator` instance.
+
+```php filename="app/Infrastructure/Persistence/Cycle/Repository.php"
+<?php
+
+declare(strict_types=1);
+
+namespace Infrastructure\Persistence\Cycle;
+
+use Cycle\ORM\EntityManagerInterface;
+use Cycle\ORM\Select;
+use Cycle\ORM\Select\Repository as CycleRepository;
+use Illuminate\Support\Collection;
+use Spiral\Pagination\Paginator as SpiralPaginator;
+use WayOfDev\Paginator\CyclePaginator;
+
+class Repository extends CycleRepository
+{
+    /**
+     * Create repository linked to one specific selector.
+     *
+     * @param Select<TEntity> $select
+     */
+    public function __construct(
+        protected Select $select,
+        protected EntityManagerInterface $entityManager
+    ) {
+        parent::__construct($select);
+    }
+
+    // ...
+
+    public function paginate(int $perPage = 20, int $page = 1, string $pageName = 'page'): CyclePaginator
+    {
+        return $this->paginateQuery(
+            $this->select(),
+            $perPage,
+            $page,
+            $pageName,
+        );
+    }
+
+    protected function paginateQuery(Select $query, int $perPage = 20, int $page = 1, string $pageName = 'page'): CyclePaginator
+    {
+        return new CyclePaginator(
+            (new SpiralPaginator($perPage))->withPage($page)->paginate($query),
+            $this->createCollection($query->fetchAll()),
+            $pageName,
+        );
+    }
+
+    protected function createCollection(iterable $items): Collection
+    {
+        return new Collection($items);
+    }
+}
+```
 
 </div>

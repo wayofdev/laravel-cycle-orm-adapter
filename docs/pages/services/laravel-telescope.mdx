@@ -21,7 +21,19 @@ Install, telescope as usual, via Composer package manager:
 composer require laravel/telescope
 ```
 
-### Step 2: Publish Telescope Assets
+### Step 2: Add .env Configuration
+
+Add the following configuration to your `.env` file:
+
+```dotenv filename=".env"
+...
+
+DB_USE_TELESCOPE_LOGGER=true
+
+...
+```
+
+### Step 3: Publish Telescope Assets
 
 After installing Telescope, publish its assets and migrations using the `telescope:install` Artisan command.
 
@@ -29,24 +41,9 @@ After installing Telescope, publish its assets and migrations using the `telesco
 php artisan telescope:install
 ```
 
-### Step 3: Run Telescope Migrations trough Cycle-ORM-Adapter
+### Step 4: Run Telescope Migrations trough Cycle-ORM-Adapter
 
 After installing Telescope, you should also run the migrate command in order to create the tables needed to store Telescope's data, but as you are using Cycle ORM, you should avoid using default `php artisan migrate` command, and instead, do the following steps:
-
-Edit `config/cycle.php` file and add the following code to the `tokenizer.directories` array:
-
-```php {7} filename="config/cycle.php"
-return [
-    // ...
-    'tokenizer' => [
-    // ...
-        'directories' => [
-            app_path(),
-            __DIR__ . '/../vendor/wayofdev/laravel-cycle-orm-adapter/src/Bridge/Telescope/Entities',
-        ],
-    ],
-],
-```
 
 Run the following command to create the Telescope tables:
 
@@ -56,8 +53,7 @@ php artisan cycle:migrate:init
 php artisan cycle:orm:migrate --split --run
 ```
 
-
-### Step 4: Add the CycleORM Query Watcher
+### Step 5: Add the CycleORM Query Watcher
 
 Next, edit your `config/telescope.php` configuration file and add the following lines to the `watchers` array, right after the default`Watchers\QueryWatcher::class` line:
 
@@ -83,18 +79,6 @@ return [
     ],
     // ...
 ];
-```
-
-### Step 5: Add .env Configuration
-
-Add the following configuration to your `.env` file:
-
-```dotenv filename=".env"
-...
-
-DB_USE_TELESCOPE_LOGGER=true
-
-...
 ```
 
 ### Step 6: Access Laravel Telescope

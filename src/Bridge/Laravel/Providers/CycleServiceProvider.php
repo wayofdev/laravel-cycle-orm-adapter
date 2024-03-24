@@ -10,9 +10,13 @@ use Illuminate\Contracts\Config\Repository as IlluminateConfig;
 use Illuminate\Support\ServiceProvider;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
+use WayOfDev\Cycle\Bridge\Cache\Providers\CacheServiceProvider;
 use WayOfDev\Cycle\Bridge\Laravel\Console\Commands\Database;
 use WayOfDev\Cycle\Bridge\Laravel\Console\Commands\Migrations;
 use WayOfDev\Cycle\Bridge\Laravel\Console\Commands\ORM;
+use WayOfDev\Cycle\Bridge\Queue\Providers\QueueServiceProvider;
+use WayOfDev\Cycle\Bridge\Session\Providers\SessionServiceProvider;
+use WayOfDev\Cycle\Bridge\Telescope\Providers\TelescopeServiceProvider;
 
 final class CycleServiceProvider extends ServiceProvider
 {
@@ -64,6 +68,24 @@ final class CycleServiceProvider extends ServiceProvider
 
         foreach ($registrators as $registrator) {
             (new $registrator())($this->app);
+        }
+
+        $this->registerIntegrations();
+    }
+
+    private function registerIntegrations(): void
+    {
+        $services = [
+            'cycle.integrations.session.enabled' => SessionServiceProvider::class,
+            'cycle.integrations.cache.enabled' => CacheServiceProvider::class,
+            'cycle.integrations.queue.enabled' => QueueServiceProvider::class,
+            'cycle.database.logger.use_telescope' => TelescopeServiceProvider::class,
+        ];
+
+        foreach ($services as $configKey => $providerClass) {
+            if (config($configKey) === true) {
+                $this->app->register($providerClass);
+            }
         }
     }
 

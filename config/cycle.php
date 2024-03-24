@@ -324,4 +324,25 @@ return [
     'entityBehavior' => [
         'register' => env('CYCLE_REGISTER_ENTITY_BEHAVIOUR', true),
     ],
+
+    'integrations' => [
+        /*
+         * Enables migration generation for Laravel Queues
+         */
+        'queue' => [
+            'enabled' => env('CYCLE_ADAPTER_QUEUE_INTEGRATION', true),
+        ],
+        /*
+         * Enables migration generation for Laravel Sessions
+         */
+        'session' => [
+            'enabled' => env('CYCLE_ADAPTER_SESSION_INTEGRATION', true),
+        ],
+        /*
+         * Enables migration generation for Laravel Cache
+         */
+        'cache' => [
+            'enabled' => env('CYCLE_ADAPTER_CACHE_INTEGRATION', true),
+        ],
+    ],
 ];
