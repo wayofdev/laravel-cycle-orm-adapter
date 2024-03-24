@@ -13,6 +13,15 @@
         <server name="APP_KEY" value="AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"/>
         <server name="APP_ENV" value="testing"/>
         <server name="CACHE_DRIVER" value="array"/>
+        <server name="CYCLE_ADAPTER_QUEUE_INTEGRATION" value="false"/>
+        <server name="CYCLE_ADAPTER_SESSION_INTEGRATION" value="false"/>
+        <server name="CYCLE_ADAPTER_CACHE_INTEGRATION" value="false"/>
+
+        <server name="CYCLE_ATTRIBUTES_CACHE" value="true"/>
+        <server name="CYCLE_ATTRIBUTES_CACHE_DRIVER" value="array"/>
+
+        <server name="CYCLE_SCHEMA_CACHE" value="true"/>
+        <server name="CYCLE_SCHEMA_CACHE_DRIVER" value="array"/>
     </php>
     <testsuites>
         <testsuite name="Tests">

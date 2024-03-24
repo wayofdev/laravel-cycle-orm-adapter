@@ -53,7 +53,6 @@ class TestCase extends OrchestraTestCase
                 'cycle.tokenizer.directories' => array_merge(
                     config('cycle.tokenizer.directories'),
                     [__DIR__ . '/../app/Entities'],
-                    // [__DIR__ . '/../../src/Bridge/Telescope/Entities'],
                 ),
                 'cycle.migrations.directory' => $this->migrationsPath,
             ]);
@@ -73,26 +72,43 @@ class TestCase extends OrchestraTestCase
         return $this->app[Kernel::class]->call($command, $parameters);
     }
 
-    protected function assertConsoleCommandOutputContainsStrings(
+    protected function assertConsoleCommandOutput(
         string $command,
-        array $args = [],
-        array|string $strings = []
+        array $args,
+        $strings,
+        callable $assertionCallback
     ): void {
         $this->artisanCall($command, $args);
         $output = Artisan::output();
 
         foreach ((array) $strings as $string) {
-            $this::assertStringContainsString(
-                $string,
-                $output,
-                sprintf(
-                    'Console command [%s] with args [%s] does not contain string [%s]',
-                    $command,
-                    json_encode($args),
-                    $string
-                )
-            );
+            $assertionCallback($string, $output, sprintf(
+                'Console command [%s] with args [%s] output assertion failed for string [%s]',
+                $command,
+                json_encode($args),
+                $string
+            ));
         }
+    }
+
+    protected function assertConsoleCommandOutputContainsStrings(
+        string $command,
+        array $args = [],
+        $strings = []
+    ): void {
+        $this->assertConsoleCommandOutput($command, $args, $strings, function ($string, $output, $message): void {
+            $this::assertStringContainsString($string, $output, $message);
+        });
+    }
+
+    protected function assertConsoleCommandOutputDoesNotContainStrings(
+        string $command,
+        array $args = [],
+        $strings = []
+    ): void {
+        $this->assertConsoleCommandOutput($command, $args, $strings, function ($string, $output, $message): void {
+            $this::assertStringNotContainsString($string, $output, $message);
+        });
     }
 
     protected function getPackageProviders($app): array
