@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.11.1](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.11.0...v4.11.1) (2024-03-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency asciinema-player to v3.7.1 ([a01b3f2](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/a01b3f29ff5b2aa411a55be11ba3a22f490186e4))
+
 ## [4.11.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.10.4...v4.11.0) (2024-03-24)
 
 
