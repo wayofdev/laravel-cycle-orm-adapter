@@ -203,16 +203,16 @@
         },
         {
             "name": "cycle/database",
-            "version": "2.9.0",
+            "version": "2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cycle/database.git",
-                "reference": "9eb666942d654b29d5ede4501f2c32205eedeaeb"
+                "reference": "a8dd4da9ae8a44da87c1df5cae93122ea3f6ef35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cycle/database/zipball/9eb666942d654b29d5ede4501f2c32205eedeaeb",
-                "reference": "9eb666942d654b29d5ede4501f2c32205eedeaeb",
+                "url": "https://api.github.com/repos/cycle/database/zipball/a8dd4da9ae8a44da87c1df5cae93122ea3f6ef35",
+                "reference": "a8dd4da9ae8a44da87c1df5cae93122ea3f6ef35",
                 "shasum": ""
             },
             "require": {
@@ -290,7 +290,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-27T10:54:26+00:00"
+            "time": "2024-04-04T19:58:00+00:00"
         },
         {
             "name": "cycle/entity-behavior",
