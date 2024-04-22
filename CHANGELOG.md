@@ -1,5 +1,24 @@
 # Changelog
 
+## [4.12.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.11.4...v4.12.0) (2024-04-22)
+
+
+### Features
+
+* apply composer require checker linting ([ca071fa](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/ca071fa70949801003075f2d7a4b18e84cb92092))
+
+
+### Bug Fixes
+
+* composer warning about missing root composer version ([73c516c](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/73c516c7692a330f38b60962b9287612f1dddc46))
+* **deps:** update dependency next to v14.2.1 ([3298424](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/3298424c3bce7e7b99b08da03793b03320db8e47))
+* **deps:** update dependency next to v14.2.2 ([da1c744](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/da1c744f8f9f39902285df31e839629f53fdaa40))
+
+
+### Documentation
+
+* fix php typos in factories ([31e40d9](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/31e40d973d9dd4fbbe1af52f1f37f1e9a7dd3045))
+
 ## [4.11.4](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.11.3...v4.11.4) (2024-04-11)
 
 
