@@ -1,0 +1,10 @@
+{
+    "symbol-whitelist": [
+        "Laravel\\Telescope\\IncomingEntry",
+        "Laravel\\Telescope\\Telescope",
+        "Laravel\\Telescope\\Watchers\\FetchesStackTrace",
+        "Laravel\\Telescope\\Watchers\\Watcher",
+        "PHPUnit\\Framework\\Constraint\\Constraint",
+        "PHPUnit\\Framework\\Constraint\\LogicalNot"
+    ]
+}
