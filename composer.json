@@ -3,6 +3,7 @@
     "description": "🔥 A Laravel adapter for CycleORM, providing seamless integration of the Cycle DataMapper ORM for advanced database handling and object mapping in PHP applications.",
     "license": "MIT",
     "type": "library",
+    "version": "4.11.4",
     "keywords": [
         "php",
         "php8",
@@ -31,8 +32,16 @@
     "homepage": "https://laravel-cycle-orm-adapter.wayof.dev",
     "support": {
         "issues": "https://github.com/wayofdev/laravel-cycle-orm-adapter/issues",
-        "source": "https://github.com/wayofdev/laravel-cycle-orm-adapter"
+        "chat": "https://discord.gg/CE3TcCC5vr",
+        "source": "https://github.com/wayofdev/laravel-cycle-orm-adapter",
+        "docs": "https://laravel-cycle-orm-adapter.wayof.dev"
     },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/wayofdev"
+        }
+    ],
     "require": {
         "php": "^8.2",
         "ext-pdo": "*",
