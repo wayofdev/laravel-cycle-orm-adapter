@@ -5,6 +5,9 @@
 # https://docs.docker.com/compose/environment-variables/envvars/
 export DOCKER_BUILDKIT ?= 1
 
+# Docker binary to use, when executing docker tasks
+DOCKER ?= docker
+
 # Binary to use, when executing docker-compose tasks
 DOCKER_COMPOSE ?= docker compose
 
@@ -25,13 +28,27 @@ BUILDER_WIRED ?= $(BUILDER_PARAMS) --network project.$(COMPOSE_PROJECT_NAME) $(S
 # Shorthand envsubst command, executed through build-deps
 ENVSUBST ?= $(BUILDER) envsubst
 
+# Yamllint docker image
+YAML_LINT_RUNNER ?= $(DOCKER) run --rm $$(tty -s && echo "-it" || echo) \
+	-v $(PWD):/data \
+	cytopia/yamllint:latest \
+	-f colored .
+
+ACTION_LINT_RUNNER ?= $(DOCKER) run --rm $$(tty -s && echo "-it" || echo) \
+	-v $(shell pwd):/repo \
+	 --workdir /repo \
+	 rhysd/actionlint:latest \
+	 -color
+
+PHIVE_RUNNER ?= $(DOCKER_COMPOSE) run --rm --no-deps app
+
+NPM_RUNNER ?= pnpm
+
 EXPORT_VARS = '\
 	$${COMPOSE_PROJECT_NAME} \
 	$${COMPOSER_AUTH}'
 
-NPM_RUNNER ?= pnpm
-
-
+#
 # Self documenting Makefile code
 # ------------------------------------------------------------------------------------
 ifneq ($(TERM),)
@@ -71,17 +88,19 @@ help:
 	@echo '    📦 Package                 laravel-cycle-orm-adapter (github.com/wayofdev/laravel-cycle-orm-adapter)'
 	@echo '    🤠 Author                  Andrij Orlenko (github.com/lotyp)'
 	@echo '    🏢 ${YELLOW}Org                     wayofdev (github.com/wayofdev)${RST}'
+	@echo
 .PHONY: help
 
 .EXPORT_ALL_VARIABLES:
 
+#
 # Default action
 # Defines default command when `make` is executed without additional parameters
 # ------------------------------------------------------------------------------------
-all: install hooks
+all: env prepare install hooks phive up
 .PHONY: all
 
-
+#
 # System Actions
 # ------------------------------------------------------------------------------------
 env: ## Generate .env file from example, use `make env force=true`, to force re-create file
@@ -101,7 +120,7 @@ prepare:
 	mkdir -p .build/php-cs-fixer
 .PHONY: prepare
 
-
+#
 # Docker Actions
 # ------------------------------------------------------------------------------------
 up: # Creates and starts containers, defined in docker-compose and override file
@@ -135,7 +154,7 @@ ssh: ## Login inside running docker container
 	$(APP_RUNNER) sh
 .PHONY: ssh
 
-
+#
 # Composer
 # ------------------------------------------------------------------------------------
 install: ## Installs composer dependencies
@@ -146,20 +165,29 @@ update: ## Updates composer dependencies by running composer update command
 	$(APP_COMPOSER) update
 .PHONY: update
 
+phive: ## Installs dependencies with phive
+	$(APP_RUNNER) /usr/local/bin/phive install --trust-gpg-keys 0x033E5F8D801A2F8D
+.PHONY: phive
 
-# Code Quality, Git, Linting, Testing
+#
+# Code Quality, Git, Linting
 # ------------------------------------------------------------------------------------
 hooks: ## Install git hooks from pre-commit-config
 	pre-commit install
+	pre-commit install --hook-type commit-msg
 	pre-commit autoupdate
 .PHONY: hooks
 
-lint: lint-yaml lint-php lint-stan ## Runs all linting commands
+lint: lint-yaml lint-actions lint-php lint-stan lint-composer lint-audit ## Runs all linting commands
 .PHONY: lint
 
 lint-yaml: ## Lints yaml files inside project
-	yamllint .
+	@$(YAML_LINT_RUNNER) | tee -a $(MAKE_LOGFILE)
 .PHONY: lint-yaml
+
+lint-actions: ## Lint all github actions
+	@$(ACTION_LINT_RUNNER) | tee -a $(MAKE_LOGFILE)
+.PHONY: lint-actions
 
 lint-php: prepare ## Fixes code to follow coding standards using php-cs-fixer
 	$(APP_COMPOSER) cs:fix
@@ -177,6 +205,51 @@ lint-stan-ci:
 	$(APP_COMPOSER) stan:ci
 .PHONY: lint-stan-ci
 
+lint-stan-baseline: ## Runs phpstan to update its baseline
+	$(APP_COMPOSER) stan:baseline
+.PHONY: lint-stan-baseline
+
+lint-psalm: ## Runs vimeo/psalm – static analysis tool
+	$(APP_COMPOSER) psalm
+.PHONY: lint-psalm
+
+lint-psalm-ci: ## Runs vimeo/psalm – static analysis tool with github output (CI mode)
+	$(APP_COMPOSER) psalm:ci
+.PHONY: lint-psalm-ci
+
+lint-psalm-baseline: ## Runs vimeo/psalm to update its baseline
+	$(APP_COMPOSER) psalm:baseline
+.PHONY: lint-psalm-baseline
+
+lint-deps: ## Runs composer-require-checker – checks for dependencies that are not used
+	$(APP_RUNNER) .phive/composer-require-checker check \
+		--config-file=/app/composer-require-checker.json \
+		--verbose
+.PHONY: lint-deps
+
+lint-composer: ## Normalize composer.json and composer.lock files
+	$(APP_COMPOSER) normalize
+.PHONY: lint-composer
+
+lint-audit: ## Runs security checks for composer dependencies
+	$(APP_COMPOSER) audit
+.PHONY: lint-security
+
+refactor: ## Runs rector – code refactoring tool
+	$(APP_COMPOSER) refactor
+.PHONY: refactor
+
+#
+# Testing
+# ------------------------------------------------------------------------------------
+infect: ## Runs mutation tests with infection/infection
+	$(APP_COMPOSER) infect
+.PHONY: infect
+
+infect-ci: ## Runs infection – mutation testing framework with github output (CI mode)
+	$(APP_COMPOSER) infect:ci
+.PHONY: lint-infect-ci
+
 test: ## Run project php-unit and pest tests
 	$(APP_COMPOSER) test
 .PHONY: test
@@ -185,6 +258,14 @@ test-cc: ## Run project php-unit and pest tests in coverage mode and build repor
 	$(APP_COMPOSER) test:cc
 .PHONY: test-cc
 
+#
+# Release
+# ------------------------------------------------------------------------------------
+commit:
+	czg commit --config="./.github/.cz.config.js"
+.PHONY: commit
+
+#
 # Documentation
 # ------------------------------------------------------------------------------------
 docs-deps-update: ## Check for outdated dependencies and automatically update them using pnpm

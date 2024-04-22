@@ -1,17 +1,45 @@
 {
     "name": "wayofdev/laravel-cycle-orm-adapter",
-    "description": "PHP package template with GitHub Actions",
-    "type": "library",
+    "description": "🔥 A Laravel adapter for CycleORM, providing seamless integration of the Cycle DataMapper ORM for advanced database handling and object mapping in PHP applications.",
     "license": "MIT",
-    "homepage": "https://wayof.dev",
-    "support": {
-        "issues": "https://github.com/wayofdev/laravel-cycle-orm-adapter/issues",
-        "source": "https://github.com/wayofdev/laravel-cycle-orm-adapter"
-    },
+    "type": "library",
+    "version": "4.11.4",
+    "keywords": [
+        "php",
+        "php8",
+        "eloquent",
+        "wayofdev",
+        "cycle",
+        "cycle-orm",
+        "laravel",
+        "orm",
+        "mapper",
+        "query-builder",
+        "object-mapping",
+        "data-mapper",
+        "cycleorm",
+        "laravel-cycle-orm",
+        "laravel-orm",
+        "database",
+        "eloquent-alternative"
+    ],
     "authors": [
         {
             "name": "Andrij Orlenko",
             "email": "the@wayof.dev"
+        }
+    ],
+    "homepage": "https://laravel-cycle-orm-adapter.wayof.dev",
+    "support": {
+        "issues": "https://github.com/wayofdev/laravel-cycle-orm-adapter/issues",
+        "chat": "https://discord.gg/CE3TcCC5vr",
+        "source": "https://github.com/wayofdev/laravel-cycle-orm-adapter",
+        "docs": "https://laravel-cycle-orm-adapter.wayof.dev"
+    },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/wayofdev"
         }
     ],
     "require": {
@@ -23,19 +51,22 @@
         "cycle/entity-behavior-uuid": "^1.2",
         "cycle/migrations": "^4.2",
         "cycle/orm": "^2.7",
+        "cycle/schema-builder": "^2.8",
         "cycle/schema-migrations-generator": "^2.2",
         "cycle/schema-renderer": "^1.2",
-        "illuminate/console": "^10.28 || ^11.0",
-        "cycle/schema-builder": "^2.8",
-        "illuminate/contracts": "^10.28 || ^11.0",
-        "illuminate/support": "^10.28 || ^11.0",
+        "laravel/framework": "^10.28 || ^11.0",
+        "psr/log": "^3.0",
         "spiral/attributes": "^3.1",
+        "spiral/core": "^3.12",
+        "spiral/tokenizer": "^3.12",
         "symfony/console": "^6.4 || ^7.0"
     },
     "require-dev": {
+        "beberlei/assert": "^3.3",
         "ergebnis/composer-normalize": "^2.42",
         "fakerphp/faker": "^1.23",
         "larastan/larastan": "^2.9",
+        "laravel/telescope": "^5.0",
         "orchestra/testbench": "^8.21 || ^9.0.0",
         "pestphp/pest": "^2.34",
         "pestphp/pest-plugin-laravel": "^2.3",
@@ -46,10 +77,14 @@
         "phpstan/phpstan-strict-rules": "^1.5",
         "phpunit/phpunit": "^10.5",
         "roave/security-advisories": "dev-latest",
-        "wayofdev/cs-fixer-config": "^1.2",
-        "beberlei/assert": "^3.3",
-        "laravel/telescope": "^5.0"
+        "wayofdev/cs-fixer-config": "^1.2"
     },
+    "suggest": {
+        "wayofdev/laravel-cycle-orm-factories": "Cycle-ORM Entity Factories and Database Seeders for Laravel",
+        "wayofdev/laravel-paginator": "Custom Laravel Paginator for Cycle-ORM implementing RFC 5988"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "WayOfDev\\Cycle\\": "src/"
@@ -61,39 +96,45 @@
             "WayOfDev\\Tests\\": "tests/src"
         }
     },
-    "scripts": {
-        "cs:fix": "php vendor/bin/php-cs-fixer fix -v",
-        "cs:diff": "php vendor/bin/php-cs-fixer fix --dry-run -v --diff",
-        "test": "php vendor/bin/pest --colors=always",
-        "test:cc": "php vendor/bin/pest --colors=always --coverage",
-        "stan": "php vendor/bin/phpstan analyse --memory-limit=256M",
-        "stan:ci": "php vendor/bin/phpstan analyse --error-format=github",
-        "post-autoload-dump": [
-            "@php vendor/bin/testbench package:discover --ansi"
-        ]
-    },
     "config": {
-        "sort-packages": true,
         "allow-plugins": {
             "ergebnis/composer-normalize": true,
             "pestphp/pest-plugin": true,
             "phpstan/extension-installer": true
-        }
+        },
+        "sort-packages": true
     },
     "extra": {
-        "laravel": {
-            "providers": [
-                "WayOfDev\\Cycle\\Bridge\\Laravel\\Providers\\CycleServiceProvider"
-            ],
-            "aliases": {
-                "Package": "Cycle"
-            }
-        },
         "composer-normalize": {
             "indent-size": 4,
             "indent-style": "space"
+        },
+        "laravel": {
+            "aliases": {
+                "Package": "Cycle"
+            },
+            "providers": [
+                "WayOfDev\\Cycle\\Bridge\\Laravel\\Providers\\CycleServiceProvider"
+            ]
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "scripts": {
+        "post-autoload-dump": [
+            "@php vendor/bin/testbench package:discover --ansi"
+        ],
+        "cs:diff": "php vendor/bin/php-cs-fixer fix --dry-run -v --diff",
+        "cs:fix": "php vendor/bin/php-cs-fixer fix -v",
+        "infect": "XDEBUG_MODE=coverage php vendor/bin/roave-infection-static-analysis-plugin --configuration=infection.json.dist",
+        "infect:ci": "XDEBUG_MODE=coverage php vendor/bin/roave-infection-static-analysis-plugin --ansi --configuration=infection.json.dist --logger-github --ignore-msi-with-no-mutations --only-covered",
+        "psalm": "php vendor/bin/psalm --show-info=true",
+        "psalm:baseline": "php vendor/bin/psalm --set-baseline=psalm-baseline.xml",
+        "psalm:ci": "php vendor/bin/psalm --output-format=github --shepherd --show-info=false --stats --threads=4",
+        "refactor": "php vendor/bin/rector process --config=rector.php",
+        "refactor:ci": "php vendor/bin/rector process --config=rector.php --dry-run --ansi",
+        "stan": "php vendor/bin/phpstan analyse --memory-limit=2G",
+        "stan:baseline": "php vendor/bin/phpstan analyse --generate-baseline --memory-limit=2G --allow-empty-baseline",
+        "stan:ci": "php vendor/bin/phpstan analyse --memory-limit=2G --error-format=github",
+        "test": "XDEBUG_MODE=coverage php vendor/bin/pest",
+        "test:cc": "XDEBUG_MODE=coverage php vendor/bin/pest --coverage --coverage-clover=.build/phpunit/logs/clover.xml"
+    }
 }

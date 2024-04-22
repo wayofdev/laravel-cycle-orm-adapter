@@ -258,6 +258,7 @@ use Cycle\Annotated\Annotation\Column;
 use Cycle\Annotated\Annotation\Entity;
 use Cycle\Annotated\Annotation\Relation\BelongsTo;
 use Cycle\Annotated\Annotation\Relation\HasMany;
+use Ramsey\Uuid\Uuid;
 
 #[Entity(repository: PostRepository::class)]
 class Post
@@ -284,7 +285,7 @@ class Post
         $this->content = $content;
         $this->user = $user;
 
-        $this->comments = new Collection()
+        $this->comments = new Collection();
     }
 
     public function id(): string
@@ -321,6 +322,11 @@ class Post
 namespace Domain\Post\Comment;
 
 use Domain\User\User;
+use Cycle\Annotated\Annotation\Column;
+use Cycle\Annotated\Annotation\Entity;
+use Cycle\Annotated\Annotation\Relation\BelongsTo;
+use Domain\User\User;
+use Ramsey\Uuid\Uuid;
 
 #[Entity(repository: CommentRepository::class)]
 class Comment
@@ -332,6 +338,9 @@ class Comment
     private string $content;
 
     #[BelongsTo(target: Post::class, innerKey: 'post_id', outerKey: 'id', nullable: false)]
+    private ?Post $post;
+
+    #[BelongsTo(target: User::class, innerKey: 'user_id', outerKey: 'id', nullable: false)]
     private ?User $user;
 
     public function __construct(string $content, Post $post, ?User $user)
@@ -375,6 +384,7 @@ use Cycle\Annotated\Annotation\Entity;
 use Cycle\Annotated\Annotation\Relation\HasMany;
 use Domain\Post\Post;
 use Illuminate\Support\Collection;
+use Ramsey\Uuid\Uuid;
 
 #[Entity(repository: UserRepository::class)]
 class User
