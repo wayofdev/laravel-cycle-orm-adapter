@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.12.2](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.12.1...v4.12.2) (2024-04-25)
+
+
+### Bug Fixes
+
+* **deps:** update react monorepo to v18.3.0 ([b1d1372](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/b1d137266a4ce2a42eade10c6742b973e768d3ed))
+
 ## [4.12.1](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.12.0...v4.12.1) (2024-04-24)
 
 

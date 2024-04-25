@@ -3,7 +3,7 @@
     "description": "🔥 A Laravel adapter for CycleORM, providing seamless integration of the Cycle DataMapper ORM for advanced database handling and object mapping in PHP applications.",
     "license": "MIT",
     "type": "library",
-    "version": "4.12.1",
+    "version": "4.12.2",
     "keywords": [
         "php",
         "php8",
