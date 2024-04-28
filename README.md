@@ -84,6 +84,7 @@ You are more than welcome. Before contributing, kindly check our [Contributing G
 </a>
 
 <br>
+<br>
 
 ## 🧱 Resources and Credits
 
