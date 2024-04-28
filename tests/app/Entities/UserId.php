@@ -9,7 +9,7 @@ use Stringable;
 
 final class UserId implements Stringable
 {
-    private string $id;
+    private readonly string $id;
 
     public static function create(string $userId): self
     {

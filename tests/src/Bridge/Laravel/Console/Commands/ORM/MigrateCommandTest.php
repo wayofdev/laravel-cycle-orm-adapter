@@ -6,6 +6,7 @@ namespace WayOfDev\Tests\Bridge\Laravel\Console\Commands\ORM;
 
 use Cycle\ORM\SchemaInterface;
 use Illuminate\Support\Facades\File;
+use PHPUnit\Framework\Attributes\Test;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use WayOfDev\Cycle\Contracts\CacheManager;
@@ -34,9 +35,7 @@ class MigrateCommandTest extends TestCase
         File::delete(__DIR__ . '/../../../../../../app/Entities/Tag.php');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_runs_migrate(): void
     {
         $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', ['-n' => true], self::USER_MIGRATION);
@@ -46,9 +45,7 @@ class MigrateCommandTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_runs_migrate_with_no_changes(): void
     {
         $this->artisanCall('cycle:orm:migrate', ['-n' => true]);
@@ -58,9 +55,7 @@ class MigrateCommandTest extends TestCase
         $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', [], 'No database changes');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_creates_migration_when_entity_appeared(): void
     {
         $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', ['-r' => true], self::USER_MIGRATION);
@@ -98,11 +93,10 @@ class MigrateCommandTest extends TestCase
     }
 
     /**
-     * @test
-     *
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
+    #[Test]
     public function it_passes_schema_defaults_to_compiler(): void
     {
         config()->set('cycle.schema.defaults', [

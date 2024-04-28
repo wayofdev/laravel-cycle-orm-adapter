@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace WayOfDev\Tests\Bridge\Laravel\Providers\Registrators;
 
+use PHPUnit\Framework\Attributes\Test;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Spiral\Tokenizer\ClassesInterface;
@@ -15,9 +16,7 @@ use WayOfDev\Tests\TestCase;
 
 class RegisterTokenizerTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_tokenizer_as_singleton(): void
     {
         try {
@@ -35,9 +34,7 @@ class RegisterTokenizerTest extends TestCase
         $this::assertSame($tokenizer1, $tokenizer2);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_binds_scoped_classes_interface(): void
     {
         try {
@@ -49,9 +46,7 @@ class RegisterTokenizerTest extends TestCase
         $this::assertInstanceOf(ScopedClassesInterface::class, $class);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_binds_classes_interface(): void
     {
         try {
@@ -63,9 +58,7 @@ class RegisterTokenizerTest extends TestCase
         $this::assertInstanceOf(ClassesInterface::class, $class);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_binds_invocations_interface(): void
     {
         try {
@@ -77,9 +70,7 @@ class RegisterTokenizerTest extends TestCase
         $this::assertInstanceOf(InvocationsInterface::class, $class);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_aliases_classes_interface_to_class_locator(): void
     {
         try {

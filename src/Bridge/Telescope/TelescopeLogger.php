@@ -10,7 +10,7 @@ use WayOfDev\Cycle\Bridge\Telescope\Events\Database\QueryExecuted;
 
 class TelescopeLogger implements LoggerInterface
 {
-    private LoggerInterface $parentLogger;
+    private readonly LoggerInterface $parentLogger;
 
     public function __construct($parentLogger)
     {

@@ -6,6 +6,7 @@ namespace WayOfDev\Tests\Bridge\Laravel\Console\Commands\ORM;
 
 use Cycle\ORM\EntityManager;
 use Illuminate\Support\Facades\Artisan;
+use PHPUnit\Framework\Attributes\Test;
 use Throwable;
 use WayOfDev\App\Entities\User;
 use WayOfDev\Tests\TestCase;
@@ -13,10 +14,9 @@ use WayOfDev\Tests\TestCase;
 class SyncCommandTest extends TestCase
 {
     /**
-     * @test
-     *
      * @throws Throwable
      */
+    #[Test]
     public function it_runs_handle(): void
     {
         $this->artisanCall('cycle:orm:sync');
@@ -31,10 +31,9 @@ class SyncCommandTest extends TestCase
     }
 
     /**
-     * @test
-     *
      * @throws Throwable
      */
+    #[Test]
     public function it_runs_handle_in_debug_mode(): void
     {
         $this->assertConsoleCommandOutputContainsStrings('cycle:orm:sync', ['--verbose' => 3], [
@@ -50,9 +49,7 @@ class SyncCommandTest extends TestCase
         $this::assertSame(1, $u->id);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_fails_in_production_without_force(): void
     {
         // Set the application environment to production

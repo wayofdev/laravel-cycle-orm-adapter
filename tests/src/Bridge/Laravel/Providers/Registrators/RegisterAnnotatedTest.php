@@ -10,6 +10,7 @@ use Cycle\Annotated\MergeColumns;
 use Cycle\Annotated\MergeIndexes;
 use Cycle\Annotated\TableInheritance;
 use Cycle\Schema\GeneratorInterface;
+use PHPUnit\Framework\Attributes\Test;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Spiral\Attributes\ReaderInterface;
@@ -17,9 +18,7 @@ use WayOfDev\Tests\TestCase;
 
 class RegisterAnnotatedTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_binds_reader_interface(): void
     {
         try {
@@ -29,9 +28,7 @@ class RegisterAnnotatedTest extends TestCase
         }
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_binds_embeddings(): void
     {
         try {
@@ -41,9 +38,7 @@ class RegisterAnnotatedTest extends TestCase
         }
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_binds_entities(): void
     {
         try {
@@ -53,9 +48,7 @@ class RegisterAnnotatedTest extends TestCase
         }
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_binds_merge_columns(): void
     {
         try {
@@ -65,9 +58,7 @@ class RegisterAnnotatedTest extends TestCase
         }
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_binds_table_inheritance(): void
     {
         try {
@@ -77,9 +68,7 @@ class RegisterAnnotatedTest extends TestCase
         }
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_binds_merge_indexes(): void
     {
         try {

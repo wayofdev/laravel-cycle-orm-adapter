@@ -11,6 +11,7 @@ use Cycle\ORM\Select\Repository;
 use Cycle\ORM\Select\Source;
 use Cycle\Schema\Registry;
 use Illuminate\Contracts\Container\BindingResolutionException;
+use PHPUnit\Framework\Attributes\Test;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use WayOfDev\Cycle\Contracts\CacheManager as CacheManagerContract;
@@ -21,9 +22,7 @@ use WayOfDev\Tests\TestCase;
 
 class RegisterSchemaTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_cache_manager_as_singleton(): void
     {
         try {
@@ -40,10 +39,9 @@ class RegisterSchemaTest extends TestCase
     }
 
     /**
-     * @test
-     *
      * @throws BindingResolutionException
      */
+    #[Test]
     public function it_registers_generator_loader_as_singleton(): void
     {
         try {
@@ -61,9 +59,7 @@ class RegisterSchemaTest extends TestCase
         $this::assertCount(14, $class1->get());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_schema_interface(): void
     {
         try {
@@ -84,9 +80,7 @@ class RegisterSchemaTest extends TestCase
         $this::assertArrayHasKey('role', $schema);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_schema_registry_with_default_config(): void
     {
         try {
@@ -102,9 +96,7 @@ class RegisterSchemaTest extends TestCase
         }
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_schema_registry_with_custom_config(): void
     {
         try {

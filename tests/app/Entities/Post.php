@@ -18,10 +18,10 @@ class Post
     public int $id;
 
     #[Column(type: 'string')]
-    private string $title;
+    private readonly string $title;
 
     #[Column(type: 'text')]
-    private string $description;
+    private readonly string $description;
 
     #[Column(type: 'datetime', nullable: true)]
     private ?DateTimeImmutable $deletedAt = null;
