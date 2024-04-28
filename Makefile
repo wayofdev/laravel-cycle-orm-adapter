@@ -9,7 +9,7 @@ export DOCKER_BUILDKIT ?= 1
 DOCKER ?= docker
 
 # Binary to use, when executing docker-compose tasks
-DOCKER_COMPOSE ?= docker compose
+DOCKER_COMPOSE ?= $(DOCKER) compose
 
 # Support image with all needed binaries, like envsubst, mkcert, wait4x
 SUPPORT_IMAGE ?= wayofdev/build-deps:alpine-latest
@@ -17,7 +17,7 @@ SUPPORT_IMAGE ?= wayofdev/build-deps:alpine-latest
 APP_RUNNER ?= $(DOCKER_COMPOSE) run --rm --no-deps app
 APP_COMPOSER ?= $(APP_RUNNER) composer
 
-BUILDER_PARAMS ?= docker run --rm -i \
+BUILDER_PARAMS ?= $(DOCKER) run --rm -i \
 	--env-file ./.env \
 	--env COMPOSE_PROJECT_NAME=$(COMPOSE_PROJECT_NAME) \
 	--env COMPOSER_AUTH="$(COMPOSER_AUTH)"
@@ -39,6 +39,11 @@ ACTION_LINT_RUNNER ?= $(DOCKER) run --rm $$(tty -s && echo "-it" || echo) \
 	 --workdir /repo \
 	 rhysd/actionlint:latest \
 	 -color
+
+MARKDOWN_LINT_RUNNER ?= $(DOCKER) run --rm $$(tty -s && echo "-it" || echo) \
+	-v $(shell pwd):/app \
+	--workdir /app \
+	davidanson/markdownlint-cli2-rules:latest
 
 PHIVE_RUNNER ?= $(DOCKER_COMPOSE) run --rm --no-deps app
 
@@ -77,11 +82,11 @@ MAKE_CMD_COLOR := $(BLUE)
 
 default: all
 
-help:
+help: ## Show this menu
 	@echo 'Management commands for package:'
 	@echo 'Usage:'
 	@echo '    ${MAKE_CMD_COLOR}make${RST}                       Setups dependencies for fresh-project, like composer install, git hooks and others...'
-	@grep -E '^[a-zA-Z_0-9%-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "    ${MAKE_CMD_COLOR}make %-21s${RST} %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z_0-9%-]+:.*?## .*$$' Makefile | awk 'BEGIN {FS = ":.*?## "}; {printf "    ${MAKE_CMD_COLOR}make %-21s${RST} %s\n", $$1, $$2}'
 	@echo
 	@echo '    📑 Logs are stored in      $(MAKE_LOGFILE)'
 	@echo
@@ -178,7 +183,7 @@ hooks: ## Install git hooks from pre-commit-config
 	pre-commit autoupdate
 .PHONY: hooks
 
-lint: lint-yaml lint-actions lint-php lint-stan lint-composer lint-audit ## Runs all linting commands
+lint: lint-yaml lint-actions lint-md lint-php lint-stan lint-composer lint-audit ## Runs all linting commands
 .PHONY: lint
 
 lint-yaml: ## Lints yaml files inside project
@@ -188,6 +193,14 @@ lint-yaml: ## Lints yaml files inside project
 lint-actions: ## Lint all github actions
 	@$(ACTION_LINT_RUNNER) | tee -a $(MAKE_LOGFILE)
 .PHONY: lint-actions
+
+lint-md: ## Lint all markdown files using markdownlint-cli2
+	@$(MARKDOWN_LINT_RUNNER) --fix "**/*.md" "!CHANGELOG.md" "!vendor" "!docs/node_modules" | tee -a $(MAKE_LOGFILE)
+.PHONY: lint-md
+
+lint-md-dry: ## Lint all markdown files using markdownlint-cli2 in dry-run mode
+	@$(MARKDOWN_LINT_RUNNER) "**/*.md" "!CHANGELOG.md" "!vendor" "!docs/node_modules" | tee -a $(MAKE_LOGFILE)
+.PHONY: lint-md-dry
 
 lint-php: prepare ## Fixes code to follow coding standards using php-cs-fixer
 	$(APP_COMPOSER) cs:fix
@@ -201,7 +214,7 @@ lint-stan: ## Runs phpstan – static analysis tool
 	$(APP_COMPOSER) stan
 .PHONY: lint-stan
 
-lint-stan-ci:
+lint-stan-ci: ## Runs phpstan – static analysis tool with github output (CI mode)
 	$(APP_COMPOSER) stan:ci
 .PHONY: lint-stan-ci
 
@@ -267,6 +280,7 @@ commit:
 
 #
 # Documentation
+# Only in case, when `./docs` folder exists and has package.json
 # ------------------------------------------------------------------------------------
 docs-deps-update: ## Check for outdated dependencies and automatically update them using pnpm
 	cd docs && $(NPM_RUNNER) run deps:update

@@ -7,7 +7,6 @@ ignore: |
   vendor/
   docs/
 
-# Overwrite above default rules
 rules:
   braces:
     # Defaults
