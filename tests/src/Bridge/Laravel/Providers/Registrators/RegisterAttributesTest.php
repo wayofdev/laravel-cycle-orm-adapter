@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace WayOfDev\Tests\Bridge\Laravel\Providers\Registrators;
 
+use PHPUnit\Framework\Attributes\Test;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Spiral\Attributes\AttributeReader;
@@ -14,9 +15,7 @@ use WayOfDev\Tests\TestCase;
 
 class RegisterAttributesTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_instantiator_interface_as_singleton(): void
     {
         try {
@@ -34,9 +33,7 @@ class RegisterAttributesTest extends TestCase
         $this::assertSame($instantiator1, $instantiator2);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_uses_cached_reader(): void
     {
         try {
@@ -48,9 +45,7 @@ class RegisterAttributesTest extends TestCase
         $this::assertInstanceOf(Psr16CachedReader::class, $reader);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_uses_attribute_reader_if_cache_disabled(): void
     {
         config()->set('cycle.attributes.cache.enabled', false);

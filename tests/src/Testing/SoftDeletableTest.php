@@ -6,8 +6,10 @@ namespace WayOfDev\Tests\Testing;
 
 use Cycle\ORM\ORMInterface;
 use DateTimeImmutable;
-use ReflectionException;
+use PHPUnit\Framework\Attributes\Test;
+use Throwable;
 use WayOfDev\App\Entities\Post;
+use WayOfDev\App\Repositories\PostRepository;
 use WayOfDev\Tests\TestCase;
 
 final class SoftDeletableTest extends TestCase
@@ -26,17 +28,16 @@ final class SoftDeletableTest extends TestCase
     }
 
     /**
-     * @test
-     *
-     * @throws ReflectionException
+     * @throws Throwable
      */
+    #[Test]
     public function it_soft_deletes_post_entity(): void
     {
+        /** @var PostRepository $repository */
         $repository = $this->orm->getRepository(Post::class);
         $post = new Post('Title', 'Description');
         $deletedAt = new DateTimeImmutable();
 
-        // @phpstan-ignore-next-line
         $repository->persist($post);
 
         $this->assertNotSoftDeleted('posts', [
@@ -45,7 +46,6 @@ final class SoftDeletableTest extends TestCase
 
         $post->softDelete(new DateTimeImmutable());
 
-        // @phpstan-ignore-next-line
         $repository->persist($post);
 
         $this->assertSoftDeleted('posts', [

@@ -6,13 +6,12 @@ namespace WayOfDev\Tests\Bridge\Laravel\Console\Commands\ORM;
 
 use Cycle\ORM\Parser\Typecast;
 use Cycle\ORM\SchemaInterface;
+use PHPUnit\Framework\Attributes\Test;
 use WayOfDev\Tests\TestCase;
 
 class RenderCommandTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_runs_handle(): void
     {
         $this->assertConsoleCommandOutputContainsStrings('cycle:orm:render', ['--no-color' => true], [

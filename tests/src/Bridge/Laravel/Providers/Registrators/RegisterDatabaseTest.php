@@ -7,15 +7,14 @@ namespace WayOfDev\Tests\Bridge\Laravel\Providers\Registrators;
 use Cycle\Database\DatabaseInterface;
 use Cycle\Database\DatabaseManager;
 use Cycle\Database\DatabaseProviderInterface;
+use PHPUnit\Framework\Attributes\Test;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use WayOfDev\Tests\TestCase;
 
 class RegisterDatabaseTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_creates_database_provider_interface_singleton(): void
     {
         try {
@@ -31,9 +30,7 @@ class RegisterDatabaseTest extends TestCase
         $this::assertSame($class1, $class2);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_binds_database_interface(): void
     {
         try {
@@ -45,9 +42,7 @@ class RegisterDatabaseTest extends TestCase
         $this::assertInstanceOf(DatabaseInterface::class, $class);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_aliases_database_provider_interface_to_database_manager(): void
     {
         try {

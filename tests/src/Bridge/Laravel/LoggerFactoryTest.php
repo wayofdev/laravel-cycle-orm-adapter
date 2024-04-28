@@ -12,6 +12,7 @@ use Illuminate\Log\Logger;
 use Illuminate\Log\LogManager;
 use Illuminate\Support\Facades\Event;
 use Mockery as m;
+use PHPUnit\Framework\Attributes\Test;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Psr\Log\NullLogger;
@@ -31,11 +32,10 @@ class LoggerFactoryTest extends TestCase
     }
 
     /**
-     * @test
-     *
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
+    #[Test]
     public function it_should_return_custom_logger_from_factory(): void
     {
         $this->app['config']->set('cycle.database.logger.use_telescope', false);
@@ -58,11 +58,10 @@ class LoggerFactoryTest extends TestCase
     }
 
     /**
-     * @test
-     *
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
+    #[Test]
     public function it_should_fire_query_executed_event_when_query_is_logged(): void
     {
         $this->app['config']->set('cycle.database.logger.use_telescope', true);
@@ -84,11 +83,10 @@ class LoggerFactoryTest extends TestCase
     }
 
     /**
-     * @test
-     *
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
+    #[Test]
     public function it_should_return_null_logger_from_factory(): void
     {
         config()->set('cycle.database.logger', [

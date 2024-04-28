@@ -7,6 +7,7 @@ namespace WayOfDev\Tests\Bridge\Laravel\Providers\Registrators;
 use Cycle\Database\Config\DatabaseConfig;
 use Cycle\Migrations\Config\MigrationConfig;
 use Cycle\ORM\Collection\IlluminateCollectionFactory;
+use PHPUnit\Framework\Attributes\Test;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Spiral\Tokenizer\Config\TokenizerConfig;
@@ -15,9 +16,7 @@ use WayOfDev\Tests\TestCase;
 
 class RegisterConfigsTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_database_config(): void
     {
         try {
@@ -36,9 +35,7 @@ class RegisterConfigsTest extends TestCase
         self::assertArrayHasKey('drivers', $config->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_migration_config(): void
     {
         try {
@@ -57,9 +54,7 @@ class RegisterConfigsTest extends TestCase
         self::assertArrayHasKey('safe', $config->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_tokenizer_config(): void
     {
         try {
@@ -80,9 +75,7 @@ class RegisterConfigsTest extends TestCase
         self::assertArrayHasKey('cache', $config->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_schema_config(): void
     {
         try {

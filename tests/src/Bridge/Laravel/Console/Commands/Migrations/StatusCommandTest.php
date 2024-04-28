@@ -7,13 +7,12 @@ namespace WayOfDev\Tests\Bridge\Laravel\Console\Commands\Migrations;
 use Cycle\Database\Database;
 use Cycle\Database\DatabaseInterface;
 use Illuminate\Support\Facades\Artisan;
+use PHPUnit\Framework\Attributes\Test;
 use WayOfDev\Tests\TestCase;
 
 class StatusCommandTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_runs_handle(): void
     {
         /** @var Database $database */

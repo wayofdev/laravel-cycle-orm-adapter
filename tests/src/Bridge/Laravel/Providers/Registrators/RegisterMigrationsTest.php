@@ -12,15 +12,14 @@ use Cycle\Schema\Generator\Migrations\NameGeneratorInterface;
 use Cycle\Schema\Generator\Migrations\Strategy\GeneratorStrategyInterface;
 use Cycle\Schema\Generator\Migrations\Strategy\MultipleFilesStrategy;
 use Cycle\Schema\Generator\Migrations\Strategy\SingleFileStrategy;
+use PHPUnit\Framework\Attributes\Test;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use WayOfDev\Tests\TestCase;
 
 class RegisterMigrationsTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_repository_interface_as_singleton(): void
     {
         try {
@@ -35,9 +34,7 @@ class RegisterMigrationsTest extends TestCase
         $this::assertSame($class1, $class2);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_migrator_as_singleton(): void
     {
         try {
@@ -52,9 +49,7 @@ class RegisterMigrationsTest extends TestCase
         $this::assertSame($class1, $class2);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_name_generator_interface_as_expected(): void
     {
         $this->app->instance(MigrationConfig::class, new MigrationConfig([
@@ -70,9 +65,7 @@ class RegisterMigrationsTest extends TestCase
         $this::assertInstanceOf(NameBasedOnChangesGenerator::class, $nameGenerator);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_generator_strategy_interface_as_expected(): void
     {
         $this->app->instance(MigrationConfig::class, new MigrationConfig([
@@ -88,9 +81,7 @@ class RegisterMigrationsTest extends TestCase
         $this::assertInstanceOf(SingleFileStrategy::class, $strategy);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_generator_strategy_with_multiple_files_strategy_in_config(): void
     {
         config()->set('cycle.migrations.strategy', MultipleFilesStrategy::class);

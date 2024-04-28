@@ -15,11 +15,11 @@ use function json_encode;
 
 final class Footprint implements JsonSerializable, Stringable
 {
-    private UserId $id;
+    private readonly UserId $id;
 
-    private string $party;
+    private readonly string $party;
 
-    private string $realm;
+    private readonly string $realm;
 
     public static function empty(string $authorizedParty = 'guest-party', string $realm = 'guest-realm'): self
     {

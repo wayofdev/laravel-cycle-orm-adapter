@@ -11,15 +11,14 @@ use Cycle\ORM\ORM;
 use Cycle\ORM\ORMInterface;
 use Cycle\ORM\Transaction\CommandGenerator;
 use Cycle\ORM\Transaction\CommandGeneratorInterface;
+use PHPUnit\Framework\Attributes\Test;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use WayOfDev\Tests\TestCase;
 
 class RegisterORMTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_factory_interface_as_singleton(): void
     {
         try {
@@ -32,9 +31,7 @@ class RegisterORMTest extends TestCase
         $this::assertInstanceOf(Factory::class, $class);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_orm_as_singleton(): void
     {
         try {
@@ -51,11 +48,10 @@ class RegisterORMTest extends TestCase
     }
 
     /**
-     * @test
-     *
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
      */
+    #[Test]
     public function it_registers_entity_behavior_by_default(): void
     {
         try {
@@ -72,9 +68,7 @@ class RegisterORMTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_disables_entity_behavior_by_default(): void
     {
         config()->set('cycle.entityBehavior.register', false);

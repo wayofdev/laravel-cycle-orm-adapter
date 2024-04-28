@@ -6,13 +6,12 @@ namespace WayOfDev\Tests\Bridge\Laravel\Console\Commands\Migrations;
 
 use Cycle\Database\Database;
 use Cycle\Database\DatabaseInterface;
+use PHPUnit\Framework\Attributes\Test;
 use WayOfDev\Tests\TestCase;
 
 class MigrateCommandTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_migrates_in_safe_environment(): void
     {
         /** @var Database $database */
@@ -27,9 +26,7 @@ class MigrateCommandTest extends TestCase
         $this::assertCount(1, $database->getTables());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_migrates_in_production_with_force_option(): void
     {
         // Set the application environment to production
@@ -50,9 +47,7 @@ class MigrateCommandTest extends TestCase
         $this::assertCount(4, $database->getTables());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_warns_about_unsafe_migrations(): void
     {
         // Set the application environment to production
