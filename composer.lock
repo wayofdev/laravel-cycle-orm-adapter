@@ -5794,16 +5794,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v7.0.4",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "0e7727191c3b71ebec6d529fa0e50a01ca5679e9"
+                "reference": "3839e56b94dd1dbd13235d27504e66baf23faba0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/0e7727191c3b71ebec6d529fa0e50a01ca5679e9",
-                "reference": "0e7727191c3b71ebec6d529fa0e50a01ca5679e9",
+                "url": "https://api.github.com/repos/symfony/process/zipball/3839e56b94dd1dbd13235d27504e66baf23faba0",
+                "reference": "3839e56b94dd1dbd13235d27504e66baf23faba0",
                 "shasum": ""
             },
             "require": {
@@ -5835,7 +5835,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v7.0.4"
+                "source": "https://github.com/symfony/process/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -5851,7 +5851,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-22T20:27:20+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "symfony/routing",
@@ -13834,16 +13834,16 @@
         },
         {
             "name": "spatie/array-to-xml",
-            "version": "3.2.3",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/array-to-xml.git",
-                "reference": "c95fd4db94ec199f798d4b5b4a81757bd20d88ab"
+                "reference": "f56b220fe2db1ade4c88098d83413ebdfc3bf876"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/array-to-xml/zipball/c95fd4db94ec199f798d4b5b4a81757bd20d88ab",
-                "reference": "c95fd4db94ec199f798d4b5b4a81757bd20d88ab",
+                "url": "https://api.github.com/repos/spatie/array-to-xml/zipball/f56b220fe2db1ade4c88098d83413ebdfc3bf876",
+                "reference": "f56b220fe2db1ade4c88098d83413ebdfc3bf876",
                 "shasum": ""
             },
             "require": {
@@ -13856,6 +13856,11 @@
                 "spatie/pest-plugin-snapshots": "^1.1"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "3.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Spatie\\ArrayToXml\\": "src"
@@ -13881,7 +13886,7 @@
                 "xml"
             ],
             "support": {
-                "source": "https://github.com/spatie/array-to-xml/tree/3.2.3"
+                "source": "https://github.com/spatie/array-to-xml/tree/3.3.0"
             },
             "funding": [
                 {
@@ -13893,7 +13898,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-02-07T10:39:02+00:00"
+            "time": "2024-05-01T10:20:27+00:00"
         },
         {
             "name": "spatie/backtrace",
@@ -14182,22 +14187,23 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v7.0.6",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "408105dff4c104454100730bdfd1a9cdd993f04d"
+                "reference": "cc168be6fbdcdf3401f50ae863ee3818ed4338f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/408105dff4c104454100730bdfd1a9cdd993f04d",
-                "reference": "408105dff4c104454100730bdfd1a9cdd993f04d",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/cc168be6fbdcdf3401f50ae863ee3818ed4338f5",
+                "reference": "cc168be6fbdcdf3401f50ae863ee3818ed4338f5",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.2",
                 "symfony/polyfill-ctype": "~1.8",
-                "symfony/polyfill-mbstring": "~1.8"
+                "symfony/polyfill-mbstring": "~1.8",
+                "symfony/process": "^6.4|^7.0"
             },
             "type": "library",
             "autoload": {
@@ -14225,7 +14231,7 @@
             "description": "Provides basic utilities for the filesystem",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/filesystem/tree/v7.0.6"
+                "source": "https://github.com/symfony/filesystem/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -14241,7 +14247,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-21T19:37:36+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "symfony/options-resolver",
@@ -14849,16 +14855,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "5.23.1",
+            "version": "5.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "8471a896ccea3526b26d082f4461eeea467f10a4"
+                "reference": "462c80e31c34e58cc4f750c656be3927e80e550e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/8471a896ccea3526b26d082f4461eeea467f10a4",
-                "reference": "8471a896ccea3526b26d082f4461eeea467f10a4",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/462c80e31c34e58cc4f750c656be3927e80e550e",
+                "reference": "462c80e31c34e58cc4f750c656be3927e80e550e",
                 "shasum": ""
             },
             "require": {
@@ -14955,7 +14961,7 @@
                 "issues": "https://github.com/vimeo/psalm/issues",
                 "source": "https://github.com/vimeo/psalm"
             },
-            "time": "2024-03-11T20:33:46+00:00"
+            "time": "2024-05-01T19:32:08+00:00"
         },
         {
             "name": "wayofdev/cs-fixer-config",
