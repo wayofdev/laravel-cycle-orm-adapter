@@ -3743,16 +3743,16 @@
         },
         {
             "name": "spiral/core",
-            "version": "3.12.0",
+            "version": "3.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spiral/core.git",
-                "reference": "ff67345f70c0d133978fcbc25275d4db2f7f9d29"
+                "reference": "af62783e8b9ec8020966599eb42abe53c19d5286"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spiral/core/zipball/ff67345f70c0d133978fcbc25275d4db2f7f9d29",
-                "reference": "ff67345f70c0d133978fcbc25275d4db2f7f9d29",
+                "url": "https://api.github.com/repos/spiral/core/zipball/af62783e8b9ec8020966599eb42abe53c19d5286",
+                "reference": "af62783e8b9ec8020966599eb42abe53c19d5286",
                 "shasum": ""
             },
             "require": {
@@ -3770,7 +3770,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.12.x-dev"
+                    "dev-master": "3.13.x-dev"
                 }
             },
             "autoload": {
@@ -3806,7 +3806,7 @@
                 "issues": "https://github.com/spiral/framework/issues",
                 "source": "https://github.com/spiral/core"
             },
-            "time": "2024-02-29T13:09:34+00:00"
+            "time": "2024-05-22T18:42:09+00:00"
         },
         {
             "name": "spiral/files",
