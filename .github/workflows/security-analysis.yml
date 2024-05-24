@@ -3,8 +3,12 @@
 name: 🔐 Security analysis
 
 on:  # yamllint disable-line rule:truthy
-  pull_request:
   push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   security-analysis:
