@@ -1,5 +1,7 @@
 ---
 
+name: 🔐 Dependency analysis
+
 on:  # yamllint disable-line rule:truthy
   push:
     branches:
@@ -11,10 +13,7 @@ on:  # yamllint disable-line rule:truthy
       - '.php-cs-fixer.dist.php'
       - 'composer.json'
       - 'composer.lock'
-      - 'phpstan.neon.dist'
-      - 'phpstan-baseline.neon'
-      - 'psalm.xml'
-      - 'psalm-baseline.xml'
+      - 'composer-require-checker.json'
   pull_request:
     branches:
       - master
@@ -25,20 +24,15 @@ on:  # yamllint disable-line rule:truthy
       - '.php-cs-fixer.dist.php'
       - 'composer.json'
       - 'composer.lock'
-      - 'phpstan.neon.dist'
-      - 'phpstan-baseline.neon'
-      - 'psalm.xml'
-      - 'psalm-baseline.xml'
-
-name: 🔍 Static analysis
+      - 'composer-require-checker.json'
 
 jobs:
-  static-analysis:
+  dependency-analysis:
     timeout-minutes: 4
     runs-on: ${{ matrix.os }}
     concurrency:
       cancel-in-progress: true
-      group: static-analysis-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+      group: dependency-analysis-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
     strategy:
       fail-fast: true
       matrix:
@@ -48,6 +42,7 @@ jobs:
           - '8.2'
         dependencies:
           - locked
+
     steps:
       - name: 📦 Check out the codebase
         uses: actions/checkout@v4.1.6
@@ -59,6 +54,7 @@ jobs:
           extensions: none, ctype, dom, json, mbstring, simplexml, tokenizer, xml, xmlwriter, pdo, curl, fileinfo, pdo_mysql
           ini-values: error_reporting=E_ALL
           coverage: none
+          tools: phive
 
       - name: 🛠️ Setup problem matchers
         run: echo "::add-matcher::${{ runner.tool_cache }}/php.json"
@@ -81,5 +77,11 @@ jobs:
         with:
           dependencies: ${{ matrix.dependencies }}
 
-      - name: 🔍 Run static analysis using phpstan/phpstan
-        run: composer stan:ci
+      - name: 📥 Install dependencies with phive
+        uses: wayofdev/gh-actions/actions/phive/install@v3.1.0
+        with:
+          phive-home: '.phive'
+          trust-gpg-keys: 0xC00543248C87FB13,0x033E5F8D801A2F8D
+
+      - name: 🔬 Run maglnet/composer-require-checker
+        run: .phive/composer-require-checker check --ansi --config-file="$(pwd)/composer-require-checker.json" --verbose
