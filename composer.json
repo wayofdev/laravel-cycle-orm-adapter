@@ -159,11 +159,11 @@
         "stan:ci": "php vendor/bin/phpstan analyse --memory-limit=2G --error-format=github",
         "test": [
             "@putenv XDEBUG_MODE=coverage",
-            "php vendor/bin/pest"
+            "php vendor/bin/pest --color=always"
         ],
         "test:cc": [
             "@putenv XDEBUG_MODE=coverage",
-            "php vendor/bin/pest --coverage --coverage-clover=.build/phpunit/logs/clover.xml"
+            "php vendor/bin/pest --coverage --coverage-clover=.build/phpunit/logs/clover.xml --color=always"
         ]
     }
 }
