@@ -32,7 +32,7 @@ final class QueryWatcher extends Watcher
         $time = $event->time;
         $caller = $this->getCallerFromStackTrace();
 
-        if (null !== $caller) {
+        if ($caller !== null) {
             Telescope::recordQuery(IncomingEntry::make([
                 'connection' => $event->driver,
                 'bindings' => $event->bindings,

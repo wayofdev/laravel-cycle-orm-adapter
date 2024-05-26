@@ -9,7 +9,9 @@ use Cycle\Schema\GeneratorInterface;
 interface GeneratorLoader
 {
     public const GROUP_INDEX = 'index';
+
     public const GROUP_RENDER = 'render';
+
     public const GROUP_POSTPROCESS = 'postprocess';
 
     /**

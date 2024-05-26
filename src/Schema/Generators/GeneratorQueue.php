@@ -16,7 +16,9 @@ use function is_string;
 
 final class GeneratorQueue implements GeneratorLoader
 {
-    /** @var array<array<GeneratorInterface|class-string<GeneratorInterface>>> */
+    /**
+     * @var array<array<GeneratorInterface|class-string<GeneratorInterface>>>
+     */
     private array $generators;
 
     private Container $app;

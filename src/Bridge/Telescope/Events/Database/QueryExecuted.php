@@ -13,6 +13,6 @@ final class QueryExecuted
     public function __construct(public string $sql, public array $bindings, public ?float $time, public ?string $driver = null)
     {
         $this->time = $time * 1000;
-        $this->driver = null !== $driver ? 'CycleORM/' . $driver : 'CycleORM';
+        $this->driver = $driver !== null ? 'CycleORM/' . $driver : 'CycleORM';
     }
 }

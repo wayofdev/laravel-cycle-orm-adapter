@@ -11,6 +11,11 @@ final class UserId implements Stringable
 {
     private readonly string $id;
 
+    private function __construct(string $id)
+    {
+        $this->id = $id;
+    }
+
     public static function create(string $userId): self
     {
         return new self($userId);
@@ -34,10 +39,5 @@ final class UserId implements Stringable
     public function __toString(): string
     {
         return $this->toString();
-    }
-
-    private function __construct(string $id)
-    {
-        $this->id = $id;
     }
 }

@@ -25,6 +25,12 @@ class Signature
     #[Column(type: 'json', nullable: true, typecast: [Footprint::class, 'castValue'])]
     private ?Footprint $by = null;
 
+    public function __construct(?DateTimeImmutable $at, ?Footprint $by)
+    {
+        $this->at = $at;
+        $this->by = $by;
+    }
+
     public static function forGuest(): self
     {
         return new self(new DateTimeImmutable(), Footprint::empty());
@@ -77,11 +83,5 @@ class Signature
             'at' => $this->at?->format(DateTimeInterface::RFC3339_EXTENDED),
             'by' => $this->by?->toArray(),
         ];
-    }
-
-    public function __construct(?DateTimeImmutable $at, ?Footprint $by)
-    {
-        $this->at = $at;
-        $this->by = $by;
     }
 }

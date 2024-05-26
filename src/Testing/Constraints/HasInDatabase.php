@@ -37,7 +37,7 @@ class HasInDatabase extends Constraint
         try {
             $count = $tableInterface->where($this->data)->count();
 
-            return 0 < $count;
+            return $count > 0;
         } catch (Throwable $e) {
             return false;
         }

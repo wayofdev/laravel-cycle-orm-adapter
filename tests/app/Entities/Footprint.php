@@ -21,6 +21,13 @@ final class Footprint implements JsonSerializable, Stringable
 
     private readonly string $realm;
 
+    private function __construct(UserId $id, string $party, string $realm)
+    {
+        $this->id = $id;
+        $this->party = $party;
+        $this->realm = $realm;
+    }
+
     public static function empty(string $authorizedParty = 'guest-party', string $realm = 'guest-realm'): self
     {
         return new self(UserId::create(Uuid::NIL), $authorizedParty, $realm);
@@ -85,12 +92,5 @@ final class Footprint implements JsonSerializable, Stringable
     public function __toString(): string
     {
         return json_encode($this->toArray(), JSON_THROW_ON_ERROR);
-    }
-
-    private function __construct(UserId $id, string $party, string $realm)
-    {
-        $this->id = $id;
-        $this->party = $party;
-        $this->realm = $realm;
     }
 }

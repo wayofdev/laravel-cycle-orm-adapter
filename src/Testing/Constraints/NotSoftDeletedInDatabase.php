@@ -42,7 +42,7 @@ class NotSoftDeletedInDatabase extends Constraint
                 ->andWhere($this->deletedAtColumn, '=', null)
                 ->count();
 
-            return 0 < $count;
+            return $count > 0;
         } catch (Throwable $e) {
             return false;
         }
