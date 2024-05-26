@@ -14,7 +14,7 @@ env:
   DB_HOST: 127.0.0.1
   DB_PORT: 11433
   DB_USERNAME: SA
-  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+  DB_PASSWORD: 'SSpaSS__1_123'
   DB_CONNECTION: sqlserver
   DB_DATABASE: tempdb
 
@@ -42,9 +42,9 @@ jobs:
         image: mcr.microsoft.com/mssql/server:${{ matrix.sqlserver-version }}
         env:
           ACCEPT_EULA: 'Y'
-          SA_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          SA_PASSWORD: 'SSpaSS__1_123'
         options: >-
-          --health-cmd "/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P '$SA_PASSWORD' -l 30 -Q 'SELECT 1'"
+          --health-cmd "/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'SSpaSS__1_123' -l 30 -Q 'SELECT 1'"
           --health-interval 3s
           --health-timeout 1s
           --health-retries 10
