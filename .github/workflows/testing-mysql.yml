@@ -14,7 +14,7 @@ env:
   DB_HOST: 127.0.0.1
   DB_PORT: 13306
   DB_USERNAME: cycle
-  DB_PASSWORD: SSpaSS__1_123
+  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
   DB_CONNECTION: mysql
   DB_DATABASE: default
 
@@ -43,8 +43,8 @@ jobs:
         env:
           MYSQL_ROOT_HOST: '%'
           MYSQL_USER: 'cycle'
-          MYSQL_PASSWORD: 'SSpaSS__1_123'
-          MYSQL_ROOT_PASSWORD: 'SSpaSS__1_123'
+          MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD }}
           MYSQL_DATABASE: 'default'
         options: >-
           --health-cmd="mysqladmin ping"
