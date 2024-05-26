@@ -16,6 +16,7 @@ env:
   DB_USERNAME: cycle
   DB_PASSWORD: SSpaSS__1_123
   DB_CONNECTION: mysql
+  DB_DATABASE: default
 
 jobs:
   test-mysql:
