@@ -64,8 +64,6 @@
     "require-dev": {
         "ext-curl": "*",
         "ext-pdo_mysql": "*",
-        "ext-pdo_pgsql": "*",
-        "ext-pdo_sqlite": "*",
         "beberlei/assert": "^3.3",
         "ergebnis/composer-normalize": "^2.42",
         "fakerphp/faker": "^1.23",
