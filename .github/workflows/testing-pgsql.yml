@@ -15,16 +15,16 @@ env:
   DB_PORT: 15432
   DB_USERNAME: cycle
   DB_PASSWORD: SSpaSS__1_123
-  DB_CONNECTION: mysql
+  DB_CONNECTION: pgsql
   DB_DATABASE: default
 
 jobs:
-  test-mysql:
+  test-pgsql:
     timeout-minutes: 4
     runs-on: ${{ matrix.os }}
     concurrency:
       cancel-in-progress: true
-      group: test-mysql-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}-${{ matrix.php-version }}-${{ matrix.dependencies }}
+      group: test-pgsql-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}-${{ matrix.php-version }}-${{ matrix.dependencies }}
     strategy:
       fail-fast: true
       matrix:
