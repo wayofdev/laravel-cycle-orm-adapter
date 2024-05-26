@@ -8,11 +8,11 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - master
 
-name: 🧪 Testing (MySQL)
+name: 🧪 Testing (PostgreSQL)
 
 env:
   DB_HOST: 127.0.0.1
-  DB_PORT: 13306
+  DB_PORT: 15432
   DB_USERNAME: cycle
   DB_PASSWORD: SSpaSS__1_123
   DB_CONNECTION: mysql
@@ -34,25 +34,23 @@ jobs:
           - '8.2'
         dependencies:
           - locked
-        mysql-version:
-          - latest
+        pgsql-version:
+          - '13-alpine'
 
     services:
       mysql:
-        image: mysql:${{ matrix.mysql-version }}
+        image: postgres:${{ matrix.pgsql-version }}
         env:
-          MYSQL_ROOT_HOST: '%'
-          MYSQL_USER: 'cycle'
-          MYSQL_PASSWORD: 'SSpaSS__1_123'
-          MYSQL_ROOT_PASSWORD: 'SSpaSS__1_123'
-          MYSQL_DATABASE: 'default'
+          POSTGRES_DB: 'default'
+          POSTGRES_USER: 'cycle'
+          POSTGRES_PASSWORD: 'SSpaSS__1_123'
         options: >-
-          --health-cmd="mysqladmin ping"
+          --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
         ports:
-          - 13306:3306
+          - 15432:5432
 
     steps:
       - name: 📦 Check out the codebase
@@ -62,7 +60,7 @@ jobs:
         uses: shivammathur/setup-php@2.30.4
         with:
           php-version: ${{ matrix.php-version }}
-          extensions: none, ctype, dom, json, mbstring, simplexml, tokenizer, xml, xmlwriter, pdo, curl, fileinfo, pdo_mysql
+          extensions: none, ctype, dom, json, mbstring, simplexml, tokenizer, xml, xmlwriter, pdo, curl, fileinfo, pdo_mysql, pdo_pgsql
           ini-values: error_reporting=E_ALL
           coverage: none
 
