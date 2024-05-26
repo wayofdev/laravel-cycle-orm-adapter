@@ -63,6 +63,9 @@
     },
     "require-dev": {
         "ext-curl": "*",
+        "ext-pdo_mysql": "*",
+        "ext-pdo_pgsql": "*",
+        "ext-pdo_sqlite": "*",
         "beberlei/assert": "^3.3",
         "ergebnis/composer-normalize": "^2.42",
         "fakerphp/faker": "^1.23",
@@ -85,6 +88,9 @@
         "wayofdev/cs-fixer-config": "^1.2"
     },
     "suggest": {
+        "ext-pdo_mysql": "Required for MySQL database support",
+        "ext-pdo_pgsql": "Required for PostgreSQL database support",
+        "ext-pdo_sqlite": "Required for SQLite database support",
         "cycle/active-record": "Provides a simple way to work with your database using Active Record pattern and Cycle ORM",
         "wayofdev/cs-fixer-config": "A set of PHP-CS-Fixer rules for Laravel projects",
         "wayofdev/laravel-cycle-orm-factories": "Cycle-ORM Entity Factories and Database Seeders for Laravel",
