@@ -26,11 +26,16 @@ services:
     env_file:
       - .env
     environment:
-      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_USER: ${DB_USERNAME:-cycle}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_DB: ${DB_DATABASE:-default}
     volumes:
       - pgsql-data:/var/lib/postgresql/data:cached
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-U', '${DB_USERNAME:-cycle}', '-d', '${DB_DATABASE:-default}']
+      interval: 3s
+      timeout: 1s
+      retries: 10
 
   mysql:
     image: mysql:latest
@@ -44,18 +49,48 @@ services:
       - .env
     environment:
       MYSQL_ROOT_HOST: '%'
-      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_USER: ${DB_USERNAME:-cycle}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_DATABASE: ${DB_DATABASE:-default}
     volumes:
       - mysql-data:/var/lib/mysql:cached
-    command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      interval: 3s
+      timeout: 1s
+      retries: 10
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
+    container_name: ${COMPOSE_PROJECT_NAME}-sqlserver
+    restart: on-failure
+    networks:
+      - default
+    ports:
+      - '${DB_SQLSERVER_FORWARD_PORT:-11434}:1433'
+    env_file:
+      - .env
+    environment:
+      SA_PASSWORD: ${DB_PASSWORD}
+      ACCEPT_EULA: 'Y'
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    healthcheck:
+      test:
+        ['CMD', '/opt/mssql-tools/bin/sqlcmd', '-S', 'localhost', '-U', 'SA', '-P', '${DB_PASSWORD}', '-l', '30', '-Q', 'SELECT 1']
+      interval: 3s
+      timeout: 1s
+      retries: 10
 
 volumes:
   pgsql-data:
     name: ${COMPOSE_PROJECT_NAME}-pgsql-data
   mysql-data:
     name: ${COMPOSE_PROJECT_NAME}-mysql-data
+  sqlserver-data:
+    name: ${COMPOSE_PROJECT_NAME}-sqlserver-data
 
 networks:
   default:
