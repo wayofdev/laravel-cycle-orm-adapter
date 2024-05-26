@@ -26,19 +26,19 @@ class User
     #[Column(type: 'string', nullable: true)]
     public ?string $company = null;
 
-    #[BelongsTo(target: User::class, innerKey: 'userId', nullable: true)]
+    #[BelongsTo(target: User::class, innerKey: 'userId', nullable: true, fkAction: 'NO ACTION')]
     public ?User $friend = null;
 
-    #[HasMany(target: User::class, outerKey: 'userId', nullable: true)]
+    #[HasMany(target: User::class, outerKey: 'userId', nullable: true, fkAction: 'NO ACTION')]
     public ?iterable $friends = [];
 
-    #[HasMany(target: User::class, outerKey: 'userId', nullable: true, collection: 'array')]
+    #[HasMany(target: User::class, outerKey: 'userId', nullable: true, fkAction: 'NO ACTION', collection: 'array')]
     public ?array $friendsAsArray = [];
 
     #[HasMany(target: Role::class)]
     public ?Collection $roles;
 
-    #[HasMany(target: User::class, outerKey: 'userId', nullable: true, collection: 'illuminate')]
+    #[HasMany(target: User::class, outerKey: 'userId', nullable: true, fkAction: 'NO ACTION', collection: 'illuminate')]
     public ?Collection $friendsAsIlluminateCollection;
 
     #[Column(type: 'string', nullable: true)]
