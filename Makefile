@@ -171,7 +171,7 @@ update: ## Updates composer dependencies by running composer update command
 .PHONY: update
 
 phive: ## Installs dependencies with phive
-	$(APP_RUNNER) /usr/local/bin/phive install --trust-gpg-keys 0x033E5F8D801A2F8D
+	$(APP_RUNNER) /usr/local/bin/phive install --trust-gpg-keys 0xC00543248C87FB13,0x033E5F8D801A2F8D
 .PHONY: phive
 
 #
@@ -241,7 +241,7 @@ lint-deps: ## Runs composer-require-checker – checks for dependencies that are
 .PHONY: lint-deps
 
 lint-composer: ## Normalize composer.json and composer.lock files
-	$(APP_COMPOSER) normalize
+	$(APP_RUNNER) .phive/composer-normalize normalize
 .PHONY: lint-composer
 
 lint-audit: ## Runs security checks for composer dependencies

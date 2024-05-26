@@ -3,7 +3,6 @@
     "description": "🔥 A Laravel adapter for CycleORM, providing seamless integration of the Cycle DataMapper ORM for advanced database handling and object mapping in PHP applications.",
     "license": "MIT",
     "type": "library",
-    "version": "4.12.3",
     "keywords": [
         "php",
         "php8",
@@ -44,6 +43,7 @@
     ],
     "require": {
         "php": "^8.2",
+        "ext-fileinfo": "*",
         "ext-pdo": "*",
         "cycle/annotated": "^4.1",
         "cycle/database": "^2.8",
@@ -62,8 +62,9 @@
         "symfony/console": "^6.4 || ^7.0"
     },
     "require-dev": {
+        "ext-curl": "*",
+        "ext-pdo_mysql": "*",
         "beberlei/assert": "^3.3",
-        "ergebnis/composer-normalize": "^2.42",
         "fakerphp/faker": "^1.23",
         "larastan/larastan": "^2.9",
         "laravel/telescope": "^5.0",
@@ -80,13 +81,18 @@
         "psalm/plugin-phpunit": "~0.19.0",
         "rector/rector": "^1.0",
         "roave/infection-static-analysis-plugin": "^1.35",
-        "roave/security-advisories": "dev-latest",
         "vimeo/psalm": "^5.23.1",
         "wayofdev/cs-fixer-config": "^1.2"
     },
     "suggest": {
+        "ext-pdo_mysql": "Required for MySQL database support",
+        "ext-pdo_pgsql": "Required for PostgreSQL database support",
+        "ext-pdo_sqlite": "Required for SQLite database support",
+        "cycle/active-record": "Provides a simple way to work with your database using Active Record pattern and Cycle ORM",
+        "wayofdev/cs-fixer-config": "A set of PHP-CS-Fixer rules for Laravel projects",
         "wayofdev/laravel-cycle-orm-factories": "Cycle-ORM Entity Factories and Database Seeders for Laravel",
-        "wayofdev/laravel-paginator": "Custom Laravel Paginator for Cycle-ORM implementing RFC 5988"
+        "wayofdev/laravel-paginator": "Custom Laravel Paginator for Cycle-ORM implementing RFC 5988",
+        "wayofdev/laravel-symfony-serializer": "Symfony Serializer for Laravel"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -107,6 +113,9 @@
             "infection/extension-installer": true,
             "pestphp/pest-plugin": true,
             "phpstan/extension-installer": true
+        },
+        "platform": {
+            "php": "8.2.19"
         },
         "sort-packages": true
     },
@@ -132,11 +141,13 @@
         "cs:fix": "php vendor/bin/php-cs-fixer fix -v",
         "infect": [
             "Composer\\Config::disableProcessTimeout",
-            "XDEBUG_MODE=coverage php vendor/bin/roave-infection-static-analysis-plugin --threads=2 --configuration=infection.json.dist"
+            "@putenv XDEBUG_MODE=coverage",
+            "php vendor/bin/roave-infection-static-analysis-plugin --threads=2"
         ],
         "infect:ci": [
             "Composer\\Config::disableProcessTimeout",
-            "XDEBUG_MODE=coverage php vendor/bin/roave-infection-static-analysis-plugin --threads=2 --ansi --configuration=infection.json.dist --logger-github --ignore-msi-with-no-mutations --only-covered"
+            "@putenv XDEBUG_MODE=coverage",
+            "php vendor/bin/roave-infection-static-analysis-plugin --threads=2 --ansi --logger-github --ignore-msi-with-no-mutations --only-covered"
         ],
         "psalm": "php vendor/bin/psalm --show-info=true",
         "psalm:baseline": "php vendor/bin/psalm --set-baseline=psalm-baseline.xml",
@@ -146,7 +157,13 @@
         "stan": "php vendor/bin/phpstan analyse --memory-limit=2G",
         "stan:baseline": "php vendor/bin/phpstan analyse --generate-baseline --memory-limit=2G --allow-empty-baseline",
         "stan:ci": "php vendor/bin/phpstan analyse --memory-limit=2G --error-format=github",
-        "test": "XDEBUG_MODE=coverage php vendor/bin/pest",
-        "test:cc": "XDEBUG_MODE=coverage php vendor/bin/pest --coverage --coverage-clover=.build/phpunit/logs/clover.xml"
+        "test": [
+            "@putenv XDEBUG_MODE=coverage",
+            "php vendor/bin/pest"
+        ],
+        "test:cc": [
+            "@putenv XDEBUG_MODE=coverage",
+            "php vendor/bin/pest --coverage --coverage-clover=.build/phpunit/logs/clover.xml"
+        ]
     }
 }
