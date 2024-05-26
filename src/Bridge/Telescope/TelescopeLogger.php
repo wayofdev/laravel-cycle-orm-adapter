@@ -21,7 +21,7 @@ class TelescopeLogger implements LoggerInterface
     {
         $this->parentLogger->log($level, $message, $context);
 
-        if ('info' === $level && isset($context['elapsed'])) {
+        if ($level === 'info' && isset($context['elapsed'])) {
             event(
                 new QueryExecuted(
                     sql: $message,

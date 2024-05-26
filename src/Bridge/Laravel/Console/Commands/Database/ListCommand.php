@@ -48,7 +48,7 @@ final class ListCommand extends Command
         $databaseArgumentValue = $this->argument('db');
 
         /** @var array<string> $databases */
-        $databases = (null !== $databaseArgumentValue)
+        $databases = ($databaseArgumentValue !== null)
             ? [$databaseArgumentValue]
             : array_keys($config->getDatabases());
 

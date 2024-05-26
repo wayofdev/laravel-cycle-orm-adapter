@@ -16,6 +16,7 @@ use function count;
 final class StatusCommand extends AbstractCommand
 {
     private const DATE_TIME_FORMAT = 'Y-m-d H:i:s';
+
     private const PENDING = '<fg=red>not executed yet</fg=red>';
 
     protected $signature = 'cycle:migrate:status';

@@ -32,7 +32,7 @@ final class MigrateCommand extends AbstractCommand
         $found = false;
         $count = $this->option('one') ? 1 : PHP_INT_MAX;
 
-        while (0 < $count && null !== ($migration = $this->migrator->run())) {
+        while ($count > 0 && null !== ($migration = $this->migrator->run())) {
             $found = true;
             --$count;
 

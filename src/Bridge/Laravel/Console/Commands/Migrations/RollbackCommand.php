@@ -33,7 +33,7 @@ final class RollbackCommand extends AbstractCommand
         $found = false;
         $count = ! $this->option('all') ? 1 : PHP_INT_MAX;
         try {
-            while (0 < $count && null !== ($migration = $this->migrator->rollback())) {
+            while ($count > 0 && null !== ($migration = $this->migrator->rollback())) {
                 $found = true;
                 --$count;
                 $this->line(

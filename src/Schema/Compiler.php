@@ -17,6 +17,11 @@ final class Compiler
 {
     private const EMPTY_SCHEMA = ':empty:';
 
+    public function __construct(
+        private readonly mixed $schema
+    ) {
+    }
+
     public static function compile(Registry $registry, GeneratorLoader $queue): self
     {
         return new self((new CycleSchemaCompiler())->compile($registry, $queue->get()));
@@ -27,14 +32,9 @@ final class Compiler
         return new self($cache->get());
     }
 
-    public function __construct(
-        private readonly mixed $schema
-    ) {
-    }
-
     public function isEmpty(): bool
     {
-        return null === $this->schema || [] === $this->schema || self::EMPTY_SCHEMA === $this->schema;
+        return $this->schema === null || $this->schema === [] || $this->schema === self::EMPTY_SCHEMA;
     }
 
     public function toSchema(): SchemaInterface

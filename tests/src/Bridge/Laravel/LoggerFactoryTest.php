@@ -78,7 +78,7 @@ class LoggerFactoryTest extends TestCase
 
         // Assert that the QueryExecuted event was dispatched
         Event::assertDispatched(QueryExecuted::class, function ($event) {
-            return 'SELECT * FROM users' === $event->sql;
+            return $event->sql === 'SELECT * FROM users';
         });
     }
 

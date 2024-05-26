@@ -31,7 +31,7 @@ readonly class Exists implements ValidationRule
 
         $count = $table->where([$this->column => $value])->count();
 
-        if (0 === $count) {
+        if ($count === 0) {
             $fail($this->message());
         }
     }

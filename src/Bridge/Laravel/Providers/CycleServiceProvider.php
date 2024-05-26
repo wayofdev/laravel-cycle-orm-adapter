@@ -38,7 +38,7 @@ final class CycleServiceProvider extends ServiceProvider
         $config = $this->app->get(IlluminateConfig::class);
         $warmup = $config->get('cycle.warmup');
 
-        if (true === $warmup) {
+        if ($warmup === true) {
             /** @var CycleORM $orm */
             $orm = $this->app->get(ORMInterface::class);
             $orm->prepareServices();
