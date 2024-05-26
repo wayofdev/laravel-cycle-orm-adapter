@@ -34,7 +34,7 @@ jobs:
         uses: shivammathur/setup-php@2.30.4
         with:
           php-version: ${{ matrix.php-version }}
-          extensions: none, ctype, dom, json, mbstring, simplexml, tokenizer, xml, xmlwriter, pdo, curl, fileinfo, ext-pdo_mysql
+          extensions: none, ctype, dom, json, mbstring, simplexml, tokenizer, xml, xmlwriter, pdo, curl, fileinfo, pdo_mysql
           ini-values: error_reporting=E_ALL
           coverage: none
 
