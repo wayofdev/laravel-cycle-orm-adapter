@@ -44,7 +44,7 @@ jobs:
           ACCEPT_EULA: 'Y'
           SA_PASSWORD: ${{ secrets.DB_PASSWORD }}
         options: >-
-          --health-cmd "/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P '${{ secrets.DB_PASSWORD }}' -l 30 -Q 'SELECT 1'"
+          --health-cmd "/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P '$SA_PASSWORD' -l 30 -Q 'SELECT 1'"
           --health-interval 3s
           --health-timeout 1s
           --health-retries 10
