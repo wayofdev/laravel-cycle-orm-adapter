@@ -164,6 +164,29 @@
         "test:cc": [
             "@putenv XDEBUG_MODE=coverage",
             "php vendor/bin/pest --coverage --coverage-clover=.build/phpunit/logs/clover.xml --color=always"
+        ],
+        "test:mysql": [
+            "@putenv XDEBUG_MODE=coverage",
+            "@putenv DB_CONNECTION=mysql",
+            "@putenv DB_HOST=mysql",
+            "php vendor/bin/pest --color=always"
+        ],
+        "test:pgsql": [
+            "@putenv XDEBUG_MODE=coverage",
+            "@putenv DB_CONNECTION=pgsql",
+            "@putenv DB_HOST=pgsql",
+            "php vendor/bin/pest --color=always"
+        ],
+        "test:sqlite": [
+            "@putenv XDEBUG_MODE=coverage",
+            "@putenv DB_CONNECTION=sqlite",
+            "php vendor/bin/pest --color=always"
+        ],
+        "test:sqlserver": [
+            "@putenv XDEBUG_MODE=coverage",
+            "@putenv DB_CONNECTION=sqlserver",
+            "@putenv DB_HOST=sqlserver",
+            "php vendor/bin/pest --color=always"
         ]
     }
 }

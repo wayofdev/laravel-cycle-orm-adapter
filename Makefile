@@ -264,9 +264,25 @@ infect-ci: ## Runs infection – mutation testing framework with github output (
 	$(APP_COMPOSER) infect:ci
 .PHONY: lint-infect-ci
 
-test: ## Run project php-unit and pest tests
+test: ## Run project php-unit and pest tests against sqlite in-memory database
 	$(APP_COMPOSER) test
 .PHONY: test
+
+test-pgsql: ## Run project php-unit and pest tests over pgsql database
+	$(APP_COMPOSER) test:pgsql
+.PHONY: test-pgsql
+
+test-mysql: ## Run project php-unit and pest tests over mysql database
+	$(APP_COMPOSER) test:mysql
+.PHONY: test-mysql
+
+test-sqlite: ## Run project php-unit and pest tests over sqlite in-file database
+	$(APP_COMPOSER) test:sqlite
+.PHONY: test-sqlite
+
+test-sqlserver: ## Run project php-unit and pest tests over mssql (sqlserver) database
+	$(APP_COMPOSER) test:sqlserver
+.PHONY: test-sqlserver
 
 test-cc: ## Run project php-unit and pest tests in coverage mode and build report
 	$(APP_COMPOSER) test:cc

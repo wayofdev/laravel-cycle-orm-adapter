@@ -48,6 +48,7 @@ class LoggerFactoryTest extends TestCase
             new DatabaseConfig(config('cycle.database'))
         );
 
+        // @phpstan-ignore-next-line
         $logger = $loggerFactory->getLogger($mockDriver);
         $logger->info('Test log entry');
 

@@ -87,7 +87,7 @@ return [
          */
         'databases' => [
             'default' => [
-                'driver' => env('DB_CONNECTION', 'sqlite'),
+                'driver' => env('DB_CONNECTION', 'memory'),
             ],
         ],
 
@@ -111,7 +111,7 @@ return [
 
             'sqlite' => new Config\SQLiteDriverConfig(
                 connection: new Config\SQLite\FileConnectionConfig(
-                    database: env('DB_DATABASE', database_path('database.sqlite'))
+                    database: database_path(env('DB_DATABASE', 'database')) . '.sqlite'
                 ),
                 driver: Driver\SQLite\SQLiteDriver::class,
                 reconnect: true,
@@ -127,10 +127,10 @@ return [
 
             'pgsql' => new Config\PostgresDriverConfig(
                 connection: new Config\Postgres\TcpConnectionConfig(
-                    database: env('DB_DATABASE', 'wod'),
+                    database: env('DB_DATABASE', 'default'),
                     host: env('DB_HOST', '127.0.0.1'),
                     port: env('DB_PORT', 5432),
-                    user: env('DB_USERNAME', 'wod'),
+                    user: env('DB_USERNAME', 'cycle'),
                     password: env('DB_PASSWORD', '')
                 ),
                 schema: Config\PostgresDriverConfig::DEFAULT_SCHEMA,
@@ -148,10 +148,10 @@ return [
 
             'mysql' => new Config\MySQLDriverConfig(
                 connection: new Config\MySQL\TcpConnectionConfig(
-                    database: env('DB_DATABASE', 'wod'),
+                    database: env('DB_DATABASE', 'default'),
                     host: env('DB_HOST', '127.0.0.1'),
                     port: env('DB_PORT', 3306),
-                    user: env('DB_USERNAME', 'wod'),
+                    user: env('DB_USERNAME', 'cycle'),
                     password: env('DB_PASSWORD', '')
                 ),
                 driver: Driver\MySQL\MySQLDriver::class,
@@ -168,10 +168,11 @@ return [
 
             'sqlserver' => new Config\SQLServerDriverConfig(
                 connection: new Config\SQLServer\TcpConnectionConfig(
-                    database: env('DB_DATABASE', 'wod'),
+                    database: env('DB_DATABASE', 'tempdb'),
                     host: env('DB_HOST', '127.0.0.1'),
                     port: env('DB_PORT', 1433),
-                    user: env('DB_USERNAME', 'wod'),
+                    trustServerCertificate: true,
+                    user: env('DB_USERNAME', 'SA'),
                     password: env('DB_PASSWORD', '')
                 ),
                 driver: Driver\SQLServer\SQLServerDriver::class,
