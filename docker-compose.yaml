@@ -2,7 +2,7 @@
 
 services:
   app:
-    image: wayofdev/php-dev:8.2-cli-alpine-latest
+    image: wayofdev/php-dev:8.3-cli-alpine-latest
     container_name: ${COMPOSE_PROJECT_NAME}-app
     restart: on-failure
     networks:
