@@ -67,7 +67,7 @@ jobs:
         run: composer validate --ansi --strict
 
       - name: 🔍 Get composer cache directory
-        uses: wayofdev/gh-actions/actions/composer/get-cache-directory@v3.1.0
+        uses: wayofdev/gh-actions/actions/composer/get-cache-directory@v3.1.1
 
       - name: ♻️ Restore cached dependencies installed with composer
         uses: actions/cache@v4.0.2
@@ -77,7 +77,7 @@ jobs:
           restore-keys: php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
 
       - name: 📥 Install "${{ matrix.dependencies }}" dependencies
-        uses: wayofdev/gh-actions/actions/composer/install@v3.1.0
+        uses: wayofdev/gh-actions/actions/composer/install@v3.1.1
         with:
           dependencies: ${{ matrix.dependencies }}
 
