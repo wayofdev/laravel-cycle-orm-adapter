@@ -46,7 +46,17 @@ final class CycleServiceProvider extends ServiceProvider
     }
 
     public function register(): void
-    {        
+    {
+        $config = $this->app->make('config');
+
+        // @phpstan-ignore-next-line
+        if (! $this->app->configurationIsCached() && ! $config->get('cycle')) {
+            $this->mergeConfigFrom(
+                __DIR__ . '/../../../../config/cycle.php',
+                Registrator::CFG_KEY
+            );
+        }
+
         $registrators = [
             Registrators\RegisterConfigs::class,
             Registrators\RegisterTokenizer::class,
