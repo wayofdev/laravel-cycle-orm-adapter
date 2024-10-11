@@ -18,7 +18,7 @@ final class Compiler
     private const EMPTY_SCHEMA = ':empty:';
 
     public function __construct(
-        private readonly mixed $schema
+        private readonly mixed $schema,
     ) {
     }
 

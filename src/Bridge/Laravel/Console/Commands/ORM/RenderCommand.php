@@ -25,7 +25,7 @@ final class RenderCommand extends AbstractCommand
 
     public function handle(
         SchemaInterface $schema,
-        SchemaToArrayConverter $converter
+        SchemaToArrayConverter $converter,
     ): int {
         $format = $this->option('no-color') ?
             OutputSchemaRenderer::FORMAT_PLAIN_TEXT :

@@ -24,7 +24,7 @@ final class UpdateCommand extends Command
     public function handle(
         GeneratorLoader $generators,
         Registry $registry,
-        CacheManagerContract $cache
+        CacheManagerContract $cache,
     ): int {
         $this->info('Updating ORM schema...');
 

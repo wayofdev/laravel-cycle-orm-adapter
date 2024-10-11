@@ -25,7 +25,7 @@ final class GeneratorQueue implements GeneratorLoader
 
     public function __construct(
         Closure $closure,
-        private readonly SchemaConfig $config
+        private readonly SchemaConfig $config,
     ) {
         $this->app = $closure();
         $this->generators = $this->config->generators();

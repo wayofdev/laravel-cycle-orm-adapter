@@ -40,7 +40,7 @@ final class MigrateCommand extends AbstractCommand
     public function handle(
         GeneratorLoader $generators,
         Registry $registry,
-        CacheManagerContract $cache
+        CacheManagerContract $cache,
     ): int {
         if (! $this->migrator->isConfigured()) {
             $this->migrator->configure();

@@ -26,7 +26,7 @@ final class SyncCommand extends AbstractCommand
     public function handle(
         GeneratorLoader $generators,
         Registry $registry,
-        CacheManagerContract $cache
+        CacheManagerContract $cache,
     ): int {
         if (! $this->verifyEnvironment('This operation is not recommended for production environment.')) {
             return self::FAILURE;

@@ -28,7 +28,7 @@ class Post
 
     public function __construct(
         string $title,
-        string $description
+        string $description,
     ) {
         $this->title = $title;
         $this->description = $description;

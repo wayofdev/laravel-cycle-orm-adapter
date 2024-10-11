@@ -15,7 +15,7 @@ readonly class Exists implements ValidationRule
     public function __construct(
         private DatabaseInterface $database,
         private string $table,
-        private string $column = 'id'
+        private string $column = 'id',
     ) {
     }
 
