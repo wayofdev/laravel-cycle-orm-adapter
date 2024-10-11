@@ -76,7 +76,7 @@ class TestCase extends OrchestraTestCase
         string $command,
         array $args,
         $strings,
-        callable $assertionCallback
+        callable $assertionCallback,
     ): void {
         $this->artisanCall($command, $args);
         $output = Artisan::output();
@@ -94,7 +94,7 @@ class TestCase extends OrchestraTestCase
     protected function assertConsoleCommandOutputContainsStrings(
         string $command,
         array $args = [],
-        $strings = []
+        $strings = [],
     ): void {
         $this->assertConsoleCommandOutput($command, $args, $strings, function ($string, $output, $message): void {
             $this::assertStringContainsString($string, $output, $message);
@@ -104,7 +104,7 @@ class TestCase extends OrchestraTestCase
     protected function assertConsoleCommandOutputDoesNotContainStrings(
         string $command,
         array $args = [],
-        $strings = []
+        $strings = [],
     ): void {
         $this->assertConsoleCommandOutput($command, $args, $strings, function ($string, $output, $message): void {
             $this::assertStringNotContainsString($string, $output, $message);

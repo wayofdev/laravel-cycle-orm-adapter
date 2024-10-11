@@ -24,7 +24,7 @@ class Repository extends CycleRepository
     public function __construct(
         // @phpstan-ignore-next-line
         protected Select $select,
-        protected EntityManagerInterface $entityManager
+        protected EntityManagerInterface $entityManager,
     ) {
         parent::__construct($select);
     }
