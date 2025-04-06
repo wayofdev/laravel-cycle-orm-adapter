@@ -54,7 +54,7 @@
         "cycle/schema-builder": "^2.8",
         "cycle/schema-migrations-generator": "^2.2",
         "cycle/schema-renderer": "^1.2",
-        "laravel/framework": "^10.28 || ^11.0",
+        "laravel/framework": "^10.28 || ^11.0 || ^12.0",
         "psr/log": "^3.0",
         "spiral/attributes": "^3.1",
         "spiral/core": "^3.12",
