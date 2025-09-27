@@ -20,7 +20,7 @@ env:
 
 jobs:
   test-sqlserver:
-    timeout-minutes: 4
+    timeout-minutes: 8
     runs-on: ${{ matrix.os }}
     concurrency:
       cancel-in-progress: true
@@ -44,10 +44,10 @@ jobs:
           ACCEPT_EULA: 'Y'
           SA_PASSWORD: 'SSpaSS__1_123'
         options: >-
-          --health-cmd "/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'SSpaSS__1_123' -l 30 -Q 'SELECT 1'"
-          --health-interval 3s
-          --health-timeout 1s
-          --health-retries 10
+          --health-cmd "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'SSpaSS__1_123' -l 30 -Q 'SELECT 1'"
+          --health-interval 4s
+          --health-timeout 2s
+          --health-retries 16
         ports:
           - 11433:1433
 
