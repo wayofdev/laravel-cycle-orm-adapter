@@ -1,3 +1,302 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.23.1@8471a896ccea3526b26d082f4461eeea467f10a4">
+<files psalm-version="6.13.1@1e3b7f0a8ab32b23197b91107adc0a7ed8a05b51">
+  <file src="src/Bridge/Cache/Providers/CacheServiceProvider.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function register(): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Bridge/Laravel/Console/Commands/Database/ListCommand.php">
+    <InvalidArgument>
+      <code><![CDATA[$db]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="src/Bridge/Laravel/Console/Commands/Database/TableCommand.php">
+    <InvalidArgument>
+      <code><![CDATA[$tableName]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="src/Bridge/Laravel/Console/Commands/Migrations/AbstractCommand.php">
+    <InvalidReturnStatement>
+      <code><![CDATA[$this->option('force')]]></code>
+    </InvalidReturnStatement>
+    <InvalidReturnType>
+      <code><![CDATA[bool]]></code>
+    </InvalidReturnType>
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Bridge/Laravel/Facades/Cycle.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected static function getFacadeAccessor(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Bridge/Laravel/Factories/SpiralFactory.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function make(string $alias, array $parameters = []): mixed]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Bridge/Laravel/LoggerFactory.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function getLogger(?DriverInterface $driver = null): LoggerInterface]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Bridge/Laravel/Providers/CycleServiceProvider.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function register(): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Bridge/Laravel/Rules/Exists.php">
+    <InvalidReturnStatement>
+      <code><![CDATA[trans('validation.exists')]]></code>
+    </InvalidReturnStatement>
+    <InvalidReturnType>
+      <code><![CDATA[PotentiallyTranslatedString|string]]></code>
+    </InvalidReturnType>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function validate(string $attribute, mixed $value, Closure $fail): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Bridge/Laravel/Rules/Unique.php">
+    <InvalidReturnStatement>
+      <code><![CDATA[trans('validation.unique')]]></code>
+    </InvalidReturnStatement>
+    <InvalidReturnType>
+      <code><![CDATA[PotentiallyTranslatedString|string]]></code>
+    </InvalidReturnType>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function validate(string $attribute, mixed $value, Closure $fail): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Bridge/Queue/Providers/QueueServiceProvider.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function register(): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Bridge/Session/Providers/SessionServiceProvider.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function register(): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Bridge/Telescope/Providers/TelescopeServiceProvider.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function register(): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Bridge/Telescope/TelescopeLogger.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function alert(Stringable|string $message, array $context = []): void]]></code>
+      <code><![CDATA[public function critical(Stringable|string $message, array $context = []): void]]></code>
+      <code><![CDATA[public function debug(Stringable|string $message, array $context = []): void]]></code>
+      <code><![CDATA[public function emergency(Stringable|string $message, array $context = []): void]]></code>
+      <code><![CDATA[public function error(Stringable|string $message, array $context = []): void]]></code>
+      <code><![CDATA[public function info(Stringable|string $message, array $context = []): void]]></code>
+      <code><![CDATA[public function log($level, $message, array $context = []): void]]></code>
+      <code><![CDATA[public function notice(Stringable|string $message, array $context = []): void]]></code>
+      <code><![CDATA[public function warning(Stringable|string $message, array $context = []): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Bridge/Telescope/Watchers/QueryWatcher.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function register($app): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Repository.php">
+    <MissingTemplateParam>
+      <code><![CDATA[Repository]]></code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Schema/Cache/Manager.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function flush(): bool]]></code>
+      <code><![CDATA[public function get(): mixed]]></code>
+      <code><![CDATA[public function isCached(): bool]]></code>
+      <code><![CDATA[public function set(string|array $schema): bool]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Schema/Generators/GeneratorQueue.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function add(string $group, GeneratorInterface|string $generator): GeneratorLoader]]></code>
+      <code><![CDATA[public function get(): array]]></code>
+      <code><![CDATA[public function remove(string $removableGenerator): GeneratorLoader]]></code>
+      <code><![CDATA[public function without(): GeneratorLoader]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Testing/Constraints/CountInDatabase.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function failureDescription(mixed $other): string]]></code>
+      <code><![CDATA[public function matches(mixed $other): bool]]></code>
+      <code><![CDATA[public function toString(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Testing/Constraints/HasInDatabase.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function failureDescription(mixed $other): string]]></code>
+      <code><![CDATA[public function matches(mixed $other): bool]]></code>
+      <code><![CDATA[public function toString(mixed $options = null): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Testing/Constraints/NotSoftDeletedInDatabase.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function failureDescription($other): string]]></code>
+      <code><![CDATA[public function matches(mixed $other): bool]]></code>
+      <code><![CDATA[public function toString(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Testing/Constraints/SoftDeletedInDatabase.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function failureDescription($other): string]]></code>
+      <code><![CDATA[public function matches(mixed $other): bool]]></code>
+      <code><![CDATA[public function toString(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="tests/app/Entities/Footprint.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __toString(): string]]></code>
+      <code><![CDATA[public function jsonSerialize(): array]]></code>
+    </MissingOverrideAttribute>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[id]]></code>
+      <code><![CDATA[party]]></code>
+      <code><![CDATA[realm]]></code>
+    </PossiblyUnusedMethod>
+    <PossiblyUnusedReturnValue>
+      <code><![CDATA[self]]></code>
+    </PossiblyUnusedReturnValue>
+    <UnusedParam>
+      <code><![CDATA[$db]]></code>
+    </UnusedParam>
+  </file>
+  <file src="tests/app/Entities/Post.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[description]]></code>
+      <code><![CDATA[title]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/app/Entities/Role.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+    <PossiblyUnusedProperty>
+      <code><![CDATA[$id]]></code>
+      <code><![CDATA[$name]]></code>
+    </PossiblyUnusedProperty>
+  </file>
+  <file src="tests/app/Entities/Signature.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[at]]></code>
+      <code><![CDATA[by]]></code>
+      <code><![CDATA[defined]]></code>
+      <code><![CDATA[empty]]></code>
+      <code><![CDATA[forGuest]]></code>
+      <code><![CDATA[fromArray]]></code>
+      <code><![CDATA[random]]></code>
+      <code><![CDATA[toArray]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/app/Entities/User.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[addFriend]]></code>
+      <code><![CDATA[getId]]></code>
+      <code><![CDATA[getName]]></code>
+    </PossiblyUnusedMethod>
+    <PossiblyUnusedProperty>
+      <code><![CDATA[$company]]></code>
+      <code><![CDATA[$email]]></code>
+      <code><![CDATA[$friend]]></code>
+      <code><![CDATA[$friends]]></code>
+      <code><![CDATA[$friendsAsIlluminateCollection]]></code>
+      <code><![CDATA[$roles]]></code>
+      <code><![CDATA[$userId]]></code>
+    </PossiblyUnusedProperty>
+  </file>
+  <file src="tests/app/Entities/UserId.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __toString(): string]]></code>
+    </MissingOverrideAttribute>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[castValue]]></code>
+    </PossiblyUnusedMethod>
+    <UnusedParam>
+      <code><![CDATA[$db]]></code>
+    </UnusedParam>
+  </file>
+  <file src="tests/app/Repositories/PostRepository.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function persist(object $entity, bool $cascade = true): void]]></code>
+    </MissingOverrideAttribute>
+    <MissingTemplateParam>
+      <code><![CDATA[PostRepository]]></code>
+    </MissingTemplateParam>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/app/Repositories/PostRepositoryInterface.php">
+    <MissingTemplateParam>
+      <code><![CDATA[RepositoryInterface]]></code>
+    </MissingTemplateParam>
+  </file>
+  <file src="tests/app/Repositories/RoleRepository.php">
+    <MissingTemplateParam>
+      <code><![CDATA[RoleRepository]]></code>
+    </MissingTemplateParam>
+    <UnusedClass>
+      <code><![CDATA[RoleRepository]]></code>
+    </UnusedClass>
+  </file>
+  <file src="tests/app/Repositories/RoleRepositoryInterface.php">
+    <MissingTemplateParam>
+      <code><![CDATA[RepositoryInterface]]></code>
+    </MissingTemplateParam>
+  </file>
+  <file src="tests/app/Repositories/UserRepository.php">
+    <MissingTemplateParam>
+      <code><![CDATA[UserRepository]]></code>
+    </MissingTemplateParam>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[findByUsername]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/app/Repositories/UserRepositoryInterface.php">
+    <MissingTemplateParam>
+      <code><![CDATA[RepositoryInterface]]></code>
+    </MissingTemplateParam>
+  </file>
+  <file src="tests/src/Bridge/Laravel/Console/Commands/ORM/MigrateCommandTest.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function setUp(): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="tests/src/Bridge/Laravel/Console/Commands/ORM/RenderCommandTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[it_runs_handle_with_redefined_schema]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/src/Bridge/Laravel/LoggerFactoryTest.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function getEnvironmentSetUp($app): void]]></code>
+      <code><![CDATA[protected function tearDown(): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="tests/src/TestCase.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function getPackageProviders($app): array]]></code>
+      <code><![CDATA[protected function setUp(): void]]></code>
+      <code><![CDATA[protected function tearDown(): void]]></code>
+    </MissingOverrideAttribute>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[faker]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/src/Testing/SoftDeletableTest.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function setUp(): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="vendor/laravel/telescope/src/Watchers/FetchesStackTrace.php">
+    <InvalidParamDefault>
+      <code><![CDATA[string|array]]></code>
+    </InvalidParamDefault>
+  </file>
 </files>

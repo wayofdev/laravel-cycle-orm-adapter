@@ -30,7 +30,6 @@ final class RegisterAttributes
             $cacheEnabled = config('cycle.attributes.cache.enabled', false);
 
             if ($cacheEnabled) {
-                /** @var CacheFactory $cacheFactory */
                 $cacheFactory = $app->get(CacheFactory::class);
                 $cacheStore = config('cycle.attributes.cache.store', 'file');
                 $reader = new Psr16CachedReader($reader, $cacheFactory->store($cacheStore));

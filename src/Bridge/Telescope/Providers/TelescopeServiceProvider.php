@@ -19,7 +19,6 @@ class TelescopeServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        /** @var Repository $config */
         $config = $this->app->get(Repository::class);
 
         $config->set('cycle.tokenizer.directories', array_merge(

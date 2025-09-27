@@ -27,7 +27,6 @@ final class RegisterORM
     public function __invoke(Application $app): void
     {
         $app->singleton(FactoryInterface::class, static function (Application $app): FactoryInterface {
-            /** @var SchemaConfig $config */
             $config = $app->get(SchemaConfig::class);
             $factoryFQCN = $config->defaultCollectionFQCN();
             $factory = $app->make($factoryFQCN);

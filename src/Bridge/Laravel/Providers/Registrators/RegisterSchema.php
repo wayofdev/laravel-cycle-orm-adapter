@@ -41,22 +41,15 @@ final class RegisterSchema
 
         $app->bind(Registry::class, static function (Application $app): Registry {
             $defaults = new Defaults();
-
-            /** @var SchemaConfig $config */
             $config = $app->get(SchemaConfig::class);
-
             $defaults->merge($config->defaults());
 
             return new Registry($app->get(DatabaseProviderInterface::class), $defaults);
         });
 
         $app->bind(SchemaInterface::class, static function (Application $app): SchemaInterface {
-            /** @var SchemaConfig $config */
             $config = $app->get(SchemaConfig::class);
-
-            /** @var CacheManagerContract $cache */
             $cache = $app->get(CacheManagerContract::class);
-
             $schemaCompiler = Compiler::fromMemory(
                 cache: $cache
             );

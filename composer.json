@@ -149,9 +149,18 @@
             "@putenv XDEBUG_MODE=coverage",
             "php vendor/bin/roave-infection-static-analysis-plugin --threads=2 --ansi --logger-github --ignore-msi-with-no-mutations --only-covered"
         ],
-        "psalm": "php vendor/bin/psalm --show-info=true",
-        "psalm:baseline": "php vendor/bin/psalm --set-baseline=psalm-baseline.xml",
-        "psalm:ci": "php vendor/bin/psalm --output-format=github --shepherd --show-info=false --stats --threads=4",
+        "psalm": [
+            "@putenv DB_CONNECTION=sqlite",
+            "php vendor/bin/psalm --show-info=true"
+        ],
+        "psalm:baseline": [
+            "@putenv DB_CONNECTION=sqlite",
+            "php vendor/bin/psalm --set-baseline=psalm-baseline.xml"
+        ],
+        "psalm:ci": [
+            "@putenv DB_CONNECTION=sqlite",
+            "php vendor/bin/psalm --output-format=github --shepherd --show-info=true --stats --threads=4"
+        ],
         "refactor": "php vendor/bin/rector process --config=rector.php",
         "refactor:ci": "php vendor/bin/rector process --config=rector.php --dry-run --ansi",
         "stan": "php vendor/bin/phpstan analyse --memory-limit=2G",

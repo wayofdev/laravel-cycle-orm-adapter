@@ -84,7 +84,7 @@ jobs:
       contents: write
     steps:
       - name: 🛠️ Setup PHP
-        uses: shivammathur/setup-php@2.33.0
+        uses: shivammathur/setup-php@2.35.5
         with:
           php-version: ${{ matrix.php-version }}
           extensions: none, ctype, dom, json, mbstring, simplexml, tokenizer, xml, xmlwriter, pdo, curl, fileinfo, pdo_mysql, iconv
@@ -149,7 +149,7 @@ jobs:
           git config --global core.eol lf
 
       - name: 🛠️ Setup PHP
-        uses: shivammathur/setup-php@2.33.0
+        uses: shivammathur/setup-php@2.35.5
         with:
           php-version: ${{ matrix.php-version }}
           extensions: none, ctype, dom, json, mbstring, simplexml, tokenizer, xml, xmlwriter, pdo, curl, fileinfo, pdo_mysql, iconv

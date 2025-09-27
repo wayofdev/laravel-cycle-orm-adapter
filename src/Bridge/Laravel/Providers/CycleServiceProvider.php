@@ -34,7 +34,6 @@ final class CycleServiceProvider extends ServiceProvider
             $this->registerConsoleCommands();
         }
 
-        /** @var IlluminateConfig $config */
         $config = $this->app->get(IlluminateConfig::class);
         $warmup = $config->get('cycle.warmup');
 

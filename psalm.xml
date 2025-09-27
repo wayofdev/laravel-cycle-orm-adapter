@@ -21,6 +21,34 @@
         <directory name="src/"/>
         <directory name="tests/"/>
         <file name=".php-cs-fixer.dist.php"/>
-        <file name="rector.php"/>
     </projectFiles>
+
+    <issueHandlers>
+        <UnusedClass>
+            <errorLevel type="suppress">
+                <directory name="src/"/>
+                <directory name="config/"/>
+            </errorLevel>
+        </UnusedClass>
+        <PossiblyUnusedMethod>
+            <errorLevel type="suppress">
+                <directory name="src/"/>
+            </errorLevel>
+        </PossiblyUnusedMethod>
+        <PossiblyUnusedProperty>
+            <errorLevel type="suppress">
+                <directory name="src/"/>
+            </errorLevel>
+        </PossiblyUnusedProperty>
+        <UnusedProperty>
+            <errorLevel type="suppress">
+                <directory name="src/"/>
+            </errorLevel>
+        </UnusedProperty>
+        <PossiblyUnusedReturnValue>
+            <errorLevel type="suppress">
+                <directory name="src/"/>
+            </errorLevel>
+        </PossiblyUnusedReturnValue>
+    </issueHandlers>
 </psalm>

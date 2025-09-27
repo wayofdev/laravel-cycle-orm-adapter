@@ -27,7 +27,6 @@ final class RegisterConfigs
     private function registerDatabaseConfig(Application $app): void
     {
         $app->singleton(DatabaseConfig::class, static function (Application $app): DatabaseConfig {
-            /** @var IlluminateConfig $config */
             $config = $app->get(IlluminateConfig::class);
 
             return new DatabaseConfig(
@@ -39,7 +38,6 @@ final class RegisterConfigs
     private function registerMigrationConfig(Application $app): void
     {
         $app->singleton(MigrationConfig::class, static function (Application $app): MigrationConfig {
-            /** @var IlluminateConfig $config */
             $config = $app->get(IlluminateConfig::class);
 
             return new MigrationConfig(
@@ -51,7 +49,6 @@ final class RegisterConfigs
     private function registerTokenizerConfig(Application $app): void
     {
         $app->singleton(TokenizerConfig::class, static function (Application $app): TokenizerConfig {
-            /** @var IlluminateConfig $config */
             $config = $app->get(IlluminateConfig::class);
 
             return new TokenizerConfig(
@@ -63,7 +60,6 @@ final class RegisterConfigs
     private function registerSchemaConfig(Application $app): void
     {
         $app->singleton(SchemaConfig::class, static function (Application $app): SchemaConfig {
-            /** @var IlluminateConfig $config */
             $config = $app->get(IlluminateConfig::class);
 
             return new SchemaConfig(
@@ -75,7 +71,6 @@ final class RegisterConfigs
     private function registerRelationConfig(Application $app): void
     {
         $app->singleton(RelationConfig::class, static function (Application $app): RelationConfig {
-            /** @var IlluminateConfig $config */
             $config = $app->get(IlluminateConfig::class);
             $relations = RelationConfig::getDefault()->toArray() + $config->get(Registrator::CFG_KEY_RELATIONS);
 
