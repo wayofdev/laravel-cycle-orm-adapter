@@ -19,10 +19,10 @@ jobs:
       pull-requests: read
     steps:
       - name: 📦 Check out the codebase
-        uses: actions/checkout@v4.1.6
+        uses: actions/checkout@v4.1.7
 
       - name: 🧐 Lint commits using "commitlint"
-        uses: wagoid/commitlint-github-action@v6.0.1
+        uses: wagoid/commitlint-github-action@v6.0.2
         with:
           configFile: ${{ github.workspace }}/.github/.commitlint.config.mjs
           failOnWarnings: false
@@ -32,12 +32,15 @@ jobs:
   yaml-linting:
     timeout-minutes: 4
     runs-on: ubuntu-latest
+    concurrency:
+      cancel-in-progress: true
+      group: yaml-linting-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
     permissions:
       contents: read
       pull-requests: read
     steps:
       - name: 📦 Check out the codebase
-        uses: actions/checkout@v4.1.6
+        uses: actions/checkout@v4.1.7
 
       - name: 🧐 Lint YAML files
         uses: ibiqlik/action-yamllint@v3.1.1
@@ -54,7 +57,7 @@ jobs:
       group: markdown-linting-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
     steps:
       - name: 📦 Check out the codebase
-        uses: actions/checkout@v4.1.6
+        uses: actions/checkout@v4.1.7
 
       - name: 🧐 Lint Markdown files
         uses: DavidAnson/markdownlint-cli2-action@v16.0.0
@@ -81,7 +84,7 @@ jobs:
       contents: write
     steps:
       - name: 🛠️ Setup PHP
-        uses: shivammathur/setup-php@2.30.4
+        uses: shivammathur/setup-php@2.33.0
         with:
           php-version: ${{ matrix.php-version }}
           extensions: none, ctype, dom, json, mbstring, simplexml, tokenizer, xml, xmlwriter, pdo, curl, fileinfo, pdo_mysql
@@ -90,7 +93,7 @@ jobs:
           tools: phive
 
       - name: 📦 Check out the codebase
-        uses: actions/checkout@v4.1.6
+        uses: actions/checkout@v4.1.7
 
       - name: 🛠️ Setup problem matchers
         run: |
@@ -100,22 +103,22 @@ jobs:
         run: composer validate --ansi --strict
 
       - name: 🔍 Get composer cache directory
-        uses: wayofdev/gh-actions/actions/composer/get-cache-directory@v3.1.0
+        uses: wayofdev/gh-actions/actions/composer/get-cache-directory@v3.3.0
 
       - name: ♻️ Restore cached dependencies installed with composer
-        uses: actions/cache@v4.0.2
+        uses: actions/cache@v4.2.3
         with:
           path: ${{ env.COMPOSER_CACHE_DIR }}
           key: php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}
           restore-keys: php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
 
       - name: 📥 Install "${{ matrix.dependencies }}" dependencies with composer
-        uses: wayofdev/gh-actions/actions/composer/install@v3.1.0
+        uses: wayofdev/gh-actions/actions/composer/install@v3.3.0
         with:
           dependencies: ${{ matrix.dependencies }}
 
       - name: 📥 Install dependencies with phive
-        uses: wayofdev/gh-actions/actions/phive/install@v3.1.0
+        uses: wayofdev/gh-actions/actions/phive/install@v3.3.0
         with:
           phive-home: '.phive'
           trust-gpg-keys: '0xC00543248C87FB13,0x033E5F8D801A2F8D'
@@ -146,7 +149,7 @@ jobs:
           git config --global core.eol lf
 
       - name: 🛠️ Setup PHP
-        uses: shivammathur/setup-php@2.30.4
+        uses: shivammathur/setup-php@2.33.0
         with:
           php-version: ${{ matrix.php-version }}
           extensions: none, ctype, dom, json, mbstring, simplexml, tokenizer, xml, xmlwriter, pdo, curl, fileinfo, pdo_mysql
@@ -154,7 +157,7 @@ jobs:
           coverage: none
 
       - name: 📦 Check out the codebase
-        uses: actions/checkout@v4.1.6
+        uses: actions/checkout@v4.1.7
 
       - name: 🛠️ Setup problem matchers
         run: |
@@ -164,17 +167,17 @@ jobs:
         run: composer validate --ansi --strict
 
       - name: 🔍 Get composer cache directory
-        uses: wayofdev/gh-actions/actions/composer/get-cache-directory@v3.1.0
+        uses: wayofdev/gh-actions/actions/composer/get-cache-directory@v3.3.0
 
       - name: ♻️ Restore cached dependencies installed with composer
-        uses: actions/cache@v4.0.2
+        uses: actions/cache@v4.2.3
         with:
           path: ${{ env.COMPOSER_CACHE_DIR }}
           key: php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}
           restore-keys: php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
 
       - name: 📥 Install "${{ matrix.dependencies }}" dependencies with composer
-        uses: wayofdev/gh-actions/actions/composer/install@v3.1.0
+        uses: wayofdev/gh-actions/actions/composer/install@v3.3.0
         with:
           dependencies: ${{ matrix.dependencies }}
 
@@ -187,7 +190,7 @@ jobs:
           PHP_CS_FIXER_IGNORE_ENV: true
 
       - name: 📤 Commit and push changed files back to GitHub
-        uses: stefanzweifel/git-auto-commit-action@v5.0.1
+        uses: stefanzweifel/git-auto-commit-action@v5.2.0
         with:
           commit_message: 'style(php-cs-fixer): lint php files and fix coding standards'
           branch: ${{ github.head_ref }}
