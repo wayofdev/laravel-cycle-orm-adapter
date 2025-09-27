@@ -155,7 +155,7 @@
         "refactor": "php vendor/bin/rector process --config=rector.php",
         "refactor:ci": "php vendor/bin/rector process --config=rector.php --dry-run --ansi",
         "stan": "php vendor/bin/phpstan analyse --memory-limit=2G",
-        "stan:baseline": "php vendor/bin/phpstan analyse --generate-baseline --memory-limit=2G --allow-empty-baseline",
+        "stan:baseline": "php vendor/bin/phpstan analyse --generate-baseline --memory-limit=2G --allow-empty-baseline -vv",
         "stan:ci": "php vendor/bin/phpstan analyse --memory-limit=2G --error-format=github",
         "test": [
             "@putenv XDEBUG_MODE=coverage",

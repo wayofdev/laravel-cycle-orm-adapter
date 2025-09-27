@@ -37,7 +37,7 @@ trait InteractsWithDatabase
      *
      * @return $this
      */
-    protected function assertDatabaseHas($table, array $data, $connection = null): static
+    protected function assertDatabaseHas($table, array $data = [], $connection = null): static
     {
         $this->assertThat(
             $table,
@@ -53,7 +53,7 @@ trait InteractsWithDatabase
      *
      * @return $this
      */
-    protected function assertDatabaseMissing($table, array $data, $connection = null): static
+    protected function assertDatabaseMissing($table, array $data = [], $connection = null): static
     {
         $constraint = new ReverseConstraint(
             new HasInDatabase(app(DatabaseProviderInterface::class), $data)

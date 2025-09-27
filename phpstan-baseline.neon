@@ -1,2 +1,136 @@
 parameters:
-	ignoreErrors: []
+	ignoreErrors:
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertCount\\(\\) with 4 and \\*NEVER\\* will always evaluate to false\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Console/Commands/Migrations/MigrateCommandTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertCount\\(\\) with 4 and \\*NEVER\\* will always evaluate to false\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Console/Commands/Migrations/ReplayCommandTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertCount\\(\\) with 4 and \\*NEVER\\* will always evaluate to false\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Console/Commands/Migrations/RollbackCommandTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Cycle\\\\\\\\Schema\\\\\\\\GeneratorInterface' and Cycle\\\\Annotated\\\\Embeddings will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterAnnotatedTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Cycle\\\\\\\\Schema\\\\\\\\GeneratorInterface' and Cycle\\\\Annotated\\\\Entities will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterAnnotatedTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Cycle\\\\\\\\Schema\\\\\\\\GeneratorInterface' and Cycle\\\\Annotated\\\\MergeColumns will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterAnnotatedTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Cycle\\\\\\\\Schema\\\\\\\\GeneratorInterface' and Cycle\\\\Annotated\\\\MergeIndexes will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterAnnotatedTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Cycle\\\\\\\\Schema\\\\\\\\GeneratorInterface' and Cycle\\\\Annotated\\\\TableInheritance will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterAnnotatedTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Spiral\\\\\\\\Attributes\\\\\\\\ReaderInterface' and Spiral\\\\Attributes\\\\ReaderInterface will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterAnnotatedTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Spiral\\\\\\\\Attributes\\\\\\\\Internal\\\\\\\\Instantiator\\\\\\\\InstantiatorInterface' and Spiral\\\\Attributes\\\\Internal\\\\Instantiator\\\\InstantiatorInterface will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterAttributesTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Cycle\\\\\\\\Database\\\\\\\\Config\\\\\\\\DatabaseConfig' and Cycle\\\\Database\\\\Config\\\\DatabaseConfig will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterConfigsTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Cycle\\\\\\\\Migrations\\\\\\\\Config\\\\\\\\MigrationConfig' and Cycle\\\\Migrations\\\\Config\\\\MigrationConfig will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterConfigsTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Spiral\\\\\\\\Tokenizer\\\\\\\\Config\\\\\\\\TokenizerConfig' and Spiral\\\\Tokenizer\\\\Config\\\\TokenizerConfig will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterConfigsTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'WayOfDev\\\\\\\\Cycle\\\\\\\\Schema\\\\\\\\Config\\\\\\\\SchemaConfig' and WayOfDev\\\\Cycle\\\\Schema\\\\Config\\\\SchemaConfig will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterConfigsTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Cycle\\\\\\\\Database\\\\\\\\DatabaseInterface' and Cycle\\\\Database\\\\DatabaseInterface will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterDatabaseTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Cycle\\\\\\\\Database\\\\\\\\DatabaseProviderInterface' and Cycle\\\\Database\\\\DatabaseProviderInterface will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterDatabaseTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Cycle\\\\\\\\Migrations\\\\\\\\Migrator' and Cycle\\\\Migrations\\\\Migrator will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterMigrationsTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Cycle\\\\\\\\Migrations\\\\\\\\RepositoryInterface' and Cycle\\\\Migrations\\\\RepositoryInterface will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterMigrationsTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Cycle\\\\\\\\ORM\\\\\\\\FactoryInterface' and Cycle\\\\ORM\\\\FactoryInterface will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterORMTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Cycle\\\\\\\\ORM\\\\\\\\ORMInterface' and Cycle\\\\ORM\\\\ORMInterface will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterORMTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Cycle\\\\\\\\ORM\\\\\\\\SchemaInterface' and Cycle\\\\ORM\\\\SchemaInterface will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterSchemaTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'WayOfDev\\\\\\\\Cycle\\\\\\\\Contracts\\\\\\\\CacheManager' and WayOfDev\\\\Cycle\\\\Contracts\\\\CacheManager will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterSchemaTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'WayOfDev\\\\\\\\Cycle\\\\\\\\Contracts\\\\\\\\GeneratorLoader' and WayOfDev\\\\Cycle\\\\Contracts\\\\GeneratorLoader will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterSchemaTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Spiral\\\\\\\\Tokenizer\\\\\\\\ClassesInterface' and Spiral\\\\Tokenizer\\\\ClassesInterface will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterTokenizerTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Spiral\\\\\\\\Tokenizer\\\\\\\\InvocationsInterface' and Spiral\\\\Tokenizer\\\\InvocationsInterface will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterTokenizerTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Spiral\\\\\\\\Tokenizer\\\\\\\\ScopedClassesInterface' and Spiral\\\\Tokenizer\\\\ScopedClassesInterface will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterTokenizerTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Spiral\\\\\\\\Tokenizer\\\\\\\\Tokenizer' and Spiral\\\\Tokenizer\\\\Tokenizer will always evaluate to true\\.$#"
+			count: 1
+			path: tests/src/Bridge/Laravel/Providers/Registrators/RegisterTokenizerTest.php
