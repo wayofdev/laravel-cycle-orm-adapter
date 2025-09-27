@@ -38,7 +38,7 @@ class MigrateCommandTest extends TestCase
     #[Test]
     public function it_runs_migrate(): void
     {
-        $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', ['-n' => true], self::USER_MIGRATION);
+        $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', ['-n' => true, '-v' => true], self::USER_MIGRATION);
 
         $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', ['-n' => true], [
             'Outstanding migrations found',
@@ -58,7 +58,7 @@ class MigrateCommandTest extends TestCase
     #[Test]
     public function it_creates_migration_when_entity_appeared(): void
     {
-        $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', ['-r' => true], self::USER_MIGRATION);
+        $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', ['-r' => true, '-v' => true], self::USER_MIGRATION);
 
         $entity = __DIR__ . '/../../../../../../app/Entities/Tag.php';
 
@@ -83,7 +83,7 @@ class MigrateCommandTest extends TestCase
                 PHP
         );
 
-        $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', ['-r' => true], [
+        $this->assertConsoleCommandOutputContainsStrings('cycle:orm:migrate', ['-r' => true, '-v' => true], [
             'default.tags',
             'create table',
             'add column [id]',
