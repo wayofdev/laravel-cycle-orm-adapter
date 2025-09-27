@@ -13,7 +13,7 @@ class PostRepository extends Repository implements PostRepositoryInterface
     public function __construct(
         // @phpstan-ignore-next-line
         protected Select $select,
-        protected EntityManagerInterface $entityManager
+        protected EntityManagerInterface $entityManager,
     ) {
         parent::__construct($select, $entityManager);
     }
