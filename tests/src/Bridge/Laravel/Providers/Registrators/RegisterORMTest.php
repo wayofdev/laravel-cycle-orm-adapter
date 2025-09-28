@@ -16,6 +16,8 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use WayOfDev\Tests\TestCase;
 
+use function spl_object_hash;
+
 class RegisterORMTest extends TestCase
 {
     #[Test]
@@ -81,5 +83,24 @@ class RegisterORMTest extends TestCase
         }
 
         $this::assertInstanceOf(CommandGenerator::class, $class->getCommandGenerator());
+    }
+
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    #[Test]
+    public function it_returns_same_instance_for_concrete_class_and_interface(): void
+    {
+        $ormInterface = $this->app->get(ORMInterface::class);
+        $ormConcrete = $this->app->get(ORM::class);
+
+        $this::assertSame(
+            spl_object_hash($ormInterface),
+            spl_object_hash($ormConcrete),
+            'ORM::class and ORMInterface::class should return the same instance to prevent entity manager conflicts'
+        );
+
+        $this::assertSame($ormInterface, $ormConcrete);
     }
 }

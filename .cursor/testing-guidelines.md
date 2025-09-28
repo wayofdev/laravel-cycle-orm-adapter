@@ -480,6 +480,105 @@ public function it_renders_orm_schema(): void
 }
 ```
 
+## 🧪 TDD Bug Fix Approach
+
+### 🐛 **Community Issue Resolution Process**
+
+When handling community-reported bugs, follow this proven TDD approach:
+
+#### **Step 1: Issue Analysis** 🔍
+
+```bash
+# Analyze the reported issue thoroughly
+# - Read the bug description and reproduction steps
+# - Examine affected code files
+# - Understand the root cause and impact
+```
+
+#### **Step 2: Create Failing Test** ❌
+
+```php
+/**
+ * This test reproduces issue #XXX - Brief description
+ *
+ * @see https://github.com/wayofdev/laravel-cycle-orm-adapter/issues/XXX
+ * @author contributor-username
+ */
+#[Test]
+public function it_reproduces_the_reported_issue(): void
+{
+    // Reproduce the exact issue as reported
+    $result1 = $this->app->get(SomeInterface::class);
+    $result2 = $this->app->get(ConcreteClass::class);
+
+    // This should fail initially, proving the bug exists
+    $this::assertSame($result1, $result2, 'Meaningful error message explaining expected behavior');
+}
+```
+
+#### **Step 3: Implement Fix** 🔧
+
+```php
+// Apply the minimal fix using proper Laravel container mechanisms
+// ✅ Good: Use Laravel's alias for interface-to-concrete mapping
+$app->alias(InterfaceClass::class, ConcreteClass::class);
+
+// ❌ Avoid: Manual binding with type mismatches
+$app->bind(ConcreteClass::class, function ($app): ConcreteClass {
+    return $app->get(InterfaceClass::class); // Type mismatch!
+});
+```
+
+#### **Step 4: Validate Fix** ✅
+
+```bash
+# Run the specific test to confirm it now passes
+docker compose run --rm --no-deps app vendor/bin/pest --filter="test_method_name"
+
+# Run related tests to ensure no regressions
+docker compose run --rm --no-deps app vendor/bin/pest tests/path/to/related/tests/
+```
+
+#### **Step 5: Commit with Attribution** 📝
+
+```bash
+git commit -m "fix(scope): brief description
+
+Fixes #XXX: Detailed explanation of the issue and solution
+
+🐛 Problem:
+- Specific issue description
+- Impact on users
+- Root cause analysis
+
+🔧 Solution:
+- What was changed
+- Why this approach was chosen
+- How it prevents the issue
+
+🧪 Testing:
+- Test that reproduces the issue
+- Test validation of the fix
+- Regression testing results
+
+Thanks to @contributor-username for reporting this issue and providing
+detailed reproduction steps and solution direction.
+
+Closes #XXX"
+```
+
+### 🎯 **Example: Issue #752 Resolution**
+
+This approach was used to resolve [issue #752](https://github.com/wayofdev/laravel-cycle-orm-adapter/issues/752):
+
+1. **Issue**: `ORM::class` and `ORMInterface::class` returned different instances
+2. **Test**: Created test verifying `spl_object_hash()` equality
+3. **Fix**: Used `$app->alias(ORMInterface::class, ORM::class)` - proper Laravel container mechanism
+4. **Validation**: Test passes, PHPStan clean, no regressions in 39 provider tests
+5. **Attribution**: Credited @mm-sol in comments and commit message
+
+**Key Lesson**: Use Laravel's `alias()` method instead of manual bindings to avoid type mismatches.
+
 ## 🔍 Testing Best Practices
 
 ### ✅ **DO This**
@@ -565,6 +664,39 @@ $this->app->instance(ORMInterface::class, $mockOrm);
 
 // ✅ Use real container resolution
 $orm = $this->app->make(ORMInterface::class);
+```
+
+### 💬 **Code Comments in Tests**
+
+#### **When to Add Comments**
+
+```php
+// ✅ For community issue reproduction tests
+/**
+ * Test for issue #752: Brief description of the problem.
+ * @author contributor-username
+ */
+
+// ✅ For complex business logic tests
+/**
+ * Validates complex relationship cascade behavior when parent is soft-deleted.
+ */
+
+// ✅ For non-obvious test setup
+// Create circular reference to test relationship handling
+$user->addFriend($friend);
+$friend->addFriend($user);
+```
+
+#### **When to Skip Comments**
+
+```php
+// ❌ Don't comment obvious tests
+#[Test]
+public function it_creates_user(): void // Don't add "// Test user creation"
+
+// ❌ Don't over-explain simple assertions
+$this::assertEquals('John', $user->getName()); // Don't add "// Check name equals John"
 ```
 
 ## 🚨 Troubleshooting & Debugging

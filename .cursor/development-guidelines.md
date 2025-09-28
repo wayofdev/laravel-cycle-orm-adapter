@@ -51,6 +51,51 @@ This document provides guidelines for effective AI-assisted development based on
    - Understand why issues occur
    - Research best practices and proven solutions
 
+### 🐛 Community Issue Handling
+
+#### **TDD Bug Fix Process**
+
+1. **Analyze Issue** 🔍 — Understand root cause and impact
+2. **Create Failing Test** ❌ — Reproduce the exact problem
+3. **Implement Fix** 🔧 — Apply minimal solution with clear comments
+4. **Validate Fix** ✅ — Ensure test passes and no regressions
+5. **Commit with Attribution** 📝 — Credit contributor and link issue
+
+#### **Attribution Best Practices**
+
+```php
+// Fix #XXX: Brief explanation (@contributor-username)
+```
+
+#### **Laravel Container Best Practices**
+
+```php
+// ✅ Use proper Laravel container mechanisms
+$app->alias(InterfaceClass::class, ConcreteClass::class);  // Alias for same instance
+$app->singleton(ConcreteClass::class, $factory);          // Register singleton
+
+// ❌ Avoid type mismatches and manual workarounds
+$app->bind(ConcreteClass::class, function ($app): ConcreteClass {
+    return $app->get(InterfaceClass::class); // Type error!
+});
+```
+
+#### **Commit Message Format for Bug Fixes**
+
+```bash
+fix(scope): brief description
+
+Fixes #XXX: Detailed explanation
+
+🐛 Problem: [what was wrong]
+🔧 Solution: [what was changed]
+🧪 Testing: [how it was validated]
+
+Thanks to @contributor-username for reporting and solution direction.
+
+Closes #XXX
+```
+
 ## 💻 Code Quality Standards
 
 ### 🧪 Testing Philosophy

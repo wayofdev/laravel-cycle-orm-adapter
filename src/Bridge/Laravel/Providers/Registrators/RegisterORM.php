@@ -62,6 +62,9 @@ final class RegisterORM
                 $app->get(ORMInterface::class)
             );
         });
+
+        // Fix #752: Alias ORM::class to ORMInterface::class singleton (@mm-sol)
+        $app->alias(ORMInterface::class, ORM::class);
     }
 
     private function shouldLoadEntityBehavior(): bool
