@@ -55,10 +55,11 @@ The full documentation for the package is available at [https://laravel-cycle-or
 
 ## 🧩 Compatibility Map
 
-| Laravel | Cycle ORM | Adapter |
-|---------|-----------|---------|
-| ^10.28  | 2.x       | 4.x     |
-| 11.x    | 2.x       | ^4.9.0  |
+| Laravel              | Cycle ORM | Adapter  |
+|----------------------|-----------|----------|
+| `^10.28`             | `2.x`     | `<4.9.0` |
+| `^10.28, 11.x`       | `2.x`     | `≥4.9.0` |
+| `^10.28, 11.x, 12.x` | `2.x`     | `≥5.0.0` |
 
 <br>
 
