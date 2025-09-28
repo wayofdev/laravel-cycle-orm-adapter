@@ -1,5 +1,13 @@
 # Changelog
 
+## [5.0.1](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v5.0.0...v5.0.1) (2025-09-28)
+
+
+### Dependencies
+
+* **deps:** update googleapis/release-please-action action to v4.3.0 ([9e411a2](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/9e411a20b40c0c19d35445f3219dce41432c7219))
+* **deps:** update wayofdev/gh-actions action to v3.3.0 ([86d1b1f](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/86d1b1fa9a4331257a63da203570e1e6f7b5e896))
+
 ## [5.0.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.12.3...v5.0.0) (2025-09-28)
 
 
