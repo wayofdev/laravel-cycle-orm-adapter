@@ -20,7 +20,7 @@ final class LoggerFactory implements LoggerFactoryInterface
 
     public function __construct(
         private readonly LogManager $manager,
-        DatabaseConfig $databaseConfig
+        DatabaseConfig $databaseConfig,
     ) {
         $this->config = $databaseConfig->toArray()['logger'] ?? [];
     }

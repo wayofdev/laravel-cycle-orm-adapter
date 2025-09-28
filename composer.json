@@ -45,44 +45,44 @@
         "php": "^8.2",
         "ext-fileinfo": "*",
         "ext-pdo": "*",
-        "cycle/annotated": "^4.1",
-        "cycle/database": "^2.8",
-        "cycle/entity-behavior": "^1.3",
+        "cycle/annotated": "^4.3",
+        "cycle/database": "^2.15",
+        "cycle/entity-behavior": "^1.7",
         "cycle/entity-behavior-uuid": "^1.2",
         "cycle/migrations": "^4.2",
-        "cycle/orm": "^2.7",
-        "cycle/schema-builder": "^2.8",
-        "cycle/schema-migrations-generator": "^2.2",
-        "cycle/schema-renderer": "^1.2",
+        "cycle/orm": "^2.11",
+        "cycle/schema-builder": "^2.11",
+        "cycle/schema-migrations-generator": "^2.3",
+        "cycle/schema-renderer": "^1.3",
         "laravel/framework": "^10.28 || ^11.0 || ^12.0",
         "psr/log": "^3.0",
         "spiral/attributes": "^3.1",
-        "spiral/core": "^3.12",
-        "spiral/tokenizer": "^3.12",
-        "symfony/console": "^6.4 || ^7.0"
+        "spiral/core": "^3.15",
+        "spiral/tokenizer": "^3.15",
+        "symfony/console": "^6.4 || ^7.3"
     },
     "require-dev": {
         "ext-curl": "*",
         "ext-pdo_mysql": "*",
         "beberlei/assert": "^3.3",
-        "fakerphp/faker": "^1.23",
-        "larastan/larastan": "^2.9",
-        "laravel/telescope": "^5.0",
-        "orchestra/testbench": "^8.21 || ^9.0.0",
-        "pestphp/pest": "^2.34",
-        "pestphp/pest-plugin-laravel": "^2.3",
-        "phpstan/extension-installer": "^1.3",
-        "phpstan/phpstan": "^1.10",
-        "phpstan/phpstan-deprecation-rules": "^1.1",
-        "phpstan/phpstan-phpunit": "^1.3",
-        "phpstan/phpstan-strict-rules": "^1.5",
+        "fakerphp/faker": "^1.24",
+        "larastan/larastan": "^2.11",
+        "laravel/telescope": "^5.12",
+        "orchestra/testbench": "^8.21 || ^9.15.0 || ^10.0",
+        "pestphp/pest": "^2.36",
+        "pestphp/pest-plugin-laravel": "^2.4",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^1.12",
+        "phpstan/phpstan-deprecation-rules": "^1.2",
+        "phpstan/phpstan-phpunit": "^1.4",
+        "phpstan/phpstan-strict-rules": "^1.6",
         "phpunit/phpunit": "^10.5",
-        "psalm/plugin-laravel": "^2.11",
+        "psalm/plugin-laravel": "^3.0",
         "psalm/plugin-phpunit": "~0.19.0",
-        "rector/rector": "^1.0",
-        "roave/infection-static-analysis-plugin": "^1.35",
-        "vimeo/psalm": "^5.23.1",
-        "wayofdev/cs-fixer-config": "^1.2"
+        "rector/rector": "^1.2",
+        "roave/infection-static-analysis-plugin": "^1.39",
+        "vimeo/psalm": "^6.13.1",
+        "wayofdev/cs-fixer-config": "^1.5"
     },
     "suggest": {
         "ext-pdo_mysql": "Required for MySQL database support",
@@ -115,7 +115,7 @@
             "phpstan/extension-installer": true
         },
         "platform": {
-            "php": "8.2.19"
+            "php": "8.2.27"
         },
         "sort-packages": true
     },
@@ -149,13 +149,22 @@
             "@putenv XDEBUG_MODE=coverage",
             "php vendor/bin/roave-infection-static-analysis-plugin --threads=2 --ansi --logger-github --ignore-msi-with-no-mutations --only-covered"
         ],
-        "psalm": "php vendor/bin/psalm --show-info=true",
-        "psalm:baseline": "php vendor/bin/psalm --set-baseline=psalm-baseline.xml",
-        "psalm:ci": "php vendor/bin/psalm --output-format=github --shepherd --show-info=false --stats --threads=4",
+        "psalm": [
+            "@putenv DB_CONNECTION=sqlite",
+            "php vendor/bin/psalm --show-info=true"
+        ],
+        "psalm:baseline": [
+            "@putenv DB_CONNECTION=sqlite",
+            "php vendor/bin/psalm --set-baseline=psalm-baseline.xml"
+        ],
+        "psalm:ci": [
+            "@putenv DB_CONNECTION=sqlite",
+            "php vendor/bin/psalm --output-format=github --shepherd --show-info=true --stats --threads=4"
+        ],
         "refactor": "php vendor/bin/rector process --config=rector.php",
         "refactor:ci": "php vendor/bin/rector process --config=rector.php --dry-run --ansi",
         "stan": "php vendor/bin/phpstan analyse --memory-limit=2G",
-        "stan:baseline": "php vendor/bin/phpstan analyse --generate-baseline --memory-limit=2G --allow-empty-baseline",
+        "stan:baseline": "php vendor/bin/phpstan analyse --generate-baseline --memory-limit=2G --allow-empty-baseline -vv",
         "stan:ci": "php vendor/bin/phpstan analyse --memory-limit=2G --error-format=github",
         "test": [
             "@putenv XDEBUG_MODE=coverage",

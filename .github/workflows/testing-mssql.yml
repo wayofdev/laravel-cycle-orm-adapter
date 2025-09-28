@@ -20,7 +20,7 @@ env:
 
 jobs:
   test-sqlserver:
-    timeout-minutes: 4
+    timeout-minutes: 8
     runs-on: ${{ matrix.os }}
     concurrency:
       cancel-in-progress: true
@@ -43,11 +43,16 @@ jobs:
         env:
           ACCEPT_EULA: 'Y'
           SA_PASSWORD: 'SSpaSS__1_123'
+          MSSQL_PID: 'Express'
+          MSSQL_MEMORY_LIMIT_MB: '2048'
+          MSSQL_ENABLE_HADR: '0'
+          MSSQL_AGENT_ENABLED: 'false'
         options: >-
-          --health-cmd "/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'SSpaSS__1_123' -l 30 -Q 'SELECT 1'"
-          --health-interval 3s
-          --health-timeout 1s
-          --health-retries 10
+          --health-cmd "timeout 30s /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'SSpaSS__1_123' -C -Q 'SELECT 1' || exit 1"
+          --health-interval 10s
+          --health-timeout 30s
+          --health-retries 30
+          --health-start-period 60s
         ports:
           - 11433:1433
 
@@ -55,11 +60,24 @@ jobs:
       - name: 📦 Check out the codebase
         uses: actions/checkout@v4.1.6
 
+      - name: 🔧 Install Microsoft ODBC Driver for SQL Server
+        run: |
+          # Get Ubuntu version dynamically (ubuntu-latest is currently 24.04)
+          UBUNTU_VERSION=$(lsb_release -rs 2>/dev/null || echo "24.04")
+          echo "Installing ODBC driver for Ubuntu $UBUNTU_VERSION"
+
+          curl -fsSL "https://packages.microsoft.com/config/ubuntu/${UBUNTU_VERSION}/packages-microsoft-prod.deb" -o packages-microsoft-prod.deb
+          sudo dpkg -i packages-microsoft-prod.deb
+          sudo apt-get update
+          sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 mssql-tools18 unixodbc-dev
+          # Make sqlcmd available to subsequent steps
+          echo "/opt/mssql-tools18/bin" >> "$GITHUB_PATH"
+
       - name: 🛠️ Setup PHP
-        uses: shivammathur/setup-php@2.30.4
+        uses: shivammathur/setup-php@2.35.5
         with:
           php-version: ${{ matrix.php-version }}
-          extensions: none, ctype, dom, json, mbstring, simplexml, tokenizer, xml, xmlwriter, pdo, curl, fileinfo, pdo_mysql, pdo_sqlsrv
+          extensions: none, ctype, dom, json, mbstring, simplexml, tokenizer, xml, xmlwriter, pdo, curl, fileinfo, pdo_mysql, pdo_sqlsrv, iconv
           ini-values: error_reporting=E_ALL
           coverage: none
 
@@ -75,7 +93,7 @@ jobs:
         uses: wayofdev/gh-actions/actions/composer/get-cache-directory@v3.1.0
 
       - name: ♻️ Restore cached dependencies installed with composer
-        uses: actions/cache@v4.0.2
+        uses: actions/cache@v4.3.0
         with:
           path: ${{ env.COMPOSER_CACHE_DIR }}
           key: php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}
@@ -89,6 +107,28 @@ jobs:
         uses: wayofdev/gh-actions/actions/composer/install@v3.1.0
         with:
           dependencies: ${{ matrix.dependencies }}
+
+      - name: ⏳ Verify SQL Server Connection
+        run: |
+          echo "Verifying SQL Server is fully ready..."
+          for i in {1..30}; do
+            echo "Connection test attempt $i/30..."
+            if /opt/mssql-tools18/bin/sqlcmd -S 127.0.0.1,11433 -U sa -P 'SSpaSS__1_123' -C -Q "SELECT 1 AS TestConnection" -o /tmp/sqltest.log 2>&1; then
+              echo "✅ SQL Server connection successful!"
+              cat /tmp/sqltest.log
+              break
+            else
+              echo "❌ SQL Server connection failed, retrying in 5 seconds..."
+              cat /tmp/sqltest.log 2>/dev/null || true
+              if [ $i -eq 30 ]; then
+                echo "💥 SQL Server failed to become ready after 150 seconds"
+                # Show container logs for debugging
+                docker logs $(docker ps -q --filter "ancestor=mcr.microsoft.com/mssql/server:2022-latest") || true
+                exit 1
+              fi
+              sleep 5
+            fi
+          done
 
       - name: 🧪 Run phpunit tests with Pest
         run: composer test

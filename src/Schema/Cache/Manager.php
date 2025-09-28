@@ -17,7 +17,7 @@ final class Manager implements CacheManager
 
     public function __construct(
         private readonly SchemaConfig $config,
-        private readonly CacheFactory $cacheFactory
+        private readonly CacheFactory $cacheFactory,
     ) {
     }
 

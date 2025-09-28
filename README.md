@@ -19,7 +19,7 @@
     <a href="https://app.codecov.io/gh/wayofdev/laravel-cycle-orm-adapter"><img alt="Codecov" src="https://img.shields.io/codecov/c/github/wayofdev/laravel-cycle-orm-adapter?style=flat-square&logo=codecov"></a>
     <a href="https://dashboard.stryker-mutator.io/reports/github.com/wayofdev/laravel-cycle-orm-adapter/master" target="_blank"><img alt="Mutation testing badge" src="https://img.shields.io/endpoint?style=flat-square&label=mutation%20score&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fwayofdev%2Flaravel-cycle-orm-adapter%2Fmaster"></a>
     <a href=""><img src="https://img.shields.io/badge/phpstan%20level-5%20of%209-yellowgreen?style=flat-square" alt="PHP Stan Level 5 of 9"></a>
-    <a href="https://discord.gg/CE3TcCC5vr" target="_blank"><img alt="Codecov" src="https://img.shields.io/discord/1228506758562058391?style=flat-square&logo=discord&labelColor=7289d9&logoColor=white&color=39456d"></a>
+    <a href="https://discord.gg/CE3TcCC5vr" target="_blank"><img alt="Discord Link" src="https://img.shields.io/discord/1228506758562058391?style=flat-square&logo=discord&labelColor=7289d9&logoColor=white&color=39456d"></a>
     <a href="https://x.com/intent/follow?screen_name=wayofdev" target="_blank"><img alt="Follow on Twitter (X)" src="https://img.shields.io/badge/-Follow-black?style=flat-square&logo=X"></a>
 </div>
 
@@ -55,10 +55,11 @@ The full documentation for the package is available at [https://laravel-cycle-or
 
 ## 🧩 Compatibility Map
 
-| Laravel | Cycle ORM | Adapter |
-|---------|-----------|---------|
-| ^10.28  | 2.x       | 4.x     |
-| 11.x    | 2.x       | ^4.9.0  |
+| Laravel              | Cycle ORM | Adapter  |
+|----------------------|-----------|----------|
+| `^10.28`             | `2.x`     | `<4.9.0` |
+| `^10.28, 11.x`       | `2.x`     | `≥4.9.0` |
+| `^10.28, 11.x, 12.x` | `2.x`     | `≥5.0.0` |
 
 <br>
 

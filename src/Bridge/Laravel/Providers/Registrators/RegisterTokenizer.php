@@ -26,21 +26,18 @@ final class RegisterTokenizer
         });
 
         $app->bind(ScopedClassesInterface::class, static function ($app): ScopedClassesInterface {
-            /** @var Tokenizer $tokenizer */
             $tokenizer = $app->get(Tokenizer::class);
 
             return new ScopedClassLocator($tokenizer);
         });
 
         $app->bind(ClassesInterface::class, static function ($app): ClassesInterface {
-            /** @var Tokenizer $tokenizer */
             $tokenizer = $app->get(Tokenizer::class);
 
             return $tokenizer->classLocator();
         });
 
         $app->bind(InvocationsInterface::class, static function ($app): InvocationLocator {
-            /** @var Tokenizer $tokenizer */
             $tokenizer = $app->get(Tokenizer::class);
 
             return $tokenizer->invocationLocator();

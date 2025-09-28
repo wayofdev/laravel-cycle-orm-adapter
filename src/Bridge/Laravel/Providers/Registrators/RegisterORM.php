@@ -27,7 +27,6 @@ final class RegisterORM
     public function __invoke(Application $app): void
     {
         $app->singleton(FactoryInterface::class, static function (Application $app): FactoryInterface {
-            /** @var SchemaConfig $config */
             $config = $app->get(SchemaConfig::class);
             $factoryFQCN = $config->defaultCollectionFQCN();
             $factory = $app->make($factoryFQCN);
@@ -63,6 +62,9 @@ final class RegisterORM
                 $app->get(ORMInterface::class)
             );
         });
+
+        // Fix #752: Alias ORM::class to ORMInterface::class singleton (@mm-sol)
+        $app->alias(ORMInterface::class, ORM::class);
     }
 
     private function shouldLoadEntityBehavior(): bool
