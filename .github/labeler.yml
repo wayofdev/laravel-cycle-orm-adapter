@@ -11,7 +11,7 @@
 
 "type: documentation":
   - changed-files:
-      - any-glob-to-any-file: ['assets/**/*', '.github/*', './*.md']
+      - any-glob-to-any-file: ['assets/**/*', '.github/*', './*.md', '.cursor/*']
 
 "type: maintenance":
   - changed-files:

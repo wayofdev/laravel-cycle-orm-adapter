@@ -66,12 +66,12 @@ jobs:
           UBUNTU_VERSION=$(lsb_release -rs 2>/dev/null || echo "24.04")
           echo "Installing ODBC driver for Ubuntu $UBUNTU_VERSION"
 
-          curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-          curl https://packages.microsoft.com/config/ubuntu/$UBUNTU_VERSION/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
+          curl -fsSL "https://packages.microsoft.com/config/ubuntu/${UBUNTU_VERSION}/packages-microsoft-prod.deb" -o packages-microsoft-prod.deb
+          sudo dpkg -i packages-microsoft-prod.deb
           sudo apt-get update
           sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 mssql-tools18 unixodbc-dev
-          echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc
-          source ~/.bashrc
+          # Make sqlcmd available to subsequent steps
+          echo "/opt/mssql-tools18/bin" >> "$GITHUB_PATH"
 
       - name: 🛠️ Setup PHP
         uses: shivammathur/setup-php@2.35.5
