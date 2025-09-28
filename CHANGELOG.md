@@ -1,5 +1,65 @@
 # Changelog
 
+## [5.0.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.12.3...v5.0.0) (2025-09-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* support for Laravel 12 and PHP 8.4
+* support for Laravel 12 and PHP 8.4
+
+### Features
+
+* prepare for laravel 12 and php 8.4 release ([0951537](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/095153768c75e185218ba0ff3fc25657c8cd1e23))
+* support for Laravel 12 and PHP 8.4 ([84f8f82](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/84f8f82d82f1a7406b3206f9fd22a9ae8fa68eb6))
+* support for Laravel 12 and PHP 8.4 ([84f8f82](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/84f8f82d82f1a7406b3206f9fd22a9ae8fa68eb6))
+* support Laravel 12 ([#756](https://github.com/wayofdev/laravel-cycle-orm-adapter/issues/756)) ([2baf91c](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/2baf91c083d908a6397464cd49c8aa2ccc73e09d))
+
+
+### Bug Fixes
+
+* **ci:** replace deprecated apt-key with modern Ubuntu 24.04+ package installation ([8d0d433](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/8d0d433b38b2c0876d634342b69473c6eba69c11))
+* conflict with orchestra test bench ([f5eacaa](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/f5eacaa74034e6013f9c990e745ea702dbb7657a))
+* **orm:** ensure ORM::class and ORMInterface::class return same instance ([399d696](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/399d6960b02143357949517b9a79f0580fd7906c)), closes [#752](https://github.com/wayofdev/laravel-cycle-orm-adapter/issues/752)
+* resolve SQL Server container initialization issues in GitHub Actions ([f7c2f28](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/f7c2f283c2024b5c4632241b3eee35bcd8495f73))
+
+
+### Documentation
+
+* add comprehensive AI-assisted development guidelines ([9f94948](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/9f94948358b4d10fe0409506284be8f31b87950b))
+* add comprehensive testing guidelines for Laravel Cycle ORM Adapter ([9a0c86d](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/9a0c86d993066ebb9d39e0f1fbeb7a0945a02c02))
+* update compatibility matrix to show Laravel support evolution ([a50724e](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/a50724e629fcf8cf1f9b97c9e0348478ba773ffb))
+* update readme ([cd7449e](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/cd7449e07029c3fe9ce1405814e01fcc55413d6e))
+* update readme ([cf87eaf](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/cf87eafdd6b4edb08d9fa6c8085378affca16edf))
+
+
+### Dependencies
+
+* **deps:** lock file maintenance ([3ffb75f](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/3ffb75fe9f21a55ceba6db99c08872cc9a65e16a))
+* **deps:** lock file maintenance ([059435d](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/059435d24cb8ca926001b10c9b368a3ec5e2eea7))
+* **deps:** lock file maintenance ([5dbec2a](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/5dbec2adda4e05518885d3d40d236b56308bdb68))
+* **deps:** update actions/checkout action to v4.1.6 ([918b337](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/918b337d359f309444aaf033191e62bec70b4eea))
+* **deps:** update codecov/codecov-action action to v4.3.1 ([79a5ff7](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/79a5ff76351df24c67bf235d451bd37d5dab98fc))
+* **deps:** update codecov/codecov-action action to v4.4.0 ([ca5a6fb](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/ca5a6fb27596afe7ab808103505cda49928fc127))
+* **deps:** update codecov/codecov-action action to v4.4.1 ([6c453fc](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/6c453fc74f2b4534dd2cca731e17977c59f01520))
+* **deps:** update dependency @types/node to v20.12.10 ([eca6204](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/eca62040fc8ffef76a02181256e4795cea9fa8ff))
+* **deps:** update dependency @types/node to v20.12.11 ([2355dea](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/2355dea7f820c0b85903c894af8c63cf688501af))
+* **deps:** update dependency @types/node to v20.12.12 ([e3c5d00](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/e3c5d001bc763571e9affd0dad9db877a02e9ee1))
+* **deps:** update dependency @types/node to v20.12.8 ([d226aa0](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/d226aa01a2ca8e3cff4259fade573bbf78b22a44))
+* **deps:** update dependency cycle/orm to v2.8.0 ([a50b7bc](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/a50b7bcd27d1d55dd014d99e7521ae1c8e987715))
+* **deps:** update dependency larastan/larastan to v2.9.6 ([7a5f7bd](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/7a5f7bd798694cf02ec408a15046c0a26b9e6159))
+* **deps:** update dependency larastan/larastan to v2.9.7 ([9bd4ba8](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/9bd4ba8c3c7cba6bb0ce9402ac9bb76341183bef))
+* **deps:** update dependency rector/rector to v1.0.5 ([3daaf53](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/3daaf53f7e39945261e5544d5948422817efa556))
+* **deps:** update dependency vimeo/psalm to v5.24.0 ([47997e0](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/47997e0931a1ab7ac2c9f8d624fbcd5c6d754256))
+* **deps:** update dependency wayofdev/cs-fixer-config to v1.5.0 ([bd87368](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/bd873683cf893ab4703c4bb4e213431ce2a375b5))
+* **deps:** update wayofdev/php-dev docker tag to v8.3 ([322eb39](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/322eb39814640a75ceee4b945e98d3e2d5c25cb0))
+
+
+### Code Refactoring
+
+* apply rector rules ([90f651a](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/90f651a464d9a4cdcdd16563f4be4a213dfbaeb2))
+* apply rector rules ([8f6c630](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/8f6c630aeea7e283614593498280932d0aa7ba6d))
+
 ## [4.12.3](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.12.2...v4.12.3) (2024-04-26)
 
 
