@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace WayOfDev\Cycle\Testing\Concerns;
 
 use Cycle\Database\DatabaseProviderInterface;
+use Cycle\ORM\ORMInterface;
+use Cycle\ORM\SchemaInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot as ReverseConstraint;
+use Throwable;
 use WayOfDev\Cycle\Support\Arr;
 use WayOfDev\Cycle\Testing\Constraints\CountInDatabase;
 use WayOfDev\Cycle\Testing\Constraints\HasInDatabase;
@@ -17,6 +20,8 @@ use WayOfDev\Cycle\Testing\Constraints\SoftDeletedInDatabase;
 use WayOfDev\Tests\TestCase;
 
 use function is_iterable;
+use function is_object;
+use function is_string;
 
 /**
  * @method void assertThat($value, Constraint $constraint, string $message = '')
@@ -53,7 +58,7 @@ trait InteractsWithDatabase
         }
 
         $this->assertThat(
-            $table,
+            $this->normalizeTable($table),
             new HasInDatabase(app(DatabaseProviderInterface::class), $data)
         );
 
@@ -81,7 +86,7 @@ trait InteractsWithDatabase
             new HasInDatabase(app(DatabaseProviderInterface::class), $data)
         );
 
-        $this->assertThat($table, $constraint);
+        $this->assertThat($this->normalizeTable($table), $constraint);
 
         return $this;
     }
@@ -94,8 +99,16 @@ trait InteractsWithDatabase
      */
     protected function assertDatabaseCount($table, int $count, $connection = null): static
     {
+        if (is_iterable($table)) {
+            foreach ($table as $item) {
+                $this->assertDatabaseCount($item, $count, $connection);
+            }
+
+            return $this;
+        }
+
         $this->assertThat(
-            $table,
+            $this->normalizeTable($table),
             new CountInDatabase(app(DatabaseProviderInterface::class), $count)
         );
 
@@ -110,12 +123,15 @@ trait InteractsWithDatabase
      */
     protected function assertDatabaseEmpty($table, $connection = null): static
     {
-        $this->assertThat(
-            $table,
-            new CountInDatabase(app(DatabaseProviderInterface::class), 0)
-        );
+        if (is_iterable($table)) {
+            foreach ($table as $item) {
+                $this->assertDatabaseEmpty($item, $connection);
+            }
 
-        return $this;
+            return $this;
+        }
+
+        return $this->assertDatabaseCount($table, 0, $connection);
     }
 
     protected function cleanupMigrations(string $pathGlob): void
@@ -136,8 +152,16 @@ trait InteractsWithDatabase
      */
     protected function assertSoftDeleted($table, array $data = [], $connection = null, $deletedAtColumn = 'deleted_at'): self
     {
+        if (is_iterable($table)) {
+            foreach ($table as $item) {
+                $this->assertSoftDeleted($item, $data, $connection, $deletedAtColumn);
+            }
+
+            return $this;
+        }
+
         $this->assertThat(
-            $table,
+            $this->normalizeTable($table),
             new SoftDeletedInDatabase(
                 app(DatabaseProviderInterface::class),
                 $data,
@@ -158,8 +182,16 @@ trait InteractsWithDatabase
      */
     protected function assertNotSoftDeleted($table, array $data = [], $connection = null, $deletedAtColumn = 'deleted_at'): self
     {
+        if (is_iterable($table)) {
+            foreach ($table as $item) {
+                $this->assertNotSoftDeleted($item, $data, $connection, $deletedAtColumn);
+            }
+
+            return $this;
+        }
+
         $this->assertThat(
-            $table,
+            $this->normalizeTable($table),
             new NotSoftDeletedInDatabase(
                 app(DatabaseProviderInterface::class),
                 $data,
@@ -168,5 +200,27 @@ trait InteractsWithDatabase
         );
 
         return $this;
+    }
+
+    protected function normalizeTable(mixed $table): string
+    {
+        if ($table instanceof Model) {
+            return $table->getTable();
+        }
+
+        if (is_string($table) || is_object($table)) {
+            try {
+                $orm = app(ORMInterface::class);
+                $schema = $orm->getSchema();
+                $role = is_object($table) ? $table::class : $table;
+
+                if ($schema->defines($role)) {
+                    return (string) $schema->define($role, SchemaInterface::TABLE);
+                }
+            } catch (Throwable) {
+            }
+        }
+
+        return (string) $table;
     }
 }
