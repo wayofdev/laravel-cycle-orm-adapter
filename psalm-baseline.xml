@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="6.13.1@1e3b7f0a8ab32b23197b91107adc0a7ed8a05b51">
+<files psalm-version="6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac">
   <file src="src/Bridge/Cache/Providers/CacheServiceProvider.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function register(): void]]></code>
     </MissingOverrideAttribute>
-  </file>
-  <file src="src/Bridge/Laravel/Console/Commands/Database/ListCommand.php">
-    <InvalidArgument>
-      <code><![CDATA[$db]]></code>
-    </InvalidArgument>
-  </file>
-  <file src="src/Bridge/Laravel/Console/Commands/Database/TableCommand.php">
-    <InvalidArgument>
-      <code><![CDATA[$tableName]]></code>
-    </InvalidArgument>
   </file>
   <file src="src/Bridge/Laravel/Console/Commands/Migrations/AbstractCommand.php">
     <InvalidReturnStatement>
@@ -138,16 +128,12 @@
   </file>
   <file src="src/Testing/Constraints/NotSoftDeletedInDatabase.php">
     <MissingOverrideAttribute>
-      <code><![CDATA[public function failureDescription($other): string]]></code>
       <code><![CDATA[public function matches(mixed $other): bool]]></code>
-      <code><![CDATA[public function toString(): string]]></code>
     </MissingOverrideAttribute>
   </file>
   <file src="src/Testing/Constraints/SoftDeletedInDatabase.php">
     <MissingOverrideAttribute>
-      <code><![CDATA[public function failureDescription($other): string]]></code>
       <code><![CDATA[public function matches(mixed $other): bool]]></code>
-      <code><![CDATA[public function toString(): string]]></code>
     </MissingOverrideAttribute>
   </file>
   <file src="tests/app/Entities/Footprint.php">
@@ -280,11 +266,6 @@
     </MissingOverrideAttribute>
   </file>
   <file src="tests/src/TestCase.php">
-    <MissingOverrideAttribute>
-      <code><![CDATA[protected function getPackageProviders($app): array]]></code>
-      <code><![CDATA[protected function setUp(): void]]></code>
-      <code><![CDATA[protected function tearDown(): void]]></code>
-    </MissingOverrideAttribute>
     <PossiblyUnusedMethod>
       <code><![CDATA[faker]]></code>
     </PossiblyUnusedMethod>
