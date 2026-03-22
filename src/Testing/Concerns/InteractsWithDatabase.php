@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace WayOfDev\Cycle\Testing\Concerns;
 
 use Cycle\Database\DatabaseProviderInterface;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\LogicalNot as ReverseConstraint;
@@ -13,6 +14,9 @@ use WayOfDev\Cycle\Testing\Constraints\CountInDatabase;
 use WayOfDev\Cycle\Testing\Constraints\HasInDatabase;
 use WayOfDev\Cycle\Testing\Constraints\NotSoftDeletedInDatabase;
 use WayOfDev\Cycle\Testing\Constraints\SoftDeletedInDatabase;
+use WayOfDev\Tests\TestCase;
+
+use function is_iterable;
 
 /**
  * @method void assertThat($value, Constraint $constraint, string $message = '')
@@ -32,13 +36,22 @@ trait InteractsWithDatabase
     }
 
     /**
-     * @param string|object $table
+     * @param Model|iterable<Model>|string $table
+     * @param array<string, mixed> $data
      * @param string|null $connection
      *
-     * @return $this
+     * @return InteractsWithDatabase
      */
     protected function assertDatabaseHas($table, array $data = [], $connection = null): static
     {
+        if (is_iterable($table)) {
+            foreach ($table as $item) {
+                $this->assertDatabaseHas($item, $data, $connection);
+            }
+
+            return $this;
+        }
+
         $this->assertThat(
             $table,
             new HasInDatabase(app(DatabaseProviderInterface::class), $data)
@@ -48,13 +61,22 @@ trait InteractsWithDatabase
     }
 
     /**
-     * @param string|object $table
+     * @param Model|iterable<Model>|string $table
+     * @param array<string, mixed> $data
      * @param string|null $connection
      *
-     * @return $this
+     * @return InteractsWithDatabase
      */
     protected function assertDatabaseMissing($table, array $data = [], $connection = null): static
     {
+        if (is_iterable($table)) {
+            foreach ($table as $item) {
+                $this->assertDatabaseMissing($item, $data, $connection);
+            }
+
+            return $this;
+        }
+
         $constraint = new ReverseConstraint(
             new HasInDatabase(app(DatabaseProviderInterface::class), $data)
         );
@@ -65,7 +87,7 @@ trait InteractsWithDatabase
     }
 
     /**
-     * @param string|object $table
+     * @param Model|iterable<Model>|string $table
      * @param string|null $connection
      *
      * @return $this
@@ -81,7 +103,7 @@ trait InteractsWithDatabase
     }
 
     /**
-     * @param string|object $table
+     * @param Model|iterable<Model>|string $table
      * @param string|null $connection
      *
      * @return $this
@@ -104,6 +126,14 @@ trait InteractsWithDatabase
         }
     }
 
+    /**
+     * @param Model|iterable<Model>|string $table
+     * @param array<string, mixed> $data
+     * @param string|null $connection
+     * @param string|null $deletedAtColumn
+     *
+     * @return InteractsWithDatabase|TestCase
+     */
     protected function assertSoftDeleted($table, array $data = [], $connection = null, $deletedAtColumn = 'deleted_at'): self
     {
         $this->assertThat(
@@ -111,13 +141,21 @@ trait InteractsWithDatabase
             new SoftDeletedInDatabase(
                 app(DatabaseProviderInterface::class),
                 $data,
-                $deletedAtColumn,
+                $deletedAtColumn ?? 'deleted_at',
             )
         );
 
         return $this;
     }
 
+    /**
+     * @param Model|iterable<Model>|string $table
+     * @param array<string, mixed> $data
+     * @param string|null $connection
+     * @param string|null $deletedAtColumn
+     *
+     * @return InteractsWithDatabase|TestCase
+     */
     protected function assertNotSoftDeleted($table, array $data = [], $connection = null, $deletedAtColumn = 'deleted_at'): self
     {
         $this->assertThat(
@@ -125,7 +163,7 @@ trait InteractsWithDatabase
             new NotSoftDeletedInDatabase(
                 app(DatabaseProviderInterface::class),
                 $data,
-                $deletedAtColumn,
+                $deletedAtColumn ?? 'deleted_at',
             )
         );
 

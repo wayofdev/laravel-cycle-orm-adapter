@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace WayOfDev\Tests\Bridge\Laravel\Providers;
 
 use Cycle\Database\Config\DatabaseConfig;
-use Cycle\ORM\EntityManager;
 use Cycle\ORM\EntityManagerInterface;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use PHPUnit\Framework\Attributes\Test;
@@ -32,14 +31,14 @@ class CycleServiceProviderTest extends TestCase
     #[Test]
     public function it_gets_entity_manager_instance_from_container(): void
     {
-        /** @var EntityManager|null $manager */
         $manager = $this->app->make(EntityManagerInterface::class);
+        // @phpstan-ignore-next-line
         self::assertInstanceOf(EntityManagerInterface::class, $manager);
     }
 
     #[Test]
     public function it_registers_configurations_correctly(): void
     {
-        $this::assertNotNull(config('cycle'));
+        self::assertNotNull(config('cycle'));
     }
 }

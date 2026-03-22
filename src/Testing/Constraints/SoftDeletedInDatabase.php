@@ -6,7 +6,7 @@ namespace WayOfDev\Cycle\Testing\Constraints;
 
 use Cycle\Database\DatabaseInterface;
 use Cycle\Database\DatabaseProviderInterface;
-use Cycle\Database\Query\SelectQuery;
+use Override;
 use PHPUnit\Framework\Constraint\Constraint;
 use Throwable;
 
@@ -34,31 +34,33 @@ class SoftDeletedInDatabase extends Constraint
 
     public function matches(mixed $other): bool
     {
-        /** @var SelectQuery $tableInterface */
-        $tableInterface = $this->database->table($other);
-
         try {
-            $count = $tableInterface->where($this->data)
+            $count = $this->database
+                ->select()
+                ->from((string) $other)
+                ->where($this->data)
                 ->andWhere($this->deletedAtColumn, '!=', null)
                 ->count();
 
             return $count > 0;
-        } catch (Throwable $e) {
+        } catch (Throwable) {
             return false;
         }
     }
 
-    public function failureDescription($other): string
+    #[Override]
+    public function toString(): string
+    {
+        return json_encode($this->data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
+
+    #[Override]
+    protected function failureDescription(mixed $other): string
     {
         return sprintf(
             'a soft deleted row in the table [%s] matches the attributes %s.',
             $other,
             $this->toString()
         );
-    }
-
-    public function toString(): string
-    {
-        return json_encode($this->data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
 }

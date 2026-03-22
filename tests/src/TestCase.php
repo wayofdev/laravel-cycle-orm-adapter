@@ -9,6 +9,7 @@ use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Support\Facades\Artisan;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
+use Override;
 use WayOfDev\Cycle\Bridge\Laravel\Providers\CycleServiceProvider;
 use WayOfDev\Cycle\Testing\Concerns\InteractsWithDatabase;
 use WayOfDev\Cycle\Testing\RefreshDatabase;
@@ -40,6 +41,7 @@ class TestCase extends OrchestraTestCase
         return $fakers[$locale];
     }
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();
@@ -59,6 +61,7 @@ class TestCase extends OrchestraTestCase
         }
     }
 
+    #[Override]
     protected function tearDown(): void
     {
         $this->cleanupMigrations($this->migrationsPath . '/*.php');
@@ -67,7 +70,7 @@ class TestCase extends OrchestraTestCase
         parent::tearDown();
     }
 
-    public function artisanCall(string $command, array $parameters = [])
+    public function artisanCall(string $command, array $parameters = []): int
     {
         return $this->app[Kernel::class]->call($command, $parameters);
     }
@@ -111,6 +114,7 @@ class TestCase extends OrchestraTestCase
         });
     }
 
+    #[Override]
     protected function getPackageProviders($app): array
     {
         return [
