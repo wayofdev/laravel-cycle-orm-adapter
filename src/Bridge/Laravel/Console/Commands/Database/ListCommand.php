@@ -53,7 +53,7 @@ final class ListCommand extends Command
             : array_keys($config->getDatabases());
 
         if (count($databases) === 0) {
-            $this->line('No databases found.', 'fg=red');
+            $this->error('No databases found.');
 
             return self::SUCCESS;
         }
@@ -80,7 +80,7 @@ final class ListCommand extends Command
             } catch (Exception $exception) {
                 $this->renderException($grid, $header, $exception);
 
-                if ($db->getName() != end($db)) {
+                if ($db->getName() !== end($databases)) {
                     $grid->addRow(new TableSeparator());
                 }
 
@@ -89,7 +89,7 @@ final class ListCommand extends Command
 
             $header[] = '<info>connected</info>';
             $this->renderTables($grid, $header, $db);
-            if ($db->getName() != end($databases)) {
+            if ($db->getName() !== end($databases)) {
                 $grid->addRow(new TableSeparator());
             }
         }

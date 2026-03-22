@@ -45,6 +45,7 @@ final class TableCommand extends Command
 
     public function handle(DatabaseProviderInterface $dbal): int
     {
+        /** @var string $tableName */
         $tableName = $this->argument('table');
 
         /** @var string|null $databaseOptionValue */

@@ -6,7 +6,6 @@ namespace WayOfDev\Cycle\Bridge\Laravel\Rules;
 
 use Closure;
 use Cycle\Database\DatabaseInterface;
-use Cycle\Database\Query\SelectQuery;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Translation\PotentiallyTranslatedString;
 
@@ -26,10 +25,11 @@ readonly class Exists implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        /** @var SelectQuery $table */
-        $table = $this->database->table($this->table);
-
-        $count = $table->where([$this->column => $value])->count();
+        $count = $this->database
+            ->select()
+            ->from($this->table)
+            ->where([$this->column => $value])
+            ->count();
 
         if ($count === 0) {
             $fail($this->message());

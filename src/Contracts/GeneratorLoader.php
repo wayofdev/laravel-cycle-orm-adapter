@@ -18,14 +18,14 @@ interface GeneratorLoader
      * @param self::GROUP_* $group
      * @param class-string<GeneratorInterface>|GeneratorInterface $generator
      *
-     * @return $this
+     * @return static
      */
     public function add(string $group, GeneratorInterface|string $generator): self;
 
     /**
      * @param class-string<GeneratorInterface> $removableGenerator
      *
-     * @return $this
+     * @return static
      */
     public function remove(string $removableGenerator): self;
 
@@ -34,5 +34,8 @@ interface GeneratorLoader
      */
     public function get(): array;
 
+    /**
+     * @return static
+     */
     public function without(): self;
 }
