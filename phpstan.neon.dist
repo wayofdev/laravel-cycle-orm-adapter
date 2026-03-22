@@ -12,6 +12,4 @@ parameters:
     tmpDir: .build/phpstan/
     ignoreErrors:
         -
-            message: "#Called 'env' outside of the config directory#"
-        -
             message: "#Trait WayOfDev\\\\App\\\\Entities\\\\HasSignatures is used zero times#"
