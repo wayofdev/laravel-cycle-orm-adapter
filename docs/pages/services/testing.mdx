@@ -108,6 +108,14 @@ $this->assertDatabaseMissing('posts', [
 ]);
 ```
 
+### `assertDatabaseEmpty`
+
+Assert that a table in the database is empty:
+
+```php
+$this->assertDatabaseEmpty('posts');
+```
+
 ### `assertSoftDeleted`
 
 Assert that a given entity has been soft-deleted:
