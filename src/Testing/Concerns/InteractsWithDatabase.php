@@ -17,7 +17,6 @@ use WayOfDev\Cycle\Testing\Constraints\CountInDatabase;
 use WayOfDev\Cycle\Testing\Constraints\HasInDatabase;
 use WayOfDev\Cycle\Testing\Constraints\NotSoftDeletedInDatabase;
 use WayOfDev\Cycle\Testing\Constraints\SoftDeletedInDatabase;
-use WayOfDev\Tests\TestCase;
 
 use function is_iterable;
 use function is_object;
@@ -41,11 +40,9 @@ trait InteractsWithDatabase
     }
 
     /**
-     * @param Model|iterable<Model>|string $table
+     * @param Model|string|object|iterable<Model|string|object> $table
      * @param array<string, mixed> $data
      * @param string|null $connection
-     *
-     * @return InteractsWithDatabase
      */
     protected function assertDatabaseHas($table, array $data = [], $connection = null): static
     {
@@ -66,11 +63,9 @@ trait InteractsWithDatabase
     }
 
     /**
-     * @param Model|iterable<Model>|string $table
+     * @param Model|string|object|iterable<Model|string|object> $table
      * @param array<string, mixed> $data
      * @param string|null $connection
-     *
-     * @return InteractsWithDatabase
      */
     protected function assertDatabaseMissing($table, array $data = [], $connection = null): static
     {
@@ -92,10 +87,8 @@ trait InteractsWithDatabase
     }
 
     /**
-     * @param Model|iterable<Model>|string $table
+     * @param Model|string|object|iterable<Model|string|object> $table
      * @param string|null $connection
-     *
-     * @return $this
      */
     protected function assertDatabaseCount($table, int $count, $connection = null): static
     {
@@ -116,10 +109,8 @@ trait InteractsWithDatabase
     }
 
     /**
-     * @param Model|iterable<Model>|string $table
+     * @param Model|string|object|iterable<Model|string|object> $table
      * @param string|null $connection
-     *
-     * @return $this
      */
     protected function assertDatabaseEmpty($table, $connection = null): static
     {
@@ -143,14 +134,12 @@ trait InteractsWithDatabase
     }
 
     /**
-     * @param Model|iterable<Model>|string $table
+     * @param Model|string|object|iterable<Model|string|object> $table
      * @param array<string, mixed> $data
      * @param string|null $connection
      * @param string|null $deletedAtColumn
-     *
-     * @return InteractsWithDatabase|TestCase
      */
-    protected function assertSoftDeleted($table, array $data = [], $connection = null, $deletedAtColumn = 'deleted_at'): self
+    protected function assertSoftDeleted($table, array $data = [], $connection = null, $deletedAtColumn = 'deleted_at'): static
     {
         if (is_iterable($table)) {
             foreach ($table as $item) {
@@ -173,14 +162,12 @@ trait InteractsWithDatabase
     }
 
     /**
-     * @param Model|iterable<Model>|string $table
+     * @param Model|string|object|iterable<Model|string|object> $table
      * @param array<string, mixed> $data
      * @param string|null $connection
      * @param string|null $deletedAtColumn
-     *
-     * @return InteractsWithDatabase|TestCase
      */
-    protected function assertNotSoftDeleted($table, array $data = [], $connection = null, $deletedAtColumn = 'deleted_at'): self
+    protected function assertNotSoftDeleted($table, array $data = [], $connection = null, $deletedAtColumn = 'deleted_at'): static
     {
         if (is_iterable($table)) {
             foreach ($table as $item) {
@@ -202,6 +189,9 @@ trait InteractsWithDatabase
         return $this;
     }
 
+    /**
+     * @param Model|string|object $table
+     */
     protected function normalizeTable(mixed $table): string
     {
         if ($table instanceof Model) {
