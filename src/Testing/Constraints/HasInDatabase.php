@@ -22,6 +22,9 @@ class HasInDatabase extends Constraint
 
     protected array $data;
 
+    /**
+     * Create a new constraint instance.
+     */
     public function __construct(DatabaseProviderInterface $database, array $data)
     {
         $this->data = $data;
@@ -29,6 +32,9 @@ class HasInDatabase extends Constraint
         $this->database = $database->database();
     }
 
+    /**
+     * Check if the constraint is satisfied.
+     */
     public function matches(mixed $other): bool
     {
         try {
@@ -44,6 +50,9 @@ class HasInDatabase extends Constraint
         }
     }
 
+    /**
+     * Returns the description of the failure.
+     */
     #[Override]
     public function failureDescription(mixed $other): string
     {
@@ -54,6 +63,9 @@ class HasInDatabase extends Constraint
         );
     }
 
+    /**
+     * Get a string representation of the object.
+     */
     #[Override]
     public function toString(mixed $options = null): string
     {

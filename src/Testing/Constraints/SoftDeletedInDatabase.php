@@ -23,6 +23,9 @@ class SoftDeletedInDatabase extends Constraint
 
     protected string $deletedAtColumn;
 
+    /**
+     * Create a new constraint instance.
+     */
     public function __construct(DatabaseProviderInterface $database, array $data, string $deletedAtColumn)
     {
         $this->data = $data;
@@ -32,6 +35,9 @@ class SoftDeletedInDatabase extends Constraint
         $this->deletedAtColumn = $deletedAtColumn;
     }
 
+    /**
+     * Check if the constraint is satisfied.
+     */
     public function matches(mixed $other): bool
     {
         try {
@@ -48,12 +54,18 @@ class SoftDeletedInDatabase extends Constraint
         }
     }
 
+    /**
+     * Get a string representation of the object.
+     */
     #[Override]
     public function toString(): string
     {
         return json_encode($this->data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
 
+    /**
+     * Returns the description of the failure.
+     */
     #[Override]
     protected function failureDescription(mixed $other): string
     {

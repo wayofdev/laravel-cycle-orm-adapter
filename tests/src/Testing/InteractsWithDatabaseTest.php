@@ -12,6 +12,9 @@ use WayOfDev\Tests\TestCase;
 
 final class InteractsWithDatabaseTest extends TestCase
 {
+    /**
+     * Set up the test environment.
+     */
     #[Override]
     public function setUp(): void
     {
@@ -22,6 +25,9 @@ final class InteractsWithDatabaseTest extends TestCase
         $this->artisan('cycle:migrate', ['--force' => true]);
     }
 
+    /**
+     * Test that it asserts database has and missing records.
+     */
     #[Test]
     public function it_asserts_database_has_and_missing(): void
     {
@@ -40,6 +46,9 @@ final class InteractsWithDatabaseTest extends TestCase
         ]);
     }
 
+    /**
+     * Test that it asserts the record count in the database.
+     */
     #[Test]
     public function it_asserts_database_count(): void
     {
@@ -53,12 +62,18 @@ final class InteractsWithDatabaseTest extends TestCase
         $this->assertDatabaseCount('posts', 2);
     }
 
+    /**
+     * Test that it asserts the database is empty.
+     */
     #[Test]
     public function it_asserts_database_empty(): void
     {
         $this->assertDatabaseEmpty('posts');
     }
 
+    /**
+     * Test that it asserts database has with iterable tables.
+     */
     #[Test]
     public function it_asserts_database_has_with_iterable(): void
     {
@@ -73,6 +88,9 @@ final class InteractsWithDatabaseTest extends TestCase
         ]);
     }
 
+    /**
+     * Test that it asserts database count with iterable tables.
+     */
     #[Test]
     public function it_asserts_database_count_with_iterable(): void
     {
@@ -86,6 +104,9 @@ final class InteractsWithDatabaseTest extends TestCase
         $this->assertDatabaseCount(['posts'], 2);
     }
 
+    /**
+     * Test that it asserts database has with entity class as table.
+     */
     #[Test]
     public function it_asserts_database_has_with_entity_class(): void
     {
@@ -100,6 +121,9 @@ final class InteractsWithDatabaseTest extends TestCase
         ]);
     }
 
+    /**
+     * Test that it asserts database has with iterable of entities.
+     */
     #[Test]
     public function it_asserts_database_has_with_iterable_of_entities(): void
     {
@@ -114,6 +138,9 @@ final class InteractsWithDatabaseTest extends TestCase
         ]);
     }
 
+    /**
+     * Test that it asserts database is empty with iterable tables.
+     */
     #[Test]
     public function it_asserts_database_empty_with_iterable(): void
     {

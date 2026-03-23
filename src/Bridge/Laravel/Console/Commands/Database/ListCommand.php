@@ -42,6 +42,9 @@ final class ListCommand extends Command
 
     protected $description = 'Get list of available databases, their tables and records count';
 
+    /**
+     * Execute the console command.
+     */
     public function handle(DatabaseConfig $config, DatabaseProviderInterface $dbal): int
     {
         /** @var string|null $databaseArgumentValue */
@@ -99,6 +102,9 @@ final class ListCommand extends Command
         return self::SUCCESS;
     }
 
+    /**
+     * Render the exception to the table.
+     */
     private function renderException(Table $grid, array $header, Throwable $exception): void
     {
         $grid->addRow(
@@ -113,6 +119,9 @@ final class ListCommand extends Command
         );
     }
 
+    /**
+     * Render the database tables to the table helper.
+     */
     private function renderTables(Table $grid, array $header, Database $database): void
     {
         foreach ($database->getTables() as $table) {

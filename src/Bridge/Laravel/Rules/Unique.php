@@ -11,6 +11,9 @@ use Illuminate\Translation\PotentiallyTranslatedString;
 
 readonly class Unique implements ValidationRule
 {
+    /**
+     * Create a new rule instance.
+     */
     public function __construct(
         private DatabaseInterface $database,
         private string $table,

@@ -23,6 +23,9 @@ final class GeneratorQueue implements GeneratorLoader
 
     private Container $app;
 
+    /**
+     * Create a new generator queue instance.
+     */
     public function __construct(
         Closure $closure,
         private readonly SchemaConfig $config,
@@ -31,6 +34,9 @@ final class GeneratorQueue implements GeneratorLoader
         $this->generators = $this->config->generators();
     }
 
+    /**
+     * Add a generator to the queue.
+     */
     public function add(string $group, GeneratorInterface|string $generator): GeneratorLoader
     {
         $queue = clone $this;
@@ -40,6 +46,9 @@ final class GeneratorQueue implements GeneratorLoader
         return $queue;
     }
 
+    /**
+     * Remove a generator from the queue.
+     */
     public function remove(string $removableGenerator): GeneratorLoader
     {
         $queue = clone $this;
@@ -71,6 +80,9 @@ final class GeneratorQueue implements GeneratorLoader
         return $result;
     }
 
+    /**
+     * Clear all generators from the queue.
+     */
     public function without(): GeneratorLoader
     {
         $queue = clone $this;

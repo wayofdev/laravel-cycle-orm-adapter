@@ -28,6 +28,8 @@ use function is_string;
 trait InteractsWithDatabase
 {
     /**
+     * Run the database seeders.
+     *
      * @param array|string $class
      */
     public function seed($class = 'Database\\Seeders\\DatabaseSeeder'): static
@@ -40,6 +42,8 @@ trait InteractsWithDatabase
     }
 
     /**
+     * Assert that a row in a database table exists.
+     *
      * @param Model|string|object|iterable<Model|string|object> $table
      * @param array<string, mixed> $data
      * @param string|null $connection
@@ -63,6 +67,8 @@ trait InteractsWithDatabase
     }
 
     /**
+     * Assert that a row in a database table does not exist.
+     *
      * @param Model|string|object|iterable<Model|string|object> $table
      * @param array<string, mixed> $data
      * @param string|null $connection
@@ -87,6 +93,8 @@ trait InteractsWithDatabase
     }
 
     /**
+     * Assert the count of a database table.
+     *
      * @param Model|string|object|iterable<Model|string|object> $table
      * @param string|null $connection
      */
@@ -109,6 +117,8 @@ trait InteractsWithDatabase
     }
 
     /**
+     * Assert that a database table is empty.
+     *
      * @param Model|string|object|iterable<Model|string|object> $table
      * @param string|null $connection
      */
@@ -125,6 +135,9 @@ trait InteractsWithDatabase
         return $this->assertDatabaseCount($table, 0, $connection);
     }
 
+    /**
+     * Remove all migration files from the specified path.
+     */
     protected function cleanupMigrations(string $pathGlob): void
     {
         $files = File::glob($pathGlob);
@@ -134,6 +147,8 @@ trait InteractsWithDatabase
     }
 
     /**
+     * Assert that a row in a database table has been soft deleted.
+     *
      * @param Model|string|object|iterable<Model|string|object> $table
      * @param array<string, mixed> $data
      * @param string|null $connection
@@ -162,6 +177,8 @@ trait InteractsWithDatabase
     }
 
     /**
+     * Assert that a row in a database table has not been soft deleted.
+     *
      * @param Model|string|object|iterable<Model|string|object> $table
      * @param array<string, mixed> $data
      * @param string|null $connection
@@ -190,6 +207,8 @@ trait InteractsWithDatabase
     }
 
     /**
+     * Normalize the given table name.
+     *
      * @param Model|string|object $table
      */
     protected function normalizeTable(mixed $table): string

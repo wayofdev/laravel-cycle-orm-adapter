@@ -13,6 +13,8 @@ use WayOfDev\Tests\TestCase;
 class CycleServiceProviderTest extends TestCase
 {
     /**
+     * Test that it gets the database configuration from the container.
+     *
      * @throws BindingResolutionException
      */
     #[Test]
@@ -26,6 +28,8 @@ class CycleServiceProviderTest extends TestCase
     }
 
     /**
+     * Test that it gets the entity manager instance from the container.
+     *
      * @throws BindingResolutionException
      */
     #[Test]
@@ -36,6 +40,9 @@ class CycleServiceProviderTest extends TestCase
         self::assertInstanceOf(EntityManagerInterface::class, $manager);
     }
 
+    /**
+     * Test that it registers configurations correctly.
+     */
     #[Test]
     public function it_registers_configurations_correctly(): void
     {

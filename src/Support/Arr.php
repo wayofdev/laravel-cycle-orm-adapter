@@ -19,6 +19,9 @@ use function str_contains;
  */
 final class Arr
 {
+    /**
+     * Determine if the given key exists in the provided array.
+     */
     public static function has(array $array, int|string $key): bool
     {
         $key = (string) $key;
@@ -38,6 +41,9 @@ final class Arr
         return true;
     }
 
+    /**
+     * Retrieve an item from an array using "dot" notation.
+     */
     public static function get(array $array, int|string $key, mixed $default = null): mixed
     {
         $key = (string) $key;

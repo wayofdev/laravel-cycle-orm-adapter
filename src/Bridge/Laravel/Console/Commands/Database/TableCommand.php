@@ -38,11 +38,17 @@ final class TableCommand extends Command
 
     protected $description = 'Describe table schema of specific database';
 
+    /**
+     * Create a new command instance.
+     */
     public function __construct()
     {
         parent::__construct();
     }
 
+    /**
+     * Execute the console command.
+     */
     public function handle(DatabaseProviderInterface $dbal): int
     {
         /** @var string $tableName */
@@ -84,6 +90,9 @@ final class TableCommand extends Command
         return self::SUCCESS;
     }
 
+    /**
+     * Describe table columns.
+     */
     private function describeColumns(AbstractTable $schema): void
     {
         $columnsTable = (new Table($this->output))
@@ -121,6 +130,8 @@ final class TableCommand extends Command
     }
 
     /**
+     * Describe table indexes.
+     *
      * @param array<AbstractIndex> $indexes
      */
     private function describeIndexes(DatabaseInterface $database, array $indexes, string $tableName): void
@@ -153,6 +164,8 @@ final class TableCommand extends Command
     }
 
     /**
+     * Describe table foreign keys.
+     *
      * @param array<AbstractForeignKey> $foreignKeys
      */
     private function describeForeignKeys(DatabaseInterface $database, array $foreignKeys, string $tableName): void
@@ -199,6 +212,9 @@ final class TableCommand extends Command
         $foreignTable->render();
     }
 
+    /**
+     * Describe default value of a column.
+     */
     private function describeDefaultValue(AbstractColumn $column, DriverInterface $driver): mixed
     {
         /** @var FragmentInterface|DateTimeInterface|scalar|null $defaultValue */
@@ -217,6 +233,9 @@ final class TableCommand extends Command
         return $defaultValue;
     }
 
+    /**
+     * Describe column type.
+     */
     private function describeType(AbstractColumn $column): string
     {
         $type = $column->getType();
@@ -234,6 +253,9 @@ final class TableCommand extends Command
         return $type;
     }
 
+    /**
+     * Describe abstract column type.
+     */
     private function describeAbstractType(AbstractColumn $column): string
     {
         $abstractType = $column->getAbstractType();

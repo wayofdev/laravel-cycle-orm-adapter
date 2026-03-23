@@ -29,6 +29,9 @@ class TestCase extends OrchestraTestCase
 
     protected ?string $migrationsPath = null;
 
+    /**
+     * Get a Faker instance.
+     */
     final protected static function faker(string $locale = 'en_US'): Generator
     {
         /** @var array<string, Generator> $fakers */
@@ -41,6 +44,9 @@ class TestCase extends OrchestraTestCase
         return $fakers[$locale];
     }
 
+    /**
+     * Set up the test environment.
+     */
     #[Override]
     protected function setUp(): void
     {
@@ -61,6 +67,9 @@ class TestCase extends OrchestraTestCase
         }
     }
 
+    /**
+     * Clean up the test environment.
+     */
     #[Override]
     protected function tearDown(): void
     {
@@ -70,11 +79,17 @@ class TestCase extends OrchestraTestCase
         parent::tearDown();
     }
 
+    /**
+     * Call an artisan command.
+     */
     public function artisanCall(string $command, array $parameters = []): int
     {
         return $this->app[Kernel::class]->call($command, $parameters);
     }
 
+    /**
+     * Assert the output of a console command.
+     */
     protected function assertConsoleCommandOutput(
         string $command,
         array $args,
@@ -94,6 +109,9 @@ class TestCase extends OrchestraTestCase
         }
     }
 
+    /**
+     * Assert that the console command output contains the given strings.
+     */
     protected function assertConsoleCommandOutputContainsStrings(
         string $command,
         array $args = [],
@@ -104,6 +122,9 @@ class TestCase extends OrchestraTestCase
         });
     }
 
+    /**
+     * Assert that the console command output does not contain the given strings.
+     */
     protected function assertConsoleCommandOutputDoesNotContainStrings(
         string $command,
         array $args = [],
@@ -114,6 +135,9 @@ class TestCase extends OrchestraTestCase
         });
     }
 
+    /**
+     * Get the package providers for the application.
+     */
     #[Override]
     protected function getPackageProviders($app): array
     {

@@ -18,6 +18,9 @@ final class ValidationRulesTest extends TestCase
 {
     private DatabaseInterface $database;
 
+    /**
+     * Set up the test environment.
+     */
     #[Override]
     public function setUp(): void
     {
@@ -30,6 +33,9 @@ final class ValidationRulesTest extends TestCase
         $this->artisan('cycle:migrate', ['--force' => true]);
     }
 
+    /**
+     * Test that it validates the exists rule.
+     */
     #[Test]
     public function it_validates_exists_rule(): void
     {
@@ -59,6 +65,9 @@ final class ValidationRulesTest extends TestCase
         self::assertFalse($passed);
     }
 
+    /**
+     * Test that it validates the unique rule.
+     */
     #[Test]
     public function it_validates_unique_rule(): void
     {
