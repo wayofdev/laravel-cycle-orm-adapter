@@ -96,7 +96,9 @@ trait InteractsWithDatabase
      * Assert the count of a database table.
      *
      * @param Model|string|object|iterable<Model|string|object> $table
-     * @param string|null $connection
+     * @param null $connection
+     *
+     * @return InteractsWithDatabase
      */
     protected function assertDatabaseCount($table, int $count, $connection = null): static
     {
