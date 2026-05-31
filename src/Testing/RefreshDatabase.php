@@ -10,6 +10,9 @@ use Cycle\Database\Table;
 
 trait RefreshDatabase
 {
+    /**
+     * Clear all tables from the default database, dropping foreign keys first.
+     */
     protected function refreshDatabase(): void
     {
         $database = app(DatabaseProviderInterface::class)->database('default');

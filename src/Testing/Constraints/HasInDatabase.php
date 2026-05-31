@@ -6,7 +6,7 @@ namespace WayOfDev\Cycle\Testing\Constraints;
 
 use Cycle\Database\DatabaseInterface;
 use Cycle\Database\DatabaseProviderInterface;
-use Cycle\Database\Query\SelectQuery;
+use Override;
 use PHPUnit\Framework\Constraint\Constraint;
 use Throwable;
 
@@ -22,6 +22,9 @@ class HasInDatabase extends Constraint
 
     protected array $data;
 
+    /**
+     * Create a new constraint instance.
+     */
     public function __construct(DatabaseProviderInterface $database, array $data)
     {
         $this->data = $data;
@@ -29,20 +32,28 @@ class HasInDatabase extends Constraint
         $this->database = $database->database();
     }
 
+    /**
+     * Check if the constraint is satisfied.
+     */
     public function matches(mixed $other): bool
     {
-        /** @var SelectQuery $tableInterface */
-        $tableInterface = $this->database->table($other);
-
         try {
-            $count = $tableInterface->where($this->data)->count();
+            $count = $this->database
+                ->select()
+                ->from((string) $other)
+                ->where($this->data)
+                ->count();
 
             return $count > 0;
-        } catch (Throwable $e) {
+        } catch (Throwable) {
             return false;
         }
     }
 
+    /**
+     * Returns the description of the failure.
+     */
+    #[Override]
     public function failureDescription(mixed $other): string
     {
         return sprintf(
@@ -52,6 +63,10 @@ class HasInDatabase extends Constraint
         );
     }
 
+    /**
+     * Get a string representation of the object.
+     */
+    #[Override]
     public function toString(mixed $options = null): string
     {
         if (is_int($options)) {
@@ -60,6 +75,6 @@ class HasInDatabase extends Constraint
             $options = JSON_THROW_ON_ERROR;
         }
 
-        return json_encode($this->data, $options | $options);
+        return json_encode($this->data, $options);
     }
 }

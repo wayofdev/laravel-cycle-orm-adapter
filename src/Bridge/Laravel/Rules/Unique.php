@@ -6,12 +6,14 @@ namespace WayOfDev\Cycle\Bridge\Laravel\Rules;
 
 use Closure;
 use Cycle\Database\DatabaseInterface;
-use Cycle\Database\Query\SelectQuery;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Translation\PotentiallyTranslatedString;
 
 readonly class Unique implements ValidationRule
 {
+    /**
+     * Create a new rule instance.
+     */
     public function __construct(
         private DatabaseInterface $database,
         private string $table,
@@ -26,10 +28,11 @@ readonly class Unique implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        /** @var SelectQuery $table */
-        $table = $this->database->table($this->table);
-
-        $count = $table->where([$this->column => $value])->count();
+        $count = $this->database
+            ->select()
+            ->from($this->table)
+            ->where([$this->column => $value])
+            ->count();
 
         if ($count > 0) {
             $fail($this->message());

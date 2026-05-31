@@ -2,7 +2,7 @@
 
 services:
   app:
-    image: wayofdev/php-dev:8.3-cli-alpine-latest
+    image: wayofdev/php-dev:8.4-cli-alpine-latest
     container_name: ${COMPOSE_PROJECT_NAME}-app
     restart: on-failure
     networks:
@@ -79,7 +79,7 @@ services:
       - sqlserver-data:/var/opt/mssql
     healthcheck:
       test:
-        ['CMD', '/opt/mssql-tools/bin/sqlcmd', '-S', 'localhost', '-U', 'SA', '-P', '${DB_PASSWORD}', '-l', '30', '-Q', 'SELECT 1']
+        ['CMD', '/opt/mssql-tools18/bin/sqlcmd', '-S', 'localhost', '-U', 'SA', '-P', '${DB_PASSWORD}', '-l', '30', '-Q', 'SELECT 1', '-C']
       interval: 3s
       timeout: 1s
       retries: 10

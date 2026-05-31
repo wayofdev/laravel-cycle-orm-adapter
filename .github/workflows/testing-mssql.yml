@@ -120,10 +120,10 @@ jobs:
             else
               echo "❌ SQL Server connection failed, retrying in 5 seconds..."
               cat /tmp/sqltest.log 2>/dev/null || true
-              if [ $i -eq 30 ]; then
+              if [ "$i" -eq 30 ]; then
                 echo "💥 SQL Server failed to become ready after 150 seconds"
                 # Show container logs for debugging
-                docker logs $(docker ps -q --filter "ancestor=mcr.microsoft.com/mssql/server:2022-latest") || true
+                docker logs "$(docker ps -q --filter "ancestor=mcr.microsoft.com/mssql/server:2022-latest")" || true
                 exit 1
               fi
               sleep 5

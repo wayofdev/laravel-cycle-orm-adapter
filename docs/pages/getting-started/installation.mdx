@@ -8,16 +8,17 @@ Welcome to the installation guide for the Laravel CycleORM Adapter. This documen
 
 Before you begin, ensure your development environment meets the following requirements:
 
-- **PHP Version:** 8.2 or higher
-- **Laravel:** 10.x, 11.x, or 12.x
+- **PHP Version:** 8.3 or higher
+- **Laravel:** 11.x, 12.x, or 13.x
 
 ## 🧩 Compatibility Map
 
-| Laravel              | Cycle ORM | Adapter  |
-|----------------------|-----------|----------|
-| `^10.28`             | `2.x`     | `<4.9.0` |
-| `^10.28, 11.x`       | `2.x`     | `≥4.9.0` |
-| `^10.28, 11.x, 12.x` | `2.x`     | `≥5.0.0` |
+| Laravel              | Cycle ORM | Adapter  | PHP Version |
+|----------------------|-----------|----------|-------------|
+| `^10.28`             | `2.x`     | `<4.9.0` | `^8.2`      |
+| `^10.28, 11.x`       | `2.x`     | `≥4.9.0` | `^8.2`      |
+| `^10.28, 11.x, 12.x` | `2.x`     | `5.0.0`  | `^8.2`      |
+| `11.x, 12.x, 13.x`   | `2.x`     | `>5.0.0` | `^8.3`      |
 
 
 ## 🚀 Quick Start
@@ -49,7 +50,7 @@ $ php artisan vendor:publish \
 
 ## 🏭 Database Factories (Optional)
 
-If you need support for <ExternalLink href="https://laravel.com/docs/11.x/eloquent-factories">Eloquent-like Factories</ExternalLink>, install the following package:
+If you need support for <ExternalLink href="https://laravel.com/docs/13.x/eloquent-factories">Eloquent-like Factories</ExternalLink>, install the following package:
 
 ```bash
 $ composer req --dev wayofdev/laravel-cycle-orm-factories

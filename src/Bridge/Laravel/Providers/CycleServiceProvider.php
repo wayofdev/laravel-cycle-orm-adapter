@@ -21,6 +21,8 @@ use WayOfDev\Cycle\Bridge\Telescope\Providers\TelescopeServiceProvider;
 final class CycleServiceProvider extends ServiceProvider
 {
     /**
+     * Bootstrap the application services.
+     *
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
@@ -44,6 +46,9 @@ final class CycleServiceProvider extends ServiceProvider
         }
     }
 
+    /**
+     * Register the application services.
+     */
     public function register(): void
     {
         // @phpstan-ignore-next-line
@@ -72,6 +77,9 @@ final class CycleServiceProvider extends ServiceProvider
         $this->registerIntegrations();
     }
 
+    /**
+     * Register external integrations.
+     */
     private function registerIntegrations(): void
     {
         $services = [
@@ -88,6 +96,9 @@ final class CycleServiceProvider extends ServiceProvider
         }
     }
 
+    /**
+     * Register console commands.
+     */
     private function registerConsoleCommands(): void
     {
         $this->commands([

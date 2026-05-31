@@ -15,6 +15,9 @@ final class Manager implements CacheManager
 {
     private const SCHEMA_CACHE_KEY = 'cycle.orm.schema';
 
+    /**
+     * Create a new cache manager instance.
+     */
     public function __construct(
         private readonly SchemaConfig $config,
         private readonly CacheFactory $cacheFactory,
@@ -22,6 +25,8 @@ final class Manager implements CacheManager
     }
 
     /**
+     * Get the cached schema.
+     *
      * @throws InvalidArgumentException
      */
     public function get(): mixed
@@ -30,6 +35,8 @@ final class Manager implements CacheManager
     }
 
     /**
+     * Cache the provided schema.
+     *
      * @throws InvalidArgumentException
      */
     public function set(string|array $schema): bool
@@ -38,6 +45,8 @@ final class Manager implements CacheManager
     }
 
     /**
+     * Flush the cached schema.
+     *
      * @throws InvalidArgumentException
      */
     public function flush(): bool
@@ -46,6 +55,8 @@ final class Manager implements CacheManager
     }
 
     /**
+     * Check if the schema is cached.
+     *
      * @throws InvalidArgumentException
      */
     public function isCached(): bool
@@ -53,6 +64,9 @@ final class Manager implements CacheManager
         return $this->cacheStore()->has(self::SCHEMA_CACHE_KEY);
     }
 
+    /**
+     * Get the cache repository instance.
+     */
     private function cacheStore(): CacheRepository
     {
         $store = Arr::get(

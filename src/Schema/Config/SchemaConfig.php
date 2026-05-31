@@ -12,6 +12,9 @@ class SchemaConfig extends InjectableConfig
 {
     public const CONFIG = 'schema';
 
+    /**
+     * Create a new schema configuration instance.
+     */
     public function __construct(array $config = [])
     {
         parent::__construct(array_merge([
@@ -28,11 +31,17 @@ class SchemaConfig extends InjectableConfig
         ], $config));
     }
 
+    /**
+     * Get the list of generators.
+     */
     public function generators(): array
     {
         return $this->config['generators'];
     }
 
+    /**
+     * Get the default collection FQCN.
+     */
     public function defaultCollectionFQCN(): string
     {
         $default = $this->config['collections']['default'];
@@ -41,11 +50,17 @@ class SchemaConfig extends InjectableConfig
         return $factories[$default];
     }
 
+    /**
+     * Check if schema caching is enabled.
+     */
     public function cacheSchema(): bool
     {
         return $this->config['cache']['enabled'];
     }
 
+    /**
+     * Get the default configuration values.
+     */
     public function defaults()
     {
         return $this->config['defaults'];

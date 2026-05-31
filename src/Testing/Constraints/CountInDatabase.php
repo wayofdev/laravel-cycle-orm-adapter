@@ -20,6 +20,9 @@ class CountInDatabase extends Constraint
 
     protected int $actualCount;
 
+    /**
+     * Create a new constraint instance.
+     */
     public function __construct(DatabaseProviderInterface $database, int $expectedCount)
     {
         $this->expectedCount = $expectedCount;
@@ -27,6 +30,9 @@ class CountInDatabase extends Constraint
         $this->database = $database->database();
     }
 
+    /**
+     * Check if the constraint is satisfied.
+     */
     public function matches(mixed $other): bool
     {
         /** @var Table $tableInterface */
@@ -37,6 +43,9 @@ class CountInDatabase extends Constraint
         return $this->actualCount === $this->expectedCount;
     }
 
+    /**
+     * Returns the description of the failure.
+     */
     public function failureDescription(mixed $other): string
     {
         return sprintf(
@@ -47,6 +56,9 @@ class CountInDatabase extends Constraint
         );
     }
 
+    /**
+     * Get a string representation of the object.
+     */
     public function toString(): string
     {
         return (new ReflectionClass($this))->name;
