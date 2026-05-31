@@ -1,5 +1,22 @@
 # Changelog
 
+## [6.0.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v5.0.0...v6.0.0) (2026-05-31)
+
+
+### ⚠ BREAKING CHANGES
+
+* laravel 13 support, PHP 8.3 requirement, Composer dependencies update ([#766](https://github.com/wayofdev/laravel-cycle-orm-adapter/issues/766))
+
+### Features
+
+* laravel 13 support, PHP 8.3 requirement, Composer dependencies update ([#766](https://github.com/wayofdev/laravel-cycle-orm-adapter/issues/766)) ([69b870b](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/69b870bbc737e5020c48f142cc5f9c1cf19491df))
+
+
+### Dependencies
+
+* **deps:** update googleapis/release-please-action action to v4.3.0 ([9e411a2](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/9e411a20b40c0c19d35445f3219dce41432c7219))
+* **deps:** update wayofdev/gh-actions action to v3.3.0 ([86d1b1f](https://github.com/wayofdev/laravel-cycle-orm-adapter/commit/86d1b1fa9a4331257a63da203570e1e6f7b5e896))
+
 ## [5.0.0](https://github.com/wayofdev/laravel-cycle-orm-adapter/compare/v4.12.3...v5.0.0) (2025-09-28)
 
 
