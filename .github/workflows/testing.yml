@@ -23,7 +23,7 @@ jobs:
         os:
           - ubuntu-latest
         php-version:
-          - '8.2'
+          - '8.3'
         dependencies:
           - locked
     steps:
@@ -87,7 +87,7 @@ jobs:
         os:
           - ubuntu-latest
         php-version:
-          - '8.2'
+          - '8.3'
         dependencies:
           - locked
     steps:
@@ -145,7 +145,6 @@ jobs:
         os:
           - 'ubuntu-latest'
         php-version:
-          - '8.2'
           - '8.3'
           - '8.4'
         dependencies:

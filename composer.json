@@ -114,9 +114,6 @@
             "pestphp/pest-plugin": true,
             "phpstan/extension-installer": true
         },
-        "platform": {
-            "php": "8.4.19"
-        },
         "sort-packages": true
     },
     "extra": {
